@@ -314,28 +314,32 @@ En tu bitácora de trabajo responde las siguientes preguntas:
 PROYECTO EVALUATIVO DE LA UNIDAD 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Realiza el proyecto 5 que encuentras `aquí <https://www.nand2tetris.org/project05>`__
+El proyecto se publicará en la semana de evaluación. Por tanto, te recomiendo que termines la mayor 
+cantidad de ejercicios que puedas, ojalá todos, antes de la semana de evaluación.
 
-Escribe un documento en formato .PDF con la siguiente información:
+..
+    Realiza el proyecto 5 que encuentras `aquí <https://www.nand2tetris.org/project05>`__
 
-#. Tu nombre y ID.
-#. El enlace al github del proyecto.
-#. (20%) El enlace al video que muestre el proyecto pasando todos los vectores de prueba. Debes asegurarte 
-   que el video funciona: audio y video (mínimo 720 de resolución), de lo contrario será contado como 0% en la 
-   calificación final. Para la captura puedes usar `OBS Studio <https://obsproject.com/download>`__. 
-#. (30%) El diagrama de compuertas de cada circuito. Puedes usar draw.io.
-#. (40%) Utiliza el segundo programa del proyecto formativo 4. Escribe un texto donde expliques detalladamente el 
-   funcionamiento de cada parte del computador para poder ejecutar este programa.
+    Escribe un documento en formato .PDF con la siguiente información:
 
-Consideraciones para la entrega:
+    #. Tu nombre y ID.
+    #. El enlace al github del proyecto.
+    #. (20%) El enlace al video que muestre el proyecto pasando todos los vectores de prueba. Debes asegurarte 
+    que el video funciona: audio y video (mínimo 720 de resolución), de lo contrario será contado como 0% en la 
+    calificación final. Para la captura puedes usar `OBS Studio <https://obsproject.com/download>`__. 
+    #. (30%) El diagrama de compuertas de cada circuito. Puedes usar draw.io.
+    #. (40%) Utiliza el segundo programa del proyecto formativo 4. Escribe un texto donde expliques detalladamente el 
+    funcionamiento de cada parte del computador para poder ejecutar este programa.
 
-* Sube tu archivo .``pdf`` a `este <https://upbeduco-my.sharepoint.com/:f:/g/personal/juanf_franco_upb_edu_co/Ep6NfMCIRwxBpZpBWcC0I2kBvakItRWE7PXcpZzvWhfV-g>`__ 
-  enlace.
-* Solo se tendrá en cuenta el último archivo que subas.
-* Luego del plazo máximo NO SE RECIBEN trabajos y la nota será 0.
+    Consideraciones para la entrega:
 
-.. warning::
-    CONTROL DE VERSIÓN
+    * Sube tu archivo .``pdf`` a `este <https://upbeduco-my.sharepoint.com/:f:/g/personal/juanf_franco_upb_edu_co/Ep6NfMCIRwxBpZpBWcC0I2kBvakItRWE7PXcpZzvWhfV-g>`__ 
+    enlace.
+    * Solo se tendrá en cuenta el último archivo que subas.
+    * Luego del plazo máximo NO SE RECIBEN trabajos y la nota será 0.
 
-    (10%) Desde el inicio del proyecto debes crear un repositorio y realizar commits periódicamente. Tu repositorio 
-    debe mostrar el proceso de trabajo.
+    .. warning::
+        CONTROL DE VERSIÓN
+
+        (10%) Desde el inicio del proyecto debes crear un repositorio y realizar commits periódicamente. Tu repositorio 
+        debe mostrar el proceso de trabajo.
