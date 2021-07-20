@@ -104,6 +104,10 @@ puntuales.
 Evidencias de evaluación
 -------------------------
 
+En cada unidad verás el enunciado de un proyecto y las consideraciones para 
+entregarlo solucionado. Te en cuenta SIEMPRE el siguiente código honor:
+
+
 Código de honor
 ^^^^^^^^^^^^^^^^
 
@@ -120,21 +124,17 @@ Para realizar el trabajo de cada unidad se espera que hagas lo siguiente:
 * NO OLVIDES, este curso se trata de pensar y experimentar NO de
   BUSCAR soluciones en Internet.
 
-Detalle de las evidencias  
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Bitácora  
+------------------------------
 
-Vamos a utilizar dos herramientas para la presentación de evidencias, tanto
-para los ejercicios de fundamentación como para el proyecto.
+Vamos a utilizar dos herramientas para documentes y organices tu trabajo:
 
 * GitHub
 * `Notion <https://www.notion.so>`__
 
-En GitHub mantendrás todo tu código bajo control de versión y
-debe reflejar un flujo de trabajo. Debes evidenciar el flujo
-de trabajo.
+En GitHub mantendrás todo tu código bajo control de versión.
 
-En Notion vas a presentar la documentación de la fundamentación y del proyecto 
-de cada unidad. El formato de tu bitácora de trabajo es libre.
+En Notion llevarás tu bitácora electrónica.
 
 Control de versión
 --------------------
