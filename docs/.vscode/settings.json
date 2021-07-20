@@ -1,0 +1,30 @@
+{
+    "python.pythonPath": "/bin/python",
+    "cSpell.language": ",es",
+    "restructuredtext.confPath": "${workspaceFolder}",
+    "cSpell.words": [
+        "EVALUATIVO",
+        "Higuita",
+        "NOTYPE",
+        "Polucionan",
+        "Prerrequisitos",
+        "Virtualización",
+        "autoevaluación",
+        "bytecodes",
+        "computacionales",
+        "conceptualmente",
+        "glibc",
+        "inicializados",
+        "javacript",
+        "microcontrolador",
+        "operandos",
+        "preprocesador",
+        "preprocesamiento",
+        "prototipada",
+        "relocalizable",
+        "sincronización",
+        "sumativa",
+        "sumatoria",
+        "transpilers"
+    ]
+}

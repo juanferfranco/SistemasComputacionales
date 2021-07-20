@@ -1,0 +1,20 @@
+Curso Sistemas Computacionales 2021-20
+========================================
+
+Docente diseñador del curso: Juan Fernando Franco Higuita
+
+Nombre del docente moderador: Juan Fernando Franco Higuita
+
+Créditos y horas totales del curso: 2 créditos - 96 horas totales 
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Unidades:
+
+   Introducción al curso <_intro/intro>
+   Unidad 1: Arquitectura del computador <_unidad1/unidad1>
+..
+   Unidad 2: Del código fuente al código ejecutable <_unidad2/unidad2>
+   Unidad 3: Programación <_unidad3/unidad3>
+   Unidad 4: Sistema operativo <_unidad4/unidad4>
