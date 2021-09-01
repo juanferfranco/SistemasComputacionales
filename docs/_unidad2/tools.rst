@@ -396,9 +396,8 @@ el código de máquina del programa. Lo puedes observar con el siguientes comand
         5f:	5d                   	pop    %rbp
         60:	c3                   	retq 
 
-Recuerdas cuando programaste en ensamblador el computador Hack? pues bueno
-aquí tienes código ensamblador y su equivalente código de máquina para
-el procesador de tu computador.
+Nota que la salida anterior muestra tanto el código ensamblador como su equivalente 
+código de máquina.
 
 Ahora vamos a realizar otro ejemplo donde verás cómo se combinan varios
 relocatable object files para producir un ejecutable:
@@ -515,7 +514,7 @@ Puedes ver que en la tabla de símbolos de main.o, suma y multiplicacion
 se marcan como GLOBAL y muestra que no están definidos (UND), es decir, no
 sabemos dónde está el código de ambas funciones.
 
-Ahora necesitamos pasar estos tres archivo ``.o`` al enlazador para
+Ahora necesitamos pasar estos tres archivos ``.o`` al enlazador para
 unirlos y generar el ejecutable:
 
 ``gcc -Wall file2.o file3.o main.o -o exe``
@@ -536,7 +535,7 @@ tendrá definidas las instrucciones necesarias para preparar el llamado a main.
 Observarás que nuestro ejecutable exe dependerá de una biblioteca dinámica
 llamada ``libc``. El enlazado con esta biblioteca lo hace por nosotros gcc
 y como ya te habrás dado cuenta esta biblioteca incluye el código de entrada
-que prepará el entorno del programa para poder llamar a la función main.
+que preparará el entorno del programa para poder llamar a la función main.
 
 Modifica el archivo main.c:
 
