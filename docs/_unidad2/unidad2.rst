@@ -226,6 +226,33 @@ Vas a crear un programa en C que haga lo siguiente:
 * Vas a crear un archivo de salida donde almacenarás el máximo, mínimo y el promedio 
   encontrados.
 
+Para este problema, considera el siguiente código:
+
+.. code-block:: c 
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+
+    int main(){
+
+        char arr[] = "1 10 24 46 89\n";
+
+        char *token = strtok(arr, " ");
+        int i = 0;
+        while(token != NULL ){
+            printf("token[%d]: %s\n",i,token);
+            token = strtok(NULL, " ");
+            i++;
+        }
+
+
+        exit(EXIT_SUCCESS);
+    }
+
+
+
+
 ¿Qué debes entregar?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
