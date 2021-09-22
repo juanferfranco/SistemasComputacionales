@@ -217,7 +217,7 @@ Problema 3: programación en lenguaje C
 
 Vas a crear un programa en C que haga lo siguiente:
 
-* Crea un archivo de texto con la información de un arreglo de caracteres
+* Crea un archivo de texto con la información de un arreglo de enteros.
 * Tu programa debe leer ese archivo y almacenar la información en un arreglo 
   de enteros en memoria dinámica.
 * Realiza tres funciones que permitan encontrar el máximo, el mínimo y el promedio.
