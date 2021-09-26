@@ -17,13 +17,17 @@ lenguaje C y la comparación en C#.
 Temas
 ******
 
-* Encapsulamiento, herencia, polimorfismo.
+* Memoria, encapsulamiento, herencia, polimorfismo.
 
 Trayecto de actividades
 ------------------------
 
-Sesión 1: encapsulamiento 
+Sesión 1: memoria 
 *******************************
+
+Antes de analizar la implementación de algunas abstracciones de la 
+programación orientada a objetos, vas a aprender un poco más acerca 
+del modelo de memoria de un programación en ejecución o proceso.
 
 Ejercicio 1: memoria de un proceso
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -647,6 +651,17 @@ Cambia el contenido del stack:
     0x7fffffffdb92:	100 'd'	111 'o'	114 'r'	97 'a'	115 's'	0 '\000'	0 '\000'	-51 '\315'
     (gdb)
 
+Trabajo autónomo 1: memoria
+********************************
+(Tiempo estimado: 1 hora 20 minutos)
+
+Construye un programa que te permite visualizar cada uno de los segmentos 
+de memoria de un proceso. Experimenta, adiciona más variables. NO OLVIDES 
+usar GDB y valgrind.
+
+Sesión 2: encapsulamiento
+****************************
+
 Ejercicio 14: el concepto de clase en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1146,6 +1161,16 @@ Nota qué cambió con respecto a la primera implementación que te mostré.
 reservada ``this``. Esta variable contiene la dirección en memoria del
 objecto a través del cual llamamos el método. Observa de nuevo el código
 en C. Notas ¿Cómo están relacionados los conceptos?
+
+Trabajo autónomo 2: encapsulamiento
+***************************************
+(Tiempo estimado: 1 hora 20 minutos)
+
+Vuelve a leer el material de esta sección y asegúrate de analizar con 
+detenimiento los ejercicios 20 y 21.
+
+Sesión 3: relaciones entre objetos
+**************************************
 
 Ejercicio 22: relación de composición entre objetos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1794,6 +1819,15 @@ main.c:
         return 0;
     }
 
+Trabajo autónomo 3: herencia
+*******************************
+(Tiempo estimado: 1 hora 20 minutos)
+
+Revisa de nuevo todo el material de esta sesión en particular el ejercicio 29.
+
+Sesión 4: polimorfismo
+**************************
+
 Ejercicio 30: POLIMORFISMO en tiempo de ejecución
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -2136,6 +2170,14 @@ Ejercicio 32: caso de estudio sobre interfaces
 
 `Estudia <https://chris-wood.github.io/2016/02/12/Polymorphism-in-C.html>`__ con detenimiento 
 esta implementación de interfaces.
+
+
+Trabajo autónomo 4: polimorfismo
+**********************************
+(Tiempo estimado: 1 hora 20 minutos)
+
+Analiza de nuevo el ejercicio 30 y el caso de estudio, ejercicio 32. Trata de 
+realizar diagramas donde visualices la relación entre las diferentes variables.
 
 Evaluación Unidad 3
 ---------------------
