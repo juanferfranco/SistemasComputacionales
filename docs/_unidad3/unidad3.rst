@@ -27,7 +27,7 @@ Sesión 1: memoria
 
 Antes de analizar la implementación de algunas abstracciones de la 
 programación orientada a objetos, vas a aprender un poco más acerca 
-del modelo de memoria de un programación en ejecución o proceso.
+del modelo de memoria de un proceso.
 
 Ejercicio 1: memoria de un proceso
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
