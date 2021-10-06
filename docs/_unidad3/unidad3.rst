@@ -1446,16 +1446,10 @@ main.c:
 
         player_dtor(player);
         free(player);
-
-        gun_dtor(gun);
-        free(gun);
-
-        return 0;
-    }
-
-Para compilar y generar la aplicación:
-
-.. code-block:: bash
+    gcc -Wall -c person.c -o person.o                             
+    gcc -Wall -c student.c -o student.o                           
+    gcc -Wall -c main.c -o main.o      
+    gcc -Wall main.o person.o student.o -o app
 
     gcc -Wall -c  player.c -o player.o    
     gcc -Wall -c  gun.c -o gun.o          
@@ -1588,86 +1582,69 @@ person.h:
 
     #ifndef PERSON_H_
     #define PERSON_H_
-    
-    // Forward declaration
-    struct person_t;
-    
-    // Memory allocator
-    struct person_t* person_new();
-    
-    // Constructor
-    void person_ctor(struct person_t*,
-    const char* /* first name */,
-    const char* /* last name */,
-    unsigned int /* birth year */);
-    
-    // Destructor
-    void person_dtor(struct person_t*);
-    
-    // Behavior functions
-    void person_get_first_name(struct person_t*, char*);
-    void person_get_last_name(struct person_t*, char*);
-    unsigned int person_get_birth_year(struct person_t*);
-    
-    #endif /* PERSON_H_ */
 
-person.c:
-
-.. code-block:: c
-
-    #include <stdlib.h>personPrivate
-    #include "personPrivate.h"
-    
-    // Memory allocator
-    person_t* person_new() {
-        return malloc(sizeof(person_t));
-    }
-    
-    // Constructor
-    void person_ctor(person_t* person,
-            const char* first_name,
-            const char* last_name,
-            unsigned int birth_year) {
-    
-                strcpy(person->first_name, first_name);
-                strcpy(person->last_name, last_name);
-                person->birth_year = birth_year;
-    }
-    
-    // Destructor
-    void person_dtor(person_t* person) {
-        // Nothing to do
-    }
-    
-    // Behavior functions
-    void person_get_first_name(person_t* person, char* buffer) {
-        strcpy(buffer, person->first_name);
-    }
-    
-    void person_get_last_name(person_t* person, char* buffer) {
-        strcpy(buffer, person->last_name);
-    }
-    
-    unsigned int person_get_birth_year(person_t* person) {
-        return person->birth_year;
-    }
-
-personPrivate.h:
-
-.. code-block:: c
-
-    #ifndef PERSONPRIVATE_H_
-    #define PERSONPRIVATE_H_
-    
-    // Private definition
     typedef struct {
         char first_name[32];
         char last_name[32];
         unsigned int birth_year;
     } person_t;
-    
-    
-    #endif /* PERSONPRIVATE_H_ */
+
+    person_t *person_new();
+    void person_ctor( person_t *, const char *, const char *, unsigned int);
+    void person_dtor(person_t *);
+
+    void person_get_first_name(person_t *, char *);
+    void person_get_last_name(person_t *, char *);
+    unsigned int person_get_birth_year(person_t *);
+
+    #endif /* PERSON_H_ */
+
+Código para person.c:
+
+.. code-block:: c
+
+    #include <stdlib.h>
+    #include <string.h>
+    #include <stdlib.h>
+    #include "person.h"
+
+    person_t *person_new() {
+        return malloc(sizeof(person_t));
+    }
+
+    void person_ctor(person_t *this,
+            const char *first_name,
+            const char *last_name,
+            unsigned int birth_year) {
+
+                strcpy(this->first_name, first_name);
+                strcpy(this->last_name, last_name);
+                this->birth_year = birth_year;
+    }
+
+    void person_dtor(person_t *this) {
+
+    }
+
+    void person_get_first_name(person_t *this, char *buffer) {
+        strcpy(buffer, this->first_name);
+    }
+
+    void person_get_last_name(person_t *this, char *buffer) {
+        strcpy(buffer, this->last_name);
+    }
+
+    unsigned int person_get_birth_year(person_t *this) {
+        return this->birth_year;
+    }
+
+    void person_get_last_name(person_t *this, char *buffer) {
+        strcpy(buffer, this->last_name);
+    }
+
+    unsigned int person_get_birth_year(person_t *this) {
+        return this->birth_year;
+    }
 
 student.h:
 
@@ -1675,76 +1652,70 @@ student.h:
 
     #ifndef STUDENT_H_
     #define STUDENT_H_
-    
-    //Forward declaration
-    struct student_t;
-    
-    // Memory allocator
-    struct student_t* student_new();
-    
-    // Constructor
-    void student_ctor(struct student_t*,
-                    const char* /* first name */,
-                    const char* /* last name */,
+
+    #include "person.h"
+
+    typedef struct {
+        person_t person;
+        char *student_number;
+        unsigned int passed_credits;
+    } student_t;
+
+    student_t *student_new();
+    void student_ctor(student_t *,
+                    const char * /* first name */,
+                    const char * /* last name */,
                     unsigned int /* birth year */,
-                    const char* /* student number */,
+                    const char * /* student number */,
                     unsigned int /* passed credits */);
-    
-    // Destructor
-    void student_dtor(struct student_t*);
-    
-    // Behavior functionspersonPrivate
+    void student_dtor(student_t *);
+
+    void student_get_student_number(student_t *, char *);
+    unsigned int student_get_passed_credits(student_t *);
+
+    #endif /* STUDENT_H_ */
+
+
+student.c:
 
 .. code-block:: c
 
     #include <stdlib.h>
     #include <stdio.h>
     #include <string.h>
-    
-    
     #include "person.h"
-    #include "personPrivate.h"
-    
-    
-    //Forward declaration
-    typedef struct {
-    // Here, we inherit all attributes from the person class and
-    // also we can use all of its behavior functions because of
-    // this nesting.
-        person_t person;
-        char* student_number;
-        unsigned int passed_credits;
-    } student_t;
-    
-    // Memory allocator
-    student_t* student_new() {
-        return (student_t*)malloc(sizeof(student_t));
+    #include "student.h"
+
+    student_t *student_new() {
+        return (student_t *)malloc(sizeof(student_t));
     }
-    
-    // Constructor
-    void student_ctor(student_t* student,
-                    const char* first_name,
-                    const char* last_name,
+
+    void student_ctor(student_t *this,
+                    const char * first_name,
+                    const char * last_name,
                     unsigned int birth_year,
-                    const char* student_number,
+                    const char * student_number,
                     unsigned int passed_credits) {
-    
-        // Call the constructor of the parent class
-        person_ctor((struct person_t*)student,
 
+        person_ctor((person_t *)this,
+        first_name, last_name, birth_year);
+        this->student_number = (char *)malloc(16 * sizeof(char));
+        strcpy(this->student_number, student_number);
+        this->passed_credits = passed_credits;
+    }
 
-        // of the parent class
-        person_dtor((struct person_t*)student);
+    void student_dtor(student_t *this) {
+        free(this->student_number);
+        person_dtor((person_t *)this);
     }
-    
-    // Behavior functions
-    void student_get_student_number(student_t* student,
-            char* buffer) {
-            strcpy(buffer, student->student_number);
+
+    void student_get_student_number(student_t *this,
+            char *buffer) {
+            strcpy(buffer, this->student_number);
     }
-    
-    unsigned int student_get_passed_credits(student_t* student) {
-        return student->passed_credits;
+
+    unsigned int student_get_passed_credits(student_t *this) {
+        return this->passed_credits;
     }
 
 main.c:
@@ -1755,35 +1726,39 @@ main.c:
     #include <stdlib.h>
     #include "person.h"
     #include "student.h"
-    
+
     int main(int argc, char* argv[]) {
-        // Create and construct the student object
-        struct student_t* student = student_new();
-        student_ctor(student, "John", "Doe", 1987, "TA5667", 134);
-    
-        // Now, we use person's behavior functions to
-        // read person's attributes from the student object
         char buffer[32];
-    
-        // Upcasting to a pointer of parent type
-        struct person_t* person_ptr = (struct person_t*)student;
+
+        student_t *student = student_new();
+        student_ctor(student, "John", "Doe", 1987, "TA5667", 134);
+        
+        person_t *person_ptr = (person_t *)student;
         person_get_first_name(person_ptr, buffer);
         printf("First name: %s\n", buffer);
         person_get_last_name(person_ptr, buffer);
         printf("Last name: %s\n", buffer);
         printf("Birth year: %d\n", person_get_birth_year(person_ptr));
-    
-        // Now, we read the attributes specific to the student object.
+
         student_get_student_number(student, buffer);
         printf("Student number: %s\n", buffer);
         printf("Passed credits: %d\n",
         student_get_passed_credits(student));
-    
-        // Destruct and free the student object
+
         student_dtor(student);
         free(student);
         return 0;
     }
+
+Para compilar y generar la aplicación:
+
+.. code-block:: bash
+
+    gcc -Wall -c person.c -o person.o                             
+    gcc -Wall -c student.c -o student.o                           
+    gcc -Wall -c main.c -o main.o      
+    gcc -Wall main.o person.o student.o -o app
+
 
 Trabajo autónomo 3: herencia
 *******************************
