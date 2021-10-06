@@ -1314,7 +1314,7 @@ gun.c:
 
     void gun_dtor(gun_t *this)
     {
-        free(this);
+
     }
 
     int gun_has_bullets(gun_t *this)
@@ -1385,7 +1385,6 @@ player.c:
     void player_dtor(player_t *this)
     {
         free(this->name);
-        free(this);
     }
 
     void player_pickup_gun(player_t *this, gun_t *gun)
@@ -1446,7 +1445,10 @@ main.c:
         player_drop_gun(player);
 
         player_dtor(player);
+        free(player);
+
         gun_dtor(gun);
+        free(gun);
 
         return 0;
     }
@@ -1530,7 +1532,7 @@ Observa entonces que podemos escribir de nuevo el código anterior así:
         person_t person;
         char student_number[16]; // Extra attribute
         unsigned int passed_credits; // Extra attribute
-    }student_t;
+    }student_t;personPrivate
 
 ¿Ves lo que pasó? estamos anidando una estructura en otra estructura. Por tanto student_t hereda
 de person_t. Observa que un puntero a student_t estará apuntando al primer atributo que es
@@ -1613,9 +1615,7 @@ person.c:
 
 .. code-block:: c
 
-    #include <stdlib.h>
-    #include <string.h>
-    #include <stdlib.h>
+    #include <stdlib.h>personPrivate
     #include "personPrivate.h"
     
     // Memory allocator
@@ -1693,13 +1693,7 @@ student.h:
     // Destructor
     void student_dtor(struct student_t*);
     
-    // Behavior functions
-    void student_get_student_number(struct student_t*, char*);
-    unsigned int student_get_passed_credits(struct student_t*);
-    
-    #endif /* STUDENT_H_ */
-
-student.c:
+    // Behavior functionspersonPrivate
 
 .. code-block:: c
 
@@ -1737,17 +1731,8 @@ student.c:
     
         // Call the constructor of the parent class
         person_ctor((struct person_t*)student,
-        first_name, last_name, birth_year);
-        student->student_number = (char*)malloc(16 * sizeof(char));
-        strcpy(student->student_number, student_number);
-        student->passed_credits = passed_credits;
-    }
-    
-    // Destructor
-    void student_dtor(student_t* student) {
-        // We need to destruct the child object first.
-        free(student->student_number);
-        // Then, we need to call the destructor function
+
+
         // of the parent class
         person_dtor((struct person_t*)student);
     }
