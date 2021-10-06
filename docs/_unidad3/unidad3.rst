@@ -1273,28 +1273,22 @@ gun.h:
 
     #ifndef GUN_H_
     #define GUN_H_
-    
-    typedef int bool_t;
-    
-    // Type forward declarations
-    struct gun_t;
-    
-    // Memory allocator
-    struct gun_t* gun_new();
-    
-    // Constructor
-    void gun_ctor(struct gun_t*, int);
-    
-    // Destructor
-    void gun_dtor(struct gun_t*);
-    
-    // Behavior functions
-    bool_t gun_has_bullets(struct gun_t*);
-    void gun_trigger(struct gun_t*);
-    void gun_refill(struct gun_t*);
-    
-    
+
+    typedef struct
+    {
+        int bullets;
+    } gun_t;
+
+    gun_t *gun_new();
+    void gun_ctor(gun_t *, int);
+    void gun_dtor(gun_t *);
+
+    int gun_has_bullets(gun_t *);
+    void gun_trigger(gun_t *);
+    void gun_refill(gun_t *);
+
     #endif /* GUN_H_ */
+
 
 gun.c:
 
@@ -1302,45 +1296,43 @@ gun.c:
 
     #include <stdlib.h>
     #include <stdio.h>
-    
-    typedef int bool_t;
-    
-    // Attribute structure
-    typedef struct {
-    int bullets;
-    } gun_t;
-    
-    // Memory allocator
-    gun_t* gun_new() {
-    return (gun_t*)malloc(sizeof(gun_t));
+    #include "gun.h"
+
+    gun_t *gun_new()
+    {
+        return (gun_t *)malloc(sizeof(gun_t));
     }
-    
-    // Constructor
-    void gun_ctor(gun_t* gun, int initial_bullets) {
-    gun->bullets = 0;
-    if (initial_bullets > 0) {
-        gun->bullets = initial_bullets;
+
+    void gun_ctor(gun_t *this, int initial_bullets)
+    {
+        this->bullets = 0;
+        if (initial_bullets > 0)
+        {
+            this->bullets = initial_bullets;
+        }
     }
+
+    void gun_dtor(gun_t *this)
+    {
+        free(this);
     }
-    
-    // Destructor
-    void gun_dtor(gun_t* gun) {
-    // Nothing to do
+
+    int gun_has_bullets(gun_t *this)
+    {
+        return (this->bullets > 0);
     }
-    
-    // Behavior functions
-    bool_t gun_has_bullets(gun_t* gun) {
-    return (gun->bullets > 0);
+
+    void gun_trigger(gun_t *this)
+    {
+        this->bullets--;
+        printf("gun triggered\n");
     }
-    
-    void gun_trigger(gun_t* gun) {
-    gun->bullets--;
-    printf("gun triggered\n");
+
+    void gun_refill(gun_t *this)
+    {
+        this->bullets = 7;
     }
-    
-    void gun_refill(gun_t* gun) {
-    gun->bullets = 7;
-    }
+
     
 player.h:
 
@@ -1348,26 +1340,25 @@ player.h:
 
     #ifndef PLAYER_H_
     #define PLAYER_H_
-    
-    // Type forward declarations
-    struct player_t;
-    struct gun_t;
-    
-    // Memory allocator
-    struct player_t* player_new();
-    
-    // Constructor
-    void player_ctor(struct player_t*, const char*);
-    
-    // Destructor
-    void player_dtor(struct player_t*);
-    
-    // Behavior functions
-    void player_pickup_gun(struct player_t*, struct gun_t*);
-    void player_shoot(struct player_t*);
-    void player_drop_gun(struct player_t*);
-    
+
+    #include "gun.h"
+
+    typedef struct
+    {
+        char *name;
+        gun_t *gun;
+    } player_t;
+
+    player_t *player_new();
+    void player_ctor(player_t *, const char *);
+    void player_dtor(player_t *);
+
+    void player_pickup_gun(player_t *, gun_t *);
+    void player_shoot(player_t *);
+    void player_drop_gun(player_t *);
+
     #endif /* PLAYER_H_ */
+
 
 player.c:
 
@@ -1376,58 +1367,50 @@ player.c:
     #include <stdlib.h>
     #include <string.h>
     #include <stdio.h>
-    
     #include "gun.h"
-    
-    // Attribute structure
-    typedef struct {
-    char* name;
-    struct gun_t* gun;
-    } player_t;
-    
-    // Memory allocator
-    player_t* player_new() {
-    return (player_t*)malloc(sizeof(player_t));
+    #include "player.h"
+
+    player_t *player_new()
+    {
+        return (player_t *)malloc(sizeof(player_t));
     }
-    
-    // Constructor
-    void player_ctor(player_t* player, const char* name) {
-    player->name = (char*)malloc((strlen(name) + 1) * sizeof(char));
-    strcpy(player->name, name);
-    // This is important. We need to nullify aggregation pointers
-    // if they are not meant to be set in constructor.
-    player->gun = NULL;
+
+    void player_ctor(player_t *this, const char *name)
+    {
+        this->name = (char *)malloc((strlen(name) + 1) * sizeof(char));
+        strcpy(this->name, name);
+        this->gun = NULL;
     }
-    
-    // Destructor
-    void player_dtor(player_t* player) {
-    free(player->name);
+
+    void player_dtor(player_t *this)
+    {
+        free(this->name);
+        free(this);
     }
-    
-    // Behavior functions
-    void player_pickup_gun(player_t* player, struct gun_t* gun) {
-    // After the following line the aggregation relation begins.
-    player->gun = gun;
+
+    void player_pickup_gun(player_t *this, gun_t *gun)
+    {
+        this->gun = gun;
     }
-    
-    void player_shoot(player_t* player) {
-    // We need to check if the player has picked up th gun
-    // otherwise, shooting is meaningless
-    if (player->gun) {
-        gun_trigger(player->gun);
-    } else {
-        printf("Player wants to shoot but he doesn't have a gun!\n");
-        exit(1);
+
+    void player_shoot(player_t *this)
+    {
+        if (this->gun)
+        {
+            gun_trigger(this->gun);
+        }
+        else
+        {
+            printf("Player wants to shoot but he doesn't have a gun!\n");
+            exit(1);
+        }
     }
+
+    void player_drop_gun(player_t *this)
+    {
+        this->gun = NULL;
     }
-    
-    void player_drop_gun(player_t* player) {
-    // After the following line the aggregation relation
-    // ends between two objects. Note that the object gun
-    // should not be freed since this object is not its
-    // owner like composition.
-    player->gun = NULL;
-    }
+
 
 main.c:
 
@@ -1437,47 +1420,45 @@ main.c:
     #include <stdlib.h>
     #include "gun.h"
     #include "player.h"
-    
-    int main(int argc, char* argv[]) {
-    
-        // Create and constructor the gun object
-        struct gun_t* gun = gun_new();
+
+    int main(int argc, char *argv[])
+    {
+        gun_t *gun = gun_new();
         gun_ctor(gun, 3);
-    
-        // Create and construct the player object
-        struct player_t* player = player_new();
+
+        player_t *player = player_new();
         player_ctor(player, "Billy");
-    
-        // Begin the aggregation relation.
+
         player_pickup_gun(player, gun);
-    
-        // Shoot until no bullet is left.
-        while (gun_has_bullets(gun)) {
+
+        while (gun_has_bullets(gun))
+        {
             player_shoot(player);
         }
-    
-        // Refill the gun
+
         gun_refill(gun);
-    
-        // Shoot until no bullet is left.
-        while (gun_has_bullets(gun)) {
+
+        while (gun_has_bullets(gun))
+        {
             player_shoot(player);
         }
-    
-        // End the aggregation relation.
+
         player_drop_gun(player);
-    
-        // Destruct and free the player object
+
         player_dtor(player);
-        free(player);
-    
-        // Destruct and free the gun object
         gun_dtor(gun);
-        free(gun);
-    
+
         return 0;
-    
     }
+
+Para compilar y generar la aplicación:
+
+.. code-block:: bash
+
+    gcc -Wall -c  player.c -o player.o    
+    gcc -Wall -c  gun.c -o gun.o          
+    gcc -Wall -c  main.c -o main.o        
+    gcc -Wall main.o player.o gun.o -o app
 
 Ejercicio 25: representación UML de las relaciones
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
