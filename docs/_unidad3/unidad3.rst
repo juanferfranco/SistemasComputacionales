@@ -1446,15 +1446,22 @@ main.c:
 
         player_dtor(player);
         free(player);
-    gcc -Wall -c person.c -o person.o                             
-    gcc -Wall -c student.c -o student.o                           
-    gcc -Wall -c main.c -o main.o      
-    gcc -Wall main.o person.o student.o -o app
+
+        gun_dtor(gun);
+        free(gun);
+
+        return 0;
+    }
+
+Para compilar:
+
+.. code-block:: bash
 
     gcc -Wall -c  player.c -o player.o    
     gcc -Wall -c  gun.c -o gun.o          
     gcc -Wall -c  main.c -o main.o        
     gcc -Wall main.o player.o gun.o -o app
+
 
 Ejercicio 25: representación UML de las relaciones
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
