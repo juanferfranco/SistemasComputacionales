@@ -1780,13 +1780,13 @@ el polimorfismo. Considera que tienes estos tres objetos:
 
 .. code-block:: c
 
-    struct animal_t* animal = animal_new();
+    animal_t *animal = animal_new();
     animal_ctor(animal);
 
-    struct cat_t* cat = cat_new();
+    struct cat_t *cat = cat_new();
     cat_ctor(cat);
 
-    struct duck_t* duck = duck_new();
+    struct duck_t *duck = duck_new();
     duck_ctor(duck);
 
 cat y duck heredan de animal. Por tanto, como cat y duck son animal también,
@@ -1796,8 +1796,8 @@ entonces al hacer esto:
 
     // This is a polymorphism
     animal_sound(animal);
-    animal_sound((struct animal_t*)cat);
-    animal_sound((struct animal_t*)duck);
+    animal_sound((animal_t *)cat);
+    animal_sound((animal_t *)duck);
 
 Consigues esta salida:
 
@@ -1822,24 +1822,25 @@ animal.h:
 
     #ifndef ANIMAL_H_
     #define ANIMAL_H_
-    
-    // Forward declaration
-    struct animal_t;
-    
-    // Memory allocator
-    struct animal_t* animal_new();
-    
-    // Constructor
-    void animal_ctor(struct animal_t*);
-    
-    // Destructor
-    void animal_dtor(struct animal_t*);
-    
-    // Behavior functions
-    void animal_get_name(struct animal_t*, char*);
-    void animal_sound(struct animal_t*);
-    
-    
+
+    typedef void (*sound_func_t)(void *);
+
+    typedef struct {
+        char *name;
+        // This member is a pointer to the function which
+        // performs the actual sound behavior
+        sound_func_t sound_func;
+    } animal_t;
+
+
+    animal_t *animal_new();
+
+    void animal_ctor(animal_t *);
+    void animal_dtor(animal_t *);
+
+    void animal_get_name(animal_t *, char *);
+    void animal_sound(animal_t *);
+
     #endif /* ANIMAL_H_ */
 
 animal.c:
@@ -1849,64 +1850,34 @@ animal.c:
     #include <stdlib.h>
     #include <string.h>
     #include <stdio.h>
-    
-    #include "animalPrivate.h"
-    
-    // Default definition of the animal_sound at the parent level
-    void __animal_sound(void* this_ptr) {
-        animal_t* animal = (animal_t*)this_ptr;
+    #include "animal.h"
+
+    void __animal_sound(void *this) {
+        animal_t* animal = (animal_t *)this;
         printf("%s: Beeeep\n", animal->name);
     }
-    
-    // Memory allocator
-    animal_t* animal_new() {
-        return (animal_t*)malloc(sizeof(animal_t));
-    }
-    
-    // Constructor
-    void animal_ctor(animal_t* animal) {
-        animal->name = (char*)malloc(10 * sizeof(char));
-        strcpy(animal->name, "Animal");
-        // Set the function pointer to point to the default definition
-        animal->sound_func = __animal_sound;
-    }
-    
-    // Destructor
-    void animal_dtor(animal_t* animal) {
-        free(animal->name);
-    }
-    // Behavior functions
-    void animal_get_name(animal_t* animal, char* buffer) {
-        strcpy(buffer, animal->name);
-    }
-    
-    void animal_sound(animal_t* animal) {
-        // Call the function which is pointed by the function pointer.
-        animal->sound_func(animal);
+
+    animal_t *animal_new() {
+        return (animal_t *)malloc(sizeof(animal_t));
     }
 
+    void animal_ctor(animal_t *this) {
+        this->name = (char *)malloc(10 * sizeof(char));
+        strcpy(this->name, "Animal");
+        this->sound_func = &__animal_sound;
+    }
 
-animalPrivate.h:
+    void animal_dtor(animal_t *this) {
+        free(this->name);
+    }
 
-.. code-block:: c
+    void animal_get_name(animal_t *this, char *buffer) {
+        strcpy(buffer, this->name);
+    }
 
-    #ifndef ANIMALPRIVATE_H_
-    #define ANIMALPRIVATE_H_
-    
-    // The function pointer type needed to point to
-    // different morphs of animal_sound
-    typedef void (*sound_func_t)(void*);
-    
-    // Forward declaration
-    typedef struct {
-        char* name;
-        // This member is a pointer to the function which
-        // performs the actual sound behavior
-        sound_func_t sound_func;
-    } animal_t;
-    
-    #endif /* ANIMALPRIVATE_H_ */
-
+    void animal_sound(animal_t *this) {
+        this->sound_func(this);
+    }
 
 cat.h:
 
@@ -1914,20 +1885,19 @@ cat.h:
 
     #ifndef CAT_H_
     #define CAT_H_
-    
-    // Forward declaration
-    struct cat_t;
-    
-    // Memory allocator
-    struct cat_t* cat_new();
-    
-    // Constructor
-    void cat_ctor(struct cat_t*);
-    
-    // Destructor
-    void cat_dtor(struct cat_t*);
-    // All behavior functions are inherited from the animal class.
-    
+
+    #include "animal.h"
+
+    typedef struct {
+        animal_t animal;
+    } cat_t;
+
+    cat_t *cat_new();
+
+    void cat_ctor(cat_t *);
+
+    void cat_dtor(cat_t *);
+
     #endif /* CAT_H_ */
 
 cat.c:
@@ -1937,61 +1907,50 @@ cat.c:
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
-    
-    #include "animal.h"
-    #include "animalPrivate.h"
-    
-    typedef struct {
-        animal_t animal;
-    } cat_t;
-    
-    // Define a new behavior for the cat's sound
-    void __cat_sound(void* ptr) {
-        animal_t* animal = (animal_t*)ptr;
+    #include "cat.h"
+
+    void __cat_sound(void *this) {
+        animal_t *animal = (animal_t *) this;
         printf("%s: Meow\n", animal->name);
     }
-    
+
     // Memory allocator
-    cat_t* cat_new() {
-        return (cat_t*)malloc(sizeof(cat_t));
+    cat_t *cat_new() {
+        return (cat_t *)malloc(sizeof(cat_t));
     }
     // Constructor
-    void cat_ctor(cat_t* cat) {
-        animal_ctor((struct animal_t*)cat);
-        strcpy(cat->animal.name, "Cat");
-        // Point to the new behavior function. Overriding
-        // is actually happening here.
-        cat->animal.sound_func = __cat_sound;
+    void cat_ctor(cat_t *this) {
+        animal_ctor((animal_t *)this);
+        strcpy(this->animal.name, "Cat");
+        this->animal.sound_func = __cat_sound;
     }
-    
-    // Destructor
-    void cat_dtor(cat_t* cat) {
-        animal_dtor((struct animal_t*)cat);
+
+    void cat_dtor(cat_t *this) {
+        animal_dtor((animal_t *)this);
     }
 
 duck.h:
 
 .. code-block:: c
-    
+
     #ifndef DUCK_H_
     #define DUCK_H_
-    
-    // Forward declaration
-    struct duck_t;
-    
-    // Memory allocator
-    struct duck_t* duck_new();
-    
-    // Constructor
-    void duck_ctor(struct duck_t*);
-    
-    // Destructor
-    void duck_dtor(struct duck_t*);
-    
-    // All behavior functions are inherited from the animal class.
-    
-    
+
+    #include "animal.h"
+
+    typedef struct {
+        animal_t animal;
+    } duck_t;
+
+    duck_t *duck_new();
+
+    void duck_ctor(duck_t *);
+
+    void duck_dtor(duck_t *);
+
+
     #endif /* DUCK_H_ */
+
 
 duck.c:
 
@@ -2000,39 +1959,26 @@ duck.c:
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
-    
-    #include "animal.h"
-    #include "animalPrivate.h"
-    
-    typedef struct {
-        animal_t animal;
-    } duck_t;
-    
-    // Define a new behavior for the duck's sound
-    void __duck_sound(void* ptr) {
-        animal_t* animal = (animal_t*)ptr;
+    #include "duck.h"
+
+    void __duck_sound(void *this) {
+        animal_t* animal = (animal_t*)this;
         printf("%s: Quacks\n", animal->name);
     }
-    
-    // Memory allocator
-    duck_t* duck_new() {
-        return (duck_t*)malloc(sizeof(duck_t));
-    }
-    
-    // Constructor
-    void duck_ctor(duck_t* duck) {
-        animal_ctor((struct animal_t*)duck);
-        strcpy(duck->animal.name, "Duck");
-        // Point to the new behavior function. Overriding
-        // is actually happening here.
-        duck->animal.sound_func = __duck_sound;
-    }
-    
-    // Destructor
-    void duck_dtor(duck_t* duck) {
-        animal_dtor((struct animal_t*)duck);
+
+    duck_t *duck_new() {
+        return (duck_t *)malloc(sizeof(duck_t));
     }
 
+    void duck_ctor(duck_t *this) {
+        animal_ctor((animal_t *)this);
+        strcpy(this->animal.name, "Duck");
+        this->animal.sound_func = __duck_sound;
+    }
+
+    void duck_dtor(duck_t *this) {
+        animal_dtor((animal_t *)this);
+    }
 
 main.c:
 
@@ -2041,41 +1987,54 @@ main.c:
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
-    
-    // Only public interfaces
     #include "animal.h"
     #include "cat.h"
     #include "duck.h"
-    
-    
-    int main(int argc, char** argv) {
-        struct animal_t* animal = animal_new();
-        struct cat_t* cat = cat_new();
-        struct duck_t* duck = duck_new();
-    
+
+
+    int main(int argc, char* argv[]) {
+
+        animal_t *animal = animal_new();
         animal_ctor(animal);
+
+        cat_t *cat = cat_new();
         cat_ctor(cat);
+
+        duck_t *duck = duck_new();
         duck_ctor(duck);
-    
+
         animal_sound(animal);
-        animal_sound((struct animal_t*)cat);
-        animal_sound((struct animal_t*)duck);
-    
+        animal_sound((animal_t *)cat);
+        animal_sound((animal_t *)duck);
+
         animal_dtor(animal);
-        cat_dtor(cat);
-        duck_dtor(duck);
-    
-        free(duck);
-        free(cat);
         free(animal);
-        return 0;
+
+        cat_dtor(cat);
+        free(cat);
+
+        duck_dtor(duck);
+        free(duck);
+
+        return EXIT_SUCCESS;
     }
+
+Para ejecutar el código realizas las siguientes operaciones:
+
+.. code-block:: bash 
+
+    gcc -Wall -c cat.c -o cat.o
+    gcc -Wall -c duck.c -o duck.o
+    gcc -Wall -c animal.c -o animal.o
+    gcc -Wall -c main.c -o main.o    
+    gcc -Wall main.o cat.o duck.o animal.o -o app
 
 Ejercicio 31: clases abstractas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Qué son las clases abstractas? Son un tipo de clases de las cuales no puedes
-crear OBJETOS. Entonces ¿Para qué sirven? Sirven para crear programas
+crear OBJETOS porque les falta o tienen incompleta una parte. 
+Entonces ¿Para qué sirven? Sirven para crear programas
 orientados a objetos que puedan extenderse al máximo y con la menor cantidad
 de dependencias entre sus componentes. ¿Te suena que vale la pena?
 
@@ -2106,19 +2065,12 @@ Ten presente que en la medida que llevas al extremo este concepto de abstracció
 llegar a clases que no tengan atributos sino SOLO métodos virtuales. En este punto habrás
 llegado a las INTERFACES, de las cuales tampoco podrás crear objetos.
 
-Ejercicio 32: caso de estudio sobre interfaces
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-`Estudia <https://chris-wood.github.io/2016/02/12/Polymorphism-in-C.html>`__ con detenimiento 
-esta implementación de interfaces.
-
-
 Trabajo autónomo 4: polimorfismo
 **********************************
 (Tiempo estimado: 1 hora 20 minutos)
 
-Analiza de nuevo el ejercicio 30 y el caso de estudio, ejercicio 32. Trata de 
-realizar diagramas donde visualices la relación entre las diferentes variables.
+Analiza de nuevo el ejercicio 30 y trata de 
+realizar diagramas donde visualices la relación entre los diferentes objetos.
 
 Evaluación Unidad 3
 ---------------------
