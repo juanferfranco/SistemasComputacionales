@@ -477,6 +477,6 @@ estas preguntas:
 Criterios de evaluación
 ****************************
 
-* Calidad y duración máxima del video, repositorio en Github: 0.5
+* Calidad y duración de la presentación y repositorio en Github: 0.5
 * Solución del problema: 2.5
 * Sustentación: 2
