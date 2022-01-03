@@ -20,13 +20,13 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Sistemas Computacionales'
-copyright = '2021-20, Juan Franco'
+copyright = '2022-10, Juan Franco'
 author = 'Juan Franco'
 
 # The short X.Y version
-version = '0.9.0'
+version = '0.9.1'
 # The full version, including alpha/beta/rc tags
-release = 'beta'
+release = 'rc'
 
 
 # -- General configuration ---------------------------------------------------

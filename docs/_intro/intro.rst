@@ -59,8 +59,7 @@ El curso está divido en 4 unidades:
 Cada unidad estará constituida por tres fases:
 
 #. Fase 1: fundamentación. En esta fase se estudiarán los conceptos teóricos más relevantes de
-   cada unidad. Así mismo se complementarán con lecturas. En esta fase, el estudiante
-   debe repasar los conceptos olvidados de los semestres anteriores.
+   cada unidad.
 #. Fase 2: proyecto. En esta fase se realizarán uno o más proyecto.
 #. Fase 3: evaluación. En esta fase se discute el resultado de los proyectos de la unidad.
 
@@ -75,10 +74,10 @@ Cronograma
 Evaluación
 -----------
 
-* Evaluación unidad 1: 25%. Semana de agosto 23. Plazo máximo agosto 29 de 2021. 
-* Evaluación unidad 2: 25%. Semana de septiembre 20. Plazo máximo septiembre 26 de 2021.
-* Evaluación unidad 3: 25%. Semana de octubre 11. Plazo máximo octubre 17 de 2021.
-* Evaluación unidad 4: 25%. Semana de noviembre 1. Plazo máximo noviembre 7 de 2021. 
+* Evaluación unidad 1: 25%.  
+* Evaluación unidad 2: 25%. 
+* Evaluación unidad 3: 25%.
+* Evaluación unidad 4: 25%. 
 
 Dedicación
 -----------
@@ -125,7 +124,7 @@ Para realizar el trabajo de cada unidad se espera que hagas lo siguiente:
 Bitácora  
 ------------------------------
 
-Vamos a utilizar dos herramientas para documentes y organices tu trabajo:
+Vamos a utilizar dos herramientas para que documentes y organices tu trabajo:
 
 * GitHub
 * `Notion <https://www.notion.so>`__
@@ -137,7 +136,5 @@ En Notion llevarás tu bitácora electrónica.
 Control de versión
 --------------------
 
-* Crea una cuenta en GitHub con tu correo institucional de la UPB. Si
-  tienes la cuenta, tanto mejor.
-* Explora los tutoriales de `este <https://www.gitkraken.com/learn/git/tutorials>`__.
-
+* Crea una cuenta en GitHub con tu correo institucional de la UPB. Si ya tienes otra cuenta 
+  con otro correo está bien.
