@@ -56,26 +56,20 @@ El curso está divido en 4 unidades:
 #. Unidad 3: Programación orientada a objetos.
 #. Unidad 4: Sistema operativo.
 
-Cada unidad estará constituida por tres fases:
-
-#. Fase 1: fundamentación. En esta fase se estudiarán los conceptos teóricos más relevantes de
-   cada unidad.
-#. Fase 2: proyecto. En esta fase se realizarán uno o más proyecto.
-#. Fase 3: evaluación. En esta fase se discute el resultado de los proyectos de la unidad.
-
 Cronograma
 ------------
 
-* Unidad 1: semanas 1 a 6
-* Unidad 2: semanas 7 a 10
-* Unidad 3: semanas 11 a 13
-* Unidad 4: semanas 14 a 16
+* Unidad 1: semanas 1 a 4.
+* Unidad 2-1: semanas 5 a 7.
+* Unidad 2-2: semanas 8 a 10.
+* Unidad 3: semanas 11 a 13.
+* Unidad 4: semanas 14 a 16.
 
 Evaluación
 -----------
 
-* Evaluación unidad 1: 25%.  
-* Evaluación unidad 2: 25%. 
+* Evaluación unidad 1: 25%.
+* Evaluación unidad 2: 12.5% (2-1) y 12.5% (2-2). 
 * Evaluación unidad 3: 25%.
 * Evaluación unidad 4: 25%. 
 
@@ -83,20 +77,18 @@ Dedicación
 -----------
 
 Este curso es de 2 créditos y se desarrolla en 16 semanas. Cada semana tendrás
-3 horas 20 minutos de trabajo sincrónico mediado por TIC y 2 horas de trabajo autónomo.
+3 horas 20 minutos de trabajo presencial y 2 hora 40 minutos de trabajo autónomo.
 
 Bibliografía
 -------------
 
+Todo el material que necesitarás estará en este sitio web; sin embargo, te 
+recomiendo leer el siguiente texto si te animas a profundizar dedicando un poco 
+más de tiempo:
+
 Noam Nisan y Shimon Schocken. The Elements of Computing Systems: Building a Modern
 Computer from First Principles. The MIT Press (1 de junio de 2005)	
 
-Actividades de cada unidad
-----------------------------
-
-En la primera sesión de la semana discutiremos algunos conceptos y ejercicios.
-La segunda sesión la dedicaremos a asesorías para resolver tus dudas y dificultades 
-puntuales.
 
 Evidencias de evaluación
 -------------------------
@@ -124,14 +116,14 @@ Para realizar el trabajo de cada unidad se espera que hagas lo siguiente:
 Bitácora  
 ------------------------------
 
-Vamos a utilizar dos herramientas para que documentes y organices tu trabajo:
+Te recomiendo utilizar dos herramientas para que documentes y organices tu trabajo:
 
 * GitHub
 * `Notion <https://www.notion.so>`__
 
 En GitHub mantendrás todo tu código bajo control de versión.
 
-En Notion llevarás tu bitácora electrónica.
+En Notion llevarás tu bitácora electrónica (opcional)
 
 Control de versión
 --------------------
