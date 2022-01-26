@@ -129,11 +129,11 @@ Sesión 3
 **********
 (Tiempo estimado: 1 hora 40 minutos)
 
-Ejercicio 5: lenguaje ensamblador
+Ejercicio 5: circuitos lógicos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Para introducir la arquitectura de un computador vamos a estudiar juntos cómo se programa 
-un computador usando lenguaje ensamblador.
+En esta sesión de clase vamos a realizar una actividad grupal para comprender los conceptos 
+de circuitos lógicos.
 
 Trabajo autónomo 3
 ********************
@@ -152,7 +152,7 @@ Sesión 4
 **********
 (Tiempo estimado: 1 hora 40 minutos)
 
-Ejercicio 6: proyecto
+Ejercicio 6: introducción al lenguaje ensamblador
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Realiza el proyecto 4 que encuentras `aquí <https://www.nand2tetris.org/project04>`__
