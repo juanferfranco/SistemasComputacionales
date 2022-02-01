@@ -68,10 +68,10 @@ Cronograma
 Evaluación
 -----------
 
-* Evaluación unidad 1: 25%.
-* Evaluación unidad 2: 12.5% (2-1) y 12.5% (2-2). 
-* Evaluación unidad 3: 25%.
-* Evaluación unidad 4: 25%. 
+* Evaluación unidad 1: 25% semana 4.
+* Evaluación unidad 2: 12.5% (2-1) semana 7 y 12.5% (2-2) semana 10. 
+* Evaluación unidad 3: 25% semana 13.
+* Evaluación unidad 4: 25% semana 16. 
 
 Dedicación
 -----------
