@@ -173,7 +173,42 @@ Trabajo autónomo 4
 
 Terminar el proyecto 4.
 
+Sesión 5
+**********
+(Tiempo estimado: 1 hora 40 minutos)
+
+Solución de dudas del proyecto 4 propuesto.
+
+Trabajo autónomo 5
+********************
+(Tiempo estimado: 1 hora 20 minutos)
+
+Revisar la unidad hasta este punto y terminar los ejercicios pendientes.
+
+Sesión 6
+**********
+(Tiempo estimado: 1 hora 40 minutos)
+
+Ejercicio 7: implementación de una CPU
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+PENDIENTE...
+
+Trabajo autónomo 6
+********************
+(Tiempo estimado: 1 hora 20 minutos)
+
+PENDIENTE ...
+
 ..
+    Sesión X
+    **********
+    (Tiempo estimado: 1 hora 40 minutos)
+
+    Trabajo autónomo X
+    ********************
+    (Tiempo estimado: 1 hora 20 minutos)
+
     Lectura 9
     ^^^^^^^^^^^^
 
