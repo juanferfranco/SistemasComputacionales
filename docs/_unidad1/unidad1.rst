@@ -160,7 +160,6 @@ Realiza el proyecto 4 que encuentras `aquí <https://www.nand2tetris.org/project
 Antes de comenzar a programar realiza un diagrama de flujo que indique cómo solucionarás el 
 problema.
 
-
 .. warning::
     CONTROL DE VERSIÓN
 
@@ -177,7 +176,63 @@ Sesión 5
 **********
 (Tiempo estimado: 1 hora 40 minutos)
 
-Solución de dudas del proyecto 4 propuesto.
+Ejercicio 7: de ensamblador a alto nivel 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+En esta sesión analizaremos el siguiente programa:
+
+.. image:: ../_static/asmProg.png
+  :alt: programa en ensamblador
+
+Responderemos las siguientes preguntas:
+
+* ¿Qué hace el programa?
+* ¿Cómo funciona?
+* ¿Cómo quedaría una posible traducción a lenguaje de alto nivel?
+
+.. warning:: ALERTA DE SPOILER
+
+    Te mostraré dos posible respuestas a la última pregunta usando 
+    como lenguaje de alto nivel C. Ten presente que en este caso R0 
+    es la representación simbólica de la dirección 0, i es la dirección 
+    16 y j es la dirección 17.
+
+Traducción 1:
+
+.. code:: c 
+
+    int R0 =10;
+    int i;
+    int *j;
+
+    if(R0 >0){
+        i = R0;
+        j = 16384;
+
+        while(i > 0){
+        // "RAM[j]" = -1;
+        *j = -1;
+            j = j + 32;
+            i = i - 1;
+        }
+    }
+    AQUI:
+    goto AQUI;
+            
+Traducción 2:
+
+.. code:: c 
+
+    int R0 =10;
+    int *j = 16384;
+
+    if(R0 >0){
+        for(int i = R0; i > 0;  i--){
+        *j = -1;
+            j = j + 32;
+        }
+    }
+    while(1);
 
 Trabajo autónomo 5
 ********************
@@ -189,7 +244,7 @@ Sesión 6
 **********
 (Tiempo estimado: 1 hora 40 minutos)
 
-Ejercicio 7: implementación de una CPU
+Ejercicio 8: implementación de una CPU
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 En esta sesión vamos a analizar partes de la implementación del computador 
@@ -201,8 +256,7 @@ La herramienta que usaremos se llama Digital y se puede descargar
 
 El circuito que usaremos en clase se llama CPUplusMemDisplay.dig y se puede 
 descargar (entre otros circuitos) 
-`aquí <https://github.com/juanferfranco/SistemasComputacionales/tree/main/DigitalProjects/custom/project05
->`__.
+`aquí <https://github.com/juanferfranco/SistemasComputacionales/tree/main/DigitalProjects/custom/project05>`__.
 
 En la parte final de esta sesión veremos que el computador estudiado se puede 
 llevar a una implementación física como se muestra en 
@@ -233,8 +287,8 @@ fotolitografía:
     </div>
 
 
-.. warning:: 
-    Material complementario 2
+.. note:: 
+    Material complementario 
 
     ¿Cómo funciona un transistor? 
 
@@ -248,7 +302,7 @@ Trabajo autónomo 6
 ********************
 (Tiempo estimado: 1 hora 20 minutos)
 
-PENDIENTE ...
+Analiza de nuevo el programa que estudiamos juntos en la sesión 5.
 
 ..
     Sesión X
