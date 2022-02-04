@@ -199,6 +199,50 @@ previamente.
 La herramienta que usaremos se llama Digital y se puede descargar 
 `aquí <https://github.com/hneemann/Digital>`__.
 
+El circuito que usaremos en clase se llama CPUplusMemDisplay.dig y se puede 
+descargar (entre otros circuitos) 
+`aquí <https://github.com/juanferfranco/SistemasComputacionales/tree/main/DigitalProjects/custom/project05
+>`__.
+
+En la parte final de esta sesión veremos que el computador estudiado se puede 
+llevar a una implementación física como se muestra en 
+`este proyecto <https://gitlab.com/x653/nand2tetris-fpga/>`__. En particular 
+puedes ver en 
+`este video <https://gitlab.com/x653/nand2tetris-fpga/-/raw/master/08_Hack8-Sound/jack/Tetris/tetris.mp4>`__ 
+una aplicación interactiva funcionando. 
+
+Alguna vez te has preguntado ¿Cómo se implementa y construye un chip? Pues se 
+parte de un diseño que se describe mediante algún lenguaje de descripción 
+de hardware, como por ejemplo, el que puedes observar en la imagen:
+
+.. image:: ../_static/gateHDL.png
+
+Luego este diseño debe descomponerse en partes más simples. Esas partes se 
+denominan `transistores <https://en.wikipedia.org/wiki/Transistor>`__:
+
+.. image:: ../_static/transistor.png
+
+Finalmente, los transistores y sus conexiones se deben transferir
+a un medio físico. Esto se hace mediante un proceso conocido como
+fotolitografía:
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 5%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vK-geBYygXo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+
+.. warning:: 
+    Material complementario 2
+
+    ¿Cómo funciona un transistor? 
+
+.. raw:: html
+    
+    <div style="position: relative; padding-bottom: 5%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/tz62t-q_KEc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 
 Trabajo autónomo 6
 ********************
