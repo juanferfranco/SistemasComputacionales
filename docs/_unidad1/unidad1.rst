@@ -132,8 +132,9 @@ Sesión 3
 Ejercicio 5: circuitos lógicos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-En esta sesión de clase vamos a realizar una actividad grupal para comprender los conceptos 
-de circuitos lógicos.
+En esta sesión de clase vamos a realizar una actividad grupal para comprender 
+los conceptos de circuitos lógicos. Vamos a jugar el primer nivel del 
+videojuego `Silicon Zeroes <https://store.steampowered.com/app/684270/Silicon_Zeroes/>`__.
 
 Trabajo autónomo 3
 ********************
