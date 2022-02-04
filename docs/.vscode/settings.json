@@ -26,5 +26,6 @@
         "sumativa",
         "sumatoria",
         "transpilers"
-    ]
+    ],
+    "restructuredtext.languageServer.disabled": true
 }

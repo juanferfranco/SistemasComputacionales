@@ -192,7 +192,13 @@ Sesión 6
 Ejercicio 7: implementación de una CPU
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-PENDIENTE...
+En esta sesión vamos a analizar partes de la implementación del computador 
+que realiza el set de instrucciones del lenguaje ensamblador estudiado 
+previamente.
+
+La herramienta que usaremos se llama Digital y se puede descargar 
+`aquí <https://github.com/hneemann/Digital>`__.
+
 
 Trabajo autónomo 6
 ********************
