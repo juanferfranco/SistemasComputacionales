@@ -308,12 +308,6 @@ Analiza de nuevo el programa que estudiamos juntos en la sesión 5.
 Evaluación de la unidad
 -------------------------
 
- .. warning:: AÚN NO COMIENCES LA EVALUACIÓN 
-
-        Aún no comiences. Estoy en el proceso de editado y configuración de la evaluación.
-        Puedes iniciar cuando esta alerta ya no esté. Recuerda presionar la tecla F5 para 
-        actualizar la página.
-
 Problema
 ***********
 
@@ -367,7 +361,7 @@ Para realizar la evaluación:
       ../tools/CPUEmulator.sh programBasic.tst
      
   Para el challenge 2:
-
+https://github.com/jfUPB/sc202210u1e1-juanferfrancoudea/blob/master/tools/bin/images/arrow2.gif
   .. code-block:: bash 
 
       ../tools/CPUEmulator.sh program.tst
