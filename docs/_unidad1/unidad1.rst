@@ -305,223 +305,84 @@ Trabajo autónomo 6
 
 Analiza de nuevo el programa que estudiamos juntos en la sesión 5.
 
-..
-    Sesión X
-    **********
-    (Tiempo estimado: 1 hora 40 minutos)
+Evaluación de la unidad
+-------------------------
 
-    Trabajo autónomo X
-    ********************
-    (Tiempo estimado: 1 hora 20 minutos)
+ .. warning:: AÚN NO COMIENCES LA EVALUACIÓN 
 
-    Lectura 9
-    ^^^^^^^^^^^^
+        Aún no comiences. Estoy en el proceso de editado y configuración de la evaluación.
+        Puedes iniciar cuando esta alerta ya no esté. Recuerda presionar la tecla F5 para 
+        actualizar la página.
 
+Problema
+***********
 
+El problema está divido en dos challenges. Tu programa debe cumplir exitosamente ambos challenges.
 
-    Ejercicio 5
-    ^^^^^^^^^^^^
-    En tu bitácora de trabajo responde las siguientes preguntas:
+* Challenge 1: ``leer indefinidamente el teclado`` y llenar la pantalla de negro si la tecla leída es 
+  la letra F.
+* Challenge 2: ``leer indefinidamente el teclado`` y llenar la pantalla de negro si la tecla leída es 
+  la letra ``F`` y limpiar la pantalla si la letra leída es la ``C``. 
 
+Sustentación 
+**************
 
-    Lectura 10 (con ejercicio)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    Par el siguiente proyecto vas a necesitar un programa diferente. En este caso, un 
-    emulador de CPU. Lee las `instrucciones <https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/44046b_f63aba2611944e82974c9c5d5a3821fe.pdf>`__ 
-    de uso del software.
+Para sustentar tu evaluación realizarás en el repositorio la Wiki (como aprendiste en el ejercicio 
+20 de la introducción a Git y GitHub). 
 
-    Analiza los 3 ejemplos de programación de hack (sección 4.3 edición 2, habla con el profe). Simula cada programa.
-
-    PROYECTO FORMATIVO 4
-    ^^^^^^^^^^^^^^^^^^^^^^
-
-
-    Lectura 11
-    ^^^^^^^^^^^^
-
-    Lee el `capítulo 5 del libro guía <https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/44046b_b2cad2eea33847869b86c541683551a7.pdf>`__.
-
-    Ejercicio 6
-    ^^^^^^^^^^^^
-    En tu bitácora de trabajo responde las siguientes preguntas:
-
-    #. Explica con tus propias palabras en qué consiste el concepto de programa almacenado.
-    #. ¿Por qué es importante el concepto de programa almacenado? ¿Qué ventaja tiene frente a las primeras computadoras?
-    #. Explica en qué cosiste la arquitectura con Neumann.
-    #. ¿Cuál es la diferencia entre la memoria de datos y la memoria de instrucciones?
-    #. ¿Cuáles son los elementos básicos de una CPU? ¿Qué función cumple cada uno?
-    #. Explica con tus propias palabras en qué cosiste el concepto de dispositivos de entrada salida mapeados a memoria.
+* Tu sustentación debe tener la representación en lenguaje de alto  del programa que realizaste 
+  en ensamblador (50% del valor total de la sustentación).
+* Debes mostrar cada instrucción de alto a nivel a qué instrucciones de bajo nivel corresponde 
+  (50% del valor total de la sustentación).
 
 
-    PROYECTO EVALUATIVO DE LA UNIDAD 
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Consideraciones
+*****************
 
-    Enunciado de la evaluación
-    ############################
+* Para solucionar la evaluación debes utilizar Git y GitHub. 
+  `Aquí <https://classroom.github.com/a/U7e2yEIR>`__ está el enlace de la evaluación así como lo 
+  practicaste en el ejercicio 19 de la guía de introducción a Git y GitHub.
+* Debes realizar constantemente commit y push al repositorio en GitHub. Debe verse claramente la 
+  evolución de tu evaluación en el tiempo.
+* No olvides colocar la información solicitada en la parte superior de ``program.asm``.
 
-    Analiza detenidamente y responde las siguientes preguntas:
+Para realizar la evaluación: 
 
-    Pregunta 1
-    ************
+* CLONA el repositorio.
+* Cámbiate al directorio problem.
+* edita ÚNICAMENTE el archivo program.asm.
+* No olvides hacer commits y push.
+* Puedes hacer las pruebas usando la herramienta CPUEmulator.sh o CPUEmulator.bat dependiendo de tu 
+  sistema operativo.
+* Al hacer las pruebas te recomiendo colocar la animación en FAST y con la opción No Animation. No 
+  olvides que debes dar click en el botón del teclado para que el programa reciba las teclas que 
+  presionarás.
+* También puedes hacer pruebas automáticas. En este caso usarás la línea de comandos. Cámbiate al 
+  directorio problem y luego ejecuta:
 
-    Considerando esta implementación de la CPU:
+  Para el challenge 1:
 
-    .. code-block:: c
+  .. code-block:: bash 
 
-        CHIP CPU {
+      ../tools/CPUEmulator.sh programBasic.tst
+     
+  Para el challenge 2:
 
-            IN  inM[16],         // M value input  (M = contents of RAM[A])
-                instruction[16], // Instruction for execution
-                reset;           // Signals whether to re-start the current
-                                // program (reset=1) or continue executing
-                                // the current program (reset=0).
+  .. code-block:: bash 
 
-            OUT outM[16],        // M value output
-                writeM,          // Write into M? 
-                addressM[15],    // Address in data memory (of M)
-                pc[15];          // address of next instruction
+      ../tools/CPUEmulator.sh program.tst
 
-            PARTS:
-            // Implementation by Mark Armbrust.
+  Si tienes éxito verás el mensaje ``End of script - Comparison ended successfully``. De lo contrario 
+  te aparecerá un mensaje que indicará la línea del archivo ``.out`` que no coincide con el vector de prueba 
+  en el archivo ``.cmp``.
 
-            // Instruction decode
-            Not (in=instruction[15], out=aInst);
-            And (a=instruction[14], b=instruction[13], out=ones);
-            And (a=ones,  b=instruction[15], out=cInst);
-            And (a=cInst, b=instruction[12], out=srcM);
-            And (a=cInst, b=instruction[11], out=aluZx);
-            And (a=cInst, b=instruction[10], out=aluNx);
-            And (a=cInst, b=instruction[9],  out=aluZy);
-            And (a=cInst, b=instruction[8],  out=aluNy);
-            And (a=cInst, b=instruction[7],  out=aluF);
-            And (a=cInst, b=instruction[6],  out=aluNo);
-            And (a=cInst, b=instruction[5],  out=destA);
-            And (a=cInst, b=instruction[4],  out=destD);
-            And (a=cInst, b=instruction[3],  out=writeM);   // destM
-            And (a=cInst, b=instruction[2],  out=jmpLt);
-            And (a=cInst, b=instruction[1],  out=jmpEq);
-            And (a=cInst, b=instruction[0],  out=jmpGt);
+* Ten en cuanta que cada que hagas ``push`` al repositorio remoto, las pruebas anteriores se ejecutarán 
+  automáticamente y podrás ver el resultado.
 
-            // A register and input mux
-            Mux16 (sel=aInst, a=aluOut, b=instruction, out=aIn);
-            Or (a=aInst, b=destA, out=loadA);
-            ARegister (in=aIn, load=loadA, out=aReg, out[0..14]=addressM);
-            
-            // D register
-            DRegister(in=aluOut, load=destD, out=dReg);
+Criterios de evaluación
+************************
 
-            // ALU and input mux
-            Mux16 (sel=srcM, a=aReg, b=inM, out=aluY); 
-            ALU (x=dReg, y=aluY, out=aluOut, out=outM, zr=aluZr, ng=aluNg,
-                    zx=aluZx, nx=aluNx, zy=aluZy, ny=aluNy, f=aluF, no=aluNo);
-
-            // PC with jump test
-            Or (a=aluZr, b=aluNg, out=zrng);
-            Not (in=zrng, out=aluPos);
-            And (a=aluNg, b=jmpLt, out=jlt);
-            And (a=aluZr, b=jmpEq, out=jeq);
-            And (a=aluPos, b=jmpGt, out=jgt);
-            Or (a=jlt, b=jeq, out=jle);
-            Or (a=jle, b=jgt, out=jmp);
-            PC (in=aReg, reset=reset, inc=true, load=jmp, out[0..14]=pc);
-        }
-
-    Dibuja el diagrama en bloques de la CPU. Recuerda marcar detalladamente cada chip con su nombre, 
-    puertos y el tamaño en bits de cada puerto. COLOCA EL NOMBRE DE LOS PUERTOS Y DEL CHIP 
-    adentro del rectángulo que identifica el circuito. 
-    Esto con el fin de poder distinguir el nombre de los cables del nombre de los puertos.     
-
-    Pregunta 2
-    ************
-
-    Considerando esta implementación del computador:
-
-    .. code-block:: c
-
-        CHIP Computer {
-
-            IN reset;
-
-            PARTS:
-
-            // CPU
-            CPU (inM=RAMout, instruction=ROMout, reset=reset, writeM=loadRAM,
-                outM=RAMin, addressM=RAMaddress, pc=ROMaddress);
-
-            // RAM
-            Memory (in=RAMin, load=loadRAM, address=RAMaddress, out=RAMout);
-
-            // ROM
-            ROM32K (address=ROMaddress, out=ROMout);
-        }
-
-    Dibuja el diagrama en bloques del computador. Recuerda marcar detalladamente cada chip con su nombre, 
-    puertos y el tamaño en bits de cada puerto. COLOCA EL NOMBRE DE LOS PUERTOS Y DEL CHIP 
-    adentro del rectángulo que identifica el circuito. 
-    Esto con el fin de poder distinguir el nombre de los cables del nombre de los puertos. 
-
-    Pregunta 3
-    ************
-
-    Explica qué hace el siguiente programa:
-
-    .. image:: ../_static/asmProg.png
-    :alt: programa en ensamblador
-
-    Muestra gráficamente qué pasa con la CPU, la memoria y los buses del computador al ejecutar cada 
-    una de las siguientes instrucciones: ``@16384``, ``D;JLE``, ``A=M``, ``MD = M-1``. Estas instrucciones hacen parte 
-    del programa que te muestré en la figura anterior y como puedes notar están ubicada en diferentes 
-    partes del programa. Debes tener en cuenta el estado de la CPU y la memoria como consecuencia de las 
-    instrucciones anteriores a la que te pido que analices.
-
-    Pregunta 4
-    ************
-
-    Inventa una nueva instrucción para el computador de tal manera que al ejecutarla se reinicie el programa.
-
-    * Define cuál sería la sintaxis simbólica. 
-    * Define la sintaxis binaria.
-    * Realice un nuevo diagrama de la CPU donde muestre la modificación necesaria para implementar la nueva instrucción.
-
-    Pregunta 5
-    *************
-
-    En una implementación de la CPU (no sabemos si está correcta o no), al ejecutar esta instrucción 
-    ``0111 1100 1001 0000`` el contenido del registro D se modifica. ¿Es esto correcto?
-
-    Muestre en el diagrama de la CPU lo que podría estar pasando en dicha implementación.
-
-    Entregables
-    ############################
-
-    * Sube a `este <https://www.dropbox.com/request/yuejWTLm3UsZ5mdnAVVM>`__ 
-    enlace un archivo pdf nombrado con los nueve dígitos que componen tu ID. Por ejemplo: 000008716.pdf. El archivo 
-    debe tener lo siguiente:
-
-    * Tu nombre completo.
-    * Evaluación de la unidad 1 y la fecha en la cual vas subir el archivo.
-    * Define una sección en el documento para solucionar cada pregunta.
-
-    .. warning:: USA DRAW.IO
-
-        Te recomiendo usar la aplicación draw.io para realizar los diagramas solicitados.
-
-
-    Criterios de evaluación
-    ############################
-
-    Estos son los puntos que te dará la solución a cada pregunta.
-
-    * Pregunta 1: 0.5
-    * Pregunta 2: 0.5
-    * Pregunta 3: 2
-    * Pregunta 4: 1
-    * Pregunta 5: 1
-
-    .. warning:: ASIGNACIÓN DE PUNTAJE
-
-        La asignación de los puntos a la respuesta de cada pregunta se otorga 
-        solo si la respuesta está completa. No se asignarán calificaciones intermedias. Por tanto,
-        revisa cuidadosamente la respuesta a cada una de tus preguntas.
-
-
+* Challenge 1: 1 unidad.
+* Challenge 2: 2 unidades.
+* Solo sustentación del challenge 1: 1 unidad.
+* Sustentación del challenge 2 (esta incluye el challenge): 2 unidades.
