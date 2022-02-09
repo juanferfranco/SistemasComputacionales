@@ -361,7 +361,6 @@ Para realizar la evaluación:
       ../tools/CPUEmulator.sh programBasic.tst
      
   Para el challenge 2:
-https://github.com/jfUPB/sc202210u1e1-juanferfrancoudea/blob/master/tools/bin/images/arrow2.gif
   .. code-block:: bash 
 
       ../tools/CPUEmulator.sh program.tst
@@ -379,4 +378,4 @@ Criterios de evaluación
 * Challenge 1: 1 unidad.
 * Challenge 2: 2 unidades.
 * Solo sustentación del challenge 1: 1 unidad.
-* Sustentación del challenge 2 (esta incluye el challenge): 2 unidades.
+* Sustentación del challenge 2 (esta incluye el challenge 1): 2 unidades.
