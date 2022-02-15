@@ -379,3 +379,9 @@ Criterios de evaluación
 * Challenge 2: 2 unidades.
 * Solo sustentación del challenge 1: 1 unidad.
 * Sustentación del challenge 2 (esta incluye el challenge 1): 2 unidades.
+
+Retroalimentación de la evaluación
+------------------------------------
+
+En `este <https://github.com/juanferfranco/scu1-e1-2022-10-feedback.git>`__ enlace podrás consultar 
+y clonar el repositorio con una posible solución a la evaluación.
