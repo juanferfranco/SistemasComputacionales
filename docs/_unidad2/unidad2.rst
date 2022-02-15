@@ -44,7 +44,7 @@ En este punto del curso ya deberías tener tu sistema operativo funcionando en c
 Ejercicio 2: instala las herramientas 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Una vez tengas Linux funcionando debes instalar una cuentas herramientas en tu 
+Una vez tengas Linux funcionando debes instalar unas cuentas herramientas en tu 
 sistema.
 
 Abre la terminal y ejecuta los comandos:
