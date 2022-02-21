@@ -90,6 +90,30 @@ Trabajo autónomo 2
 
 Continua avanzando en el ejercicio 4.
 
+Sesión 3
+**********
+(Tiempo estimado: 1 hora 40 minutos)
+
+Sigue trabajando en el ejercicio 4.
+
+Trabajo autónomo 3
+********************
+(Tiempo estimado: 1 hora 20 minutos)
+
+Continua avanzando en el ejercicio 4.
+
+Sesión 4
+**********
+(Tiempo estimado: 1 hora 40 minutos)
+
+Sigue trabajando en el ejercicio 4.
+
+Trabajo autónomo 4
+********************
+(Tiempo estimado: 1 hora 20 minutos)
+
+Continua avanzando en el ejercicio 4.
+
 ..
     Ejercicio 6: herramientas
     ^^^^^^^^^^^^^^^^^^^^^^^^^^
