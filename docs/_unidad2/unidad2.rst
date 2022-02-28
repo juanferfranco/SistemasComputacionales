@@ -151,4 +151,153 @@ Evaluación 1
 -----------------
 (Tiempo total estimado 6 horas)
 
-Regresa aquí la semana 7. No olvides presionar F5.
+La evaluación consiste de dos partes:
+
+* Parte 1: solución a un problema.
+* Parte 2: sustentación de la solución al problema.
+
+Enunciado del problema
+**************************
+
+Vas a completar la aplicación que aparece `aquí <https://classroom.github.com/a/dKXDoh5P>`__. Debes 
+escribir el código de estas dos funciones: 
+
+.. code-block:: c
+
+    void getArray(struct array *parr)
+    {
+        
+    }
+
+    void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
+    {
+        
+    }
+
+Las funciones manipularán una estructura dada por:  
+
+.. code-block:: c
+
+    struct array
+    {
+        int *pdata;
+        int size;
+    };
+
+La variable ``pdata`` almacenará la dirección de un arreglo de enteros de tamaño ``size`` que 
+estará en el ``HEAP``. 
+
+La función ``getArray`` se encargará de construir el arreglo recibiendo desde la línea de comandos 
+su tamaño y los elementos. Por ejemplo, para un arreglo de 5 elementos se ingresarán los siguientes 
+datos en la línea de comandos:
+
+.. code-block:: bash 
+
+    5
+    1
+    2
+    3
+    4
+    5
+
+En este caso ``5`` es el tamaño y los elementos serán ``1,2,3,4,5``.
+
+La función ``arrayCommon`` recibirá la dirección de tres ``struct array`` construidos en el HEAP. Esta 
+función deberá encontrar todos los elementos comunes de los arreglos apuntados por arrIn1 y arrIn2 y 
+almacenar dichos elementos en el arreglo apuntado por arrOut. El arreglo apuntado por arrOut NO DEBE 
+tener elementos repetidos.
+
+Para interactuar con el programa podrás ejecutar los siguientes comandos una vez ejecutes la aplicación: 
+
+* arr1: para ingresar el tamaño y los elementos del primer arreglo.
+* arr2: para ingresar el tamaño y los elementos del segundo arreglo.
+* printArr1: para imprimir los elementos del primer arreglo.
+* printArr2: para imprimir los elementos del segundo arreglo.
+* compare: para comparar los arreglos llamando a la función ``arrayCommon``.
+* printResult: imprime el resultado mostrando la cantidad de elementos comunes y los elementos.
+* exit: para liberar la memoria y terminar el programa.
+
+Mira un ejemplo de cómo se ejecuta y usa el programa:
+
+.. code-block:: bash
+
+    ./main 
+    arr1
+    3
+    1 
+    2
+    3
+    arr2
+    4
+    5
+    4
+    3
+    2
+    printArr1
+    1 2 3 
+    printArr2
+    5 4 3 2 
+    compare
+    printResult
+    2
+    2 3
+
+En este caso el número 3 luego del comando arr1 indica el tamaño del primer arreglo. Los elementos 
+serán 1,2,3. El número 4 luego del comando arr2 indica el tamaño del segundo arreglo. Los elementos 
+del segundo arreglo son 5,4,3,2. Nota que luego del comando ``compare`` se llama ``printResult`` que muestra el 
+resultado para este ejemplo. El número 2 indica la cantidad de elementos comunes y los elementos comunes 
+que serán 2,3.
+
+Consideraciones
+**************************
+
+* Para compilar la aplicación escribe en la terminal el comando ``make`` una vez te cambies 
+  al directorio problem1.
+* Para borrar todos los archivos compilados escribe ``make clean``.
+* Las pruebas locales las puedes hacer de dos maneras: manualmente y automáticamente. Ya te mostré 
+  como puedes hacer las pruebas manuales. Para realizar las pruebas automáticas ejecuta el siguiente 
+  comando en el directorio problem1 para aplicar todos los vectores de prueba.
+
+  .. code-block:: bash 
+
+      ./test-main.sh
+
+* Si quieres hacer pruebas de manera individual ejecuta en el directorio problem1 el comando anterior 
+  pero esta vez indicando el vector de prueba así:
+
+  .. code-block:: bash 
+
+      ./test-main.sh -t X
+
+  Donde X puede ser un número de 1 a 7 correspondiente a las pruebas que encontrarás en el directorio 
+  tests ubicado en el directorio problem1.
+
+¿Qué pasos debes seguir para realizar la evaluación?
+******************************************************
+
+* Ingresa a tu repositorio `aquí <https://classroom.github.com/a/dKXDoh5P>`__ para que aceptes la 
+  evaluación y veas que se cargue tu repositorio. No olvides presionar F5 para actualizar la página.
+* Una vez ingreses a tu repositorio verifica que la carpeta .github esté presente. Si no es así 
+  espera un momento y presiona F5. 
+* Verifica que el sección ``ACTIONS`` esté el Workflow ``GitHub Classroom``.
+* Habla con el profesor si los pasos anteriores no están bien.
+* Clona el repositorio en tu computador.
+* Completa el programa mientras realizas commit y push frecuentemente.
+* Realiza pruebas locales y no olvides hacer push para realizar las pruebas remotas.
+* Sabrás que todo está bien cuando veas en GitHub la marca verde que indica que todos 
+  los vectores de prueba pasaron.
+* Procede a realizar la wiki con la sustentación. 
+
+Enunciado de la sustentación
+*********************************
+
+Para la sustentación vas a escribir un texto en la wiki donde explicarás cómo resolviste el problema.
+
+Criterios de evaluación
+**************************
+
+La nota estará dada por la expresión: ``(solución_problema)*sustentación``. En Github podrás ver de manera 
+ponderada los puntos de cada vector de prueba que pases. Este puntaje se multiplicará por la sustentación así:
+
+* Sustentación es 1 si haces la explicación en la wiki.
+* Sustentación es 0 si no la haces y por tanto la nota sería 0.
