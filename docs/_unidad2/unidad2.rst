@@ -184,8 +184,8 @@ Las funciones manipularán una estructura dada por:
         int size;
     };
 
-La variable ``pdata`` almacenará la dirección de un arreglo de enteros de tamaño ``size`` que 
-estará en el ``HEAP``. 
+La variable ``pdata`` almacenará la dirección de un arreglo de enteros de tamaño ``size``. El arreglo 
+de enteros lo debes crear en el ``HEAP``. 
 
 La función ``getArray`` se encargará de construir el arreglo recibiendo desde la línea de comandos 
 su tamaño y los elementos. Por ejemplo, para un arreglo de 5 elementos se ingresarán los siguientes 
@@ -202,10 +202,10 @@ datos en la línea de comandos:
 
 En este caso ``5`` es el tamaño y los elementos serán ``1,2,3,4,5``.
 
-La función ``arrayCommon`` recibirá la dirección de tres ``struct array`` construidos en el HEAP. Esta 
-función deberá encontrar todos los elementos comunes de los arreglos apuntados por arrIn1 y arrIn2 y 
-almacenar dichos elementos en el arreglo apuntado por arrOut. El arreglo apuntado por arrOut NO DEBE 
-tener elementos repetidos.
+La función ``arrayCommon`` recibirá la dirección de tres ``struct array`` que están previamente }
+construidos en el HEAP. Esta función deberá encontrar todos los elementos comunes de los arreglos 
+apuntados por arrIn1 y arrIn2 y almacenar dichos elementos en el arreglo apuntado por arrOut. 
+El arreglo apuntado por arrOut NO DEBE tener elementos repetidos.
 
 Para interactuar con el programa podrás ejecutar los siguientes comandos una vez ejecutes la aplicación: 
 
@@ -279,7 +279,7 @@ Consideraciones
   evaluación y veas que se cargue tu repositorio. No olvides presionar F5 para actualizar la página.
 * Una vez ingreses a tu repositorio verifica que la carpeta .github esté presente. Si no es así 
   espera un momento y presiona F5. 
-* Verifica que el sección ``ACTIONS`` esté el Workflow ``GitHub Classroom``.
+* Verifica que en la sección ``ACTIONS`` esté el Workflow ``GitHub Classroom``.
 * Habla con el profesor si los pasos anteriores no están bien.
 * Clona el repositorio en tu computador.
 * Completa el programa mientras realizas commit y push frecuentemente.
