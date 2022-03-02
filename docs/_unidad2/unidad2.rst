@@ -202,7 +202,7 @@ datos en la línea de comandos:
 
 En este caso ``5`` es el tamaño y los elementos serán ``1,2,3,4,5``.
 
-La función ``arrayCommon`` recibirá la dirección de tres ``struct array`` que están previamente }
+La función ``arrayCommon`` recibirá la dirección de tres ``struct array`` que están previamente 
 construidos en el HEAP. Esta función deberá encontrar todos los elementos comunes de los arreglos 
 apuntados por arrIn1 y arrIn2 y almacenar dichos elementos en el arreglo apuntado por arrOut. 
 El arreglo apuntado por arrOut NO DEBE tener elementos repetidos.
