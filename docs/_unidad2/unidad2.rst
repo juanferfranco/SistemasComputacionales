@@ -156,6 +156,11 @@ La evaluación consiste de dos partes:
 * Parte 1: solución a un problema.
 * Parte 2: sustentación de la solución al problema.
 
+.. note:: FECHA MÁXIMA DE ENTREGA
+
+    La fecha máxima de entrega es el 06 de marzo de 2022 a las 23:59
+
+
 Enunciado del problema
 **************************
 
