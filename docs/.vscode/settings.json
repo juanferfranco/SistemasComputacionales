@@ -28,5 +28,7 @@
         "transpilers"
     ],
     "restructuredtext.languageServer.disabled": true,
-    "editor.selectionClipboard": false
+    "editor.selectionClipboard": false,
+    "esbonio.sphinx.confDir": "/home/juanupb/Github/SistemasComputacionales/docs",
+    "esbonio.server.enabled": false
 }
