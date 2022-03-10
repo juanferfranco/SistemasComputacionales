@@ -487,8 +487,6 @@ REPETIDOS``. Se pide entonces que completes el código del proyecto que encontra
 Consideraciones ev2
 **************************
 
-* No olvides realizar constantemente commits y push al repositorio remoto. Estos commits deben 
-  reflejar tu trabajo en el tiempo.
 * No uses ninguna función para imprimir en pantalla a menos que sean las que ya están en el código 
   que debes completar. La razón de esto es que tu programa será verificado automáticamente y por tanto, 
   si envías información no esperada a la pantalla es posible que las pruebas automáticas fallen.
