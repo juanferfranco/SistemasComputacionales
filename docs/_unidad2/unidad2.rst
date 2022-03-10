@@ -465,3 +465,75 @@ ponderada los puntos de cada vector de prueba que pases. Este puntaje se multipl
 
 * Sustentación es 1 si haces la explicación en la wiki.
 * Sustentación es 0 si no la haces y por tanto la nota sería 0.
+
+Ejercicio para la evaluación 2
+-----------------------------------
+
+.. warning:: EVALUACIÓN DE PRUEBA 
+
+    Esta es una versión temporal de la evaluación que podrás verificar de manera local en tu computador.
+    La próxima semana saldrá la versión final de la evaluación montada en github.
+
+Enunciado del problema ev2
+*****************************
+
+Para el desarrollo de una aplicación de comunicación se usará el esquema cliente-servidor. Cada servidor 
+tendrá que mantener una lista enlazada con los eventos que podrá emitir. Esta lista es configurable y 
+por tanto podrás adicionar, eliminar y buscar eventos en la lista. ``LA LISTA NO DEBE TENER EVENTOS 
+REPETIDOS``. Se pide entonces que completes el código del proyecto que encontrarás 
+`aquí <https://github.com/juanferfranco/sc2022-10-u2-e2>`__.
+
+
+Consideraciones ev2
+**************************
+
+* No olvides realizar constantemente commits y push al repositorio remoto. Estos commits deben 
+  reflejar tu trabajo en el tiempo.
+* No uses ninguna función para imprimir en pantalla a menos que sean las que ya están en el código 
+  que debes completar. La razón de esto es que tu programa será verificado automáticamente y por tanto, 
+  si envías información no esperada a la pantalla es posible que las pruebas automáticas fallen.
+* Para compilar, cámbiate el directorio donde están los archivos ``.c`` y ejecuta el comando ``make``. 
+  Ten en cuanta que con el commando ``make clean`` puedes limpiar todos los archivos compilados y luego 
+  con ``make`` volver a generarlos.
+* Para hacer las pruebas puedes correr todos los vectores de prueba así:
+
+  .. code-block:: bash
+
+    ./test-main.sh
+  
+  O si quiere correr solo un vector, por ejemplo, el 10, lo haces así:
+
+  .. code-block:: bash
+
+    ./test-main.sh -t 10
+
+* Verifica que estás usando correctamente la memoria dinámica. Para ello instala valgrind y luego 
+  realiza la verificación. Te dejo los comandos, primero para instalar valgrind y luego para verificar.
+
+  .. code-block:: bash 
+
+        sudo apt update
+        sudo apt install valgrind
+
+  .. code-block:: bash 
+
+        valgrind ./main < ./tests/12.in
+  
+  Si la memoria está bien verás algo así en el resumen:
+
+  .. code-block:: none
+  
+        ==17813== 
+        ==17813== HEAP SUMMARY:
+        ==17813==     in use at exit: 0 bytes in 0 blocks
+        ==17813==   total heap usage: 12 allocs, 12 frees, 5,360 bytes allocated
+        ==17813== 
+        ==17813== All heap blocks were freed -- no leaks are possible
+        ==17813== 
+        ==17813== For lists of detected and suppressed errors, rerun with: -s
+        ==17813== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+   
+  La salida anterior se consigue ejecutando el programa con el vector de prueba 12.in. Con este 
+  vector de prueba, el programa realiza 12 reservas con malloc y detecta 12 liberaciones con free. 
+  Por tanto, al final indica que no hay errores.
+
