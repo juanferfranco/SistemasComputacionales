@@ -466,13 +466,19 @@ ponderada los puntos de cada vector de prueba que pases. Este puntaje se multipl
 * Sustentación es 1 si haces la explicación en la wiki.
 * Sustentación es 0 si no la haces y por tanto la nota sería 0.
 
-Ejercicio para la evaluación 2
+Evaluación 2
 -----------------------------------
 
-.. warning:: EVALUACIÓN DE PRUEBA 
+.. warning:: FECHA MÁXIMA DE ENTREGA DE LA EVALUACIÓN 
 
-    Esta es una versión temporal de la evaluación que podrás verificar de manera local en tu computador.
-    La próxima semana saldrá la versión final de la evaluación montada en github.
+    La fecha límite para entregar la evaluación es el miércoles 23 de marzo a las 11:59 p.m. 
+    Luego de esa hora se cierra el repositorio y ya no podrás enviar más versiones de 
+    tu programa.
+
+.. warning:: REALIZA POCOS PUSH 
+
+    Realiza la menor cantidad de PUSH que puedas. Trata de hacer todas las pruebas 
+    locales y solo cuando quieras entregar lo que llevas realiza un PUSH en el repositorio.
 
 Enunciado del problema ev2
 *****************************
@@ -481,15 +487,17 @@ Para el desarrollo de una aplicación de comunicación se usará el esquema clie
 tendrá que mantener una lista enlazada con los eventos que podrá emitir. Esta lista es configurable y 
 por tanto podrás adicionar, eliminar y buscar eventos en la lista. ``LA LISTA NO DEBE TENER EVENTOS 
 REPETIDOS``. Se pide entonces que completes el código del proyecto que encontrarás 
-`aquí <https://github.com/juanferfranco/sc2022-10-u2-e2>`__.
+`aquí <https://classroom.github.com/a/3v1srMtK>`__.
 
 
 Consideraciones ev2
 **************************
 
 * No uses ninguna función para imprimir en pantalla a menos que sean las que ya están en el código 
-  que debes completar. La razón de esto es que tu programa será verificado automáticamente y por tanto, 
-  si envías información no esperada a la pantalla es posible que las pruebas automáticas fallen.
+  que debes completar o en la función ``ListEvents`` donde deberás imprimir cada evento usando la cadena 
+  formateada ``"%s\n"`` y en caso de tener una lista vacía: ``printf("empty\n");``. La razón de esto es 
+  que tu programa será verificado automáticamente y por tanto, si envías información no esperada a la 
+  pantalla es posible que las pruebas automáticas fallen.
 * Para compilar, cámbiate el directorio donde están los archivos ``.c`` y ejecuta el comando ``make``. 
   Ten en cuanta que con el commando ``make clean`` puedes limpiar todos los archivos compilados y luego 
   con ``make`` volver a generarlos.
@@ -535,3 +543,8 @@ Consideraciones ev2
   vector de prueba, el programa realiza 12 reservas con malloc y detecta 12 liberaciones con free. 
   Por tanto, al final indica que no hay errores.
 
+Criterios de evaluación ev2
+*****************************
+
+Cada vector de prueba tiene un puntaje. El puntaje de cada punto lo puedes encontrar en el 
+archivo ``.github/classroom/autograding.json`` que está en tu repositorio.
