@@ -2176,8 +2176,8 @@ Ejercicio 33: REPASO
 En esta sesión te voy a proponer un ejercicio de lectura y práctica. En 
 `este <https://www.state-machine.com/oop>`__ sitio hay una lectura que resume 
 varios de los conceptos estudiados en esta unidad. Te pediré que realices la lectura 
-y reproduzcas los ejercicios que encontrarás allí, pero que tendrás que adaptar 
-para que te funcionen en Linux.
+y reproduzcas los ejercicios que encontrarás allí. El código de todos los ejemplos los puedes 
+encontrar en `este <https://github.com/QuantumLeaps/OOP-in-C>`__ repositorio.
 
 Trabajo autónomo 5 
 ********************
