@@ -2170,6 +2170,9 @@ realizar diagramas donde visualices la relación entre los diferentes objetos.
 Sesión 5
 **********
 
+Ejercicio 33: REPASO
+^^^^^^^^^^^^^^^^^^^^^^
+
 En esta sesión te voy a proponer un ejercicio de lectura y práctica. En 
 `este <https://www.state-machine.com/oop>`__ sitio hay una lectura que resume 
 varios de los conceptos estudiados en esta unidad. Te pediré que realices la lectura 
