@@ -2044,7 +2044,87 @@ Para ejecutar el código realizas las siguientes operaciones:
     gcc -Wall -c main.c -o main.o    
     gcc -Wall main.o cat.o duck.o animal.o -o app
 
-Ejercicio 31: clases abstractas
+Ejercicio 31: implementación en C#
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ahora vas a implementar el ejercicio 30 en C#. Compara, analiza, questiona y concluye.
+
+.. warning:: ALERTA DE SPOILER
+
+    Te dejo una posible implementación del ejercicio 30 en C#
+
+.. code-block:: csharp
+
+    using System;
+
+    public class Animal
+    {
+        public string Name { get; private set; }
+
+        public Animal(string name)
+        {
+            Name = name;
+        }
+        public virtual void AnimalSound()
+        {
+            Console.WriteLine(Name + ": Beep");
+        }
+    }
+
+    public class Cat : Animal
+    {
+
+        public Cat(string name) : base(name)
+        {
+
+        }
+        public override void AnimalSound()
+        {
+            Console.WriteLine(Name + ": Meow");
+        }
+    }
+
+    public class Duck : Animal
+    {
+
+        public Duck(string name) : base(name)
+        {
+
+        }
+        public override void AnimalSound()
+        {
+            Console.WriteLine(Name + ": Quacks");
+        }
+    }
+
+
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+
+            var Animals = new List<Animal>
+            {
+                new Animal("Animal"),
+                new Cat("Nucita"),
+                new Duck("Lindo")
+            };
+
+            foreach(var animal in Animals){
+                animal.AnimalSound();
+            }
+        }
+    }
+
+El resultado sería:
+
+.. code-block:: bash
+
+    Animal: Beep
+    Nucita: Meow
+    Lindo: Quacks
+
+Ejercicio 32: clases abstractas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Qué son las clases abstractas? Son un tipo de clases de las cuales no puedes
