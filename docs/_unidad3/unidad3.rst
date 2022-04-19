@@ -2191,7 +2191,7 @@ Evaluación Unidad 3
 
 .. warning:: PLAZO MÁXIMO DE ENTREGA DEL TRABAJO 
 
-    El plazo máximo será este viernes 24 de abril a las 11:59 p.m.
+    El plazo máximo será este domingo 24 de abril a las 11:59 p.m.
 
 .. warning:: EQUIPO DE TRABAJO 
 
