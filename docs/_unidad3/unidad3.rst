@@ -2191,8 +2191,7 @@ Evaluación Unidad 3
 
 .. warning:: PLAZO MÁXIMO DE ENTREGA DEL TRABAJO 
 
-    El plazo máximo será este viernes 22 de abril a las 11:59 p.m. La nota 
-    de la evaluación estará disponible en la tarde del sábado 23 de abril.
+    El plazo máximo será este viernes 24 de abril a las 11:59 p.m.
 
 .. warning:: EQUIPO DE TRABAJO 
 
