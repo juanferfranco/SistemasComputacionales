@@ -2189,15 +2189,24 @@ Evaluación Unidad 3
 ---------------------
 (Tiempo total estimado: 6 horas)
 
+.. warning:: PLAZO MÁXIMO DE ENTREGA DEL TRABAJO 
+
+    El plazo máximo será este viernes 22 de abril a las 11:59 p.m. La nota 
+    de la evaluación estará disponible en la tarde del sábado 23 de abril.
+
+.. warning:: EQUIPO DE TRABAJO 
+
+    La evaluación puede ser realizada por una o máximo dos personas.
+    NO OLVIDAR indicar el nombre de los integrantes en el README.md
+
+
+
 .. warning:: EN LA SESIÓN DE TRABAJO 2 DE ESTA SEMANA NO HAY ENCUENTRO PRESENCIAL
 
     En la segunda sesión de clase de esta semana no hay encuentro presencial. Ese 
     tiempo será destinado a la producción y montaje del video.
 
-.. warning:: PLAZO MÁXIMO DE ENTREGA DEL TRABAJO 
 
-    El plazo máximo será este viernes 22 de abril a las 11:59 p.m. La nota 
-    de la evaluación estará disponible en la tarde del sábado 23 de abril.
 
 Enunciado
 *************
@@ -2230,8 +2239,9 @@ Entrega
 Vas a subir todos lo solicitado a tu repositorio privado 
 que encuentras `aquí <https://classroom.github.com/a/a4Nn9p88>`__.
 
-No olvides que en el archivo README.md debes colocar la URL al video. NO DEBES SUBIR VIDEOS 
-al respositorio.
+* No olvides que en el archivo README.md debes colocar la URL al video. NO DEBES SUBIR VIDEOS 
+  al respositorio.
+* No olvides indicar el nombre de los integrantes en el README.md.
 
 Criterios de evaluación 
 *************************
