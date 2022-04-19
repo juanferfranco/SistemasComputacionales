@@ -2189,6 +2189,16 @@ Evaluación Unidad 3
 ---------------------
 (Tiempo total estimado: 6 horas)
 
+.. warning:: EN LA SESIÓN DE TRABAJO 2 DE ESTA SEMANA NO HAY ENCUENTRO PRESENCIAL
+
+    En la segunda sesión de clase de esta semana no hay encuentro presencial. Ese 
+    tiempo será destinado a la producción y montaje del video.
+
+.. warning:: PLAZO MÁXIMO DE ENTREGA DEL TRABAJO 
+
+    El plazo máximo será este viernes 22 de abril a las 11:59 p.m. La nota 
+    de la evaluación estará disponible en la tarde del sábado 23 de abril.
+
 Enunciado
 *************
 
@@ -2196,19 +2206,32 @@ Vas a realizar un video tutorial que subirás como video público a youtube. Con
 siguiente:
 
 * El video debe durar entre 4 minutos y 5 minutos máximo. Si el video se sale de el rango 
-  anterior estimado automáticamente la nota base sobre la cual se calificará será 3.
+  anterior, automáticamente la nota base sobre la cual se calificará será 3.
 * Vas a pensar en un ejemplo DIFERENTE a los estudiados en esta unidad, donde puedas explicar 
   los conceptos de encapsulamiento, herencia y polimorfismo. El ejemplo se debe implementar en C y C#. 
   Y debes explicar el equivalente de cada concepto en cada lenguaje.
-* Debes analizar en que parte de la memoria se alacenan TODOS los datos que uses 
+* Debes analizar en que parte de la memoria se almacenan TODOS los datos que uses 
   en tu aplicación (recuerda que debes analizar tanto la implementación en C como en C#).
+* En tu reposotorio debes organizar tu trabajo así:
+  
+  * Archivo README.md con las imágenes del análisis de memoria de tu aplicación y el diagrama de clases.
+    Así mismo, debes incluir la URL del video en youtube.
+  * Carpeta con el ejemplo en C.
+  * Carpeta con el ejemplo en C#.
+
+.. warning:: DEBES VERIFICAR QUE EL VIDEO SE PUEDE VER de manera pública.
+
+    No olvides verificar (puede ser en modo incógnito o desde el celular de un familiar) que 
+    el video se puede ver y tiene la duración correcta.
 
 Entrega 
 **********
 
-Vas a subir todos los archivos a tu repositorio privado 
+Vas a subir todos lo solicitado a tu repositorio privado 
 que encuentras `aquí <https://classroom.github.com/a/a4Nn9p88>`__.
 
+No olvides que en el archivo README.md debes colocar la URL al video. NO DEBES SUBIR VIDEOS 
+al respositorio.
 
 Criterios de evaluación 
 *************************
