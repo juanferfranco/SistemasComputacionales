@@ -2189,8 +2189,38 @@ Evaluación Unidad 3
 ---------------------
 (Tiempo total estimado: 6 horas)
 
-.. warning:: REGRESA AQUÍ LA SEMANA 13
+Enunciado
+*************
 
-    En la semana 13 (última sesión de la semana 10: marzo 24/25) 
-    recuerda regresar aquí y presionar F5 para ver el enunciado 
-    de la evaluación.
+Vas a realizar un video tutorial que subirás como video público a youtube. Considera lo 
+siguiente:
+
+* El video debe durar entre 4 minutos y 5 minutos máximo. Si el video se sale de el rango 
+  anterior estimado automáticamente la nota base sobre la cual se calificará será 3.
+* Vas a pensar en un ejemplo DIFERENTE a los estudiados en esta unidad, donde puedas explicar 
+  los conceptos de encapsulamiento, herencia y polimorfismo. El ejemplo se debe implementar en C y C#. 
+  Y debes explicar el equivalente de cada concepto en cada lenguaje.
+* Debes analizar en que parte de la memoria se alacenan TODOS los datos que uses 
+  en tu aplicación (recuerda que debes analizar tanto la implementación en C como en C#).
+
+Entrega 
+**********
+
+Vas a subir todos los archivos a tu repositorio privado 
+que encuentras `aquí <https://classroom.github.com/a/a4Nn9p88>`__.
+
+
+Criterios de evaluación 
+*************************
+
+* Análisis de la memoria de la aplicación en C y en C#: 1
+* Diagrama de clases de tu ejemplo donde muestres las relaciones implementadas: 1
+* Explicación del concepto de encapsulamiento: 1
+* Explicación del concepto de herencia: 1
+* Explicación del concepto de polimorfismo: 1
+
+
+
+
+
+
