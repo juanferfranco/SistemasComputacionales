@@ -17,11 +17,13 @@ el sistema operativo a las aplicaciones de usuario y utilizar
 algunos de esos servicios en la construcción de aplicaciones
 simples.
 
-Lecturas y ejercicios
+Trayecto de actividades
 ------------------------
  
-Sesión 1: concepto de proceso e hilos
+Sesión 1
 ***************************************
+
+En esta sesión abordaremos el concepto de proceso e hilo.
 
 Ejercicio 1: concepto de sistema operativo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -207,7 +209,7 @@ que el pueda terminar.
     pthread_join(threadID2,NULL);
 
 
-Trabajo autónomo 1: RETO con hilos
+Trabajo autónomo 1
 ***************************************
 (Tiempo estimado: 1 horas 20 minutos)
 
@@ -234,11 +236,21 @@ Se tiene un archivo que tiene 100 líneas y 20 caracteres máximo por línea.
   Out1 y Out2 especifican el nombre de los los archivos de salida 1 y 2 respectivamente. RECUERDA que
   In, Out1 y Out2 son parámetros.
 
-Sesión 2: relación de conceptos
-***********************************
+Sesión 2
+**********
 
-En este sesión vamos a resolver dudas del RETO anterior y a relacionar algunos conceptos 
-visto con lo que ya conoces de C#.
+Continua trabajando en el reto de la sesión anterior
+
+Trabajo autónomo 2
+***************************************
+(Tiempo estimado: 1 horas 20 minutos)
+
+Terminar el RETO.
+
+Sesión 3
+**********
+
+Ahora vas a estudiar cómo implementar hilos en C# y cómo se compara con C.
 
 Ejercicio 7: veamos cómo es en C#
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -255,228 +267,192 @@ claro, a menos que quieras).
   método no estático?
 * ¿Cuál es la diferencia entre un hilo y un método estático?
 
-Trabajo autónomo 2: repaso
+Trabajo autónomo 3
 *****************************************
 (Tiempo estimado: 1 horas 20 minutos)
 
-Vuelve a leer el material de las sesiones 1 y 2.
+Repasa todo el material hasta este punto. Vuelve a leer el material de las sesiones 1 y 3.
 
-Sesión 3: comunicación entre procesos
-*****************************************
+Sesión 4
+**********
+
+En esta sesión aprenderás a comunicar procesos.
 
 Ejercicio 8: comunicación de procesos mediante colas 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Existe varios mecanismos de comunicación entre procesos. En este ejercicio
-te voy a proponer que analices uno llamado System V message queues (Colas 
-de mensajes System V).
+te voy a proponer un servicio de comunicación entre procesos denominado POSIX 
+queues. Este servicio te permitirá enviar mensajes en una dirección de un procesos 
+a otro.
 
-* Las colas de mensajes son de tamaño fijo → Las comunicaciones ocurren por 
-  paquetes o unidades de mensaje.
+¿Y si necesitas recibir mensajes en el sentido opuesto? Necesitarás crear 
+una segunda queue.
 
-* Cada mensaje incluye un tipo entero. Esto permite seleccionar el mensajes a leer. Esto 
-  quiere decir que puedes enviar a una cola varios tipos de mensajes y seleccionar
-  cuál tipo quieres leer. Podrías entonces tener un proceso enviando mensajes de varios 
-  tipos y otros procesos lectores consumiendo solo el mensaje de su interés. 
-  UNA BELLEZA!!!
+Vamos al tablero para que lo analicemos juntos.
 
-* Las colas de mensajes existen a nivel de sistema, no son de un proceso en particular. 
-
-Ejercicio 9: creación de colas
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Para crear una cola de mensajes utilizas el siguiente llamado al sistema:
-
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/ipc.h>
-    #include <sys/msg.h>
-
-    int msgget(key_t key, int msgflg);
-
-Nota que debes definir el valor de key y msgflg. Estos dos parámetros te permitirán 
-crear un identificador para la cola, solicitar la creación y adicionar mensajes.
-
-Infortunadamente no tenemos el tiempo para profundizar en cada detalle de la función. 
-Por tanto, vamos a utilizar los siguientes pasos para crear la cola en un proceso y luego 
-conectarse a ella en otro proceso:
-
-.. code-block:: c
-
-    system("touch msgreq.txt");
-    
-    key_t key;
-    
-    if ((key = ftok("msgreq.txt", 'B')) == -1) {
-        perror("ftok");
-        exit(1);
-    }
-    
-    int reqMsgId;
-
-    if ((reqMsgId = msgget(key, PERMS | IPC_CREAT)) == -1) {
-        perror("msgreq msgget fails");
-        exit(1);
-    }
-
-Ejercicio 10: destrucción de colas
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Una vez termines de utilizar la cola puedes destruirla del sistema operativo 
-con la función ``msgctl``. Ten presente que esta destrucción la debería realizar 
-el último proceso que haga uso de ella.
-
-.. code-block:: c
-
-    system("rm msgreq.txt");
-
-    if (msgctl(reqMsgId, IPC_RMID, NULL) == -1) {
-        perror("msgreq msgctl fails");
-        exit(1);
-    }
-
-Ejercicio 11: enviar mensajes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Ahora que ya sabes crear la cola, obtener el identificador de ella y destruirla, 
-vas a aprender a enviar usando el llamado al sistema ``msgsnd`` 
-
-.. code-block:: c
-
-    typedef struct _msgbuf {
-        long mtype;
-        char mtext[64];
-    }MsgBuf;
-
-    MsgBuf resBuf;
-
-    len = strlen("Hola") + 1; // por qué + 1?
-    strncpy(resBuf.mtext,"Hola",len);
-    resBuf.mtype = 1111; //
-    if (msgsnd(resMsgId, &resBuf, len, 0) == -1){
-        perror("msgsnd fails: ");  
-    }
-
-Ejercicio 12: recibir mensajes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Para recibir mensajes usas ``msgrcv``.
-
-.. code-block:: c
-
-    typedef struct _msgbuf {
-        long mtype;
-        char mtext[64];
-    }MsgBuf;
-
-    MsgBuf reqBuf;
-
-    if (msgrcv(reqMsgId, &reqBuf, sizeof(reqBuf.mtext), 0, 0) == -1) {
-        perror("msgrcv fails");
-    }
-
-Trabajo autónomo 3: repaso y análisis de un ejemplo
-*********************************************************
-(Tiempo estimado: 1 horas 20 minutos)
-
-Ejercicio 13: ejemplo
+Ejercicio 9: ejemplo
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Analiza la documentación y el ejemplo de 
-`este <https://www.tutorialspoint.com/inter_process_communication/inter_process_communication_message_queues.htm>`__ 
-sitio.
+En este ejemplo comunicarás dos procesos. Uno de ellos esperará los mensajes 
+que enviará el otro.
+
+Vas a lanzar primero el proceso que ejecutará la imagen receiver:
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <string.h>
+    #include <mqueue.h>
+
+    int main(int argc, char *argv[])
+    {
+        mqd_t mq;
+
+        struct mq_attr attr;
+        attr.mq_flags = 0;
+        attr.mq_maxmsg = 10;
+        attr.mq_msgsize = 32;
+        attr.mq_curmsgs = 0;
+
+        mq = mq_open("/mq0", O_RDONLY | O_CREAT, 0644, &attr);
+        char buff[32];
+
+        while (1)
+        {
+            mq_receive(mq, buff, 32, NULL);
+            printf("Message received: %s\n", buff);
+            if( strncmp(buff, "exit", strlen("exit")) == 0){
+                break;
+            }
+        }
+
+        mq_close(mq);
+        mq_unlink("/mq0");
+        exit(EXIT_SUCCESS);
+    }
+
+Para compilar:
+
+.. code-block:: bash
+
+    gcc -Wall receiver.c -lrt -o receiver
+
+Luego lanza el proceso que ejecutará la imagen sender:
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <string.h>
+    #include <mqueue.h>
+
+    int main(int argc, char *argv[])
+    {
+        mqd_t mq = mq_open("/mq0", O_WRONLY);
+        char str[64];
+
+        while (1)
+        {
+            fgets(str, sizeof(str), stdin);
+            if(str[strlen(str) - 1 ] == '\n') str[strlen(str) - 1 ] = 0; 
+            mq_send(mq, str, strlen(str) + 1, 0);
+            if (strncmp(str, "exit", strlen("exit")) == 0)
+            {
+                break;
+            }
+        }
+
+        mq_close(mq);
+        exit(EXIT_FAILURE);
+    }
+
+Para compilar:
+
+.. code-block:: bash
+
+    gcc -Wall sender.c -lrt -o sender
+
+Ejercicio 10: analiza el ejemplo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Te propongo que analices el ejemplo con estas preguntas:
+
+¿Cómo se crea una cola? La cola la está creando el proceso que ejecuta 
+la imagen receiver. Las colas se crean en el sistema operativo y una vez 
+se terminen de usuar debes solicitarle al sistema operativo que la destruya.
+
+Para crear una cola necesitarás:
+
+* Guardar en descriptor de la cola en una variable.
+* Definir unos atributos para la cola como son la cantidad máximo 
+  de mensajes y el tamaño máximo que podría tener un mensaje.
+
+.. code-block:: c
+
+    mqd_t mq;
+
+    struct mq_attr attr;
+    attr.mq_flags = 0;
+    attr.mq_maxmsg = 10;
+    attr.mq_msgsize = 32;
+    attr.mq_curmsgs = 0;
+
+    mq = mq_open("/mq0", O_RDONLY | O_CREAT, 0644, &attr);
+
+¿Cómo acceder a una cola una vez está creada?
+
+.. code-block:: c
+
+    mqd_t mq = mq_open("/mq0", O_WRONLY);
+
+¿Cómo recibir mensajes?
+
+.. code-block:: c
+
+    mq_receive(mq, buff, 32, NULL);
+
+¿Cómo enviar mensajes?
+
+.. code-block:: c
+
+    mq_send(mq, str, strlen(str) + 1, 0);
+
+Una vez termines de usuar la cola debes cerrarla:
+
+.. code-block:: c
+
+    mq_close(mq);
+
+Finalmente uno de los procesos le pedirá al sistema operativo 
+que la destruya:
+
+.. code-block:: c
+
+    mq_unlink("/mq0");
+
+
+Trabajo autónomo 4
+*********************
+(Tiempo estimado: 1 horas 20 minutos)
+
+Vas a modificar el ejemplo de esta sesión de tal manera que 
+los dos procesos puedan intercambiar mensajes. 
+
+Antes de comenzar, piensa primero en esta pregunta:
+
+¿Cómo hacer para que un proceso pueda hacer dos cosas a la vez? 
+En este caso los procesos tendrán que esperar a que llegue un mensaje 
+a la queue pero también tendrán que esperar a que el usuario ingrese 
+un mensaje para enviarlo al otro proceso.
 
 Evaluación de la Unidad 4
 ----------------------------
-(Tiempo de la semana 15: 3 horas)
-(Tiempo de la semana 16: 5 horas)
+(Tiempo estimado 6 horas)
 
-Enunciado
-*************
+.. warning:: REGRESA AQUÍ LA SEMANA 16
 
-Te voy a proponer un RETO interesante para esta evaluación que podrás 
-resolver en equipo. Se conformarán 4 equipos de trabajo de 3 personas cada uno.
-
-Problema 
-^^^^^^^^^^^
-
-Vas a construir dos aplicaciones que llamaremos servidor y cliente. Solo 
-tendrás una instancia del servidor, pero una hasta 3 clientes.
-El servidor podrá publicar hasta 6 EVENTOS. Los clientes le manifestarán de manera explícita 
-al servidor su interés en algunos eventos específicos; sin embargo, en un momento dado,
-también podrán indicarle que ya no están interesados en algunos en particular. 
-Por cada evento, el servidor mantendrá una lista de interesados que irá cambiando 
-a medida que entran y salen interesados. Al generarse un evento en el servidor, 
-este publicará a todos los interesados. 
-
-Para desplegar las aplicaciones, lanzarás el servidor y cada cliente en una terminal 
-para cada uno. No olvides hacer pruebas con los 3 clientes.
-
-Estas son las características a implementar en el servidor:
-
-El servidor :
-
-* Debe recibir commandos desde la línea de comandos y al mismo tiempo debe 
-  ser capaz de escuchar las peticiones de los clientes.
-* Cada petición de un cliente será visualizada con un mensaje 
-  en la terminal.
-* Los comandos que recibirá el servidor son: 
-
-  * exit: termina el servidor y deberá publicar este evento a TODOS los clientes.
-  * trigger event_name: publica el evento event_name.
-  * list event_name: lista todos los clientes suscritos a event_name.
-  * all: muestra todos los eventos y todos los clientes.
-
-Estas son las características a implementar en el cliente:
-
-* El cliente debe visualizar en la terminal cada que sea notificado de un evento.
-* El cliente debe soportar los siguientes comandos:
-
-  * sub event_name: se suscribe al evento event_name
-  * unsub event_name: se desuscribe del evento event_name
-  * list: lista todos los eventos a los cuales está suscrito.
-  * ask: le pregunta al servidor cuáles eventos hay disponibles.
-
-¿Qué debes entregar?
-***************************
-
-* Debes realizar una presentación en la última clase de la semana 16 del curso.
-* La presentación debe durar máximo 15 minutos.
-* En la presentación demuestra la funcionalidad y responde las preguntas 
-  de sustentación.
-
-Con respecto a la demostración:
-
-#. Demostrar exit: 0.3
-#. Demostrar trigger event_name: 0.4
-#. Demostrar list event_name: 0.3
-#. Demostrar all: 0.3
-#. Demostrar sub event_name: 0.3
-#. Demostrar unsub event_name: 0.3
-#. Demostrar list: 0.3
-#. Demostrar ask: 0.3
-
-
-Con respecto a la explicación conceptual responde 
-estas preguntas:
-
-#. Explica en general la estructura del código con tu solución: 0.25
-#. ¿Cómo resolviste el problema de escuchar comandos y a la vez estar 
-   pendiente de las comunicaciones en cada proceso? : 0.25
-#. ¿Cómo le comunicas a cada cliente interesado acerca de un evento?  : 0.25
-#. ¿Cómo solucionaste el problema de tener hasta 3 clientes
-   que se suscriben y desuscriben a un evento? : 0.25
-#. ¿Cómo implementaste la lista de interesados? : 0.25
-#. ¿Cómo añades y remueves interesados de la lista? : 0.25
-#. Cuando el cliente ejecuta el comando ask ¿Cómo haces para preguntarle 
-   al server? : 0.25
-#. Cuando el server ejecuta el comando exit cómo resolviste el problema 
-   de poder también terminar a los clientes? : 0.25
-
-Criterios de evaluación
-****************************
-
-* Calidad y duración de la presentación y repositorio en Github: 0.5
-* Solución del problema: 2.5
-* Sustentación: 2
+    Si estás en la semana 16 del curso presiona F5 para cargar la evaluación.
