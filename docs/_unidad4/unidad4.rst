@@ -453,6 +453,55 @@ Evaluación de la Unidad 4
 ----------------------------
 (Tiempo estimado 6 horas)
 
-.. warning:: REGRESA AQUÍ LA SEMANA 16
+.. warning:: PARA CUÁNDO, DÓNDE Y CÓMO ES LA ENTREGA DE LA EVALUACIÓN
 
-    Si estás en la semana 16 del curso presiona F5 para cargar la evaluación.
+  La evaluación se debe entregar de manera presencial en las sesiones 
+  de clase de la semana 16 del curso. Puedes entregar en la sesión 1 o 2.
+  Puedes realizar la evaluación con otro compañero.
+
+Enunciado
+***************
+
+Vas a realizar una aplicación que combinará los conocimiento adquiridos con 
+la realización de los retos que te presenté en el trabajo autónomo 1 y 4.
+
+Vas a comunicar dos PROCESOS considerando:
+
+#. Cada proceso al ejecutarse estará esperando, al mismo tiempo, que le 
+   llegue información del otro proceso y ordenes del usuario.
+#. El usuario deberá indicar en qué archivo está la información mediante 
+   una ruta relativa o absoluta y de qué manera se debe enviar dicha 
+   información.
+#. La información, que en cualquier momento, llegue del otro proceso 
+   debe ser presentada en pantalla.
+
+Debes poder enviar información de estas dos maneras:
+
+* Enviar cada línea del archivo de la primera a la última.
+* Enviar cada línea del archivo de la última a la primera.
+
+
+Criterios de evaluación
+**************************
+
+Funcionamiento de la aplicación 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Diseño de la aplicación para soportar concurrencia: 1.25
+#. Implementación de la concurrencia: 1.25
+#. Implementación del mecanismo de comunicación: 1.25
+#. Diseño e implementación de las estructuras de datos para almacenar y 
+   procesar la información: 1.25
+
+Sustentación
+^^^^^^^^^^^^^^
+
+Debes mostrar tu aplicación funcionando en las sesiones de clase de la 
+semana 16. La sustentación será un factor multiplicativo en la nota final 
+y tendrá un rango de 0 a 1. Consiste en responder las preguntas que te formule 
+el profesor en relación al funcionamiento de tu aplicación (ver criterios).
+
+Nota Final
+*************
+
+La nota final estará dada por el producto: CriteriosEvaluación*Sustentación.
