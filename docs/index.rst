@@ -1,4 +1,4 @@
-Curso Sistemas Computacionales 2022-10
+Curso Sistemas Computacionales 2022-20
 ========================================
 
 Docente diseñador del curso: Juan Fernando Franco Higuita
@@ -12,11 +12,11 @@ Créditos y horas totales del curso: 2 créditos - 96 horas totales
 
    Introducción al curso <_intro/intro>
 
-
 .. toctree::
    :maxdepth: 1
    :caption: UNIDADES
 
+..
    Unidad 1: Arquitectura del computador <_unidad1/unidad1>
    Unidad 2: De lenguaje de alto nivel a código ejecutable <_unidad2/unidad2>
    Unidad 3: Programación orientada a objetos <_unidad3/unidad3>
