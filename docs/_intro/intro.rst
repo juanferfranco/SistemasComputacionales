@@ -85,7 +85,7 @@ Bibliografía
 -------------
 
 Todo el material que necesitarás estará en este sitio web; sin embargo, te 
-recomiendo muchos estos textos:
+recomiendo mucho estos textos:
 
 `The Elements of Computing Systems: Building a Modern
 Computer from First Principles <https://mitpress.mit.edu/books/elements-computing-systems-second-edition>`__
