@@ -39,10 +39,7 @@ Sesión 1
 Ejercicio 1: introducción al control de versión 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    :maxdepth: 1
 
-    Introducción a Git y GitHub <./introGit>
 
 Trabajo autónomo 1
 ********************
