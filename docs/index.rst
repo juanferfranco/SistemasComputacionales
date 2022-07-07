@@ -7,21 +7,16 @@ Nombre del docente moderador: Juan Fernando Franco Higuita
 
 Créditos y horas totales del curso: 2 créditos - 96 horas totales 
 
+
+Consideraciones Iniciales
+----------------------------
+
 .. toctree::
    :maxdepth: 1
 
    Introducción al curso <_intro/intro>
-
-.. toctree::
-    :maxdepth: 1
-
-    Introducción a Git y GitHub <_intro/introGit>
-
-.. toctree::
-    :maxdepth: 1
-
-    ¿Cómo aprender? <_intro/learning>
-
+   Introducción a Git y GitHub <_intro/introGit>
+   ¿Cómo aprender? <_intro/learning>
 
 .. toctree::
    :maxdepth: 1
