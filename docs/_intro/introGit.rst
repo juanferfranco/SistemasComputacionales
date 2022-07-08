@@ -4,7 +4,7 @@ Introducción al control de versión con git y GitHub
 Con esta guía aprenderás los herramientas básicas para realizar 
 todos los proyectos y ejercicios del curso bajo control de versión.
 
-Lecturas, ejercicios y retos
+Trayecto de actividades
 ---------------------------------
 
 Lectura 1: ¿Qué es un sistema de control versión?
@@ -32,8 +32,8 @@ o tienes alguna nueva receta de archivos para producir tu programa. El sistema
 de control de versión te ayudará a gestionar la versión de los archivos 
 de manera automática evitando procesos manuales tediosos y susceptibles al error.
 
-El sistema de control de versión ES UN PROGRAMA (que instalas en tu computador)
-que te permitirá trazar y guardar información de los cambios que haces a tus 
+Un sistema de control de versión ES UN PROGRAMA (que instalas en tu computador)
+que te permitirá hacer la trazabilidad y guardar información de los cambios que haces a tus 
 archivos en el tiempo. Podrás recuperar incluso una versión pasada de un archivo si 
 descubres que cometiste un error. 
 
