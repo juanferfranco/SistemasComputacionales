@@ -78,6 +78,10 @@ Ejercicio 3: seguro quieres más
 Si quieres aprender a aprender te recomiendo estos recursos:
 
 * Curso `learning how to learn <https://www.coursera.org/learn/learning-how-to-learn>`__.
+* Barbara cuenta, en `esta <https://youtu.be/m9wXxywLVtQ?t=476>`__ conferencia estilo TED, 
+  como la neurociencia está cambiando lo que sabemos acerca del aprendizaje.
 * `Este <https://barbaraoakley.com/books/learn-like-a-pro/>`__ libro excelente para aprender a aprender cualquier cosa.
+* `Esta <https://youtu.be/erJiJLQcGVg>`__ entrevista sobre el libro Learn like a pro.
 * Si alguna eres docente te recomiendo que estudies con detenimiento 
   `este <https://barbaraoakley.com/books/uncommon-sense-teaching/>`__ libro.
+
