@@ -15,9 +15,9 @@ Consideraciones Iniciales
    :maxdepth: 1
 
    Introducción al curso <_intro/intro>
-   Introducción a Git y GitHub <_intro/introGit>
    ¿Cómo aprender a aprender? <_intro/learning>
-
+   Introducción a Git y GitHub <_intro/introGit>
+   
 .. toctree::
    :maxdepth: 1
    :caption: UNIDADES
