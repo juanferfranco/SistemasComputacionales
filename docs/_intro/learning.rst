@@ -56,7 +56,7 @@ algunos de los conceptos clave del video anterior.
   * Elimina todas las distracciones y notificaciones, todo aquello que te pueda distraer.
   * Configura un temporizador de 25 minutos.
   * Trabajar en modo enfocado por 25 minutos.
-  * Descansa 5 minutos (no mires el celular ni el email).
+  * Descansa 5 minutos (`no mires el celular o el email <https://pubmed.ncbi.nlm.nih.gov/31418586/>`__).
   * Repite.
 
   Cuando estás aprendiendo algo nuevo trata de recordarlo de memoria, ejercitarlo y repasarlo DURANTE muchos días 
