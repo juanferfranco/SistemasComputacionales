@@ -71,11 +71,12 @@ algunos de los conceptos clave del video anterior.
   dominar un asunto debes ENTENDER, REPETIR y PRACTICAR el asunto en varios contextos o situaciones 
   problemáticas.
 
-Ejercicio 3
-^^^^^^^^^^^^
+Ejercicio 3: seguro quieres más
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Si quieres aprender a aprender te recomiendo estos recursos:
 
 * Curso `learning how to learn <https://www.coursera.org/learn/learning-how-to-learn>`__.
-* Si alguna eres profesor te recomiendo que estudies con detenimiento 
+* `Este <https://barbaraoakley.com/books/learn-like-a-pro/>`__ Libro excelente para aprender a aprender cualquier cosa.
+* Si alguna eres docente te recomiendo que estudies con detenimiento 
   `este <https://barbaraoakley.com/books/uncommon-sense-teaching/>`__ libro.
