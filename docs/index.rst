@@ -16,7 +16,7 @@ Consideraciones Iniciales
 
    Introducción al curso <_intro/intro>
    Introducción a Git y GitHub <_intro/introGit>
-   ¿Cómo aprender? <_intro/learning>
+   ¿Cómo aprender a aprender? <_intro/learning>
 
 .. toctree::
    :maxdepth: 1
