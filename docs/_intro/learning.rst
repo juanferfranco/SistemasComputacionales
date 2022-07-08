@@ -82,6 +82,6 @@ Si quieres aprender a aprender te recomiendo estos recursos:
   como la neurociencia está cambiando lo que sabemos acerca del aprendizaje.
 * `Este <https://barbaraoakley.com/books/learn-like-a-pro/>`__ libro excelente para aprender a aprender cualquier cosa.
 * `Esta <https://youtu.be/erJiJLQcGVg>`__ entrevista sobre el libro Learn like a pro.
-* Si alguna eres docente te recomiendo que estudies con detenimiento 
-  `este <https://barbaraoakley.com/books/uncommon-sense-teaching/>`__ libro.
+* Si en algún momento de la vida te encargan la tarea de enseñarle a otras personas te recomiendo que estudies con 
+  mucho detenimiento `este <https://barbaraoakley.com/books/uncommon-sense-teaching/>`__ libro.
 
