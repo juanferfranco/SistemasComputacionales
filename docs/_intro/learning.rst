@@ -78,6 +78,6 @@ Ejercicio 3: seguro quieres más
 Si quieres aprender a aprender te recomiendo estos recursos:
 
 * Curso `learning how to learn <https://www.coursera.org/learn/learning-how-to-learn>`__.
-* `Este <https://barbaraoakley.com/books/learn-like-a-pro/>`__ Libro excelente para aprender a aprender cualquier cosa.
+* `Este <https://barbaraoakley.com/books/learn-like-a-pro/>`__ libro excelente para aprender a aprender cualquier cosa.
 * Si alguna eres docente te recomiendo que estudies con detenimiento 
   `este <https://barbaraoakley.com/books/uncommon-sense-teaching/>`__ libro.
