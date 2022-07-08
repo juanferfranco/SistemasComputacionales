@@ -57,7 +57,7 @@ algunos de los conceptos clave del video anterior.
   * Configura un temporizador de 25 minutos.
   * Trabajar en modo enfocado por 25 minutos.
   * Descansa 5 minutos (no mires el celular ni el email).
-  * Repite. Si te hace falta colocar un temporizador para el descanso de 5 minutos también.
+  * Repite.
 
   Cuando estás aprendiendo algo nuevo trata de recordarlo de memoria, ejercitarlo y repasarlo DURANTE muchos días 
   antes de la evaluación. La ciencia dice que esto favorece el aprendizaje y la recordación. Trata de preguntarte 
