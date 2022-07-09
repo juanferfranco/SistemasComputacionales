@@ -32,29 +32,25 @@ Si te preguntas cómo hago la memoria y la copio, te cuento aquí cómo se hace.
 Instalación de las herramientas del curso (y extras)
 ------------------------------------------------------
 
-Las herramientas del curso son:
+Ahora voy a listar varias de las herramientas que serán usadas en el curso más otras 
+que se usan en los cursos de sistemas físicos interactivos 1 y 2, sistemas operativos y 
+scripting.
 
-* zsh
+* zsh::
   
-  .. code-block:: bash
-
-      sudo apt update
-      sudo apt install zsh
+   sudo apt update
+   sudo apt install zsh
 
 * `Oh My ZSH! <https://ohmyz.sh/>`__
 * `Github CLI <https://cli.github.com/>`__
-* Toolchain para compilar y depurar programas en C
-
-   .. code-block:: bash
-
+* Toolchain para compilar y depurar programas en C::
+  
       sudo apt update
       sudo apt install build-essential
       sudo apt install gdb
 
-* Java JDK:
+* Java JDK::
   
-  .. code-block:: bash
-
    sudo apt install openjdk-8-jdk
 
 * `Digital <https://github.com/hneemann/Digital>`__
@@ -64,9 +60,7 @@ Las herramientas del curso son:
 * `Visual Studio code <https://code.visualstudio.com/>`__
 * `Extensión de C/C++ de visual Studio Code <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools>`__
 * Instalar también la C/C++ Extension Pack.
-* Herramientas varias
-
-   .. code-block:: bash
+* Herramientas varias::
 
       sudo apt-get install git wget flex bison gperf python3 python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
       sudo usermod -a -G dialout $USER
@@ -84,11 +78,9 @@ Las herramientas del curso son:
 * En visual studio code, en los settings, se recomienda deshabilitar el pegado del contenido del clipboard con el botón del medio del mouse: 
   "editor.selectionClipboard": false  
 * `ScriptCommunicator <https://sourceforge.net/projects/scriptcommunicator/>`__
-* 
-* .NET sdk
-* Mono
-* Toolchain 
-
+* `.NET sdk <https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu>`__
+* `Extensión para C# en visual studio <https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp>`__
+* `Mono <https://www.mono-project.com/download/stable/#download-lin-ubuntu>`__
 
 ¿Cómo clonar la memoria USB?
 ------------------------------
