@@ -12,6 +12,13 @@ y con todo gusto te la copio.
 
 Si te preguntas cómo hago la memoria y la copio, te cuento aquí cómo se hace.
 
+
+.. warning:: ESTO NO LO TIENES QUE HACER
+
+   Las instrucciones que te voy a dejar aquí son solo para los interesados en reproducir las herramientas 
+   que usaremos en el curso.
+
+
 ¿Cómo instalar Linux en una memoria USB?
 --------------------------------------------------
 
@@ -22,14 +29,63 @@ Si te preguntas cómo hago la memoria y la copio, te cuento aquí cómo se hace.
 #. Sigue las instrucciones de `este <https://wiki.mattzab.com/pub/how-to-make-a-pop-os-persistent-live-usb>`__ 
    sitio.
 
-Instalación de las herramientas básicas del curso
----------------------------------------------------
+Instalación de las herramientas del curso (y extras)
+------------------------------------------------------
 
 Las herramientas del curso son:
 
-* Git y Github CLI
-* Visual Studio code
-* .NET sdk 
+* zsh
+  
+  .. code-block:: bash
+
+      sudo apt update
+      sudo apt install zsh
+
+* `Oh My ZSH! <https://ohmyz.sh/>`__
+* `Github CLI <https://cli.github.com/>`__
+* Toolchain para compilar y depurar programas en C
+
+   .. code-block:: bash
+
+      sudo apt update
+      sudo apt install build-essential
+      sudo apt install gdb
+
+* Java JDK:
+  
+  .. code-block:: bash
+
+   sudo apt install openjdk-8-jdk
+
+* `Digital <https://github.com/hneemann/Digital>`__
+
+* `Nand2tetris Software Suite <https://www.nand2tetris.org/software>`__
+
+* `Visual Studio code <https://code.visualstudio.com/>`__
+* `Extensión de C/C++ de visual Studio Code <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools>`__
+* Instalar también la C/C++ Extension Pack.
+* Herramientas varias
+
+   .. code-block:: bash
+
+      sudo apt-get install git wget flex bison gperf python3 python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
+      sudo usermod -a -G dialout $USER
+      python3 -m pip install pyserial
+
+* `Arduino IDE 1.8.X <https://www.arduino.cc/en/software>`__
+* Instalación del `soporte para el ESP32 <https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html>`__ 
+  en el Arduino IDE
+* En la versión de popOS 22.04 aparece una nueva regla para el sistema braille que incluye entre sus reglas 
+  en ``/usr/lib/udev/rules.d/85-brltty.rules`` soporte para un dispositivo basado en el chip FTDI que convierte 
+  de USB a RS232. Este chip lo tienen varios sistemas de desarrollo de Arduino. Una solución simple a este problema 
+  es comentar la regla que señala al chip, salvar el archivo 85-brltty.rules y reiniciar.
+* `Extensión Arduino <https://github.com/microsoft/vscode-arduino>`__ para Visual Studio Code. No olvidar 
+  configurar el path donde está instalado el IDE de Arduino.
+* En visual studio code, en los settings, se recomienda deshabilitar el pegado del contenido del clipboard con el botón del medio del mouse: 
+  "editor.selectionClipboard": false  
+* `ScriptCommunicator <https://sourceforge.net/projects/scriptcommunicator/>`__
+* 
+* .NET sdk
 * Mono
 * Toolchain 
 
