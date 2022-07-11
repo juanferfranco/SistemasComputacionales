@@ -80,7 +80,27 @@ scripting.
 * `ScriptCommunicator <https://sourceforge.net/projects/scriptcommunicator/>`__
 * `.NET sdk <https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu>`__
 * `Extensión para C# en visual studio <https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp>`__
-* `Mono <https://www.mono-project.com/download/stable/#download-lin-ubuntu>`__
+* `Mono <https://www.mono-project.com/download/stable/#download-lin-ubuntu>`__::
+
+   sudo apt install gnupg ca-certificates
+   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+   echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+   sudo apt install mono-complete   
+
+* `Unity Hub <https://docs.unity3d.com/hub/manual/InstallHub.html#install-hub-linux>`__
+* Una vez instalado Unity Hub es necesario adicionar una biblioteca que ya no viene con Ubuntu 22.04. Esta 
+  versión de Ubuntu es en la que se basa la versión de PopOS que estamos usando::
+
+   echo "deb http://security.ubuntu.com/ubuntu impish-security main" | sudo tee /etc/apt/sources.list.d/impish-security.list
+   sudo apt update
+   sudo apt-get install libssl1.1
+
+* Unity 2021 LTS
+* Crear una cuenta educativa en jetbrains y descargar Rider.
+* En Unity se debe configurar el editor para que abra los proyectos con Visual Studio Code.
+* Una vez abierto el proyecto C# de un proyecto, es necesario configurar EN EL WORKSPACE del proyecto la opción 
+  ``'omnisharp.useModernNet': false``. Esta configuración se adiciona en el archivo settings.json que está 
+  en la carpeta oculta .vscode
 
 ¿Cómo clonar la memoria USB?
 ------------------------------
