@@ -53,10 +53,8 @@ scripting.
   
    sudo apt install openjdk-8-jdk
 
-* `Digital <https://github.com/hneemann/Digital>`__
-
-* `Nand2tetris Software Suite <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/Digital.zip>`__
-
+* `Digital <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/Digital.zip>`__
+* `Nand2tetris Software Suite <https://www.nand2tetris.org/software>`__
 * `Visual Studio code <https://code.visualstudio.com/>`__
 * `Extensión de C/C++ de visual Studio Code <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools>`__
 * Instalar también la C/C++ Extension Pack.
