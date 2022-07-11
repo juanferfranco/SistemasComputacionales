@@ -55,7 +55,7 @@ scripting.
 
 * `Digital <https://github.com/hneemann/Digital>`__
 
-* `Nand2tetris Software Suite <https://www.nand2tetris.org/software>`__
+* `Nand2tetris Software Suite <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/Digital.zip>`__
 
 * `Visual Studio code <https://code.visualstudio.com/>`__
 * `Extensión de C/C++ de visual Studio Code <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools>`__
@@ -97,10 +97,7 @@ scripting.
 
 * Unity 2021 LTS
 * Crear una cuenta educativa en jetbrains y descargar Rider.
-* En Unity se debe configurar el editor para que abra los proyectos con Visual Studio Code.
-* Una vez abierto el proyecto C# de un proyecto, es necesario configurar EN EL WORKSPACE del proyecto la opción 
-  ``'omnisharp.useModernNet': false``. Esta configuración se adiciona en el archivo settings.json que está 
-  en la carpeta oculta .vscode
+* En Unity se debe configurar el editor para que abra los proyectos con Rider.
 
 ¿Cómo clonar la memoria USB?
 ------------------------------
