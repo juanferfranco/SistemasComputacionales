@@ -17,7 +17,7 @@ Consideraciones Iniciales
    ¿De qué se trata este curso? <_intro/intro>
    ¿Cómo aprender a aprender? <_intro/learning>
    ¿Qué herramientas necesito? <_intro/tools>
-   
+      
 .. toctree::
    :maxdepth: 1
    :caption: UNIDADES

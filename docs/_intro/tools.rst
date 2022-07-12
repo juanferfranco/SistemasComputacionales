@@ -74,7 +74,7 @@ scripting.
 * `Extensión Arduino <https://github.com/microsoft/vscode-arduino>`__ para Visual Studio Code. No olvidar 
   configurar el path donde está instalado el IDE de Arduino.
 * En visual studio code, en los settings, se recomienda deshabilitar el pegado del contenido del clipboard con el botón del medio del mouse: 
-  "editor.selectionClipboard": false  
+  ``'editor.selectionClipboard': false``  
 * `ScriptCommunicator <https://sourceforge.net/projects/scriptcommunicator/>`__
 * `.NET sdk <https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu>`__
 * `Extensión para C# en visual studio <https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp>`__
@@ -101,4 +101,8 @@ scripting.
 ------------------------------
 
 Los pasos para clonar la memoria USB los he tomado de 
-`aquí <https://www.cyberciti.biz/faq/linux-copy-clone-usb-stick-including-partitions/>`__.
+`aquí <https://www.cyberciti.biz/faq/linux-copy-clone-usb-stick-including-partitions/>`__. El comando a usar es::
+
+   sudo dd if=/dev/sdX of=/dev/sdbY bs=4M status=progress
+
+sdX es la memoria FUENTE y sdY es la memoria destino.
