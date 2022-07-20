@@ -91,7 +91,7 @@ conocer la ruta en la cual estás posicionado en el sistema de archivos. Por el 
 piensa en el sistema de archivos como una forma de organizar la información en el computador 
 usando DIRECTORIOS.
 
-Ahora vas un nuevo DIRECTORIO::
+Ahora vas a crear un nuevo DIRECTORIO::
 
   mkdir demo1
 
@@ -181,7 +181,7 @@ Ahora te voy a pedir que hagas varias cosas y preguntes si tienes dudas:
 * Crea el directorio demo2 en demo1. ¿Recuerdas cómo listar el contenido de un directorio? 
 * Cámbiate al directorio padre de demo1 y desde allí crea el directorio demo3 en el directorio 
   demo2.
-* ¿Cuál será la ruta relativa de demo3 con respecto a al padre de demo1?
+* ¿Cuál será la ruta relativa de demo3 con respecto al padre de demo1?
 
 
 .. warning:: ALERTA DE SPOILER
@@ -215,7 +215,7 @@ Ejercicio 3: experimenta
 Ahora tómate unos minutos para experimentar. ¿Cómo? 
 
 * Inventa tus propios ejemplo o retos.
-* Antes de ejecutar un comando PIENSA cuál sería el resultado.Si el resultado es como 
+* Antes de ejecutar un comando PIENSA cuál sería el resultado. Si el resultado es como 
   te lo imaginaste, en hora buena, vas bien. Si no es así, MUCHO mejor, tienes una 
   oportunidad de oro para aprender. Entonces trata de explicar qué está mal, discute 
   con otros compañeros y si quieres habla con el profe.
@@ -259,7 +259,9 @@ Abre el directorio::
 .. note:: ALERTA DE SPOILER 
 
     No olvides que la entrada de directorio ``.`` se refiere al directorio actual en el que estás 
-    posicionado. ¿Y qué era ``..``?
+    posicionado. 
+    
+    Trata de recordar de nuevo ¿Qué era ``..``?
 
 Ahora modifica el archivo main.c con el siguiente código:
 
@@ -288,7 +290,7 @@ Ahora si vamos a crear el repositorio::
 
     git init
 
-Y solo con esto, ya tenemos el proyecto bajo control de versión. ¿Fácil, no?
+Y solo con esto ya tienes un proyecto con control de versión. ¿Fácil, no?
 
 Escribe en la terminal el comando::
 
@@ -401,7 +403,7 @@ El resultado será::
 Te explico con una metáfora lo que está pasando. Imagina que Git 
 le toma fotos al estado de tu proyecto cada que se lo solicitas; sin embargo, 
 antes de tomar la foto tienes que decirle a Git (``con add``) a qué archivos 
-le tomarás la foto. Todos los archivos que serán tenidos en cuenta para la 
+le tomará la foto. Todos los archivos que serán tenidos en cuenta para la 
 próxima foto se ubican en una zona lógica denominada el ``STAGE``. Mira el mensaje 
 ``(use "git rm --cached <file>..." to unstage)``. Observa que Git te está diciendo
 que main.c ya está listo para la foto (``Changes to be committed``), pero si te arrepientes de incluir el archivo 
@@ -694,15 +696,20 @@ Ejercicio 13: configura GitHub
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ahora te pediré que compartas el repositorio local ``project1`` con el mundo. 
-Para hacerlo necesitarás usar GitHub.
+Para hacerlo necesitarás usar GitHub. 
+
+Abre tu browser y cierra la cuenta que esté activa en GitHub en este momento, claro, 
+a menos que sea tu cuenta.
 
 Abre una terminal y ejecuta el comando::
 
        gh auth logout
 
 Este comando termina la sesión del cliente de Git de tu computador con el servidor de 
-Github. Ten presente que esto lo haces cuando compartes computador con otros compañeros, 
-pero si estás trabajando con tu computador personal no es necesario.
+Github. Pero el cliente de Git que corre en el browser sigue funcionando con el usuario
+actual. Ten presente que CONTROLAR quien está autenticado con el servidor lo haces cuando 
+compartes computador con otros compañeros, pero si estás trabajando con tu computador 
+personal no es necesario.
 
 Ahora conecta el cliente local de git con tu cuenta de GitHub::
 
@@ -717,9 +724,12 @@ a esto::
     ✓ Logged in as juanferfranco    
 
 
-El comando anterior te permitirá autorizar el acceso de tu computador 
+El comando anterior te permitirá autorizar el acceso desde la termina de tu computador 
 a tu cuenta en GitHub por medio de un proceso interactivo entre la terminal 
-y el browser.
+y el browser. Recuerda que en el browser ya tienes acceso a tu cuenta en el servidor.
+
+En este punto tu computador tiene dos clientes autenticados con GitHub: la terminal y 
+el browser.
 
 Ejercicio 14: comparte tu trabajo usando GitHub
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -764,7 +774,7 @@ Realiza un commit en el respositorio local::
     git commit -am "add exclamation marks"
 
 
-¿Notaste algo? En un solo paso pasate main.c a la zona de fotos (STAGE) y 
+¿Notaste algo? En un solo paso pasaste main.c a la zona de fotos (STAGE) y 
 realizaste el commit.
 
 Verifica el estado del repositorio::
@@ -1046,7 +1056,7 @@ Hasta aquí nada nuevo, ¿Verdad?
 #. En `este <https://www.markdownguide.org/cheat-sheet/>`__ sitio puedes encontrar una 
    cheat sheet del lenguaje.
 #. Cambia el título del documento por ``DOCUMENTACIÓN DEL PROJECT 4``.
-#. Indica que ese texto tendrá formato ``h1`` colocando el símbolo ``#`` antes del título.
+#. Indica que ese texto tendrá formato ``h1`` colocando el símbolo ``#`` seguido de un espacio antes del título.
 #. Puedes hacer click en el menú ``preview`` para que puedas ver cómo te va quedando el 
    documento.
 #. Ahora te pediré que insertes una imagen, un hipervínculo, un título de tipo h2 y otro tipo h3, 
@@ -1055,3 +1065,17 @@ Hasta aquí nada nuevo, ¿Verdad?
 #. A medida que experimentas ve observando en preview cómo te queda.
 #. Una vez termines, dale click al botón ``Commit changes``.
 #. Regresa al inicio del repositorio para que veas tu obra de arte.
+#. En este ejercicio creaste un archivo en GitHub que no tienes en tu computador local. Escribe 
+   en tu repositorio local los comando::
+    
+    git fetch
+    git status
+    git pull
+    git status
+
+   ¿Qué puedes ver en el primer status y luego en el segundo? ¿Alguna diferencia?
+
+.. note:: ESCRIBIR documentos en GitHub
+
+    En `este <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>`__ 
+    enlace puedes encontrar más información.
