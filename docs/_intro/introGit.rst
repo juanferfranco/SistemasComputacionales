@@ -547,191 +547,286 @@ Te debe quedar algo así::
 
         Initial version of the project main file    
 
-Ejercicio 12: volver a una versión anterior 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Y ahora main.c está así::
 
-Ahora supón que quieres volver a una versión anterior 
-de main.c
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    int main(){
+        printf("La vida es bella\n");
+        printf("El feo es uno\n");
+        return(EXIT_SUCCESS);
+    }
 
 
+Ejercicio 12: volver a una versión anterior del proyecto 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Ahora supón que quieres volver a una versión anterior del proyecto. 
+Git ofrece varias alternativas que irás aprendiendo con el tiempo. Por ahora, 
+piensa que lo que harás es pedirle a Git que traiga una versión del pasado y haga 
+un nuevo commit de esa versión en el presente.
 
+¿Cuál versión del proyecto quieres recuperar? Para saberlo puedes leer 
+el historial de mensajes que adicionaste a cada COMMIT::
 
+    git log --oneline
 
+En el ejemplo que estás trabajando::
 
+    2a0afbb (HEAD -> master) add a new print
+    1f2009f Initial version of the project main file
 
-Supón que ya tienes un proyecto creado o justo acabas de crear un 
-proyecto y quieres iniciar desde ese punto el control de versión.
+Ahora digamos que deseas ver cómo estaba el proyecto en el commit 1f2009f (estos son 
+los primeros 7 números del identificador del commit o hash único que se calcula con 
+el algoritmo sha-1)::
 
-Vamos a simular esta situación. Abre la terminal. Si la tenías abierta 
-cámbiate al directorio padre de demo1. Crea lo que te mostraré ahora:
+    git checkout 1f2009f
 
-.. code-block:: bash 
+El resultado es::
 
-    ./demo2
-    ├── f1.txt
-    ├── f2.txt
-    └── f3.txt
+    Note: switching to '1f2009f'.
 
-Adiciona algunas líneas de texto a cada archivo. Piensa entonces 
-que esto que acabas de hacer es el resultado de la reciente creación 
-de un proyecto de software, pero aún sin control de versión.
+    You are in 'detached HEAD' state. You can look around, make experimental
+    changes and commit them, and you can discard any commits you make in this
+    state without impacting any branches by switching back to a branch.
 
-Para adicionar control de versión al proyecto:
+    If you want to create a new branch to retain commits you create, you may
+    do so (now or later) by using -c with the switch command. Example:
 
-#. Cámbiate al directorio ``demo2`` (cd)
-#. Inicia un nuevo repositorio (init)
-#. Verifica el estado del repositorio (status)
+    git switch -c <new-branch-name>
 
-El resultado esperado es este:
+    Or undo this operation with:
 
-.. code-block:: bash 
+    git switch -
 
-    On branch master
+    Turn off this advice by setting config variable advice.detachedHead to false
 
-    No commits yet
+    HEAD is now at 1f2009f Initial version of the project main file
 
-    Untracked files:
-    (use "git add <file>..." to include in what will be committed)
-        f1.txt
-        f2.txt
-        f3.txt
+Escribe el comando::
 
-    nothing added to commit but untracked files present (use "git add" to track)
+    git status
 
-¿Te parece familiar lo que ves? Ahora solo es que le digas a Git que haga 
-tracking a los archivos que quieras. Para este ejercicio dile que todos los archivos.
+El resultado es::
 
-.. code-block:: bash 
+    HEAD detached at 1f2009f
+    nothing to commit, working tree clean
 
-    git add .
+Ahora revisa el archivo main.c. ¿Qué concluyes hasta ahora? En este momento estás en 
+un estado especial llamado detached HEAD. En este estado puedes jugar con el código y 
+hacer ensayos y luego puedes descartar todo lo que hagas sin dañar lo que ya tenías. Mira 
+que Git te dice qué debes hacer para conservar los experimentos o para descartarlos.
 
-Y el resultado cuando verifiques el estado del repositorio (status) será:
+En este caso, supon que solo quieres ver el estado del archivo main.c en el commit 1f2009f::
 
-.. code-block:: bash 
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    On branch master
+    int main(){
+        printf("La vida es bella\n");
+        return(EXIT_SUCCESS);
+    }
 
-    No commits yet
+¿Quieres volver main.c al último commit? Simplemente escribes::
 
-    Changes to be committed:
-    (use "git rm --cached <file>..." to unstage)
-        new file:   f1.txt
-        new file:   f2.txt
-        new file:   f3.txt
+    git switch -
 
-Entonces recuerda. Lo que acabas de hacer es decirle a Git que haga tracking a 
-f1.txt, f2.txt y f3.txt. Además acabas de preparar en el STAGE los archivos 
-que entrarán en la foto (commit). Realiza el commit y verifica el estado.
+Ahora main.c se verá así::
 
-Si verificas el historial en este punto, verás que acabas de iniciar el control 
-de versión.
+    #include <stdio.h>
+    #include <stdlib.h>
 
-.. code-block:: bash 
+    int main(){
+        printf("La vida es bella\n");
+        printf("El feo es uno\n");
+        return(EXIT_SUCCESS);
+    }
 
-    commit 6c2e0fc824981b406c68dccc9ef34ad86f9ea8e4 (HEAD -> master)
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Thu Jan 13 09:11:27 2022 -0500
+Luego de analizar las dos versiones de main.c decides que vas a conservar la versión del 
+commit 1f2009f. Para que compares escribe::
 
-        init repo
+    git log --oneline
+
+El resultado::
+
+    2a0afbb (HEAD -> master) add a new print
+    1f2009f Initial version of the project main file
+
+Ahora::
+
+    git revert HEAD
+
+El resultado::
+
+    [master 882d93e] Revert "add a new print"
+    1 file changed, 1 deletion(-)
+
+Y si observas el historial::
+
+    git log --oneline
+
+Verás::
+
+    882d93e (HEAD -> master) Revert "add a new print"
+    2a0afbb add a new print
+    1f2009f Initial version of the project main file
+
+Si abres el archivo main.c::
+
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    int main(){
+        printf("La vida es bella\n");
+        return(EXIT_SUCCESS);
+    }
+
+Entonces el comando::
+
+    git revert HEAD
+
+Hace un ``revert`` del commit ``2a0afbb`` creando un nuevo commit, el ``882d93e``, con el 
+estado del proyecto en el commit ``1f2009f``.    
+
 
 Ejercicio 13: configura GitHub
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora te pediré que compartas el repositorio local ``demo2`` con el mundo. 
+Ahora te pediré que compartas el repositorio local ``project1`` con el mundo. 
 Para hacerlo necesitarás usar GitHub.
 
-#. Crea una cuenta en GitHub o usa la que ya tienes.
-#. Descarga e instala la `GitHub cli <https://cli.github.com/>`__ de 
-   `aquí <https://github.com/cli/cli#installation>`__. Recuerda seleccionar 
-   la opción adecuada según tu sistema operativo y plataforma de hardware.
-#. Abre una terminal y ejecuta el comando:
+Abre una terminal y ejecuta el comando::
 
-   .. code-block:: bash 
+       gh auth logout
 
-       gh auth login
+Este comando termina la sesión del cliente de Git de tu computador con el servidor de 
+Github. Ten presente que esto lo haces cuando compartes computador con otros compañeros, 
+pero si estás trabajando con tu computador personal no es necesario.
 
-   El comando anterior te permitirá autorizar el acceso de tu computador 
-   a tu cuenta en GitHub por medio de un proceso interactivo entre la terminal 
-   y el browser.
+Ahora conecta el cliente local de git con tu cuenta de GitHub::
+
+    gh auth login
+
+Acepta todas las opciones por defecto. Una vez hagas todo correctamente saldrá algo similar 
+a esto::
+
+    ✓ Authentication complete.
+    - gh config set -h github.com git_protocol https
+    ✓ Configured git protocol
+    ✓ Logged in as juanferfranco    
+
+
+El comando anterior te permitirá autorizar el acceso de tu computador 
+a tu cuenta en GitHub por medio de un proceso interactivo entre la terminal 
+y el browser.
 
 Ejercicio 14: comparte tu trabajo usando GitHub
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Abre la terminal y cámbiate al directorio demo2. Ejecuta el siguiente comando:
+Ahora ejecuta el siguiente comando::
 
-.. code-block:: bash 
+    gh repo create project1 --public --source=. --push --remote=origin
 
-    gh repo create demo2 --public --source=. --push --remote=upstream
+Si todo sale bien verás esto::
 
-``gh repo create demo2`` te permiten crear el repositorio remoto demo2 en 
-GitHub. ``--public`` hace que el repositorio sea público y lo puedas compartir 
+    ✓ Created repository juanferfranco/project1 on GitHub
+    ✓ Added remote https://github.com/juanferfranco/project1.git
+    ✓ Pushed commits to https://github.com/juanferfranco/project1.git
+    ➜  project1 git:(master)
+
+¿Qué estás haciendo? ``gh repo create project1``  te permiten crear el repositorio 
+remoto project1 en GitHub. ``--public`` hace que el repositorio sea público y lo puedas compartir 
 con cualquier persona. ``--source=.`` especifica en dónde está el 
-repositorio. ``--push`` permite enviar todos los commits locales al repositorio 
-remoto. Finalmente, ``--remote=upstream`` permite asignarle un nombre corto 
-al servidor remoto, en este caso upstream.
+repositorio local que enviarás a Internet. ``--push`` permite enviar todos los commits locales al repositorio 
+remoto. Finalmente, ``--remote=origin`` permite asignarle un nombre corto 
+al servidor remoto, en este caso ``origin``.
 
-Ingresa al sitio: https://github.com/TU_USUARIO/demo2 para observar tu repositorio 
+Ingresa al sitio: https://github.com/TU_USUARIO/project1 para observar tu repositorio 
 en GitHub. NO OLVIDES modificar la cadena ``TU_USUARIO`` con tu nombre de usuario 
 en GitHub.
 
 Ejercicio 15: actualiza tu repositorio remoto
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Realiza los siguientes pasos:
+Ahora modifica de nuevo el archivo main.c así::
 
-#. Modifica f1.txt
-#. Realiza un commit con los cambios
+    #include <stdio.h>
+    #include <stdlib.h>
 
-Verifica el estado del repositorio:
+    int main(){
+        printf("La vida es bella!!!\n");
+        return(EXIT_SUCCESS);
+    }
 
-.. code-block:: bash 
+Realiza un commit en el respositorio local::
 
-    git status
+    git commit -am "add exclamation marks"
+
+
+¿Notaste algo? En un solo paso pasate main.c a la zona de fotos (STAGE) y 
+realizaste el commit.
+
+Verifica el estado del repositorio::
 
     On branch master
-    Your branch is ahead of 'upstream/master' by 1 commit.
+    Your branch is ahead of 'origin/master' by 1 commit.
     (use "git push" to publish your local commits)
 
     nothing to commit, working tree clean
 
-Observa el mensaje ``Your branch is ahead of 'upstream/master' by 1 commit.`` 
+Observa el mensaje ``Your branch is ahead of 'origin/master' by 1 commit.`` 
 Git detecta que tu repositorio local está adelantado un commit con respecto 
 al repositorio remoto. Observa que el propio Git te dice cómo actualizar 
-el repositorio remoto:
-
-.. code-block:: bash 
+el repositorio remoto::
 
     git push 
 
-Vuelve el verificar el estado:
-
-.. code-block:: bash 
+Vuelve el verificar el estado::
 
     git status
 
+Y el resultado será::
+
     On branch master
-    Your branch is up to date with 'upstream/master'.
+    Your branch is up to date with 'origin/master'.
 
     nothing to commit, working tree clean
 
-Y finalmente el historial:
 
-.. code-block:: bash 
+Y finalmente vuelve a mirar el historial del proyecto::
 
-    commit 74f273a64864279df506e95ba496dc2a521cb876 (HEAD -> master, upstream/master)
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Thu Jan 13 11:31:50 2022 -0500
+    git log 
 
-        add LINEA 14 to test my remote
+El resultado será::
 
-    commit 6c2e0fc824981b406c68dccc9ef34ad86f9ea8e4
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Thu Jan 13 09:11:27 2022 -0500
+    commit 56cef2b7d4a8f6fd03dcf302890d4e110cccb861 (HEAD -> master, origin/master)
+    Author: yo <yo@yolandia.com>
+    Date:   Wed Jul 20 16:02:12 2022 -0500
 
-        init repo
+        add exclamation marks
 
-Mira el texto ``(HEAD -> master, upstream/master)``. Indica que tu repositorio 
+    commit 882d93e233a7634ae03566c267f5cb9e55a42f45
+    Author: yo <yo@yolandia.com>
+    Date:   Wed Jul 20 15:22:00 2022 -0500
+
+        Revert "add a new print"
+        
+        This reverts commit 2a0afbb7efa9c58a364143edf6c5cf76dccfab0b.
+
+    commit 2a0afbb7efa9c58a364143edf6c5cf76dccfab0b
+    Author: yo <yo@yolandia.com>
+    Date:   Wed Jul 20 11:02:03 2022 -0500
+
+        add a new print
+
+    commit 1f2009fabfc4895ee6b063c23c6f5c7ea7175209
+    Author: yo <yo@yolandia.com>
+    Date:   Wed Jul 20 10:52:46 2022 -0500
+
+        Initial version of the project main file
+
+Mira el texto ``(HEAD -> master, origin/master)``. Indica que tu repositorio 
 local y remoto apuntan al mismo commit.
 
 Ejercicio 16: repasa (evaluación formativa)
@@ -741,12 +836,11 @@ En este punto te pediré que descanses un momento. En este
 ejercicio vas a repasar el material que has trabajo. Te pediré 
 que hagas lo siguiente:
 
-#. Crea un directorio llamado demo3. Ten presente cambiarte 
-   primero al directorio padre de demo2. NO DEBES tener un repositorio 
-   en otro repositorio (se puede hacer, pero aprenderás la manera adecuada
-   de hacerlo luego).
+#. Crea un directorio llamado project2. Ten presente cambiarte 
+   primero al directorio padre de project1. NO DEBES tener un repositorio 
+   en otro repositorio.
 #. Inicia un repositorio allí.
-#. Crea unos cuantos archivos.
+#. Crea unos cuantos archivos de texto.
 #. Dile a Git que haga tracking de esos archivos.
 #. Realiza un primer commit.
 #. Crea un repositorio remoto en GitHub que esté sincronizado con 
@@ -759,15 +853,9 @@ Ejercicio 17: clona un repositorio de GitHub
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ahora vas a descargar un repositorio de GitHub. Cámbiate al directorio padre 
-de demo3. Escribe el comando:
+de project2. Escribe el comando::
 
-.. code-block:: bash 
-
-    gh repo clone juanferfrancoudea/demo4
-
-.. note::
-
-    También puedes usar el comando git clone https://github.com/juanferfrancoudea/demo4.git
+    git clone https://github.com/juanferfrancoudea/demo4.git
 
 Cámbiate al directorio demo4.
 
@@ -776,15 +864,11 @@ Cámbiate al directorio demo4.
 #. Realiza un cambio a f1.txt.
 #. Realiza un commit al repositorio local.
 
-Ahora trata de actualizar el repositorio remoto con:
-
-.. code-block:: bash 
+Ahora trata de actualizar el repositorio remoto con::
 
     git push
     
-Deberías obtener un mensaje similar a este:
-
-.. code-block:: bash 
+Deberías obtener un mensaje similar a este::
 
     remote: Permission to juanferfrancoudea/demo4.git denied to juanferfranco.
     fatal: unable to access 'https://github.com/juanferfrancoudea/demo4.git/': The requested URL returned error: 403
@@ -806,7 +890,7 @@ Ejercicio 18: repasa (evaluación formativa)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ha llegado la hora de volver a repasar TODOS los comandos que has aprendido. 
-Actualiza tu lista de comandos y escribe al frente de cada uno con tus palabras 
+Actualiza tu lista de comandos y escribe al frente de cada uno, con tus palabras,  
 qué hace. En este punto ya deberías tener más claridades. Por tanto, revisa de nuevo 
 la redacción de los comandos que ya tenías.
 
@@ -838,7 +922,7 @@ Sigue estos pasos:
 
 * Abre un browser e ingresa a tu cuenta de GitHub. ASEGÚRATE POR FAVOR que estás 
   en tu cuenta.
-* Abre una nueva pestaña e ingresa a `este <https://classroom.github.com/a/-RlC33Hq>`__ sitio.
+* Abre una nueva pestaña e ingresa a `este <https://classroom.github.com/a/sXNRDAEb>`__ sitio.
 * Busca y selecciona tu nombre y ID. Esta operación ENLAZARÁ tu cuenta de GitHub con tu nombre 
   y ID.
 * Por último acepta la tarea.
@@ -846,7 +930,9 @@ Sigue estos pasos:
 * Abre tu nuevo repositorio en otra pestaña.
 * Selecciona el menú Actions y dale click al botón ``Enable Actions on this 
   repository``. Si no aparece el botón es porque ya están habilitadas las acciones.
-* Descarga el repositorio a tu computador.
+* CLONA el repositorio a tu computador. En tu repositorio despliega el botón ``Code``, selecciona 
+  la pestaña http y copia la URL de tu repositorio. Usa esta URL con el comando git clone. Recuerda 
+  NO CLONAR el respositorio dentro de otro repositorio LOCAL.
 * Ingresa al directorio ``dirTest/project``.
 * Lee el archivo ``README.md``. Lo puedes hacer en tu computador y en Internet. Cuando 
   lo leas en tu computador verás que está escrito en un lenguaje llamado 
@@ -907,8 +993,8 @@ Sigue estos pasos:
             fclose(inFile);
         }
         
-            exit(EXIT_SUCCESS);
-        }
+        exit(EXIT_SUCCESS);
+    }
 
 * Salva wcat.c y realiza un commit.
 * Luego sincroniza con el repositorio remoto (push). Esto hará que se disparen 
@@ -932,9 +1018,8 @@ cual se escribió el archivo README.md. Se trata del lenguaje Markdown que será
 el mismo que utilizarás para escribir la documentación de tus entregas. Como 
 te comenté antes, no tienes de qué preocuparte, realmente es muy fácil.
 
-#. Crea un directorio llamado demo6. Ten presente cambiarte 
-   primero al directorio padre donde están almacenados los demos anteriores.
-#. Ahora crea un directorio llamado code y cámbiate a ese directorio.
+#. Crea un directorio llamado project4. Ten presente cambiarte 
+   primero al directorio padre donde están almacenados los projects anteriores.
 #. Inicia un repositorio allí.
 #. Crea unos cuantos archivos.
 #. Dile a Git que haga tracking de esos archivos.
@@ -946,7 +1031,7 @@ te comenté antes, no tienes de qué preocuparte, realmente es muy fácil.
 
        .. code-block:: bash 
 
-          gh repo create NOMBRE --public --source=. --push --remote=upstream
+          gh repo create NOMBRE --public --source=. --push --remote=origin
 
 #. Modifica los archivos creados.
 #. Realiza un par de commits más.
@@ -954,38 +1039,19 @@ te comenté antes, no tienes de qué preocuparte, realmente es muy fácil.
 
 Hasta aquí nada nuevo, ¿Verdad? 
 
-#. Ingresa a GitHub y selecciona el menú Wiki.
-#. Click en el botón Create the first page.
+#. Ingresa a GitHub y selecciona la opción Create New File en el botón ``Add file``.
+#. Le vas a poner de nombre ``README.md``.
 #. Verás que se abre un editor en el cual podrás añadir tu documentación. Además 
-   podrás formatearlo en lenguaje Markdown utilizando las ayudas gráficas.
-#. Cambia el título del documento por ``DOCUMENTACIÓN DEL DEMO 6``.
-#. Indica que ese texto tendrá formato ``h1``.
+   podrás formatearlo en lenguaje Markdown.
+#. En `este <https://www.markdownguide.org/cheat-sheet/>`__ sitio puedes encontrar una 
+   cheat sheet del lenguaje.
+#. Cambia el título del documento por ``DOCUMENTACIÓN DEL PROJECT 4``.
+#. Indica que ese texto tendrá formato ``h1`` colocando el símbolo ``#`` antes del título.
 #. Puedes hacer click en el menú ``preview`` para que puedas ver cómo te va quedando el 
    documento.
-#. Ahora te pediré que explores las demás ayudas gráficas para insertar imágenes, 
-   hipervínculos, títulos de tipo h2 y h3, negrita, itálica, resaltado y listas ordenadas 
-   y no ordenadas.
+#. Ahora te pediré que insertes una imagen, un hipervínculo, un título de tipo h2 y otro tipo h3, 
+   escribas unas cuantas líneas de texto y coloques una palabra en negrita, itálica y resaltada,
+   crea una lista ordenada y una lista no ordenada.
 #. A medida que experimentas ve observando en preview cómo te queda.
-#. Una vez termines, dale click al botón ``save page``.
-#. Ahora copia la URL que aparece en ``Clone this wiki locally``.
-#. Cámbiate al directorio demo6.
-#. Clona el repositorio con la documentación así:
-
-   .. code-block:: bash 
-
-       git clone https://github.com/juanferfranco/demo6.wiki.git
-
-Notarás que se ha creado el directorio ``demo6.wiki`` y en el interior un archivo 
-llamado Home.md. Si lo abres podrás ver el código de tu documentación. En este punto 
-puedes elegir si quieres seguir editando tu documentación localmente o en GitHub; sin 
-embargo, para terminar el ejercicio y practicar un poco más te voy a pedir que 
-modifiques localmente el documento Home.md y añadas lo siguiente, pero ten en cuenta 
-que por cada paso puedes ir realizando un commit local y luego sincronizando con 
-el repositorio remoto.
-
-#. Un subtítulo h2.
-#. Un texto. En el cuerpo del texto coloca algo en negrita, en itálica y resaltado.
-#. Agrega una imagen.
-#. Agrega una lista ordenada y no ordenada que contengan hipervínculos.
-
-
+#. Una vez termines, dale click al botón ``Commit changes``.
+#. Regresa al inicio del repositorio para que veas tu obra de arte.
