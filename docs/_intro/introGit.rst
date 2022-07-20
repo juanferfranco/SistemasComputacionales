@@ -122,8 +122,6 @@ Te estarás preguntando, qué es ``.`` y ``..``. Se trata de referencias a dos d
 se refiere al directorio actual y ``..`` se refiere al directorio padre. Entonces, si 
 escribes este comando::
 
-.. code-block:: bash 
-
     cd ..
 
 .. note:: RETO
@@ -131,6 +129,7 @@ escribes este comando::
     ¿Cuál crees que sea el resultado? 
     
 ¿Perdido? No te preocupes. Repitamos el proceso juntos. Supón que la posición actual es::
+
   pwd
   /home/jfupb/demo1
 
@@ -317,12 +316,10 @@ mínimas para informarle a Git un nombre de usuario y un correo. Esta informaci�
 permite que Git identifique a la persona responsable de realizar los cambios 
 a un archivo. Recuerda que Git está diseñado para que puedas trabajar en equipo.
 
-Escribe los siguientes comandos:
+Escribe los siguientes comandos, pero cambia name y email por tus datos::
 
-.. code-block:: bash 
-
-    git config --global user.name "Coloca tu nombre"
-    git config --global user.email "tu correo electrónico"
+    git config --local user.name "yo"
+    git config --local user.email "yo@yolandia.com"
 
 
 Ejercicio 7: para pensar
@@ -337,24 +334,25 @@ de tu proyecto incluyendo el directorio .git?
 Ejercicio 8: reconocer el estado del repositorio 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora ejecuta el siguiente comando:
-
-.. code-block:: bash 
+Ahora ejecuta el siguiente comando::
 
     git status
 
-Verás algo así:
-
-.. code-block:: bash 
+Verás algo así::
 
     On branch master
 
     No commits yet
 
-    nothing to commit (create/copy files and use "git add" to track)
+    Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+        main.c
+
+    nothing added to commit but untracked files present (use "git add" to track)
+
 
 El resultado por ahora es muy interesante. Verás que estás trabajando en la 
-rama (branch) master. Las ramas son una característica MUY útil de git. Como 
+rama (branch) master. Las ramas son una característica MUY útil de Git. Como 
 su nombre indica te puedes ir por las ramas. Te lo explico con una historia. 
 Supón que estás trabajando en tu proyecto y se te ocurre una idea, algo nuevo 
 para implementar; sin embargo, no quieres dañar tu proyecto principal. Entonces 
@@ -362,79 +360,34 @@ lo que haces es que te creas una rama que tomará como punto de partida el estad
 actual de tu proyecto. En esa nueva rama realizas los ensayos que quieras. Si 
 al final no te gusta el resultado, simplemente destruyes la rama y tu proyecto 
 seguirá como lo habías dejado antes de crear la rama. Pero si el resultado te gusta 
-entonces podrás hacer un MERGE e incorporar las ideas de la nueva rama a la rama 
+entonces podrás hacer un ``MERGE`` e incorporar las ideas de la nueva rama a la rama 
 inicial. Ten presente que si no quieres trabajar en la nueva rama y deseas retomar el 
 trabajo en la rama principal lo puedes hacer, te puedes cambiar de ramas. Incluso puedes 
 crear muchas más y probar varias ideas en simultáneo.
 
 Ahora observa el mensaje ``No commits yet``. Este mensaje quiere decir que aún no has guardado 
-nada en el repositorio. Finalmente, ``nothing to commit`` te está diciendo que no 
-hay nada para guardar en el repositorio porque no has hecho nada hasta ahora; sin embargo,
-observa que git te da pistas de lo que puedes hacer: ``(create/copy files and use "git add" to track)``. 
-Te propone usar el comando ``git add``. Con este comando le puedes decir a Git  
-qué archivos quieres observar o hacerles ``TRACK``. Es lógico, ¿Cierto? No siempre 
-quieres mantener la historia de todos los archivos o simplemente algunos archivos 
-son generados en procesos de compilación de código fuente a código ejecutable. En 
-esos casos solo vas a querer mantener bajo control de versión los archivos de código fuente.
+nada en el repositorio.  Luego te dice ``Untracked files`` y te muestra una lista de los 
+archivos detectados en tu proyecto (main.c en este caso), pero que no están bajo control 
+de versión. Tu debes decirle explícitamente a Git a qué archivos debe hacer ``tracking``.
+Finalmente, ``nothing added to commit but untracked files present (use "git add" to track)`` quiere 
+decir que si en este momento le pides a Git que guarde en el repositorio una ``FOTO`` (``commit``) 
+del estado actual de los archivos que están bajo tracking, Git te dice que no hay nada para guardar.
+Nota que Git da sugerencias: ``(use "git add" to track)``, es decir, te dice qué necesitas 
+hacer para colocar el archivo main.c en tracking.
 
-Ejercicio 9: adicionar un archivo al repositorio 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Para hacer las cosas más simples, por ahora solo vas a simular 
-la creación de un proyecto de software usando archivos de texto 
-simples.
-
-Crea un archivo de texto así:
+Ejercicio 9: adiciona tu primer archivo al repositorio 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash 
 
-    touch f1.txt 
+    git add main.c 
 
-Luego de este comando deberías tener el directorio demo1 así:
-
-.. code-block:: bash 
-
-    ls -al
-
-    total 12
-    drwxrwxr-x  3 jfupb jfupb 4096 Jan 12 15:52 .
-    drwxr-x--- 22 jfupb jfupb 4096 Jan 12 15:52 ..
-    -rw-rw-r--  1 jfupb jfupb    0 Jan 12 15:52 f1.txt
-    drwxrwxr-x  7 jfupb jfupb 4096 Jan 12 15:32 .git
-
-Ahora ejecuta el comando:
-
-..  code-block:: bash 
+Y de nuevo observa el estado del repositorio::
 
     git status
 
-Verás esto:
-
-.. code-block:: bash 
-
-    On branch master
-
-    No commits yet
-
-    Untracked files:
-    (use "git add <file>..." to include in what will be committed)
-        f1.txt
-
-    nothing added to commit but untracked files present (use "git add" to track)
-
-Nota entonces que ya tienes en el directorio tu primer archivo, pero aún no 
-le has pedido a Git que te haga ``tracking`` de ese archivo. Entonces ejecuta el 
-comando:
-
-.. code-block:: bash 
-
-    git add f1.txt 
-
-Y de nuevo observa el estado del repositorio:
-
-.. code-block:: bash 
-
-    git status
+El resultado será::
 
     On branch master
 
@@ -442,142 +395,95 @@ Y de nuevo observa el estado del repositorio:
 
     Changes to be committed:
     (use "git rm --cached <file>..." to unstage)
-        new file:   f1.txt
+        new file:   main.c
+
 
 Te explico con una metáfora lo que está pasando. Imagina que Git 
 le toma fotos al estado de tu proyecto cada que se lo solicitas; sin embargo, 
 antes de tomar la foto tienes que decirle a Git (``con add``) a qué archivos 
 le tomarás la foto. Todos los archivos que serán tenidos en cuenta para la 
-próxima foto se ubican en una zona lógica denominada el STAGE. Mira el mensaje 
+próxima foto se ubican en una zona lógica denominada el ``STAGE``. Mira el mensaje 
 ``(use "git rm --cached <file>..." to unstage)``. Observa que Git te está diciendo
-que f1.txt ya está listo para la foto, pero si te arrepientes de incluir el archivo 
-en la foto puedes ejecutar el comando sugerido. Prueba sacar de la foto a f1.txt:
+que main.c ya está listo para la foto (``Changes to be committed``), pero si te arrepientes de incluir el archivo 
+en la foto puedes ejecutar el comando sugerido. Prueba sacar de la foto a main.c::
 
-.. code-block:: bash 
+    git rm --cache main.c
 
-    git rm --cached f1.txt
-
-Mira el estado del repositorio:
-
-.. code-block:: bash 
+Mira el estado del repositorio::
 
     git status
+
+Verás algo así::
+
     On branch master
 
     No commits yet
 
     Untracked files:
     (use "git add <file>..." to include in what will be committed)
-        f1.txt
+        main.c
 
     nothing added to commit but untracked files present (use "git add" to track)
 
-¿Te das cuenta? Hemos sacado de la foto (DEL STAGE) a f1.txt. Volvamos a invitar 
-a f1.txt a la foto:
 
-.. code-block:: bash 
+¿Te das cuenta? Acabas de sacar de la foto (DEL STAGE) a main.c. Ahora vuelve a invitar a 
+main.c a la foto::
 
-    git add f1.txt 
+    git add main.c 
 
-Ahora ``TOMA LA FOTO``:
+Ahora ``TOMA LA FOTO`` (realiza el commit)::
 
-.. code-block:: bash 
+    git commit -m "Initial version of the project main file"
 
-    git commit -m "adicionamos f1.txt al repositorio"
+Consulta el estado del repositorio::
 
-Consulta el estado del repositorio:
+    git status
 
-.. code-block:: bash 
+El resultado será::
 
     On branch master
     nothing to commit, working tree clean
 
 Puedes ver que Git está observando todo lo que pasa en el directorio de tu 
-proyecto. Por ahora Git sabe que no has hecho nada más y por eso que te dice 
+proyecto. Por ahora Git sabe que no has hecho nada más y por eso te dice 
 ``nothing to commit, working tree clean``.
 
 Lo último que te voy a pedir que hagas con este ejercicio es que le preguntes 
-a Git qué fotos (``COMMITS``) se han tomado en el repositorio:
-
-.. code-block:: bash 
+a Git qué fotos (``COMMITS``) se han tomado en el repositorio::
 
     git log 
 
-El resultado es:
+El resultado es::
 
-.. code-block:: bash 
+    commit 1f2009fabfc4895ee6b063c23c6f5c7ea7175209 (HEAD -> master)
+    Author: yo <yo@yolandia.com>
+    Date:   Wed Jul 20 10:52:46 2022 -0500
 
-    commit c14b43cde2ebac63a56377ba1f6faa67316d48ff (HEAD -> master)
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Wed Jan 12 16:10:17 2022 -0500
+        Initial version of the project main file
 
-        adicionamos f1.txt al repositorio
-    (END)
-
-Nota que el commit está identificado con el hash ``c14b43cde2ebac63a56377ba1f6faa67316d48ff``, 
+Nota que el commit está identificado con el hash ``1f2009fabfc4895ee6b063c23c6f5c7ea7175209``, 
 el autor, correo, fecha, hora y la descripción del commit.
 
-Ejercicio 10: retos 
-^^^^^^^^^^^^^^^^^^^^^
+Ejercicio 10: recuerda
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Para un momento. Repasa los ejercicios anteriores, actualiza tu lista 
-de comandos con la explicación de qué hacen. Una vez estés en este punto 
-realiza los siguientes retos:
-
-#. Crea un nuevo commit con el archivo f2.txt
-#. Crea un nuevo commit que incluya los archivos f3.txt y f4.txt
-
-NOTA: no olvides escribir ``git status`` entre cada comando que ejecutes 
-para que puedas ir leyendo qué va ocurriendo con el repositorio.
-
-Al finalizar este ejercicio deberías ver algo así:
-
-.. code-block:: bash 
-
-    git log 
-
-    commit 7ec66fb9215999518fe5907c8c1360036906476e (HEAD -> master)
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Wed Jan 12 17:19:14 2022 -0500
-
-        Add f3.txt and f4.txt
-
-    commit 11950128c3d3dc6cc7b3cfda7a3e5a8ed566c235
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Wed Jan 12 17:16:59 2022 -0500
-
-        add f2.txt
-
-    commit c14b43cde2ebac63a56377ba1f6faa67316d48ff
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Wed Jan 12 16:10:17 2022 -0500
-
-        adicionamos f1.txt al repositorio
-    (END)
-
-
-    git status  
-
-    On branch master
-    nothing to commit, working tree clean
+de comandos con la explicación de qué hacen.
 
 Ejercicio 11: modificar el contenido de un archivo 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Modifica el contenido del archivo f1.txt añadiendo tres líneas de texto 
-(escribe lo que tu corazón te dicte). Salva el archivo.
+Modifica el contenido del archivo main.c añadiendo otro mensaje para imprimir 
+(escribe lo que tu corazón te dicte). ``Salva el archivo``. NO LO OLVIDES, salva 
+el archivo.
 
-Al verificar el estado del repositorio verás:
-
-.. code-block:: bash 
-
-    git status
+Al verificar el estado del repositorio verás::
 
     On branch master
     Changes not staged for commit:
     (use "git add <file>..." to update what will be committed)
     (use "git restore <file>..." to discard changes in working directory)
-        modified:   f1.txt
+        modified:   main.c
 
     no changes added to commit (use "git add" and/or "git commit -a")
 
@@ -592,7 +498,7 @@ el mensaje:
 
     Untracked files:
     (use "git add <file>..." to include in what will be committed)
-        f1.txt
+        main.c
 
     nothing added to commit but untracked files present (use "git add" to track)
 
@@ -601,33 +507,23 @@ sin embargo, una vez está creado el archivo y lo modificas, Git te dice
 ``Changes not staged for commit``. 
 
 En este caso, Git le hace tracking a tu archivo, pero tu no has decidido pasar el 
-archivo a STAGE para poderle tomar la foto con los cambios que tiene ahora. 
-¿Cómo lo haces? Mira que en el mensaje Git te dice: ``git add f1.txt``. Nota que Git 
+archivo a ``STAGE`` para poderle tomar la foto con los cambios que tiene ahora. 
+¿Cómo lo haces? Mira que en el mensaje Git te dice: ``git add main.c``. Nota que Git 
 también te dice que puedes descartar los cambios en el archivo con 
-``git restore f1.txt``. ¿Por qué no haces la prueba?
+``git restore main.c``. ¿Por qué no haces la prueba?
 
-Escribe:
+Escribe::
 
-.. code-block:: bash 
+    git restore main.c
 
-    git restore f1.txt
+Vuelve a visual studio code y verifica qué paso con el archivo.
 
-Luego para ver en la terminal el contenido del archivo:
-
-.. code-block:: bash
-
-    cat f1.txt
-
-¿Ya no hay nada, cierto? Mira el estado del repositorio:
-
-.. code-block:: bash 
-
-    git status
+¿Ya no está la modificación anterior, cierto? Mira el estado del repositorio::
 
     On branch master
     nothing to commit, working tree clean
 
-Vuelve a modificar f1.txt, pero esta vez si guardarás los cambios 
+Vuelve a modificar main.c, pero esta vez si guardarás los cambios 
 en el repositorio. Recuerda los pasos:
 
 #. Cambias el archivo
@@ -637,37 +533,32 @@ en el repositorio. Recuerda los pasos:
 #. Verifica de nuevo el estado del repositorio (status)
 #. Verifica el historial del repositorio (log)
 
-Te debe quedar algo así:
+Te debe quedar algo así::
 
-.. code-block:: bash 
+    commit 2a0afbb7efa9c58a364143edf6c5cf76dccfab0b (HEAD -> master)
+    Author: yo <yo@yolandia.com>
+    Date:   Wed Jul 20 11:02:03 2022 -0500
 
-    commit 3c8fee79d84b5e1bee87eebd67d06db821168951 (HEAD -> master)
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Thu Jan 13 08:15:26 2022 -0500
+        add a new print
 
-        update f1.txt
+    commit 1f2009fabfc4895ee6b063c23c6f5c7ea7175209
+    Author: yo <yo@yolandia.com>
+    Date:   Wed Jul 20 10:52:46 2022 -0500
 
-    commit 7ec66fb9215999518fe5907c8c1360036906476e
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Wed Jan 12 17:19:14 2022 -0500
+        Initial version of the project main file    
 
-        Add f3.txt and f4.txt
-
-    commit 11950128c3d3dc6cc7b3cfda7a3e5a8ed566c235
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Wed Jan 12 17:16:59 2022 -0500
-
-        add f2.txt
-
-    commit c14b43cde2ebac63a56377ba1f6faa67316d48ff
-    Author: jfupb <juanf.franco@upb.edu.co>
-    Date:   Wed Jan 12 16:10:17 2022 -0500
-
-        adicionamos f1.txt al repositorio
-
-
-Ejercicio 12: ¿Y si ya tienes un proyecto creado? 
+Ejercicio 12: volver a una versión anterior 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ahora supón que quieres volver a una versión anterior 
+de main.c
+
+
+
+
+
+
+
 
 Supón que ya tienes un proyecto creado o justo acabas de crear un 
 proyecto y quieres iniciar desde ese punto el control de versión.
