@@ -26,7 +26,7 @@ algunos de los conceptos clave del video anterior.
   evaluación de ciencia básica?
 * ¿Eres adicto a la procrastinación?
 * ¿Qué puedes hacer cuando tenga ganas de procrastinar?
-* Te consideras un ``hiker learner`` o un ``racecar learner``?
+* Te consideras un ``hiker learner`` o un ``race car learner``?
 * ¿Qué será mejor, dividir el tiempo de estudio en pequeños momentos todos los días o 
   juntar todos esos pequeños momentos el día antes de la evaluación?
 * ¿Cómo te puedes autoevaluar cuando estás aprendiendo algo nuevo?

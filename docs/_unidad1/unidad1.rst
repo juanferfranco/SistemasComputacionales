@@ -4,29 +4,25 @@ Unidad 1. Arquitectura del computador
 Introducción
 --------------
 
-En esta unidad vas a aprender los bloques de construcción
-básicos del hardware de un sistema de cómputo moderno y cómo 
-esos bloques pueden combinarse para construir computadores.
+En esta unidad vas a aprender los bloques de construcción básicos del hardware de un sistema de cómputo 
+moderno, cómo esos bloques pueden combinarse para construir computadores y cómo hacen para ejecutar programas.
 
 Propósito de aprendizaje
 ****************************
 
-Comprender cómo funciona el hardware de un computador moderno 
-desde una perspectiva sistémica, es decir, estudiando las partes 
-que lo componen y cómo conectarlas entre ellas para conseguir funciones 
+Comprender cómo funciona el hardware de un computador moderno desde una perspectiva sistémica, es decir, 
+estudiando las partes que lo componen y cómo conectarlas entre ellas para conseguir funciones 
 cada vez más complejas.
 
-¿Cómo lo haremos? Emprendiendo una de las aventuras más interesantes: construyendo 
-un computador.
+Te acercarás al lenguaje de programación ensamblador y verás la relación con un lenguaje similar, hasta 
+cierto punto, a C# en su sintaxis llamado C.
+
 
 Temas
 ********
 
-* Compuertas lógicas
-* Circuito lógicos y aritméticos: ALU
-* Memorias y registros.
-* Lenguaje de máquina / lenguaje ensamblador
-* Arquitectura del computador
+* Organización básica de un computador digital moderno.
+* Lenguaje de máquina-lenguaje ensamblador-lenguaje C
 
 Trayecto de actividades
 ------------------------
@@ -38,8 +34,6 @@ Sesión 1
 
 Ejercicio 1: introducción al control de versión 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
 
 Trabajo autónomo 1
 ********************

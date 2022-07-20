@@ -7,33 +7,38 @@ todos los proyectos y ejercicios del curso bajo control de versión.
 Trayecto de actividades
 ---------------------------------
 
-Lectura 1: ¿Qué es un sistema de control versión?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lectura 1: sistemas de control de versión 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+En este curso vas a realizar todos los ejercicios y evaluaciones usando 
+un sistema de control de versión: Git y Github.
+
+¿Qué es un sistema de control versión?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cuando estás desarrollando software, alguna vez te ha pasado que terminas 
-con nombres de archivos marcados con frases tales como:
+nombrando tus archivos así::
 
 * Versión buena con un error
 * Versión casi lista con un bug
 * Versión para compartir con Camila
 * Versión para enviar al profesor
 * Esta versión si está bien
-* Versión 1, versión 1.1, versión 2, versión 3
+* Versión 1, versión 1-1, versión 2, versión 3
 * versión enero 11 de 2022.
-  
-Lo anterior es muy posible que te pase si no usas un sistema de control 
-de versión. 
 
-Pero entonces ¿Qué haces si quieres mantener la historia de cambios de tus 
-archivos? ¡Fácil! usas un sistema de control de versión. Un sistema de control 
+¿No sería ideal que el nombre de una archivo siempre fuera el mismo y existiera 
+una forma de acceder a todo el historial de cambios del archivo?
+
+Lo anterior lo puedes lograr con un sistema de control de versión. Un sistema de control 
 de versión te ayuda a evitar la necesidad de guardar tus archivos con nombres 
 diferentes a medida que realizas cambios, incluyes nuevas características 
 o tienes alguna nueva receta de archivos para producir tu programa. El sistema 
 de control de versión te ayudará a gestionar la versión de los archivos 
 de manera automática evitando procesos manuales tediosos y susceptibles al error.
 
-Un sistema de control de versión ES UN PROGRAMA (que instalas en tu computador)
-que te permitirá hacer la trazabilidad y guardar información de los cambios que haces a tus 
+El sistema de control de versión ES UN PROGRAMA (que instalas en tu computador)
+que te permitirá trazar y guardar información de los cambios que haces a tus 
 archivos en el tiempo. Podrás recuperar incluso una versión pasada de un archivo si 
 descubres que cometiste un error. 
 
@@ -43,8 +48,8 @@ Quiero contarte además que hoy en día prácticamente es impensable una
 empresa que desarrolle cualquier producto de software que NO TENGA control 
 de versión.
 
-Lectura 2: ¿Qué es Git y GitHub?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+¿Qué es Git y GitHub?
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Git es un sistema de control de versión libre y de código abierto que instalas 
 en tu computador para realizar el control de versión de tus proyectos. 
@@ -53,98 +58,57 @@ en Internet con la información del control de versión que tienes en tu computa
 ¿Para qué quieres esto? Para compartir tu código, para hacer copias de seguridad, 
 para mostrar tus habilidades y portafolio y SOBRE TODO para trabajar en EQUIPO. 
 
-Por medio de GitHub, las aportaciones de cada miembro del equipo se pueden 
+Por medio de GitHub, los aportes de cada miembro del equipo se pueden 
 sincronizar y compartir. De esta manera, es posible construir productos de software 
 muy complejos en los cuales participen MUCHOS desarrolladores.
 
-Ejercicio 1: instala Git
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ingresa a `este <https://git-scm.com/downloads>`__ sitio y descarga Git. Recuerda seleccionar 
-la versión correcta según tu sistema operativo.
+Ejercicio 1: introducción a la terminal 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Si estás utilizando Windows, al momento de instalar te recomiendo que ajustes 
-el PATH con la opción: ``Git from the command line and also from 3rd-party software``.
-Esta opción te permitirá usar Git con varias aplicaciones.
-
-Una vez esté instalado Git vas a abrir una terminal en Linux o MacOS. En windows 
-puedes abrir varias opciones: Git bash (que es instalada con Git), 
-el símbolo del sistema (Command Prompt o CMD) o PowerShell. Verifica 
-cuál de las opciones que te da Windows funciona mejor para ti. Para los ejercicios 
-que siguen puedes usar Git bash; sin embargo, puedes explorar los comandos de 
-Windows equivalentes `aquí <https://www.lemoda.net/windows/windows2unix/windows2unix.html>`__ 
-que puedes emplear en Command Prompt o PowerShell. 
-
-.. code-block:: bash
-
-    git
-
-Verás algo como esto:
-
-.. code-block:: bash
-
-    usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
-           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
-           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
-           <command> [<args>]
-
-    These are common Git commands used in various situations:
-
-    start a working area (see also: git help tutorial)
-    clone             Clone a repository into a new directory
-    init              Create an empty Git repository or reinitialize an existing one
-
-    work on the current change (see also: git help everyday)
-    add               Add file contents to the index
-    mv                Move or rename a file, a directory, or a symlink
-    restore           Restore working tree files
-    rm                Remove files from the working tree and from the index
-    sparse-checkout   Initialize and modify the sparse-checkout
-
-    ...
-
-Ejercicio 2: la terminal
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Para realizar el control de versión de tus programas vas a usar inicialmente 
+la terminal. Una vez estés familiarizado con esta puedes explorar otras herramientas; sin embargo,
+la ventaja de la terminal es su rapidez y que definitivamente te obliga a entender 
+qué estás haciendo. Esto es importante porque luego este conocimiento lo podrás extrapolar 
+a cualquier herramienta gráfica.
 
 Es posible que esta sea tu primera experiencia con la terminal. La terminal 
 es un programa que te permite interactuar con el sistema operativo y los programas 
 que tienes instalados por medio de comandos. Es por ello que a la terminal 
 también la conocemos como interfaz de línea de comandos.
 
-Si cerraste la aplicación Git Bash o la terminal ábrele de nuevo. Escribe el 
-siguiente comando:
+Abre la terminal y escribe en el buscador de aplicaciones la palabra ``terminal``. 
+Escribe el siguiente comando::
 
-.. code-block:: bash
+  pwd
 
-    pwd
+En mi caso (en tu caso será distinto) el resultado es::
 
-En mi caso (en tu caso será distinto) el resultado es:
+  /home/jfupb
 
-.. code-block:: bash 
+Acabas de escribir tu primer comando en la terminal. ``pwd`` te permite 
+conocer la ruta en la cual estás posicionado en el sistema de archivos. Por el momento,
+piensa en el sistema de archivos como una forma de organizar la información en el computador 
+usando DIRECTORIOS.
 
-    /home/jfupb
+Ahora vas un nuevo DIRECTORIO::
 
-Conocer la Ruta en la cual estás posicionado en el sistema de archivos es muy 
-importante porque muchos de los comandos que ejecutarás dependerán de dicha posición. 
-Por ejemplo, si creas un nuevo DIRECTORIO, este será creado en 
-ese punto. Escribe el siguiente comando para crear un directorio:
+  mkdir demo1
 
-.. code-block:: bash 
 
-    mkdir demo1
+.. note:: RECUERDA
 
-Ahora te vas a cambiar a ese nuevo directorio, así:
+  ¿Qué comando debes ejecutar para saber en qué directorio estás posicionado en este momento?
 
-.. code-block:: bash 
 
-    cd demo1
+¿Y si quieres posicionarte en el nuevo directorio que acabas de crear? Ejecutas el comando 
+``cd`` que quiere decir ``change directory``::
 
-Para observar el contenido del nuevo directorio deberás escribir el comando:
+  cd demo1
 
-.. code-block:: bash
+Para listar el contenido del nuevo directorio deberás escribir el comando::
 
-    ls -al 
+  ls -al 
 
 Verás algo como esto:
 
@@ -156,51 +120,106 @@ Verás algo como esto:
 
 Te estarás preguntando, qué es ``.`` y ``..``. Se trata de referencias a dos directorios. ``.``
 se refiere al directorio actual y ``..`` se refiere al directorio padre. Entonces, si 
-escribes este comando:
+escribes este comando::
 
 .. code-block:: bash 
 
     cd ..
 
-¿Cuál crees que sea el resultado? ¿Perdido? No te preocupes. Repitamos el proceso juntos. 
-Supón que la posición actual es:
+.. note:: RETO
 
-.. code-block:: bash 
+    ¿Cuál crees que sea el resultado? 
+    
+¿Perdido? No te preocupes. Repitamos el proceso juntos. Supón que la posición actual es::
+  pwd
+  /home/jfupb/demo1
 
-    pwd
-    /home/jfupb/demo1
+Luego de ejecutar el comando::
 
-Luego de ejecutar el comando:
+  cd ..
 
-.. code-block:: bash 
-
-    cd ..
-
-El resultado será:
-
-.. code-block:: bash 
+El resultado será::
 
     pwd
     /home/jfupb
 
-Ahora vuelve a cambiarte al directorio demo1:
 
-.. code-block:: bash 
+.. note:: RECUERDA
 
-    cd ./demo1
+  En este momento debes estar en el directorio padre del directorio demo1. ¿Te cambias 
+  de nuevo al directorio demo1 por fa?
 
-¿Te diste cuenta? Al salirte de demo1 quedas en el directorio padre de este. Una 
-vez allí, ``.`` se refiere al directorio padre de ``demo1``. 
+Debiste hacer algo como esto::
+
+  cd demo1
+
+Ahora regresa de nuevo al directorio padre de demo1 y una vez estés allí ejecuta los comandos::
+
+  cd ./demo1
+  pwd
+
+El resultado será::
+
+  /home/jfupb/demo1
+
+¿Te diste cuenta? 
+
+.. note:: RECUERDA
+
+  La entrada `.` se refiere al directorio actual y ``..`` se refiere al directorio padre del 
+  directorio actual.
+
+Al cambiarte al padre de demo1, ``.`` se refiere al directorio padre de ``demo1``. 
 Por tanto, ``./demo1`` será la ruta RELATIVA de demo1 con respecto a su padre. 
+
+
+Ejercicio 2: Vas a practicar 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ahora te voy a pedir que hagas varias cosas y preguntes si tienes dudas:
+
+
+* Crea el directorio demo2 en demo1. ¿Recuerdas cómo listar el contenido de un directorio? 
+* Cámbiate al directorio padre de demo1 y desde allí crea el directorio demo3 en el directorio 
+  demo2.
+* ¿Cuál será la ruta relativa de demo3 con respecto a al padre de demo1?
+
+
+.. warning:: ALERTA DE SPOILER
+
+  Crea el directorio demo2 en demo1. ¿Recuerdas cómo listar el contenido de un directorio?::
+
+    mkdir demo2
+    ls -al
+
+  Cámbiate al directorio padre de demo1 y desde allí crea el directorio demo3 en el directorio 
+  demo2. Asumiendo que estás posicionado en demo1::
+
+    cd ..
+    mkdir ./demo1/demo2/demo3
+
+  ¿Cuál será la ruta relativa de demo3 con respecto a al padre de demo1?::
+
+    ../demo1/demo2/demo3
+
 
 Ejercicio 3: experimenta
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora tómate unos minutos para experimentar. ¿Cómo? trata de ejecutar los comandos, 
-pero antes de hacerlo ESCRIBE cuál será el resultado. Si el resultado es como 
-te lo imaginaste, en hora buena, vas bien. Si no es así, MUCHO mejor, tienes una 
-oportunidad de oro para aprender. Entonces trata de explicar qué está mal, discute 
-con otros compañeros y si quieres habla con el profe.
+¿Qué comandos has visto hasta ahora?::
+
+  pwd
+  ls -al
+  cd
+  mkdir
+
+Ahora tómate unos minutos para experimentar. ¿Cómo? 
+
+* Inventa tus propios ejemplo o retos.
+* Antes de ejecutar un comando PIENSA cuál sería el resultado.Si el resultado es como 
+  te lo imaginaste, en hora buena, vas bien. Si no es así, MUCHO mejor, tienes una 
+  oportunidad de oro para aprender. Entonces trata de explicar qué está mal, discute 
+  con otros compañeros y si quieres habla con el profe.
 
 Ejercicio 4: recuerda (evaluación formativa)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -210,9 +229,87 @@ De nuevo tómate unos minutos para:
 #. Listar cada uno de los comandos que has aprendido hasta ahora y escribe al 
    frete de cada uno qué hace.
 #. ¿Qué es una ruta absoluta?
-#. ¿QUé es una ruta relativa?
+#. ¿Qué es una ruta relativa?
 
-Ejercicio 5: configura Git
+
+Ejercicio 5: tu primer proyecto bajo control de versión
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Crea un directorio llamado project1 (mkdir)
+* Cámbiate a ese directorio (cd)
+
+En ``project1`` vas a simular la creación de un proyecto de software.
+
+Ahora crea un archivo en el directorio::
+
+    touch main.c
+
+Abre el directorio::
+
+    code .
+
+.. warning:: MUY IMPORTANTE
+
+    Siempre que trabajes en visual studio code abre DIRECTORIOS completos, no ARCHIVOS individuales.
+
+
+``code`` es el comando que escribes en la terminal para abrir el programa visual studio code. 
+¿Qué significa el ``.`` luego del comando?
+
+
+.. note:: ALERTA DE SPOILER 
+
+    No olvides que la entrada de directorio ``.`` se refiere al directorio actual en el que estás 
+    posicionado. ¿Y qué era ``..``?
+
+Ahora modifica el archivo main.c con el siguiente código:
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    int main(){
+        printf("La vida es bella\n");
+        return(EXIT_SUCCESS);
+    }
+
+Antes de continuar ejecuta el comando::
+
+    ls -al
+
+Deberías tener solo tres entradas::
+
+    .
+    ..
+    main.c
+
+
+Ahora si vamos a crear el repositorio::
+
+    git init
+
+Y solo con esto, ya tenemos el proyecto bajo control de versión. ¿Fácil, no?
+
+Escribe en la terminal el comando::
+
+    ls -al
+
+Notas que hay una nuevo directorio que no tenías antes::
+
+    .
+    ..
+    main.c 
+    .git
+
+Ese directorio ``.git`` es lo que llamamos un ``REPOSITORIO DE GIT``. En ese repositorio 
+el sistema de control de versión que tenemos instalado realizará el control de versión 
+de todo lo que le indiquemos. Ten presente que en este repositorio, Git guardará toda la información 
+relacionada con los cambios e historia de los archivos de tu proyecto que estén bajo control de versión.
+Puedes pensar que el repositorio es una especie de base de datos donde Git almacena un diario de qué 
+está pasando con cada uno de los archivos de tu proyecto.
+
+Ejercicio 6: configura Git
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Para hacer tus primeros experimentos con Git vas a realizar unas configuraciones 
@@ -227,55 +324,6 @@ Escribe los siguientes comandos:
     git config --global user.name "Coloca tu nombre"
     git config --global user.email "tu correo electrónico"
 
-
-Ejercicio 6: crea un repositorio
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Cámbiate al directorio demo1 de antes. Más adelante vas a simular la creación 
-de un proyecto de software en este directorio. Antes de comenzar a realizar 
-el proyecto vas a crear en el directorio un ``REPOSITORIO DE GIT``. 
-En este repositorio Git guardará toda la información relacionada con los cambios e historia 
-de los archivos de tu proyecto necesarios para realizar el proceso 
-de control de versión. Puedes pensar que el repositorio es una especie de base de 
-datos donde Git lleva la cuenta de qué está pasando con cada uno de los archivos 
-de tu proyecto.
-
-Escribe el siguiente comando:
-
-.. code-block:: bash
-
-    git init
-
-El resultado será similar a esto:
-
-.. code-block:: bash
-
-    hint: Using 'master' as the name for the initial branch. This default branch name
-    hint: is subject to change. To configure the initial branch name to use in all
-    hint: of your new repositories, which will suppress this warning, call:
-    hint: 
-    hint: 	git config --global init.defaultBranch <name>
-    hint: 
-    hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-    hint: 'development'. The just-created branch can be renamed via this command:
-    hint: 
-    hint: 	git branch -m <name>
-    Initialized empty Git repository in /home/jfupb/demo1/.git/
-
-Ahora observa el contenido del directorio:
-
-.. code-block:: bash
-
-    ls -al
-    total 12
-    drwxrwxr-x  3 jfupb jfupb 4096 Jan 11 17:14 .
-    drwxr-x--- 37 jfupb jfupb 4096 Jan 11 17:15 ..
-    drwxrwxr-x  7 jfupb jfupb 4096 Jan 11 17:14 .git
-
-Se creará una carpeta oculta ``.git``. Si quieres ver esta carpeta en el modo
-gráfico de tu sistema operativo, por ejemplo Windows Explorer en Windows, debes 
-habilitar la posibilidad de ver archivos y directorio ocultos. Busca en Internet 
-cómo hacer eso en tu sistema operativo.
 
 Ejercicio 7: para pensar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

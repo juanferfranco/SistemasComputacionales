@@ -17,11 +17,10 @@ Brian Will.
 Descripción del curso
 ----------------------
 
-El objeto de este curso es el estudio de los fundamentos de los sistemas de cómputo modernos desde la 
+El objeto de este curso es el estudio de los ``fundamentos de los sistemas de cómputo modernos`` desde la 
 perspectiva del programador. Por tanto, se estudiará cómo funciona un computador moderno pasando por el hardware 
 que lo compone, los lenguajes de programación, las herramientas y el sistema operativo. Se busca entonces 
-abordar aquellos conceptos que permitirán sacar provecho al sistemas 
-de cómputo a la hora de construir aplicaciones.
+abordar aquellos conceptos que permitirán sacar provecho al sistemas de cómputo a la hora de construir aplicaciones.
 
 Propósito del curso
 ---------------------
