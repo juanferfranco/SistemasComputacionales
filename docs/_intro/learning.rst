@@ -11,29 +11,33 @@ Trayecto de actividades
 Ejercicio 1: Learning how to learn 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Vamos a ver juntos este `video <https://youtu.be/O96fE1E-rf8>`__ de la profesora 
-`Barbara Oakley <https://barbaraoakley.com/>`__ grabado en una charla TED.
+En `este <https://www.idorecall.com/#science>`__ enlace hay un resumen EXCELENTE acerca de los principios que 
+según las ciencias cognitivas son los más claves para convertirse en un 
+APRENDIZ de ``élite``:
 
-Ejercicio 2: pensemos 
+* `Retrieval practice <https://zealous-talk-27c.notion.site/Retrieval-Practice-68db3d930c4d4d1db0448e3c505dd2ff>`__ (Input Less, Output More) --> El GIMNASIO para la memoria.
+
+  * Permite usar lo que ya sabemos --> Tengo que pensar
+  * Dificultades deseables --> RETO
+  * Cambia la metacognición --> ¿Qué sé y qué no sé?
+
+  Varias maneras de realizar retrieval practice:
+
+  - `Flashcards <https://apps.ankiweb.net/>`__ `¿Cómo crearlas? <https://medium.com/@iDoRecall/https-medium-com-idorecall-how-to-create-and-practice-flashcards-like-a-boss-b7efb5a53293>`__
+  - Tratar de resumir MENTALMENTE
+  - Enseñarle a alguien
+  - Crear de MEMORIA un mapa mental
+
+* `Interleaving <https://zealous-talk-27c.notion.site/Interleaving-3fe630ed39554c69a0a5135f086b24d9>`__ --> Entrenar la capacidad de SELECCIONAR y RELACIONAR.
+* `Variation <https://zealous-talk-27c.notion.site/Variation-5a7324c3ede74b2b94cbbf32f1ebcc33>`__ --> Ejercitar la memoria ASOCIATIVA.
+* `Metacognition Training <https://zealous-talk-27c.notion.site/Metacognition-4048352b401845cea23287a8f9bde48d>`__ REGULAR el aprendizaje.
+* `Progressive Reading <https://zealous-talk-27c.notion.site/Spacing-of-knowledge-acquisition-2ab0bd51aecf4645b08cea8d1684b281>`__ (Spacing) --> Comerse la torta de a poquitos. 
+  Ir estudiando semana a semana vs estudiar TODO el día anterior a la evaluación. 
+* `Spaced-repetition Flashcards <https://zealous-talk-27c.notion.site/Spaced-Repetition-spacing-of-retrieval-practice-fb5455d352744948b2df01961ca2ab07>`__ --> Para aplanar la curva del olvido.
+
+
+Ejercicio 2: Tips 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Ahora te voy a proponer una serie de preguntas para que recordemos juntos 
-algunos de los conceptos clave del video anterior.
-
-* Cuando estás estudiando algo nuevo ¿Qué deberías hacer si estás comenzando a sentirte 
-  atascado, frustrado y con ansiedad?
-* ¿Cómo puedes aplicar los modos de funcionamiento del cerebro para realizar una 
-  evaluación de ciencia básica?
-* ¿Eres adicto a la procrastinación?
-* ¿Qué puedes hacer cuando tenga ganas de procrastinar?
-* Te consideras un ``hiker learner`` o un ``race car learner``?
-* ¿Qué será mejor, dividir el tiempo de estudio en pequeños momentos todos los días o 
-  juntar todos esos pequeños momentos el día antes de la evaluación?
-* ¿Cómo te puedes autoevaluar cuando estás aprendiendo algo nuevo?
-
-.. warning:: ALERTA DE SPOILER
-
-  Sobre las preguntas previas:
 
   Los dos modos de operación del cerebro son ENFOCADO y DIFUSO. En el modo enfocado te 
   CONCENTRAS en algo, tienes puesta toda tu ATENCIÓN, te comprometes con tus pensamientos. En 
@@ -77,6 +81,8 @@ Ejercicio 3: seguro quieres más
 
 Si quieres aprender a aprender te recomiendo estos recursos:
 
+* Este `video <https://youtu.be/O96fE1E-rf8>`__ de la profesora 
+  `Barbara Oakley <https://barbaraoakley.com/>`__ grabado en una charla TED.
 * Curso `learning how to learn <https://www.coursera.org/learn/learning-how-to-learn>`__.
 * Barbara cuenta, en `esta <https://youtu.be/m9wXxywLVtQ?t=476>`__ conferencia estilo TED, 
   como la neurociencia está cambiando lo que sabemos acerca del aprendizaje.
