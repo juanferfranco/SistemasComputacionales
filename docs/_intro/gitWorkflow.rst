@@ -322,6 +322,41 @@ Para un momento.
 * Actualiza tu lista de comandos con la explicación de qué hacen.
 * Para el ejercicio que te inventaste repite el proceso anterior.
 
+.. warning:: NO TE PREOCUPES SI OLVIDAS
+
+    Te voy a proponer algo:
+
+    * Crea tu cuenta en notion
+    * Crea una página que llamarás GitCommands
+    * Para cada comando has esto:
+
+        * comando
+        * descripción
+        * pregunta
+    
+    * Por ejemplo: 
+
+        * git init
+        * Crea un repositorio local
+        * ¿Cómo se crea un repositorio local?
+
+    * ¿Recuerdas que te hablé de otra herramienta llamada 
+      `Anki <https://apps.ankiweb.net/>`__? Pues bien, lo que 
+      te propondré es que hagas algunas flashcards. Cada 
+      flashcard para un comando. Ya tienes la pregunta y 
+      la respuesta será el comando con su descripción.
+      Una vez construyas flashcards puedes comenzar a practicar.
+      Anki lo puedes tener en tu computador y en el celular.
+      Tener la app en el celular es muy útil porque puedes 
+      aprovechar para practicar diario y en cualquier momento. 
+      ¿Recuerdas la clase de aprender a aprender? Aquí estamos 
+      empleando la técnica de retrieval practice y estás 
+      espaciando en el tiempo tu práctica. Ahora, no olvides, 
+      lo más importante es trates de responder de memoria las 
+      preguntas que te hacen las flashcards.
+
+
+
 Ejercicio 11: modificar el contenido de un archivo 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
