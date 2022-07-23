@@ -1,8 +1,8 @@
-Trabajo en equipo git y GitHub
+Trabajo en equipo con git y GitHub
 ====================================================
 
 Ahora que ya sabes hacer algunas operaciones básicas con Git y GitHub, 
-vas a aprender a trabajar en equipo con otros compañeros
+vas a aprender a trabajar en equipo con otros compañeros.
 
 Trayecto de actividades
 ---------------------------------
@@ -19,13 +19,15 @@ Lectura 1: el concepto de ramas
 En Git SOLO puedes trabajar con un commit a la vez; sin embargo, 
 puedes tener diferente RAMAS apuntando a diferentes commits. De 
 esta manera tienes un mecanismo que te permite saltar fácilmente 
-de un commit a otro.
+de un commit a otro. Recuerda que con cada commit tienes una foto
+diferente de tu proyecto. Por tanto, cada que cambies entre commits 
+los archivos y contenido de tu proyecto cambiarán. 
 
-Por ahora solo hemos trabajado con la rama ``master``, pero cuando 
-queremos trabajar en equipo es necesario crear muchas más ramas. Las 
-ramas te permite crear secuencias independientes de commits. De esta 
+Por ahora solo has trabajado con la rama ``master`` o ``main``, pero 
+cuando quieras trabajar en equipo es necesario emplear muchas más ramas. Las 
+ramas te permite crear secuencias ``independientes`` de commits. De esta 
 manera es posible que dos o más personas puedan trabajar simultáneamente 
-en el mismo proyecto sin problema siempre y cuando cada una trabaje 
+en el mismo proyecto sin problema, siempre y cuando cada una trabaje 
 en una rama diferente.
 
 Ejercicio 1: creación de ramas 
@@ -55,16 +57,25 @@ El proyecto sigue progresando y ahora se une otro compañero:
 .. image:: ../_static/projectMasterF1F2.svg
     :alt: se añade feature2
 
-Entonces para crear una rama debes ejecutar::
+Entonces, para crear una rama debes ejecutar::
 
     git switch -c feature1
+
+La secuencia de commits en esa rama iniciará con el último commit 
+que tenía la rama desde la cual creaste la nueva.
 
 Ejercicio 3: experimenta
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Considera la última figura del ejercicio anterior. ¿Te animas a reproducirla? 
-La idea es que simules que en un proyecto están trabajando tres personas, una 
+La idea es que simules tres personas trabajando en paralelon, una 
 para master, otra para feature1 y la otra para feature2.
+
+.. image:: ../_static/branchesResultWithFiles.svg
+    :alt: ramas con archivos
+    :align: center
+
+|
 
 .. note:: ALERTA DE SPOILER
 
@@ -88,275 +99,228 @@ Los comandos serían::
     git commit -m "add f4 to feature1"
 
 
+Cuando termines compara::
 
+    git log --graph --abbrev-commit --decorate --date-order --all --oneline
 
+Varás algo así:
 
-¿Qué comandos has visto hasta ahora?::
-
-  pwd
-  ls -al
-  cd
-  mkdir
-
-Ahora tómate unos minutos para experimentar. ¿Cómo? 
-
-* Inventa tus propios ejemplo o retos.
-* Antes de ejecutar un comando PIENSA cuál sería el resultado. Si el resultado es como 
-  te lo imaginaste, en hora buena, vas bien. Si no es así, MUCHO mejor, tienes una 
-  oportunidad de oro para aprender. Entonces trata de explicar qué está mal, discute 
-  con otros compañeros y si quieres habla con el profe.
+.. image:: ../_static/branchesResultTerminal.png
 
 Ejercicio 4: recuerda (evaluación formativa)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-De nuevo tómate unos minutos para:
+* ¿Cómo se crea una rama?
+* ¿Cómo te cambias entre ramas?
+* ¿A cuál commit de la secuencia APUNTA cada rama?
 
-#. Listar cada uno de los comandos que has aprendido hasta ahora y escribe al 
-   frete de cada uno qué hace.
-#. ¿Qué es una ruta absoluta?
-#. ¿Qué es una ruta relativa?
+De nuevo tómate unos minutos para actualizar tu lista de 
+comandos y escribir una frase corta que diga qué hace el 
+comando.
 
-
-Ejercicio 5: tu primer proyecto bajo control de versión
+Ejercicio 5: inventa tu propio ejercicio
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Crea un directorio llamado project1 (mkdir)
-* Cámbiate a ese directorio (cd)
+Inventa tu propio ejercicio similar al propuesto para que 
+practiques.
 
-En ``project1`` vas a simular la creación de un proyecto de software.
-
-Ahora crea un archivo en el directorio::
-
-    touch main.c
-
-Abre el directorio::
-
-    code .
-
-.. warning:: MUY IMPORTANTE
-
-    Siempre que trabajes en visual studio code abre DIRECTORIOS completos, no ARCHIVOS individuales.
-
-
-``code`` es el comando que escribes en la terminal para abrir el programa visual studio code. 
-¿Qué significa el ``.`` luego del comando?
-
-
-.. note:: ALERTA DE SPOILER 
-
-    No olvides que la entrada de directorio ``.`` se refiere al directorio actual en el que estás 
-    posicionado. 
-    
-    Trata de recordar de nuevo ¿Qué era ``..``?
-
-Ahora modifica el archivo main.c con el siguiente código:
-
-.. code-block:: c
-
-    #include <stdio.h>
-    #include <stdlib.h>
-
-    int main(){
-        printf("La vida es bella\n");
-        return(EXIT_SUCCESS);
-    }
-
-Antes de continuar ejecuta el comando::
-
-    ls -al
-
-Deberías tener solo tres entradas::
-
-    .
-    ..
-    main.c
-
-
-Ahora si vamos a crear el repositorio::
-
-    git init
-
-Y solo con esto ya tienes un proyecto con control de versión. ¿Fácil, no?
-
-Escribe en la terminal el comando::
-
-    ls -al
-
-Notas que hay una nuevo directorio que no tenías antes::
-
-    .
-    ..
-    main.c 
-    .git
-
-Ese directorio ``.git`` es lo que llamamos un ``REPOSITORIO DE GIT``. En ese repositorio 
-el sistema de control de versión que tenemos instalado realizará el control de versión 
-de todo lo que le indiquemos. Ten presente que en este repositorio, Git guardará toda la información 
-relacionada con los cambios e historia de los archivos de tu proyecto que estén bajo control de versión.
-Puedes pensar que el repositorio es una especie de base de datos donde Git almacena un diario de qué 
-está pasando con cada uno de los archivos de tu proyecto.
-
-Ejercicio 6: configura Git
+Ejercicio 6: otros comandos útiles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Para hacer tus primeros experimentos con Git vas a realizar unas configuraciones 
-mínimas para informarle a Git un nombre de usuario y un correo. Esta información
-permite que Git identifique a la persona responsable de realizar los cambios 
-a un archivo. Recuerda que Git está diseñado para que puedas trabajar en equipo.
+Quieres listar todas las ramas que tienes::
 
-Escribe los siguientes comandos, pero cambia name y email por tus datos::
+    git branch
 
-    git config --local user.name "yo"
-    git config --local user.email "yo@yolandia.com"
+Quieres borrar una rama::
+
+    git branch d nombre_de_la_rama
+
+Quieres cambiar el nombre de una rama::
+
+    git switch rama
+    git branch -m nombre_nuevo
+
+Quieres ver todas tus ramas locales y las remotas::
+
+    git branch -a
+
+Ejercicio 7: crea tu repo en GitHub
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Recuerdas el repositorio del ejercicios::
+
+    git log --graph --date-order --all --oneline
+
+        * fdc55b0 (HEAD -> feature2) add f12 to feature2
+    | * 463dcdf (master) add f11 to master
+    * | 43b3f57 add f10 to feature2
+    | | * efa98ce (feature1) add f9 to feature1
+    * | | d688ff0 add f8 to feature2
+    |/ /  
+    * | 58f0e6c add f7 to master
+    | * 538622c add f6 to feature1
+    * | c515574 add f5 to master
+    | * 096144b add f4 to feature1
+    * | 12800a8 add f3 to master
+    | * 4332fa6 add f2 to feature1
+    |/  
+    * 16e5a01 add f1 to master
 
 
-Ejercicio 7: para pensar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ahora vas a crear tu repositorio en GitHub o lo que es igual 
+un ``remoto`` (no olvides ingresar a tu cuenta de GitHub en 
+el browser y autenticar el cliente de la terminal en GitHub)::
 
-¿Qué crees qué pase si borras el directorio ``.git`` en relación con el historial
-de cambios de tus archivos?
+    gh repo create projectBranches --public --source=. --push --remote=origin
 
-¿Qué crees que pase si creas un directorio vacío y mueves allí todo los archivos 
-de tu proyecto incluyendo el directorio .git?
+Lista todas tus ramas::
 
-Ejercicio 8: reconocer el estado del repositorio 
+    git branch -a
+
+    feature1
+    * feature2
+    master
+    remotes/origin/feature2
+
+¿Notas que tienes solo una rama en el ``remote``? Envíalas todas::
+
+    git push --all origin
+
+    feature1
+    * feature2
+    master
+    remotes/origin/feature1
+    remotes/origin/feature2
+    remotes/origin/master
+
+Finalmente observa::
+
+    git log --graph --date-order --all --oneline
+
+    * fdc55b0 (HEAD -> feature2, origin/feature2) add f12 to feature2
+    | * 463dcdf (origin/master, master) add f11 to master
+    * | 43b3f57 add f10 to feature2
+    | | * efa98ce (origin/feature1, feature1) add f9 to feature1
+    * | | d688ff0 add f8 to feature2
+    |/ /  
+    * | 58f0e6c add f7 to master
+    | * 538622c add f6 to feature1
+    * | c515574 add f5 to master
+    | * 096144b add f4 to feature1
+    * | 12800a8 add f3 to master
+    | * 4332fa6 add f2 to feature1
+    |/  
+    * 16e5a01 add f1 to master
+
+Nota que las ramas master y origin/master, feature1 y origin/feature1 y 
+feature2 y origin/feature2 están ``sincronizadas`` porque apuntan 
+al mismo commit. 
+
+Ejercicio 8: recuerda 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora ejecuta el siguiente comando::
+Momento de actualizar de nuevo tu lista de comandos. No olvides 
+agregar una pequeña explicación con tus propias palabras. No 
+dudes en arreglar la redacción de otros comandos más antiguos 
+en la lista. Te aseguro que a medida que avances en el 
+manejo del control de versión irás refinando tu vocabulario 
+y así mismo las explicaciones.
 
-    git status
-
-Verás algo así::
-
-    On branch master
-
-    No commits yet
-
-    Untracked files:
-    (use "git add <file>..." to include in what will be committed)
-        main.c
-
-    nothing added to commit but untracked files present (use "git add" to track)
-
-
-El resultado por ahora es muy interesante. Verás que estás trabajando en la 
-rama (branch) master. Las ramas son una característica MUY útil de Git. Como 
-su nombre indica te puedes ir por las ramas. Te lo explico con una historia. 
-Supón que estás trabajando en tu proyecto y se te ocurre una idea, algo nuevo 
-para implementar; sin embargo, no quieres dañar tu proyecto principal. Entonces 
-lo que haces es que te creas una rama que tomará como punto de partida el estado 
-actual de tu proyecto. En esa nueva rama realizas los ensayos que quieras. Si 
-al final no te gusta el resultado, simplemente destruyes la rama y tu proyecto 
-seguirá como lo habías dejado antes de crear la rama. Pero si el resultado te gusta 
-entonces podrás hacer un ``MERGE`` e incorporar las ideas de la nueva rama a la rama 
-inicial. Ten presente que si no quieres trabajar en la nueva rama y deseas retomar el 
-trabajo en la rama principal lo puedes hacer, te puedes cambiar de ramas. Incluso puedes 
-crear muchas más y probar varias ideas en simultáneo.
-
-Ahora observa el mensaje ``No commits yet``. Este mensaje quiere decir que aún no has guardado 
-nada en el repositorio.  Luego te dice ``Untracked files`` y te muestra una lista de los 
-archivos detectados en tu proyecto (main.c en este caso), pero que no están bajo control 
-de versión. Tu debes decirle explícitamente a Git a qué archivos debe hacer ``tracking``.
-Finalmente, ``nothing added to commit but untracked files present (use "git add" to track)`` quiere 
-decir que si en este momento le pides a Git que guarde en el repositorio una ``FOTO`` (``commit``) 
-del estado actual de los archivos que están bajo tracking, Git te dice que no hay nada para guardar.
-Nota que Git da sugerencias: ``(use "git add" to track)``, es decir, te dice qué necesitas 
-hacer para colocar el archivo main.c en tracking.
-
-
-Ejercicio 9: adiciona tu primer archivo al repositorio 
+Ejercicio 9: sincronizar el local con el remoto 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash 
+Ya aprendiste a enviar tus repositorios locales a un remoto. 
 
-    git add main.c 
+¿Cómo actualizas los repositorios locales si los cambios ocurren 
+en el remoto?
 
-Y de nuevo observa el estado del repositorio::
+Para realizar este experimento tendrás que ingresar a tu repositorio 
+en GitHub.
 
-    git status
+Cámbiate a la rama master (explora la interfaz, encontrarás cómo 
+hacerlo en la zona izquierda). Adiciona a la rama master el archivo 
+f13. Verás un menú desplegable llamado Add file justo al lado del 
+menú Code. ``NO OLVIDES CAMBIARTE A LA RAMA MASTER``. En la zona 
+inferior de la página donde creas el archivo puedes hacer el commit. 
+Simplemente cambia la descripción del commit por add f13 to master y 
+presiona el botón Commit new file.
 
-El resultado será::
+Ahora regresa a la terminal y descarga a tu sistema de control 
+de versión local los METADATOS de tu remoto::
 
-    On branch master
+    git fetch --all
 
-    No commits yet
+Observa::
 
-    Changes to be committed:
-    (use "git rm --cached <file>..." to unstage)
-        new file:   main.c
+    git log --graph --date-order --all --oneline
 
+    * b4c5397 (origin/master) add f13 to master
+    | * fdc55b0 (HEAD -> feature2, origin/feature2) add f12 to feature2
+    * | 463dcdf (master) add f11 to master
+    | * 43b3f57 add f10 to feature2
+    | | * efa98ce (origin/feature1, feature1) add f9 to feature1
+    | * | d688ff0 add f8 to feature2
+    |/ /  
+    * | 58f0e6c add f7 to master
+    | * 538622c add f6 to feature1
+    * | c515574 add f5 to master
+    | * 096144b add f4 to feature1
+    * | 12800a8 add f3 to master
+    | * 4332fa6 add f2 to feature1
+    |/  
+    * 16e5a01 add f1 to master
 
-Te explico con una metáfora lo que está pasando. Imagina que Git 
-le toma fotos al estado de tu proyecto cada que se lo solicitas; sin embargo, 
-antes de tomar la foto tienes que decirle a Git (``con add``) a qué archivos 
-le tomará la foto. Todos los archivos que serán tenidos en cuenta para la 
-próxima foto se ubican en una zona lógica denominada el ``STAGE``. Mira el mensaje 
-``(use "git rm --cached <file>..." to unstage)``. Observa que Git te está diciendo
-que main.c ya está listo para la foto (``Changes to be committed``), pero si te arrepientes de incluir el archivo 
-en la foto puedes ejecutar el comando sugerido. Prueba sacar de la foto a main.c::
+Nota que la rama master local y la remota origin/master no apuntan al 
+mismo commit. (master) apunta al commit 463dcdf y (origin/master) a 
+b4c5397. Entonces, para descargar f13 a tu repositorio local escribes::
 
-    git rm --cache main.c
+    git switch master
+    git pull origin master
 
-Mira el estado del repositorio::
+El comando ``git pull origin master`` indica al sistema de control de versión 
+que haga un ``MERGE`` entre la rama local actual, master, con la remota master.
 
-    git status
+Y compruebas de nuevo::
 
-Verás algo así::
+    git log --graph --date-order --all --oneline
 
-    On branch master
+    * b4c5397 (HEAD -> master, origin/master) add f13 to master
+    | * fdc55b0 (origin/feature2, feature2) add f12 to feature2
+    * | 463dcdf add f11 to master
+    | * 43b3f57 add f10 to feature2
+    | | * efa98ce (origin/feature1, feature1) add f9 to feature1
+    | * | d688ff0 add f8 to feature2
+    |/ /  
+    * | 58f0e6c add f7 to master
+    | * 538622c add f6 to feature1
+    * | c515574 add f5 to master
+    | * 096144b add f4 to feature1
+    * | 12800a8 add f3 to master
+    | * 4332fa6 add f2 to feature1
+    |/  
+    * 16e5a01 add f1 to master
 
-    No commits yet
+Observa que ya tienes el archivo f13 en tu repositorio local::
 
-    Untracked files:
-    (use "git add <file>..." to include in what will be committed)
-        main.c
-
-    nothing added to commit but untracked files present (use "git add" to track)
-
-
-¿Te das cuenta? Acabas de sacar de la foto (DEL STAGE) a main.c. Ahora vuelve a invitar a 
-main.c a la foto::
-
-    git add main.c 
-
-Ahora ``TOMA LA FOTO`` (realiza el commit)::
-
-    git commit -m "Initial version of the project main file"
-
-Consulta el estado del repositorio::
-
-    git status
-
-El resultado será::
-
-    On branch master
-    nothing to commit, working tree clean
-
-Puedes ver que Git está observando todo lo que pasa en el directorio de tu 
-proyecto. Por ahora Git sabe que no has hecho nada más y por eso te dice 
-``nothing to commit, working tree clean``.
-
-Lo último que te voy a pedir que hagas con este ejercicio es que le preguntes 
-a Git qué fotos (``COMMITS``) se han tomado en el repositorio::
-
-    git log 
-
-El resultado es::
-
-    commit 1f2009fabfc4895ee6b063c23c6f5c7ea7175209 (HEAD -> master)
-    Author: yo <yo@yolandia.com>
-    Date:   Wed Jul 20 10:52:46 2022 -0500
-
-        Initial version of the project main file
-
-Nota que el commit está identificado con el hash ``1f2009fabfc4895ee6b063c23c6f5c7ea7175209``, 
-el autor, correo, fecha, hora y la descripción del commit.
+    ls -al
+    total 16
+    drwxrwxr-x 3 juanfh juanfh 4096 Jul 23 09:11 .
+    drwxrwxr-x 7 juanfh juanfh 4096 Jul 22 21:10 ..
+    -rw-rw-r-- 1 juanfh juanfh    0 Jul 22 22:42 f1
+    -rw-rw-r-- 1 juanfh juanfh    0 Jul 23 09:05 f11
+    -rw-rw-r-- 1 juanfh juanfh    1 Jul 23 09:11 f13
+    -rw-rw-r-- 1 juanfh juanfh    0 Jul 22 22:49 f3
+    -rw-rw-r-- 1 juanfh juanfh    0 Jul 22 22:49 f5
+    -rw-rw-r-- 1 juanfh juanfh    0 Jul 22 22:49 f7
+    drwxrwxr-x 8 juanfh juanfh 4096 Jul 23 09:13 .git
 
 Ejercicio 10: recuerda
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Para un momento. Repasa los ejercicios anteriores, actualiza tu lista 
-de comandos con la explicación de qué hacen.
+Para un momento. 
+
+* Actualiza tu lista de comandos con la explicación de qué hacen.
+* Para el ejercicio que te inventaste repite el proceso anterior.
 
 Ejercicio 11: modificar el contenido de un archivo 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
