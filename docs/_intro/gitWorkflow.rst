@@ -300,7 +300,7 @@ Y compruebas de nuevo::
     |/  
     * 16e5a01 add f1 to master
 
-Observa que ya tienes el archivo f13 en tu repositorio local::
+Observa que ya tienes el archivo f13 en tu directorio de trabajo::
 
     ls -al
     total 16
@@ -355,612 +355,756 @@ Para un momento.
       lo más importante es trates de responder de memoria las 
       preguntas que te hacen las flashcards.
 
+Ejercicio 11: proyecto para hacer en equipo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Conforma un equipo. Para el ejemplo te mostraré un equipo de dos personas,
+pero tu puedes tener más amigos que yo.
 
-Ejercicio 11: modificar el contenido de un archivo 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Por ahora, solo uno de los miembros del equipo creará un repositorio 
+en GitHub al cual llamarás teamProject (lo creas dando click al más que 
+está en la esquina superior derecha).
 
-Modifica el contenido del archivo main.c añadiendo otro mensaje para imprimir 
-(escribe lo que tu corazón te dicte). ``Salva el archivo``. NO LO OLVIDES, salva 
-el archivo.
+Ahora selecciona Settings (lo encuentras del lado derecho). Una vez allí 
+mira el lado izquierdo y en la sección Access selecciona ``Collaborators``. 
+En Manage Access click en Add people. Busca tus compañeros e invítalos 
+uno por uno y añádelos. Al correo de cada uno llegará una invitación:
 
-Al verificar el estado del repositorio verás::
+.. image:: ../_static/teamGitHub.png
+    :alt: invitación
+    :align: center 
 
-    On branch master
-    Changes not staged for commit:
-    (use "git add <file>..." to update what will be committed)
-    (use "git restore <file>..." to discard changes in working directory)
-        modified:   main.c
+|
 
-    no changes added to commit (use "git add" and/or "git commit -a")
+Cuando todos los compañeros acepten la invitación (no olvides presionar F5) 
+verás algo así en GitHub:
 
-¿Ves la diferencia con respecto al momento en el que creaste el archivo? Déjame recordarte 
-el mensaje:
+.. image:: ../_static/membersGitHub.png
+    :alt: invitación
+    :align: center 
 
-.. code-block:: bash 
+|
 
-    On branch master
+Ejercicio 12: Pero ¿Cómo trabajo equipo? 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    No commits yet
+Hay varias maneras de trabajar en equipo bajo control de versión. 
+Una de ellas es mediante un flujo de trabajo por ramas. Te voy a 
+enseñar esa; sin embargo, antes de comenzar, el trabajo en equipo 
+te obliga a PLANEAR. Por tanto, lo primero que debes hacer es dividir 
+el trabajo en TAREAS o dividir el proyecto que realizarás con tu 
+equipo en ``features``. Cuando todas las features estén terminadas e 
+integradas, tu proyecto estará listo.
 
-    Untracked files:
-    (use "git add <file>..." to include in what will be committed)
-        main.c
+¿Qué es una feature? Vamos a quedarnos por ahora con una definición.
+Una feature es una funcionalidad o una capacidad de tu proyecto. 
+Entonces cuando te digo que debes dividir el proyecto en features, 
+lo que quiero decir es que lo dividas en funcionalidades. De esta manera 
+cada integrante del equipo será responsable de hacer una de ellas.
 
-    nothing added to commit but untracked files present (use "git add" to track)
+Se establece una regla en el equipo. El código en la rama main siempre 
+será el código correcto del proyecto. Entonces cuando alguien termine 
+de hacer su feature y esté correcta y probada, su contribución debe 
+adicionarse a la rama main. Uno de los miembros del equipo será el 
+responsable de cuidar la rama main. Esta persona debe APROBAR las 
+contribuciones de los demás y asegurarse que la el código esté
+bien. Por tanto, cuando uno de los miembros del equipo termine su parte, 
+solicitará la aprobación de su contribución mediante un ``PULL REQUEST``.
+Una vez aprobado el pull request, las contribuciones aparecerán en la rama 
+main y se podrá proceder a borrar las rama con la feature local y en el remoto.
 
-Nota que al crear el archivo, Git te dice que no le está haciendo seguimiento (untracked); 
-sin embargo, una vez está creado el archivo y lo modificas, Git te dice 
-``Changes not staged for commit``. 
+Para nuestro ejemplo vas a suponer que debes realizar este programa:
 
-En este caso, Git le hace tracking a tu archivo, pero tu no has decidido pasar el 
-archivo a ``STAGE`` para poderle tomar la foto con los cambios que tiene ahora. 
-¿Cómo lo haces? Mira que en el mensaje Git te dice: ``git add main.c``. Nota que Git 
-también te dice que puedes descartar los cambios en el archivo con 
-``git restore main.c``. ¿Por qué no haces la prueba?
-
-Escribe::
-
-    git restore main.c
-
-Vuelve a visual studio code y verifica qué paso con el archivo.
-
-¿Ya no está la modificación anterior, cierto? Mira el estado del repositorio::
-
-    On branch master
-    nothing to commit, working tree clean
-
-Vuelve a modificar main.c, pero esta vez si guardarás los cambios 
-en el repositorio. Recuerda los pasos:
-
-#. Cambias el archivo
-#. Verifica el estado del repositorio (status)
-#. Adiciona los cambios en el STAGE (add) 
-#. Toma la foto (commit)
-#. Verifica de nuevo el estado del repositorio (status)
-#. Verifica el historial del repositorio (log)
-
-Te debe quedar algo así::
-
-    commit 2a0afbb7efa9c58a364143edf6c5cf76dccfab0b (HEAD -> master)
-    Author: yo <yo@yolandia.com>
-    Date:   Wed Jul 20 11:02:03 2022 -0500
-
-        add a new print
-
-    commit 1f2009fabfc4895ee6b063c23c6f5c7ea7175209
-    Author: yo <yo@yolandia.com>
-    Date:   Wed Jul 20 10:52:46 2022 -0500
-
-        Initial version of the project main file    
-
-Y ahora main.c está así::
+.. code-block:: c
 
     #include <stdio.h>
     #include <stdlib.h>
+    #include "feature1.h"
+    #include "feature2.h"
+    #include "feature3.h"
+    #include "feature4.h"
+    #include "feature5.h"
 
     int main(){
-        printf("La vida es bella\n");
-        printf("El feo es uno\n");
+        feature1();
+        feature2();
+        feature3();
+        feature4();
+        feature5();
         return(EXIT_SUCCESS);
     }
 
-
-Ejercicio 12: volver a una versión anterior del proyecto 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Ahora supón que quieres volver a una versión anterior del proyecto. 
-Git ofrece varias alternativas que irás aprendiendo con el tiempo. Por ahora, 
-piensa que lo que harás es pedirle a Git que traiga una versión del pasado y haga 
-un nuevo commit de esa versión en el presente.
-
-¿Cuál versión del proyecto quieres recuperar? Para saberlo puedes leer 
-el historial de mensajes que adicionaste a cada COMMIT::
-
-    git log --oneline
-
-En el ejemplo que estás trabajando::
-
-    2a0afbb (HEAD -> master) add a new print
-    1f2009f Initial version of the project main file
-
-Ahora digamos que deseas ver cómo estaba el proyecto en el commit 1f2009f (estos son 
-los primeros 7 números del identificador del commit o hash único que se calcula con 
-el algoritmo sha-1)::
-
-    git checkout 1f2009f
-
-El resultado es::
-
-    Note: switching to '1f2009f'.
-
-    You are in 'detached HEAD' state. You can look around, make experimental
-    changes and commit them, and you can discard any commits you make in this
-    state without impacting any branches by switching back to a branch.
-
-    If you want to create a new branch to retain commits you create, you may
-    do so (now or later) by using -c with the switch command. Example:
-
-    git switch -c <new-branch-name>
-
-    Or undo this operation with:
-
-    git switch -
-
-    Turn off this advice by setting config variable advice.detachedHead to false
-
-    HEAD is now at 1f2009f Initial version of the project main file
-
-Escribe el comando::
-
-    git status
-
-El resultado es::
-
-    HEAD detached at 1f2009f
-    nothing to commit, working tree clean
-
-Ahora revisa el archivo main.c. ¿Qué concluyes hasta ahora? En este momento estás en 
-un estado especial llamado detached HEAD. En este estado puedes jugar con el código y 
-hacer ensayos y luego puedes descartar todo lo que hagas sin dañar lo que ya tenías. Mira 
-que Git te dice qué debes hacer para conservar los experimentos o para descartarlos.
-
-En este caso, supon que solo quieres ver el estado del archivo main.c en el commit 1f2009f::
-
-    #include <stdio.h>
-    #include <stdlib.h>
-
-    int main(){
-        printf("La vida es bella\n");
-        return(EXIT_SUCCESS);
-    }
-
-¿Quieres volver main.c al último commit? Simplemente escribes::
-
-    git switch -
-
-Ahora main.c se verá así::
-
-    #include <stdio.h>
-    #include <stdlib.h>
-
-    int main(){
-        printf("La vida es bella\n");
-        printf("El feo es uno\n");
-        return(EXIT_SUCCESS);
-    }
-
-Luego de analizar las dos versiones de main.c decides que vas a conservar la versión del 
-commit 1f2009f. Para que compares escribe::
-
-    git log --oneline
-
-El resultado::
-
-    2a0afbb (HEAD -> master) add a new print
-    1f2009f Initial version of the project main file
-
-Ahora::
-
-    git revert HEAD
-
-El resultado::
-
-    [master 882d93e] Revert "add a new print"
-    1 file changed, 1 deletion(-)
-
-Y si observas el historial::
-
-    git log --oneline
-
-Verás::
-
-    882d93e (HEAD -> master) Revert "add a new print"
-    2a0afbb add a new print
-    1f2009f Initial version of the project main file
-
-Si abres el archivo main.c::
-
-    #include <stdio.h>
-    #include <stdlib.h>
-
-    int main(){
-        printf("La vida es bella\n");
-        return(EXIT_SUCCESS);
-    }
-
-Entonces el comando::
-
-    git revert HEAD
-
-Hace un ``revert`` del commit ``2a0afbb`` creando un nuevo commit, el ``882d93e``, con el 
-estado del proyecto en el commit ``1f2009f``.    
-
-
-Ejercicio 13: configura GitHub
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Ahora te pediré que compartas el repositorio local ``project1`` con el mundo. 
-Para hacerlo necesitarás usar GitHub. 
-
-Abre tu browser y cierra la cuenta que esté activa en GitHub en este momento, claro, 
-a menos que sea tu cuenta.
-
-Abre una terminal y ejecuta el comando::
-
-       gh auth logout
-
-Este comando termina la sesión del cliente de Git de tu computador con el servidor de 
-Github. Pero el cliente de Git que corre en el browser sigue funcionando con el usuario
-actual. Ten presente que CONTROLAR quien está autenticado con el servidor lo haces cuando 
-compartes computador con otros compañeros, pero si estás trabajando con tu computador 
-personal no es necesario.
-
-Ahora conecta el cliente local de git con tu cuenta de GitHub::
-
-    gh auth login
-
-Acepta todas las opciones por defecto. Una vez hagas todo correctamente saldrá algo similar 
-a esto::
-
-    ✓ Authentication complete.
-    - gh config set -h github.com git_protocol https
-    ✓ Configured git protocol
-    ✓ Logged in as juanferfranco    
-
-
-El comando anterior te permitirá autorizar el acceso desde la termina de tu computador 
-a tu cuenta en GitHub por medio de un proceso interactivo entre la terminal 
-y el browser. Recuerda que en el browser ya tienes acceso a tu cuenta en el servidor.
-
-En este punto tu computador tiene dos clientes autenticados con GitHub: la terminal y 
-el browser.
-
-Ejercicio 14: comparte tu trabajo usando GitHub
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Ahora ejecuta el siguiente comando::
-
-    gh repo create project1 --public --source=. --push --remote=origin
-
-Si todo sale bien verás esto::
-
-    ✓ Created repository juanferfranco/project1 on GitHub
-    ✓ Added remote https://github.com/juanferfranco/project1.git
-    ✓ Pushed commits to https://github.com/juanferfranco/project1.git
-    ➜  project1 git:(master)
-
-¿Qué estás haciendo? ``gh repo create project1``  te permiten crear el repositorio 
-remoto project1 en GitHub. ``--public`` hace que el repositorio sea público y lo puedas compartir 
-con cualquier persona. ``--source=.`` especifica en dónde está el 
-repositorio local que enviarás a Internet. ``--push`` permite enviar todos los commits locales al repositorio 
-remoto. Finalmente, ``--remote=origin`` permite asignarle un nombre corto 
-al servidor remoto, en este caso ``origin``.
-
-Ingresa al sitio: https://github.com/TU_USUARIO/project1 para observar tu repositorio 
-en GitHub. NO OLVIDES modificar la cadena ``TU_USUARIO`` con tu nombre de usuario 
-en GitHub.
-
-Ejercicio 15: actualiza tu repositorio remoto
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Ahora modifica de nuevo el archivo main.c así::
-
-    #include <stdio.h>
-    #include <stdlib.h>
-
-    int main(){
-        printf("La vida es bella!!!\n");
-        return(EXIT_SUCCESS);
-    }
-
-Realiza un commit en el respositorio local::
-
-    git commit -am "add exclamation marks"
-
-
-¿Notaste algo? En un solo paso pasaste main.c a la zona de fotos (STAGE) y 
-realizaste el commit.
-
-Verifica el estado del repositorio::
-
-    On branch master
-    Your branch is ahead of 'origin/master' by 1 commit.
-    (use "git push" to publish your local commits)
-
-    nothing to commit, working tree clean
-
-Observa el mensaje ``Your branch is ahead of 'origin/master' by 1 commit.`` 
-Git detecta que tu repositorio local está adelantado un commit con respecto 
-al repositorio remoto. Observa que el propio Git te dice cómo actualizar 
-el repositorio remoto::
-
-    git push 
-
-Vuelve el verificar el estado::
-
-    git status
-
-Y el resultado será::
-
-    On branch master
-    Your branch is up to date with 'origin/master'.
-
-    nothing to commit, working tree clean
-
-
-Y finalmente vuelve a mirar el historial del proyecto::
-
-    git log 
-
-El resultado será::
-
-    commit 56cef2b7d4a8f6fd03dcf302890d4e110cccb861 (HEAD -> master, origin/master)
-    Author: yo <yo@yolandia.com>
-    Date:   Wed Jul 20 16:02:12 2022 -0500
-
-        add exclamation marks
-
-    commit 882d93e233a7634ae03566c267f5cb9e55a42f45
-    Author: yo <yo@yolandia.com>
-    Date:   Wed Jul 20 15:22:00 2022 -0500
-
-        Revert "add a new print"
-        
-        This reverts commit 2a0afbb7efa9c58a364143edf6c5cf76dccfab0b.
-
-    commit 2a0afbb7efa9c58a364143edf6c5cf76dccfab0b
-    Author: yo <yo@yolandia.com>
-    Date:   Wed Jul 20 11:02:03 2022 -0500
-
-        add a new print
-
-    commit 1f2009fabfc4895ee6b063c23c6f5c7ea7175209
-    Author: yo <yo@yolandia.com>
-    Date:   Wed Jul 20 10:52:46 2022 -0500
-
-        Initial version of the project main file
-
-Mira el texto ``(HEAD -> master, origin/master)``. Indica que tu repositorio 
-local y remoto apuntan al mismo commit.
-
-Ejercicio 16: repasa (evaluación formativa)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-En este punto te pediré que descanses un momento. En este 
-ejercicio vas a repasar el material que has trabajo. Te pediré 
-que hagas lo siguiente:
-
-#. Crea un directorio llamado project2. Ten presente cambiarte 
-   primero al directorio padre de project1. NO DEBES tener un repositorio 
-   en otro repositorio.
-#. Inicia un repositorio allí.
-#. Crea unos cuantos archivos de texto.
-#. Dile a Git que haga tracking de esos archivos.
-#. Realiza un primer commit.
-#. Crea un repositorio remoto en GitHub que esté sincronizado con 
-   tu repositorio local. No olvides comprobar su creación.
-#. Modifica los archivos creados.
-#. Realiza un par de commits más.
-#. Sincroniza los cambios con el repositorio remoto.
-
-Ejercicio 17: clona un repositorio de GitHub
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Ahora vas a descargar un repositorio de GitHub. Cámbiate al directorio padre 
-de project2. Escribe el comando::
-
-    git clone https://github.com/juanferfrancoudea/demo4.git
-
-Cámbiate al directorio demo4.
-
-#. Verifica el estado del repositorio (status).
-#. Verifica el historial (log).
-#. Realiza un cambio a f1.txt.
-#. Realiza un commit al repositorio local.
-
-Ahora trata de actualizar el repositorio remoto con::
+Nota que el proyecto se ha divido en 5 funcionalidades. Para 
+una equipo de trabajo de dos personas se ha decido dividir 
+el trabajo así:
+
+* Tu haces: feature1, feature2, feature3.
+* Tu compañero: feature4, feature5.
+
+Ya casi estas listo. Ahora lo que harás, antes de iniciar a trabajar 
+con tus compañeros, es preparar el repositorio con los archivos 
+iniciales.
+
+El miembro del equipo quien creó el repositorio lo clonará localmente::
+
+    git clone https://github.com/juanferfranco/teamProject.git
+
+Luego vas a descargar `este <_static/files.tar>`__ archivo comprimido. 
+Descomprime el archivo así::
+
+    tar -xf files.tar
+
+Borra files.tar y mueve todos los archivos descomprimidos al directorio 
+teamProject. Te debe quedar así::
+
+    ls -al
+    total 68
+    drwxrwxr-x 3 juanfh juanfh 4096 Jul 23 18:04 .
+    drwxrwxr-x 9 juanfh juanfh 4096 Jul 23 18:06 ..
+    -rw-rw-r-- 1 juanfh juanfh   94 Jul 23 15:50 feature1.c
+    -rw-rw-r-- 1 juanfh juanfh   65 Jul 23 15:49 feature1.h
+    -rw-rw-r-- 1 juanfh juanfh   99 Jul 23 16:53 feature2.c
+    -rw-rw-r-- 1 juanfh juanfh   63 Jul 23 16:55 feature2.h
+    -rw-rw-r-- 1 juanfh juanfh   94 Jul 23 15:53 feature3.c
+    -rw-rw-r-- 1 juanfh juanfh   63 Jul 23 16:55 feature3.h
+    -rw-rw-r-- 1 juanfh juanfh   94 Jul 23 15:53 feature4.c
+    -rw-rw-r-- 1 juanfh juanfh   65 Jul 23 15:53 feature4.h
+    -rw-rw-r-- 1 juanfh juanfh   94 Jul 23 15:53 feature5.c
+    -rw-rw-r-- 1 juanfh juanfh   65 Jul 23 15:54 feature5.h
+    drwxrwxr-x 8 juanfh juanfh 4096 Jul 23 18:04 .git
+    -rw-rw-r-- 1 juanfh juanfh   16 Jul 23 18:03 .gitignore
+    -rw-rw-r-- 1 juanfh juanfh  269 Jul 23 15:54 main.c
+    -rw-rw-r-- 1 juanfh juanfh  258 Jul 23 16:54 Makefile
+    -rw-rw-r-- 1 juanfh juanfh   88 Jul 23 17:14 README.md
+
+Ahora adiciona todos los archivos al STAGE y realiza un commit::
+
+    git add .
+    git commit -m "Project setup"
+
+Finalmente, actualiza el remoto::
 
     git push
-    
-Deberías obtener un mensaje similar a este::
 
-    remote: Permission to juanferfrancoudea/demo4.git denied to juanferfranco.
-    fatal: unable to access 'https://github.com/juanferfrancoudea/demo4.git/': The requested URL returned error: 403
+Ejercicio 13: flujo de trabajo 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-¿Qué está pasando? Lo que ocurre es que el repositorio que clonaste NO ES DE TU PROPIEDAD y por 
-tanto NO TIENES permiso de actualizarlo. Para poderlo modificar, el dueño del repositorio te 
-debe dar acceso.
+Ahora que ya tienes una versión inicial del proyecto en GitHub y 
+dividiste el trabajo en features ha llegado el momento de iniciar a trabajar.
 
-.. note::
+Cada integrante del equipo debe clonar en su computador el repositorio.
+En este ejemplo que te estoy mostrando hay dos personas. La persona 1 será 
+quien creó el repositorio y la persona 2 será el otro miembro 
+del equipo. Te iré contando qué haría cada uno.
 
-    Más de una persona puede trabajar en un repositorio siguiendo una serie de pasos 
-    y consideraciones. Para aprender más al respecto tendrías que leer sobre Git Workflows. 
-    De todas maneras no te preocupes, por ahora hay otras cosas que debes entender y practicar 
-    antes de abordar el TRABAJO EN EQUIPO usando Git. PERO OJO, TE RUEGO que más adelante 
-    lo aprendas porque será tu día a día cuando estés trabajando en la industria.
+Persona 1:
 
+* Comienza a trabajar en la feature1. Por tanto lo primero que hace es 
+  crear la rama feature1::
 
-Ejercicio 18: repasa (evaluación formativa)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    git switch -c feature1
 
-Ha llegado la hora de volver a repasar TODOS los comandos que has aprendido. 
-Actualiza tu lista de comandos y escribe al frente de cada uno, con tus palabras,  
-qué hace. En este punto ya deberías tener más claridades. Por tanto, revisa de nuevo 
-la redacción de los comandos que ya tenías.
+* Escribe el código de la feature1::
 
-Ejercicio 19: entrega de evaluaciones usando GitHub
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-(El framework de pruebas para este ejercicio está tomado de 
-`aquí <https://github.com/remzi-arpacidusseau/ostep-projects>`__)
-
-Te voy a proponer un ejercicio que será muy importante para el curso 
-porque será la manera típica como entregarás las evaluaciones.
-
-Para la entrega de las evaluaciones utilizarás GitHub. Para cada evaluación 
-te enviaré un enlace con una invitación para la evaluación. Cuando aceptes la 
-invitación, automáticamente se creará un repositorio para ti con la estructura 
-de directorios y archivos necesarios para comenzar a realizar la evaluación. Ten 
-en cuenta que tu tendrás permisos para editar el nuevo repositorio. Podrás aplicar 
-todo lo que trabajaste en esta guía.
-
-Entonces vamos a simular una invitación a una evaluación en la cual tendrás que 
-escribir un programa. En este caso deberás completar el programa wcat.c al cual 
-se le aplicarán automáticamente unos vectores de prueba para verificar si es 
-correcta la implementación.
-
-Por ahora, los detalles del programa y las pruebas no importan. Lo importante es 
-que puedas practicar el flujo de trabajo usando Git y GitHub.
-
-Sigue estos pasos:
-
-* Abre un browser e ingresa a tu cuenta de GitHub. ASEGÚRATE POR FAVOR que estás 
-  en tu cuenta.
-* Abre una nueva pestaña e ingresa a `este <https://classroom.github.com/a/sXNRDAEb>`__ sitio.
-* Busca y selecciona tu nombre y ID. Esta operación ENLAZARÁ tu cuenta de GitHub con tu nombre 
-  y ID.
-* Por último acepta la tarea.
-* Espera un momento y refresca (con F5) el browser.
-* Abre tu nuevo repositorio en otra pestaña.
-* Selecciona el menú Actions y dale click al botón ``Enable Actions on this 
-  repository``. Si no aparece el botón es porque ya están habilitadas las acciones.
-* CLONA el repositorio a tu computador. En tu repositorio despliega el botón ``Code``, selecciona 
-  la pestaña http y copia la URL de tu repositorio. Usa esta URL con el comando git clone. Recuerda 
-  NO CLONAR el respositorio dentro de otro repositorio LOCAL.
-* Ingresa al directorio ``dirTest/project``.
-* Lee el archivo ``README.md``. Lo puedes hacer en tu computador y en Internet. Cuando 
-  lo leas en tu computador verás que está escrito en un lenguaje llamado 
-  `Markdown <https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>`__. 
-  Ve mirando este lenguaje porque lo usarás para escribir la documentación de las evaluaciones. PERO 
-  no te preocupes es muy fácil. Además, en un rato te propondré un ejercicio para que practiques. Por 
-  otro lado, cuando leas el archivo README.md en GitHub notarás que este lo renderiza para que se 
-  vea bonito.
-* Observa el archivo wcat.c inicial:
-
-  .. code-block:: c 
-
-        #include <stdio.h>
-        #include <stdlib.h>
-
-
-        int main(int argc, char *argv[]){
-            exit(EXIT_SUCCESS);
-        }
-
-* Modifica wcat.c con este código:
-
-  .. code-block:: c 
-
+    #include "feature1.h"
     #include <stdio.h>
-    #include <stdlib.h>
 
-
-    int main(int argc, char *argv[]){
-
-        //printf("arc: %d\n",argc);
-
-        if(argc <= 1){
-            exit(EXIT_SUCCESS);
-        }
-
-        FILE *inFile = NULL;
-        char buffer[256];
-        char *status =  NULL;
-
-
-        for(int i = 1 ; i < argc; i++){
-
-            inFile = fopen(argv[i],"r");
-            if (inFile == NULL){
-                printf("wcat: cannot open file");
-                printf("\n");
-                exit(EXIT_FAILURE);
-            }
-            do{
-                status = fgets(buffer, sizeof(buffer),inFile);
-                if(status != NULL){
-                    printf("%s",buffer);
-                    //printf("hola mundo cruel");
-                }
-            }while (status !=NULL);
-
-            fclose(inFile);
-        }
-        
-        exit(EXIT_SUCCESS);
+    void feature1(){
+        // print hello from feature1
+        printf("hello from feature1\n"); 
     }
 
-* Salva wcat.c y realiza un commit.
-* Luego sincroniza con el repositorio remoto (push). Esto hará que se disparen 
-  las pruebas (acciones) en GitHub.
-* Ingresa de nuevo al repositorio en GitHub. Ingresa al menú Actions. 
-  Espera un minuto y refresca la página. Si todo está bien verás 
-  una marca verde al lado izquierdo del commit que enviaste.
-* Dale click al mensaje al lado de la marca verde. Luego dale click a 
-  Autograding para observar todos los pasos que se realizaron para verificar 
-  tu trabajo.
+* Realiza las pruebas y verifica que su código funciona correctamente::
 
-Ejercicio 20: documentación de las evaluaciones
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    make
+    gcc main.c  -c -g -o main.o
+    gcc feature1.c  -c -g -o feature1.o
+    gcc feature2.c  -c -g -o feature2.o
+    gcc feature3.c  -c -g -o feature3.o
+    gcc feature4.c  -c -g -o feature4.o
+    gcc feature5.c  -c -g -o feature5.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature1) ✗ ./main 
+    hello from feature1
+    ➜  teamProject git:(feature1) ✗
 
-Todas las entregas que realices deben estar acompañadas de una documentación 
-que explique los aspectos técnicos (y otros que te pediré) de la solución que 
-propongas a los problemas que te plantearé para las evaluaciones. Lo interesante 
-de GitHub es que te permite almacenar repositorios no solo para el código, sino 
-también para la documentación. En el ejercicio anterior te hablé del lenguaje con el 
-cual se escribió el archivo README.md. Se trata del lenguaje Markdown que será 
-el mismo que utilizarás para escribir la documentación de tus entregas. Como 
-te comenté antes, no tienes de qué preocuparte, realmente es muy fácil.
+* A medida que va trabajando realiza commits::
 
-#. Crea un directorio llamado project4. Ten presente cambiarte 
-   primero al directorio padre donde están almacenados los projects anteriores.
-#. Inicia un repositorio allí.
-#. Crea unos cuantos archivos.
-#. Dile a Git que haga tracking de esos archivos.
-#. Realiza un primer commit.
-#. Crea un repositorio remoto en GitHub que esté sincronizado con 
-   tu repositorio local. No olvides comprobar su creación.
+    git commit -am "feature1 is done"
 
-   .. note:: RECUERDA cómo crear el repositorio
+* Envía su rama local a GitHub para tener un respaldo del trabajo 
+  en Internet::
 
-       .. code-block:: bash 
+    git push origin feature1
 
-          gh repo create NOMBRE --public --source=. --push --remote=origin
+* Ahora se realizará el pull request para adicionar la contribución 
+  a la rama main (enter a todas las preguntas)::
 
-#. Modifica los archivos creados.
-#. Realiza un par de commits más.
-#. Sincroniza los cambios con el repositorio remoto.
+    gh pr create --title "feature 1 is done"
 
-Hasta aquí nada nuevo, ¿Verdad? 
+* Como la persona 1 es el responsable designado de aceptar los pull request 
+  de todos los miembros del equipo, incluido el mismo, deberá revisar 
+  el trabajo e incorporar la feature1 en la rama principal. En este 
+  caso el proceso es simple porque la personas que aprueba es la misma 
+  que envió la solicitud. Cuando persona 1 consulte GitHub verá:
 
-#. Ingresa a GitHub y selecciona la opción Create New File en el botón ``Add file``.
-#. Le vas a poner de nombre ``README.md``.
-#. Verás que se abre un editor en el cual podrás añadir tu documentación. Además 
-   podrás formatearlo en lenguaje Markdown.
-#. En `este <https://www.markdownguide.org/cheat-sheet/>`__ sitio puedes encontrar una 
-   cheat sheet del lenguaje.
-#. Cambia el título del documento por ``DOCUMENTACIÓN DEL PROJECT 4``.
-#. Indica que ese texto tendrá formato ``h1`` colocando el símbolo ``#`` seguido de un espacio antes del título.
-#. Puedes hacer click en el menú ``preview`` para que puedas ver cómo te va quedando el 
-   documento.
-#. Ahora te pediré que insertes una imagen, un hipervínculo, un título de tipo h2 y otro tipo h3, 
-   escribas unas cuantas líneas de texto y coloques una palabra en negrita, itálica y resaltada,
-   crea una lista ordenada y una lista no ordenada.
-#. A medida que experimentas ve observando en preview cómo te queda.
-#. Una vez termines, dale click al botón ``Commit changes``.
-#. Regresa al inicio del repositorio para que veas tu obra de arte.
-#. En este ejercicio creaste un archivo en GitHub que no tienes en tu computador local. Escribe 
-   en tu repositorio local los comando::
+|
+
+  .. image:: ../_static/pullRequestPersona1.png
+    :alt: pull request
+    :align: center
+
+|
+
+* Ingresa al menú Pull requests, abre ``feature1 is done`` y 
+  procede a aprobar. Abre el menú desplegable del botón ``Merge pull request`` 
+  y selecciona ``Squash and merge``. Finalmente, presiona el botón Squash and merge. 
+  GitHub te dará la opción añadir una descripción y te habilitará el botón 
+  Confirm squash and marge. Por favor confirma.
+
+* Ve ahora al menú Code, asegúrate que estás en la rama main y abre el archivo 
+  feature1.c. Deberías ver los cambios.
+
+* Actualiza tu repositorio local::
+
+    git fetch --all
+    git log --all --oneline
+
+    bb9d131 (origin/main, origin/HEAD) feature1 is done (#1)
+    064cf61 (origin/feature1, feature1) feature1 is done
+    52018b0 (HEAD -> main) add a file to initial project template
+    3122d94 Project setup
+
+  Puedes ver que la rama main remota está más actualizada que la tuya local. 
+  Por tanto, procede a actualizarla::
+
+    git switch main
+    git pull origin main
+
+  Verifica de nuevo::
+
+    git log --all --oneline
+
+    bb9d131 (HEAD -> main, origin/main, origin/HEAD) feature1 is done (#1)
+    064cf61 (origin/feature1, feature1) feature1 is done
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+* Ya puedes borrar la rama feature1 en el remoto y en tu computador::
+
+    git switch main
+    git branch -d feature1
+    error: The branch 'feature1' is not fully merged.
+    If you are sure you want to delete it, run 'git branch -D feature1'.
+
+  Este error es esperable. git te está diciendo que nos has hecho un merge 
+  con el trabajo que tienes en esta feature local. No te asustes, git solo 
+  quiere asegurarse que sepas lo que estás haciendo. De hecho, tu sabes 
+  lo que haces y el trabajo en la feature1 ya está integrado en la rama 
+  principal del proyecto. Por tanto, puedes proceder::
+
+    git branch -D feature1
+
+  Verifica::
+
+    git log --all --oneline
+
+    bb9d131 (HEAD -> main, origin/main, origin/HEAD) feature1 is done (#1)
+    064cf61 (origin/feature1) feature1 is done
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+  Ya no tienes la rama local feature1, pero aún tienes la remota. Esta 
+  también la puedes borrar::
+
+    git push origin --delete feature1
+
+  Verifica::
+
+    git log --all --oneline
+
+    bb9d131 (HEAD -> main, origin/main, origin/HEAD) feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+Los pasos anteriores los repetirá personas 1 cada que termine una feature. 
+
+Vamos para persona 2:
+
+* Ya tenías clonado el proyecto, pero aún no has comenzado a trabajar. Cuando 
+  te sientes a trabajar lo primero que debes hacer es actualizar tu repositorio 
+  local porque es posible que la rama main esté actualizada con una nueva 
+  contribución::
+
+    git fetch --all
+    git pull origin main
+  
+* Crea la rama con la feature que te toca::
+
+    git switch -c feature4
+
+* Programa, prueba y termina tu feature::
+
+    make
+    gcc main.c  -c -g -o main.o
+    gcc feature1.c  -c -g -o feature1.o
+    gcc feature2.c  -c -g -o feature2.o
+    gcc feature3.c  -c -g -o feature3.o
+    gcc feature4.c  -c -g -o feature4.o
+    gcc feature5.c  -c -g -o feature5.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature4) ✗ ./main 
+    hello from feature1
+    hello from feature4
+
+* Observa como ahora aparecen dos features la que acabas de hacer 
+  y la de otro de tus compañeros que ya se integró a la rama principal.
+
+* Realiza el commit::
+
+    git commit -am "feature4 is done"
+
+* Ahora envía la rama local feature4 a Internet::
+  
+    git push origin feature4
+
+  Verifica::
+
+    git log --all --oneline
+
+    534fda1 (HEAD -> feature4, origin/feature4) feature4 is done
+    bb9d131 (origin/main, origin/HEAD, main) feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+* Realiza ahora el pull request::
+
+    gh pr create --title "feature4 is done"
+
+* Ahora te toca esperar a que el compañero responsable de aprobar 
+  los pull request acepte tu contribución. Por lo pronto lo que podrías 
+  hacer es regresar a la rama principal, actualizar tu repositorio 
+  local con el remoto y desde aquí crear una nueva rama con la feature5.
+
+Persona 1:
+
+* De nuevo, en el repositorio en GitHub estará pendiente un pull request 
+  para revisar. Ahora persona 1 debe verificar que el pull request está 
+  correcto y si es así integrarlo a la rama main::
+
+    git fetch --all
+
+  Verifica::
+
+    git log --all --oneline
+
+    534fda1 (origin/feature4) feature4 is done
+    bb9d131 (HEAD -> main, origin/main, origin/HEAD) feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+  Puedes ver la feature4, ahora lo que debes hacer es descargar la rama 
+  feature4, hacer las pruebas y si todo está bien volver GitHub y aceptar 
+  el pull request. ¿Qué pasa si encuentras algo malo en la feature4? Por 
+  ahora aplazaremos esa pregunta y la abordaremos en la feature5.
+
+* Crea una rama local para verificar el pull request de la feature4::
+
+    git switch -c feature4
+
+* Descarga en esta nueva rama local la rama origin feature4::
+
+    git pull origin feature4
+
+  Verifica::
+
+    git log --all --oneline
+
+    534fda1 (HEAD -> feature4, origin/feature4) feature4 is done
+    bb9d131 (origin/main, origin/HEAD, main) feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+* Realiza las pruebas en la rama feature4. Si todo está bien puedes 
+  aceptar el pull request::
+
+    ➜  teamProject git:(feature4) make
+    gcc feature1.c  -c -g -o feature1.o
+    gcc feature4.c  -c -g -o feature4.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature4) ./main 
+    hello from feature1
+    hello from feature4
+
+* En GitHub ingresa al menú Pull requests y presiona el botón ``Squash and merge`` 
+  y confirma la operación.
+
+* Verifica que efectivamente la rama principal se ha actualizado::
+
+    git fetch --all
+    git log --all --oneline
+
+    8110ad2 (origin/main, origin/HEAD) feature4 is done (#2)
+    534fda1 (HEAD -> feature4, origin/feature4) feature4 is done
+    bb9d131 (main) feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+    git log --graph --date-order --all --oneline
+
+    * 8110ad2 (origin/main, origin/HEAD) feature4 is done (#2)
+    | * 534fda1 (HEAD -> feature4, origin/feature4) feature4 is done
+    |/  
+    * bb9d131 (main) feature1 is done (#1)
+    * 52018b0 add a file to initial project template
+    * 3122d94 Project setup
+
+* Ya puedes borrar tu feature4 local y de una vez la remota::
+
+    git switch main
+    git branch -d feature4
+    git branch -D feature4
+    git push origin --delete feature4
+
+  Verifica::
+
+    git log --all --oneline
+
+    8110ad2 (origin/main, origin/HEAD) feature4 is done (#2)
+    bb9d131 (HEAD -> main) feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+Persona 2:
+
+* Vas a realizar la última feature que te tocó, la feature5. Pero 
+  primero, actualiza el estado del remoto::
     
-    git fetch
-    git status
+    git fetch --all --prune 
+
+  Verifica::
+
+    git log --all --oneline
+
+    8110ad2 (origin/main, origin/HEAD) feature4 is done (#2)
+    534fda1 (HEAD -> feature4) feature4 is done
+    bb9d131 (main) feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+    
+* Borra la feature4 local::
+
+    git switch main
+    git branch -D feature4
+
+* Actualiza tu repositorio main local::
+
     git pull
-    git status
+ 
+  Verifica::
 
-   ¿Qué puedes ver en el primer status y luego en el segundo? ¿Alguna diferencia?
+    git log --all --oneline
 
-.. note:: ESCRIBIR documentos en GitHub
+    8110ad2 (HEAD -> main, origin/main, origin/HEAD) feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
 
-    En `este <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>`__ 
-    enlace puedes encontrar más información.
+* Crea el local feature5. Nota que feature5 lo crearás desde el main 
+  local actualizado con la feature4 lista::
+
+    git switch -c feature5
+    git push origin feature5
+
+  Verifica::
+
+    git log --all --oneline
+
+    8110ad2 (HEAD -> feature5, origin/main, origin/feature5, origin/HEAD, main) feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+ 
+* Realiza la feature5, supuestamente esta funcionará, pero vas a solicitar un pull 
+  request y este será rechazado por Persona 1::
+
+    make
+    gcc feature4.c  -c -g -o feature4.o
+    gcc feature5.c  -c -g -o feature5.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature5) ✗ ./main 
+    hello from feature1
+    hello from feature4
+    hello from feature5!!!
+
+* Realiza el commit::
+
+    git commit -am "feature5 is done"
+
+* Envía los cambios a la rama remota::
+
+    git push
+
+  Verifica::
+
+    git log --all --oneline
+
+    8e24576 (HEAD -> feature5, origin/feature5) feature5 is done
+    8110ad2 (origin/main, origin/HEAD, main) feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+* Realiza el pull request::
+
+    gh pr create --title "feature5 is done"
+
+Persona 1:
+
+* Detectas el pull request en GitHub y procedes a verificar que todo 
+  está bien::
+
+    git fetch --all
+
+  Verifica::
+
+    git log --all --oneline
+
+    8e24576 (origin/feature5) feature5 is done
+    8110ad2 (origin/main, origin/HEAD) feature4 is done (#2)
+    bb9d131 (HEAD -> main) feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+* Actualiza la rama main local::
+
+    git pull origin main
+
+  Verifica::
+
+    git log --all --oneline
+
+    8e24576 (origin/feature5) feature5 is done
+    8110ad2 (HEAD -> main, origin/main, origin/HEAD) feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+* Te muestro ahora una manera más rápida de crear la rama local sincronizada 
+  de una vez con la remota::
+
+    git switch -c feature5 origin/feature5
+
+  Verifica::
+
+    git branch -a
+
+    * feature5
+      main
+      remotes/origin/HEAD -> origin/main
+      remotes/origin/feature5
+      remotes/origin/main
+  
+  Como puedes notar estás ahora en la rama local feature5 y adicionaste un remoto 
+  nuevo origin/feature5
+
+* Compila y verifica que todo esté bien::
+
+    ➜  teamProject git:(feature5) make 
+    gcc feature4.c  -c -g -o feature4.o
+    gcc feature5.c  -c -g -o feature5.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature5) ./main 
+    hello from feature1
+    hello from feature4
+    hello from feature5!!!
+
+  Aquí te das cuenta que la feature5 quedó mal, debería ser ``hello from feature5``, 
+  pero al ejecutarla sale ``hello from feature5!!!``. Por tanto, no puedes aceptar 
+  el pull request.
+
+* Regresa a GitHub y en el pull request dile a tu compañero que luego de hacer 
+  pruebas te diste cuenta que hay un error. Dile que debe eliminar los tres 
+  signos de admiración al final.
+
+Persona 2:
+
+* Lee las correcciones que indica Persona 1 y procede a arreglar el código::
+
+    ➜  teamProject git:(feature5) make 
+    gcc feature5.c  -c -g -o feature5.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature5) ./main 
+    hello from feature1
+    hello from feature4
+    hello from feature5
+
+* Realiza el commit y el push::
+
+    git commit -am "feature5 remove 3 marks"
+    git push origin feature5
+
+  Verifica::
+
+    git log --all --oneline
+
+    aebfc73 (HEAD -> feature5, origin/feature5) feature5 remove 3 marks
+    8e24576 feature5 is done
+    8110ad2 (origin/main, origin/HEAD, main) feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+Persona 1:
+
+* Revisa de nuevo las correcciones::
+
+    git fetch --all
+
+  Verifica::
+
+    git log --all --oneline
+
+    aebfc73 (origin/feature5) feature5 remove 3 marks
+    8e24576 (HEAD -> feature5) feature5 is done
+    8110ad2 (origin/main, origin/HEAD, main) feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+  Aquí ya se ve el commit con la corrección.
+
+* Actualiza tu rama local feature5 para repetir las pruebas::
+
+    git switch feature5
+    git pull origin feature5
+
+* Compila y ejecuta::
+
+    ➜  teamProject git:(feature5) make 
+    gcc feature5.c  -c -g -o feature5.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature5) ./main 
+    hello from feature1
+    hello from feature4
+    hello from feature5
+
+* Ya puedes aceptar el pull request. Esta vez te voy a ensañar una manera 
+  más rápida para que no tengas que ir a GitHub::
+
+    gh pr merge -d -s
+
+  En este caso aceptas el pull request, borras la rama feature5 local 
+  y la remota (-d) y realizas un Squash merge (-s).
+
+  Verifica::
+
+    git log --all --oneline
+
+    15e3bec (HEAD -> main, origin/main, origin/HEAD) feature5 is done (#3)
+    aebfc73 (origin/feature5) feature5 remove 3 marks
+    8e24576 feature5 is done
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+  Nota que aún aparece origin/feature5 aunque ya la habías borrado. Puedes 
+  ir a GitHub y comprobar que origin/feature5 ya no existe. En ese caso ejecuta::
+
+    git fetch --all --prune
+
+  Verifica::
+
+    git log --all --oneline
+
+    15e3bec (HEAD -> main, origin/main, origin/HEAD) feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+    git log --graph --date-order --all --oneline
+
+    * 15e3bec (HEAD -> main, origin/main, origin/HEAD) feature5 is done (#3)
+    * 8110ad2 feature4 is done (#2)
+    * bb9d131 feature1 is done (#1)
+    * 52018b0 add a file to initial project template
+    * 3122d94 Project setup
+
+Para terminar el ejercicio solo queda faltando que Persona 1 termine 
+las features 2 y 3.
+
+* En este caso crea solo una rama para las dos features que faltan::
+  
+    git fetch --all --prune
+    git switch main
+    git pull origin main
+    git switch -c feature2_3
+  
+* Terminar el código y probarlo::
+
+    ➜  teamProject git:(feature2_3) make 
+    gcc feature2.c  -c -g -o feature2.o
+    gcc feature3.c  -c -g -o feature3.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature2_3) ✗ ./main 
+    hello from feature1
+    hello from feature2
+    hello from feature3
+    hello from feature4
+    hello from feature5
+
+* Hacer el commit y enviar los cambios a GitHub::
+
+    git commit -am "feature 2 and 3 are done"
+    git push origin feature2_3
+  
+  Verifica::
+
+    git log --all --oneline
+
+    a9291fd (HEAD -> feature2_3, origin/feature2_3) feature 2 and 3 are done
+    15e3bec (origin/main, origin/HEAD, main) feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+* Crea el pull request::
+
+    gh pr create --title "feature 2 and 3 are done"
+
+* Aceptar el pull request y borrar las ramas local y remotas::
+
+    gh pr merge -d -s
+
+  Verifica::
+
+    git fetch --all --prune
+    git log --all --oneline
+
+    b1dfcc6 (HEAD -> main, origin/main, origin/HEAD) feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+Ejercicio 14: recuerda
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Actualiza tu lista de comandos con la explicación de qué hacen.
+* Si te animaste crea flashcards para Anki.
+
+Ejercicio 15: recuerda
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Te propongo ahora que repitas el proceso de trabajo en equipo, pero 
+esta vez cambia de rol, es decir, si antes era quien aceptaba los pull request,
+ahora cambio y deja que otro de tus compañeros haga este rol.
+
+
+
+
+
