@@ -18,6 +18,7 @@ Consideraciones Iniciales
    ¿Cómo aprender a aprender? <_intro/learning>
    ¿Qué herramientas necesitas? <_intro/tools>
    Introducción al control de versión <_intro/introGit>
+   Trabajo en equipo <_intro/gitWorkflow>
       
 .. toctree::
    :maxdepth: 1
