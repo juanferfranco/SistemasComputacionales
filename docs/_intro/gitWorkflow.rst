@@ -388,7 +388,8 @@ verás algo así en GitHub:
 Ejercicio 12: Pero ¿Cómo trabajo equipo? 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Hay varias maneras de trabajar en equipo bajo control de versión. 
+`Hay varias <https://www.atlassian.com/git/tutorials/comparing-workflows>`__ 
+maneras de trabajar en equipo bajo control de versión. 
 Una de ellas es mediante un flujo de trabajo por ramas. Te voy a 
 enseñar esa; sin embargo, antes de comenzar, el trabajo en equipo 
 te obliga a PLANEAR. Por tanto, lo primero que debes hacer es dividir 
@@ -402,16 +403,21 @@ Entonces cuando te digo que debes dividir el proyecto en features,
 lo que quiero decir es que lo dividas en funcionalidades. De esta manera 
 cada integrante del equipo será responsable de hacer una de ellas.
 
-Se establece una regla en el equipo. El código en la rama main siempre 
-será el código correcto del proyecto. Entonces cuando alguien termine 
-de hacer su feature y esté correcta y probada, su contribución debe 
-adicionarse a la rama main. Uno de los miembros del equipo será el 
-responsable de cuidar la rama main. Esta persona debe APROBAR las 
-contribuciones de los demás y asegurarse que la el código esté
+En el flujo de trabajo que te mostraré vamos a asumir que el repositorio 
+central en GitHub y la rama main representarán la historia oficial del proyecto.
+El código en la rama main ``siempre`` deberá funcionar. NUNCA DEBE hacerse un COMMIT 
+directamente a la rama MAIN. NUNCA. Entonces ¿Cómo se integra el código?
+Cuando alguien termine de hacer su feature y esté correcta y probada, 
+su contribución se mezcla con la rama main mediante solicitud. Uno de los 
+miembros del equipo será el responsable de cuidar la rama main. Esta persona 
+debe APROBAR las contribuciones de los demás y asegurarse que el código esté
 bien. Por tanto, cuando uno de los miembros del equipo termine su parte, 
 solicitará la aprobación de su contribución mediante un ``PULL REQUEST``.
 Una vez aprobado el pull request, las contribuciones aparecerán en la rama 
 main y se podrá proceder a borrar las rama con la feature local y en el remoto.
+
+Ten presente que los pull requests también pueden ser usados para pedir 
+ayuda a tus compañeros de trabajo o discutir sobre una nueva rama o feature.
 
 Para nuestro ejemplo vas a suponer que debes realizar este programa:
 
@@ -497,7 +503,8 @@ En este ejemplo que te estoy mostrando hay dos personas. La persona 1 será
 quien creó el repositorio y la persona 2 será el otro miembro 
 del equipo. Te iré contando qué haría cada uno.
 
-Persona 1:
+Persona 1: el moderador crea una feature
+____________________________________________
 
 * Comienza a trabajar en la feature1. Por tanto lo primero que hace es 
   crear la rama feature1::
@@ -535,7 +542,7 @@ Persona 1:
 * Envía su rama local a GitHub para tener un respaldo del trabajo 
   en Internet::
 
-    git push origin feature1
+    git push -u origin feature1
 
 * Ahora se realizará el pull request para adicionar la contribución 
   a la rama main (enter a todas las preguntas)::
@@ -546,7 +553,7 @@ Persona 1:
   de todos los miembros del equipo, incluido el mismo, deberá revisar 
   el trabajo e incorporar la feature1 en la rama principal. En este 
   caso el proceso es simple porque la personas que aprueba es la misma 
-  que envió la solicitud. Cuando persona 1 consulte GitHub verá:
+  que envió la solicitud. Cuando la Persona 1 consulte GitHub verá:
 
 |
 
@@ -559,15 +566,15 @@ Persona 1:
 * Ingresa al menú Pull requests, abre ``feature1 is done`` y 
   procede a aprobar. Abre el menú desplegable del botón ``Merge pull request`` 
   y selecciona ``Squash and merge``. Finalmente, presiona el botón Squash and merge. 
-  GitHub te dará la opción añadir una descripción y te habilitará el botón 
+  GitHub te dará la opción de añadir una descripción y te habilitará el botón 
   Confirm squash and marge. Por favor confirma.
 
-* Ve ahora al menú Code, asegúrate que estás en la rama main y abre el archivo 
+* Ve ahora en el menú Code, asegúrate que estás en la rama main y abre el archivo 
   feature1.c. Deberías ver los cambios.
 
 * Actualiza tu repositorio local::
 
-    git fetch --all
+    git fetch --all --prune
     git log --all --oneline
 
     bb9d131 (origin/main, origin/HEAD) feature1 is done (#1)
@@ -627,16 +634,18 @@ Persona 1:
     52018b0 add a file to initial project template
     3122d94 Project setup
 
-Los pasos anteriores los repetirá personas 1 cada que termine una feature. 
+Los pasos anteriores los repetirá la Personas 1 cada que termine una feature. 
 
-Vamos para persona 2:
+Persona 2: otro miembro crea una feature
+____________________________________________
 
 * Ya tenías clonado el proyecto, pero aún no has comenzado a trabajar. Cuando 
   te sientes a trabajar lo primero que debes hacer es actualizar tu repositorio 
   local porque es posible que la rama main esté actualizada con una nueva 
   contribución::
 
-    git fetch --all
+    git fetch --all --prune
+    git switch main
     git pull origin main
   
 * Crea la rama con la feature que te toca::
@@ -657,7 +666,7 @@ Vamos para persona 2:
     hello from feature1
     hello from feature4
 
-* Observa como ahora aparecen dos features la que acabas de hacer 
+* Observa que aparecen dos features la que acabas de hacer 
   y la de otro de tus compañeros que ya se integró a la rama principal.
 
 * Realiza el commit::
@@ -666,7 +675,7 @@ Vamos para persona 2:
 
 * Ahora envía la rama local feature4 a Internet::
   
-    git push origin feature4
+    git push -u origin feature4
 
   Verifica::
 
@@ -686,13 +695,14 @@ Vamos para persona 2:
   hacer es regresar a la rama principal, actualizar tu repositorio 
   local con el remoto y desde aquí crear una nueva rama con la feature5.
 
-Persona 1:
+Persona 1: el moderador acepta un pull request
+________________________________________________
 
 * De nuevo, en el repositorio en GitHub estará pendiente un pull request 
-  para revisar. Ahora persona 1 debe verificar que el pull request está 
+  para revisar. La Persona 1 debe verificar que el pull request está 
   correcto y si es así integrarlo a la rama main::
 
-    git fetch --all
+    git fetch --all --prune
 
   Verifica::
 
@@ -703,8 +713,8 @@ Persona 1:
     52018b0 add a file to initial project template
     3122d94 Project setup
 
-  Puedes ver la feature4, ahora lo que debes hacer es descargar la rama 
-  feature4, hacer las pruebas y si todo está bien volver GitHub y aceptar 
+  Puedes ver la feature4, descarga el los el commit de esa rama, 
+  realiza las pruebas y si todo está bien regresa a GitHub para aceptar 
   el pull request. ¿Qué pasa si encuentras algo malo en la feature4? Por 
   ahora aplazaremos esa pregunta y la abordaremos en la feature5.
 
@@ -741,7 +751,7 @@ Persona 1:
 
 * Verifica que efectivamente la rama principal se ha actualizado::
 
-    git fetch --all
+    git fetch --all --prune
     git log --all --oneline
 
     8110ad2 (origin/main, origin/HEAD) feature4 is done (#2)
@@ -775,7 +785,8 @@ Persona 1:
     52018b0 add a file to initial project template
     3122d94 Project setup
 
-Persona 2:
+Persona 2: feature con un error
+_______________________________________________
 
 * Vas a realizar la última feature que te tocó, la feature5. Pero 
   primero, actualiza el estado del remoto::
@@ -799,7 +810,7 @@ Persona 2:
 
 * Actualiza tu repositorio main local::
 
-    git pull
+    git pull origin main
  
   Verifica::
 
@@ -814,7 +825,7 @@ Persona 2:
   local actualizado con la feature4 lista::
 
     git switch -c feature5
-    git push origin feature5
+    git push -u origin feature5
 
   Verifica::
 
@@ -859,12 +870,13 @@ Persona 2:
 
     gh pr create --title "feature5 is done"
 
-Persona 1:
+Persona 1: el moderador rechaza un pull request
+__________________________________________________
 
 * Detectas el pull request en GitHub y procedes a verificar que todo 
   está bien::
 
-    git fetch --all
+    git fetch --all --prune
 
   Verifica::
 
@@ -927,7 +939,8 @@ Persona 1:
   pruebas te diste cuenta que hay un error. Dile que debe eliminar los tres 
   signos de admiración al final.
 
-Persona 2:
+Persona 2: miembro realiza una corrección a un pull request
+______________________________________________________________
 
 * Lee las correcciones que indica Persona 1 y procede a arreglar el código::
 
@@ -955,7 +968,8 @@ Persona 2:
     52018b0 add a file to initial project template
     3122d94 Project setup
 
-Persona 1:
+Persona 1: el moderador aprueba un pull request luego de una corrección
+_________________________________________________________________________
 
 * Revisa de nuevo las correcciones::
 
@@ -1042,7 +1056,7 @@ las features 2 y 3.
     git pull origin main
     git switch -c feature2_3
   
-* Terminar el código y probarlo::
+* Termina el código::
 
     ➜  teamProject git:(feature2_3) make 
     gcc feature2.c  -c -g -o feature2.o
@@ -1055,7 +1069,7 @@ las features 2 y 3.
     hello from feature4
     hello from feature5
 
-* Hacer el commit y enviar los cambios a GitHub::
+* Realiza el commit y envía los cambios a GitHub::
 
     git commit -am "feature 2 and 3 are done"
     git push origin feature2_3
@@ -1075,7 +1089,7 @@ las features 2 y 3.
 
     gh pr create --title "feature 2 and 3 are done"
 
-* Aceptar el pull request y borrar las ramas local y remotas::
+* Acepta el pull request y borrar las ramas local y remotas::
 
     gh pr merge -d -s
 
@@ -1102,9 +1116,119 @@ Ejercicio 15: recuerda
 
 Te propongo ahora que repitas el proceso de trabajo en equipo, pero 
 esta vez cambia de rol, es decir, si antes era quien aceptaba los pull request,
-ahora cambio y deja que otro de tus compañeros haga este rol.
+ahora cambia y deja que otro de tus compañeros haga este rol.
 
 
+Ejercicio 16: CONFLICTOS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Cuando estás trabajando en equipo los conflictos, aunque los intentemos 
+evitar, aparecen. En este ejercicio vas a introducir conflictos en 
+el código de teamProject y verás como resolverlos.
+
+¿Cuándo aparecen conflictos? Cuando dos miembros tocan el mismo código y 
+no es posible resolver cuál de las dos versiones del código es la correcta. 
+En este punto no queda más remedio que resolver, de manera, manual el conflicto.
+
+El equipo ha decido realizar un cambio a la feature2 para incorporar un adorno 
+al mensaje. Por falta de comunicación tanto Persona1 como Persona2 creyeron 
+que esa tarea les tocaba a ellos.
+
+Persona 1:
+
+* Actualiza su copia local de main::
+
+    git fetch --all
+    git switch main
+    git pull
+
+  Verifica::
+
+    git log --all --oneline
+
+    b1dfcc6 (HEAD -> main, origin/main, origin/HEAD) feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+* Crea una nueva rama para trabajar en la actualización de la feature2::
+
+    git switch -c feature2-update
+
+Persona 2: 
+
+* Actualiza su copia local de main::
+
+    git fetch --all
+    git switch main
+    git pull
+
+  Verifica::
+
+    git log --all --oneline
+
+    b1dfcc6 (HEAD -> main, origin/main, origin/HEAD) feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+* Crea una nueva rama para trabajar en la actualización de la feature2::
+
+    git switch -c feature2-myupdate
+
+Persona 1 termina primero la actualización de la feature2.
+
+Persona 1:
+
+* Actualiza feature2:
+
+  .. code-block:: c
+  
+    #include "feature2.h"
+    #include <stdio.h>
+
+    void feature2(){
+        // print hello from feature2
+        printf("*hello from feature2*\n");
+    }
+
+* Compila y prueba::
+
+    ➜  teamProject git:(feature2-update) make 
+    gcc feature2.c  -c -g -o feature2.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature2-update) ✗ ./main 
+    hello from feature1
+    *hello from feature2*
+    hello from feature3
+    hello from feature4
+    hello from feature5
+
+* Realiza el commit, crea la rama remoto y realiza el pull request::
+
+    
+
+
+Ejercicio 17: para aquellas personas curiosas
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Si quieres aprender más te voy a dejar unos enlaces:
+
+* `Introducción <https://youtu.be/xbMleco5wiI>`__ a Git.
+* `Lecturas <https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud>`__ de Atlassian.
+* `Learn Git <https://www.gitkraken.com/learn/git>`__ de la empresa GitKraken.
+* Flujo de trabajo `ramificado <https://youtu.be/CZNl7_rj1tE>`__ más complejo.
+* `Ejemplo <https://youtu.be/PjIgou_S9Yc>`__ de un flujo de trabajo ramificado complejo. 
+* Flujo de trabajo `bifurcado <https://youtu.be/-G7aAyDeVo4>`__.
+* `Git lfs <https://www.gitkraken.com/learn/git/git-lfs>`__.
+* `Desarrollo de productos <https://www.youtube.com/watch?v=t9HRzE7_2Xc>`__ 
+  interactivos sin estrés.
+* `DevOps <https://youtu.be/M2BZr02uai0>`__ con aplicaciones interactivas.
+* Aumentar el `rendimiento <https://thepowerups-learning.com/git-hub-actions-para-aumentar-el-rendimiento-en-unity/>`__ del equipo de trabajo.
 
 
 
