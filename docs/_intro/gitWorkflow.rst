@@ -1208,10 +1208,271 @@ Persona 1:
     hello from feature4
     hello from feature5
 
-* Realiza el commit, crea la rama remoto y realiza el pull request::
+* Realiza el commit, crea la rama remota y realiza el pull request::
 
-    
+    git commit -m "prettify feature2"
+    git push -u origin feature2-update    
 
+  Verifica::
+
+    c84b7ab (HEAD -> feature2-update, origin/feature2-update) prettify feature2
+    b1dfcc6 (origin/main, origin/HEAD, main) feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+  Pull request::
+
+    gh pr create --title "feature2 prettified"
+
+* Y como Persona 1 es el moderado de la rama main, entonces acepta 
+  inmediatamente::
+
+    gh pr merge -d -s
+    git fetch --all --prune
+  
+  Verifica::
+
+    git log --all --oneline
+
+    2cb4629 (HEAD -> main, origin/main, origin/HEAD) prettify feature2 (#5)
+    b1dfcc6 feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+Por su parte Persona 2 termina de modificar feature2.
+
+Persona 2:
+
+* Mofica feature2:
+
+  .. code-block:: c
+
+    #include "feature2.h"
+    #include <stdio.h>
+
+    void feature2(){
+        // print hello from feature2
+        printf("#hello from feature2#\n");
+    }
+  
+* Compila y prueba::
+
+    ➜  teamProject git:(feature2-myupdate) ✗ make 
+    gcc feature2.c  -c -g -o feature2.o
+    gcc feature3.c  -c -g -o feature3.o
+    gcc -Wall -g -o main *.o
+    ➜  teamProject git:(feature2-myupdate) ✗ ./main 
+    hello from feature1
+    #hello from feature2#
+    hello from feature3
+    hello from feature4
+    hello from feature5
+
+* Realiza el commit y crea la rama remota::
+
+    git commit -am "feature2 has new look and feel"
+    git push -u origin feature2-myupdate
+
+  Verifica::
+
+    git log --all --oneline
+
+    f249af9 (HEAD -> feature2-myupdate, origin/feature2-myupdate) feature2 has new look and feel
+    b1dfcc6 (origin/main, origin/HEAD, main) feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+Nota que Persona2 aún no ha actualizado los metadatos del repositorio remoto y no 
+se ha dado cuenta que Persona 1 ya había hecho las modificaciones.
+
+  Solita el pull request::
+
+    gh pr create --title "feature2 has new life"
+
+Persona 1 recibe una notificación por correo donde se le informa que 
+Persona 2 realizó el trabajo esperado (que Persona 1 ya había hecho)
+
+Persona 1:
+
+* Ve a GitHub, ingresa al menú Pull requests, abre el pull request de Persona 2:
+
+  .. image:: ../_static/conflictPR.png
+    :alt: conflicto con un pull request
+    :align: center
+
+* Trata de aceptar el pull request desde la terminal::
+
+    ➜  teamProject git:(main) gh pr merge 6 
+    X Pull request #6 is not mergeable: the merge commit cannot be cleanly created.
+    To have the pull request merged after all the requirements have been met, add the `--auto` flag.
+    Run the following to resolve the merge conflicts locally:
+      gh pr checkout 6 && git fetch origin main && git merge origin/main
+
+Como sea Persona 1 tiene que resolver el conflicto.
+
+* Observa el conflicto:
+
+  .. code-block:: c
+
+    #include "feature2.h"
+    #include <stdio.h>
+
+    void feature2(){
+        // print hello from feature2
+    <<<<<<< feature2-myupdate
+        printf("#hello from feature2#\n");
+    =======
+        printf("*hello from feature2*\n");
+    >>>>>>> main
+    }
+
+  Nota que en la rama main tiene una versión de printf diferente 
+  a la de feature2-myupdate. ¿Por qué hay un conflicto? porque tienes 
+  que decidir cuál de las dos el correcta.
+
+* Resuelve el conflicto diciendo con cuál de las dos versiones de código 
+  te quedarás. En este caso decides que te quedarás con la versión que 
+  hizo Persona 2.
+
+  Descarga la rama que aporta el conflicto::
+
+    gh pr checkout 6
+  
+  Actualiza los metadatos del repositorio remoto::
+
+    git fetch origin main
+  
+  Verifica::
+
+    git log --all --oneline
+
+    f249af9 (HEAD -> feature2-myupdate, origin/feature2-myupdate) feature2 has new look and feel
+    2cb4629 (origin/main, origin/HEAD, main) prettify feature2 (#5)
+    b1dfcc6 feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+  
+  Resuelve localmente el conflicto, intentando primero mezclar el contenido 
+  de origin/main en tu local de feature2-myupdate::
+
+    git merge origin/main
+    Auto-merging feature2.c
+    CONFLICT (content): Merge conflict in feature2.c
+    Automatic merge failed; fix conflicts and then commit the result.
+
+  Abre el archivo con problemas y resuleve el conflicto:
+
+  .. code-block:: c
+
+    #include "feature2.h"
+    #include <stdio.h>
+
+    void feature2(){
+        // print hello from feature2
+    <<<<<<< HEAD
+        printf("#hello from feature2#\n");
+    =======
+        printf("*hello from feature2*\n");
+    >>>>>>> origin/main
+    }
+
+  Edita el archivo:
+
+  .. code-block:: c
+
+    #include "feature2.h"
+    #include <stdio.h>
+
+    void feature2(){
+        // print hello from feature2
+        printf("#hello from feature2#\n");
+    }
+
+  Realiza el commit::
+
+    ➜  teamProject git:(feature2-myupdate) ✗ git commit -am "resolve conflic in feature2"
+    [feature2-myupdate 3bb07b9] resolve conflic in feature2
+    ➜  teamProject git:(feature2-myupdate) 
+
+  Verifica::
+
+    git log --all --oneline
+
+    3bb07b9 (HEAD -> feature2-myupdate) resolve conflic in feature2
+    f249af9 (origin/feature2-myupdate) feature2 has new look and feel
+    2cb4629 (origin/main, origin/HEAD, main) prettify feature2 (#5)
+    b1dfcc6 feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+  Termina de realizar el ``merge``::
+
+      git switch main
+      git merge feature2-myupdate
+  
+  Verifica::
+
+    3bb07b9 (HEAD -> main, feature2-myupdate) resolve conflic in feature2
+    f249af9 (origin/feature2-myupdate) feature2 has new look and feel
+    2cb4629 (origin/main, origin/HEAD) prettify feature2 (#5)
+    b1dfcc6 feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+
+  Actualiza el remoto::
+
+    git push
+    git fetch --all
+
+  Verifica::
+
+    git log --all --oneline
+
+    3bb07b9 (HEAD -> main, origin/main, origin/HEAD, feature2-myupdate) resolve conflic in feature2
+    f249af9 (origin/feature2-myupdate) feature2 has new look and feel
+    2cb4629 prettify feature2 (#5)
+    b1dfcc6 feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
+  
+  Borra el local feature2-myupdate y el remoto::
+
+    git branch -D feature2-myupdate
+    git push origin --delete feature2-myupdate
+    git fetch --all --prune
+  
+  Verifica::
+
+    3bb07b9 (HEAD -> main, origin/main, origin/HEAD) resolve conflict in feature2
+    f249af9 feature2 has new look and feel
+    2cb4629 prettify feature2 (#5)
+    b1dfcc6 feature 2 and 3 are done (#4)
+    15e3bec feature5 is done (#3)
+    8110ad2 feature4 is done (#2)
+    bb9d131 feature1 is done (#1)
+    52018b0 add a file to initial project template
+    3122d94 Project setup
 
 Ejercicio 17: para aquellas personas curiosas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
