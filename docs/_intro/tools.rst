@@ -51,7 +51,7 @@ scripting.
 
 * Java JDK::
   
-   sudo apt install openjdk-8-jdk
+   sudo apt install default-jdk
 
 * `Digital <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/Digital.zip>`__
 * `Nand2tetris Software Suite <https://www.nand2tetris.org/software>`__
