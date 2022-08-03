@@ -11,12 +11,10 @@ Propósito de aprendizaje
 ****************************
 
 Comprender cómo funciona el hardware de un computador moderno desde una perspectiva sistémica, es decir, 
-estudiando las partes que lo componen y cómo conectarlas entre ellas para conseguir funciones 
-cada vez más complejas.
+estudiando las partes que lo componen y cómo se conectan para conseguir funciones más complejas.
 
 Te acercarás al lenguaje de programación ensamblador y verás la relación con un lenguaje similar, hasta 
 cierto punto, a C# en su sintaxis llamado C.
-
 
 Temas
 ********
@@ -27,98 +25,53 @@ Temas
 Trayecto de actividades
 ------------------------
 
-Sesión 1
-**********
-(Tiempo estimado: 1 hora 40 minutos)
+Estos ejercicios te servirán como preparación para la evaluación. Todos son muy importantes 
+y le aportan a tu preparación conceptos, procedimientos y evaluaciones formativas necesarias 
+para que puedas abordar la evaluación sumativa de la mejor manera posible.
 
+Ejercicios
+***********
 
-Ejercicio 1: introducción al control de versión 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ejercicio 1: Demo 
+^^^^^^^^^^^^^^^^^^^^
 
-Trabajo autónomo 1
-********************
-(Tiempo estimado: 1 hora 20 minutos)
+Verifica si en un tu sistema tienes la aplicación Digital (escribe Digital en el lanzador de 
+aplicaciones). Si no la tienes la puedes descargar `aquí <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/Digital.zip>`__
 
-Ejercicio 2: entorno de trabajo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Si tuviste que descargar la aplicación, descomprime y abre el directorio en una terminal. 
+Ejecuta el archivo install.sh. Ahora si puedes lanzar la aplicación.
 
-Para poder trabajar en los ejercicios vas a necesitar un ambiente de trabajo basado en Linux.
+Ve a la opción Edit/Settings/Advanced y en Java library adiciona 
+esta biblioteca: ``Digital/custom/digitaln2t-1.0-SNAPSHOT.jar``.
 
-Te voy a pedir que le des una mirada a  `este video <https://youtu.be/ZPpo-uViT_o>`__ para 
-que te hagas una idea de qué es Linux.
+Ahora abre el archivo demo que está en ``Digital/custom/project05/ComputerFull4Key.dig``.
 
-Hay varias opciones para tener Linux funcionando en tu computador: lo puedes instalar en una 
-memoria, en una partición de tu computador, en una máquina virtual o incluso en 
-`WSL2 <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`__.
+Debes ver algo así:
 
-La opción que te voy a recomendar es instalar el sistema operativo en una memoria USB externa.
+.. image:: ../_static/HackComputer.png
+  :alt: HackComputer demo
+  :align: center
+  :width: 100%
 
-Vas a necesitar dos memorias USB. Una grande (> 16GB), donde instalarás tu sistema operativo
-y otra más pequeña (8GB) donde grabaras el instalador. Trata de utilizar la USB más rápida y
-más grande para instalar tu sistema operativo.
+|
 
-Te voy a dejar unos videos de ayuda:
+Por ahora nota que hay tres bloques de interés: uno que dice ROM (Program), CPU y 
+Memory. Dale click derecho al bloque que dice ROM, selecciona Advance y en la opción 
+File carga el archivo ``Digital/custom/project05/fill.hex``. Las primeras líneas 
+del archivo fill.hex se ven así::
 
-* Este `video <https://www.youtube.com/watch?v=zSGZe8NSEAc>`__ 
-  te muestra como grabar en la USB pequeña el instalador. En este caso la distribución es PopOS,
-  es la misma que yo uso; sin embargo, puedes grabar la que más te guste, por ejemplo Ubuntu.
-  Ten presente que la versión del video no será la última. También, debes investigar
-  cómo entrar al menú de configuración de tu BIOS para que ajustes el orden de boot. 
-  Nota que debes darle prioridad a la USB para que al tenerla conectada arranques el 
-  instalador del sistema operativo.
+  :020000000040BE
+  :0200020010EC00
+  :020004001000EA
+  :0200060008E30D
+  :02000800006096
+  :02000A0010FCE8
+  :02000C001300DF
+  :02000E0005E308 
 
-* Ahora, este video `video <https://www.youtube.com/watch?v=RR9Vgytjj24>`__ te mostrará
-  cómo instalar, usando la USB pequeña con el instalador, tu sistema operativo en la USB grande.
-  Te recomiendo iniciar a ver el video en el minuto 6:29, donde comienza en si el proceso
-  de instalación. Una vez termines de instalar Linux en la USB grande, NO OLVIDES desconectar la USB
-  pequeña para que tu computador inicie con la versión instalada de Linux en la USB grande.
+En esas líneas están almacenados los códigos de máquina de las instrucciones que 
+ejecutará la CPU.
 
-* Si tu computador no arranca en Linux debes reiniciarlo y entrar el menu de boot (debes indagar 
-  cómo hacerlo en tu computador) y seleccionar Linux.
-
-Si lo anterior no te funciona, prueba con una `máquina virtual <https://youtu.be/tNUgLsXD7xg>`__ o con WSL2.
-Ten presente que las versiones de los videos pueden no coincidir con las versiones actuales.
-
-Ejercicio 3: instala las herramientas 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Una vez tengas Linux funcionando debes instalar unas cuentas herramientas:
-
-Abren la terminal y ejecuta los comandos:
-
-.. code-block:: bash
-
-    $ sudo apt update
-    $ sudo apt install build-essential
-    $ sudo apt install gdb
-
-Ejercicio 4: instala un de entorno de desarrollo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Para el curso te recomiendo que instales Visual Studio Code. Te servirá 
-para todas las modalidades de instalación del sistema operativo que te comenté, 
-incluyendo WSL2.
-
-#. `Visual Studio Code <https://code.visualstudio.com/>`__
-
-Sesión 2
-**********
-(Tiempo estimado: 1 hora 40 minutos)
-
-Vas a terminar el Ejercicio 1.
-
-Trabajo autónomo 2
-********************
-(Tiempo estimado: 1 hora 20 minutos)
-
-Termina los ejercicios de la sesión de trabajo autónomo 1. La meta 
-es que para la semana entrante tengas funcionando Linux en tu 
-propio computador.
-
-
-Sesión 3
-**********
-(Tiempo estimado: 1 hora 40 minutos)
 
 Ejercicio 5: circuitos lógicos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
