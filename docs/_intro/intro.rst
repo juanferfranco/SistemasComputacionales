@@ -61,17 +61,17 @@ El curso está divido en 4 unidades:
 Cronograma
 ------------
 
-* Introducción y control de versión. semana 1 y 2
-* Unidad 1: semanas 3 a 5.
-* Unidad 2: semanas 6 a 10.
+* Introducción y control de versión. semana 1 y 3
+* Unidad 1: semanas 4 a 6.
+* Unidad 2: semanas 7 a 10.
 * Unidad 3: semanas 11 a 13.
 * Unidad 4: semanas 14 a 16.
 
 Evaluación
 -----------
 
-* Evaluación control de versión: 10% sesión 2 de la semana 2.
-* Evaluación unidad 1: 20% semana 5.
+* Evaluación control de versión: 10% sesión 2 de la semana 3.
+* Evaluación unidad 1: 20% semana 6.
 * Evaluación unidad 2: 25% semana 10. 
 * Evaluación unidad 3: 25% semana 13.
 * Evaluación unidad 4: 20% semana 16. 
