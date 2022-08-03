@@ -6,7 +6,8 @@ Enunciado
 (El framework de pruebas para esta evaluación está tomado de 
 `aquí <https://github.com/remzi-arpacidusseau/ostep-projects>`__)
 
-#. Ingresa y acepta la evaluación en este enlace.
+#. Ingresa y acepta la evaluación en 
+   `este <https://classroom.github.com/a/VlWvsCi->`__ enlace.
 #. Clone el repositorio con tu evaluación en tu computador local.
 #. Crear el archivo main.c en el ``directorio dirTest/project`` 
    con el siguiente código:
