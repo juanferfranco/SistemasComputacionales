@@ -19,6 +19,7 @@ Consideraciones Iniciales
    ¿Qué herramientas necesitas? <_intro/tools>
    Introducción al control de versión <_intro/introGit>
    Trabajo en equipo <_intro/gitWorkflow>
+   Evaluación 1 <_intro/evalVersionControl>
       
 .. toctree::
    :maxdepth: 1
