@@ -455,7 +455,7 @@ El miembro del equipo quien creó el repositorio lo clonará localmente::
 
     git clone https://github.com/juanferfranco/teamProject.git
 
-Luego vas a descargar `este <_static/files.tar>`__ archivo comprimido. 
+Luego vas a descargar `este <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/files.tar>`__ archivo comprimido. 
 Descomprime el archivo así::
 
     tar -xf files.tar
