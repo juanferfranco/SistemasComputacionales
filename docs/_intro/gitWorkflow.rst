@@ -133,7 +133,7 @@ Quieres listar todas las ramas que tienes::
 
 Quieres borrar una rama::
 
-    git branch d nombre_de_la_rama
+    git branch -d nombre_de_la_rama
 
 Quieres cambiar el nombre de una rama::
 
