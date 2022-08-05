@@ -50,7 +50,7 @@ Enunciado
     * Una lista ordenada con los comandos para:  
      
       * Clonar tu repositorio de la evaluación.
-      * Adicionar un archivo al STAGE.
+      * Adicionar el archivo main.c al STAGE.
       * Realizar un commit.
       * Sincronizar con el repositorio remoto.
 
