@@ -58,4 +58,4 @@ Criterios de calificación
 --------------------------
 
 #. Pasar todas las pruebas: 4 unidades.
-#. Realizar correctamente la documentación 1 unidad.
+#. Realizar correctamente la documentación: 1 unidad.
