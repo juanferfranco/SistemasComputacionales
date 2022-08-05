@@ -89,12 +89,15 @@ Los comandos serían::
     git add f1
     git commit -m "add f1 to master"
     git switch -c feature1
+    touch f2
     git add f2
     git commit -m "add f2 to feature1"
     git switch master
+    touch f3
     git add f3
     git commit -m "add f3 to master"
     git switch feature1
+    touch f4
     git add f4
     git commit -m "add f4 to feature1"
 
