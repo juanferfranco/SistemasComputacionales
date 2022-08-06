@@ -92,7 +92,8 @@ negro. Si dejas de presionar la tecla los pixels cambiarán a blanco.
   El computador que acabas de simular tiene todos los elementos para ejecutar 
   juegos. Tiene una memoria (ROM) para almacenar las instrucciones y datos iniciales del juego. 
   Tiene un circuito para ejecutar las instrucciones (CPU). Tiene una memoria para ir 
-  almacenando cómo va cambiando el juego. Tiene teclado y pantalla (Memory).
+  almacenando cómo va cambiando el juego (Memory). Tiene teclado y pantalla (periféricos de 
+  entrada salida).
 
 Si ya terminaste de experimentar, cierra la ventana HACK Display y termina la simulación.
 
