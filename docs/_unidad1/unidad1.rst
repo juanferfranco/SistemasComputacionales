@@ -80,7 +80,7 @@ Puedes iniciar la simulación usando el botón marcado con el mismo ícono. Al i
 la simulación se activa el botón que la detiene (botón con 
 el cuadrado de color rojo).
 
-Un vez inicie la simulación presiona con el mouse una de las teclas mercadas con los 
+Un vez inicie la simulación presiona con el mouse una de las teclas marcadas con los 
 números 1, 2, 3 o 4. Se activará una ventana titulada HACK Display. Esta ventana 
 simula una pantalla de 512 pixels de ancho por 256 pixels de alto. Mueve la ventana 
 hacia la izquierda en caso de que te impida el acceso a las teclas. Deja presionada 
