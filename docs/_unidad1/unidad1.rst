@@ -35,7 +35,7 @@ Ejercicios
 Ejercicio 1: Demo 
 ^^^^^^^^^^^^^^^^^^^^
 
-Verifica si en un tu sistema tienes la aplicación Digital (escribe Digital en el lanzador de 
+Verifica si en tu sistema tienes la aplicación Digital (escribe Digital en el lanzador de 
 aplicaciones). Si no la tienes la puedes descargar `aquí <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/Digital.zip>`__
 
 Si tuviste que descargar la aplicación, la puedes descomprimir en el directorio ``apps``. Luego 
