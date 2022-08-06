@@ -56,7 +56,7 @@ Debes ver algo así:
 
 |
 
-Por ahora nota que hay tres bloques de interés: uno que dice ROM (Program), CPU y 
+Por ahora nota que hay tres bloques de interés: ROM (Program), CPU y 
 Memory. Dale click derecho al bloque que dice ROM, selecciona Advance y en la opción 
 File carga el archivo ``Digital/custom/project05/fill.hex``. Las primeras líneas 
 del archivo fill.hex se ven así::
