@@ -97,6 +97,136 @@ negro. Si dejas de presionar la tecla los pixels cambiarán a blanco.
 
 Si ya terminaste de experimentar, cierra la ventana HACK Display y termina la simulación.
 
+Ejercicio 2: Demo
+^^^^^^^^^^^^^^^^^^^^
+
+Ahora te mostraré el programa que está ejecutando el computador. Este programa está ALMACENADO 
+en la memoria de programa ROM. Puedes pensar la memoria como un arreglo de n posiciones donde 
+cada posición tiene un índice que va desde la posición 0 para el primer componente del arreglo 
+hasta la posición n-1 para el último. En cada posición se almacena el código de máquina que la 
+CPU LEERÁ, DECODIFICARÁ (entenderla) y EJECUTARÁ (realizar la operación solicitada):
+
+========= ==================
+Dirección Código de máquina  
+========= ================== 
+0	        0100000000000000
+1	        1110110000010000
+2	        0000000000010000
+3	        1110001100001000
+4	        0110000000000000
+5	        1111110000010000
+6	        0000000000010011
+7	        1110001100000101
+8	        0000000000010000
+9	        1111110000010000
+10	      0100000000000000
+11	      1110010011010000
+12	      0000000000000100
+13	      1110001100000110
+14	      0000000000010000
+15	      1111110010101000
+16	      1110101010001000
+17	      0000000000000100
+18	      1110101010000111
+19	      0000000000010000
+20	      1111110000010000
+21	      0110000000000000
+22	      1110010011010000
+23	      0000000000000100
+24	      1110001100000011
+25  	    0000000000010000
+26	      1111110000100000
+27	      1110111010001000
+28	      0000000000010000
+29	      1111110111001000
+30	      0000000000000100
+31	      1110101010000111
+========= ================== 
+
+Muy claro el programa, ¿Verdad? :) 
+
+|
+
+Estas cadenas de unos y ceros no resultan fáciles de entender para las personas. Afortunadamente 
+cada cadena puede representarse de manera simbólica y se vería así:
+
+========= ===================
+Dirección Código ensamblador  
+========= =================== 
+0	        @16384
+1	        D=A
+2	        @16
+3	        M=D
+4	        @24576
+5	        D=M
+6	        @19
+7	        D;JNE
+8	        @16
+9	        D=M
+10	      @16384
+11	      D=D-A
+12	      @4
+13	      D;JLE
+14	      @16
+15	      AM=M-1
+16	      M=0
+17	      @4
+18	      0;JMP
+19	      @16
+20	      D=M
+21	      @24576
+22	      D=D-A
+23	      @4
+24	      D;JGE
+25	      @16
+26	      A=M
+27	      M=-1
+28	      @16
+29	      M=M+1
+30	      @4
+31	      0;JMP
+========= =================== 
+
+.. code-block:: c
+
+    @SCREEN
+    D=A
+    @16
+    M=D
+    (LOOP)
+    @KBD
+    D=M
+    @NO_KEY
+    D;JNE
+    @16
+    D=M
+    @SCREEN
+    D=D-A
+    @LOOP
+    D;JLE
+    @16
+    AM=M-1
+    M=0
+    @LOOP
+    0;JMP
+    (NO_KEY)
+    @16
+    D=M
+    @SCREEN
+    D=D-A
+    @LOOP
+    D;JGE
+    @16
+    A=M
+    M=-1
+    @16
+    M=M+1
+    @LOOP
+    0;JMP
+
+Conocías este lenguaje de programación?
+
+
 ..
   Lee el `capítulo 4 del libro guía <https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/44046b_7ef1c00a714c46768f08c459a6cab45a.pdf>`__.
 
