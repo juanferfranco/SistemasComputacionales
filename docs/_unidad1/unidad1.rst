@@ -187,44 +187,12 @@ Dirección Código ensamblador
 31	      0;JMP
 ========= =================== 
 
-.. code-block:: c
+Al lenguaje anterior se le conoce como lenguaje ensamblador y tiene una correspondencia uno a uno 
+que el lenguaje de máquina. 
 
-    @SCREEN
-    D=A
-    @16
-    M=D
-    (LOOP)
-    @KBD
-    D=M
-    @NO_KEY
-    D;JNE
-    @16
-    D=M
-    @SCREEN
-    D=D-A
-    @LOOP
-    D;JLE
-    @16
-    AM=M-1
-    M=0
-    @LOOP
-    0;JMP
-    (NO_KEY)
-    @16
-    D=M
-    @SCREEN
-    D=D-A
-    @LOOP
-    D;JGE
-    @16
-    A=M
-    M=-1
-    @16
-    M=M+1
-    @LOOP
-    0;JMP
-
-Conocías este lenguaje de programación?
+Ahora si es más claro qué hace el programa? Puede que no. El lenguaje ensamblador es más 
+fácil de leer q¿y escribir que el lenguaje de máquina, pero lo malo es que tienes que aprender 
+tantos lenguajes ensamblador como CPUs te interesen.
 
 
 ..
