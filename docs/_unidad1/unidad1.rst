@@ -563,7 +563,7 @@ Analizando de izquierda a derecha:
 * 0 1100 00: a c1 c2 c3 c4 c5 c6. Esta combinación indica que la operación es leer 
   el registro A.
 * 01 0: d1 d2 d3. Almacenar en el registro D.
-* 000: No modifica el PC, no hace salto. La próxima instrucción la tomará de PC = PC + 1.
+* 000: no modifica el PC, no hace salto. La próxima instrucción la tomará de PC = PC + 1.
 
 
 ..
