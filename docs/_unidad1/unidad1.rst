@@ -97,14 +97,14 @@ negro. Si dejas de presionar la tecla los pixels cambiarán a blanco.
 
 Si ya terminaste de experimentar, cierra la ventana HACK Display y termina la simulación.
 
-Ejercicio 2: Demo
-^^^^^^^^^^^^^^^^^^^^
+Ejercicio 2: concepto de programa almacenado
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ahora te mostraré el programa que está ejecutando el computador. Este programa está ALMACENADO 
-en la memoria de programa ROM. Puedes pensar la memoria como un arreglo de n posiciones donde 
-cada posición tiene un índice que va desde la posición 0 para el primer componente del arreglo 
-hasta la posición n-1 para el último. En cada posición se almacena el código de máquina que la 
-CPU LEERÁ, DECODIFICARÁ (entenderla) y EJECUTARÁ (realizar la operación solicitada):
+en la memoria de programa (ROM). Puedes pensar la memoria como un arreglo de ``n posiciones`` donde 
+cada posición tiene un índice o ``dirección`` que va desde la posición 0 para el primer componente 
+del arreglo hasta la posición n-1 para el último. En cada posición se almacena un código de máquina que la 
+CPU ``LEERÁ`` (leer), ``DECODIFICARÁ`` (entender) y ``EJECUTARÁ`` (realizar la operación solicitada):
 
 ========= ==================
 Dirección Código de máquina  
@@ -188,11 +188,96 @@ Dirección Código ensamblador
 ========= =================== 
 
 Al lenguaje anterior se le conoce como lenguaje ensamblador y tiene una correspondencia uno a uno 
-que el lenguaje de máquina. 
+con el lenguaje de máquina. 
 
-Ahora si es más claro qué hace el programa? Puede que no. El lenguaje ensamblador es más 
-fácil de leer q¿y escribir que el lenguaje de máquina, pero lo malo es que tienes que aprender 
-tantos lenguajes ensamblador como CPUs te interesen.
+¿Ahora si es más claro qué hace el programa? Puede que no. El lenguaje ensamblador es más 
+fácil de leer y escribir que el lenguaje de máquina, pero sigue siendo un reto para las 
+personas escribir programas a ese nivel. Adicionalmente, ten presente que el lenguaje de máquina 
+y el lenguaje ensamblador son PARTICULARES para cada CPU. Eso quiere decir que tendrás que aprender 
+tantos lenguajes ensamblador como CPU donde quieres que se ejecute tu programa.
+
+¿Hay alguna manera de escribir un programa en un único lenguaje? Si. Aquí entran los lenguajes 
+de alto nivel, en los que tu has programado. Un posible programa en alto nivel para el programa 
+que te he venido mostrando es el siguiente, escrito en C/C++:
+
+.. code-block:: c
+
+    MEMORY[16] = 16384;
+
+    while (true)
+    {
+        if (MEMORY[KEYBOARD] == 0)
+        {
+            if ((MEMORY[16] - 16384) > 0)
+            {
+                MEMORY[16] = MEMORY[16] - 1;
+                MEMORY[MEMORY[16]] = 0x0000;
+            }
+        }
+        else
+        {
+            if ((MEMORY[16] - 24576) < 0)
+            {
+                MEMORY[MEMORY[16]] = 0xFFFF;
+                MEMORY[16] = MEMORY[16] + 1;
+            }
+        }
+    }
+
+.. note:: RETO
+
+   ¿Te animas ahora si a decir qué hace el programa? Trata de analizarlo, pero no te 
+   preocupes porque en un momento lo discutiremos.
+
+Ejercicio 3: concepto de variable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+El arreglo MEMORY representa al circuito Memory que te mostré previamente en el diagrama del computador. 
+``MEMORY[16]`` corresponde a la posición de memoria 16, es decir, MEMORY[16] es una ``VARIABLE``. 
+Entonces una variable no es más que una posición de memoria, en este caso, la posición 16. Ten presente 
+que en los programas que has realizado hasta ahora nunca dices de manera explícita la dirección 
+o posición de la variable, sino que usas un NOMBRE, el nombre de la variable, que representa 
+esa posición.
+
+Ejercicio 4: concepto de entrada-salida mapeada a memoria
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+La posición de memoria ``MEMORY[KEYBOARD]`` es especial. En esa posición se almacena un cero 
+si no hay una tecla presionada o un valor diferente de cero que indica cuál tecla se presionó. ¿Notas que 
+leer si hay una tecla presionada o no es como leer una variable? a esto se le conoce 
+como ``entrada-salida mapeada a memoria``. ¿Cómo aparece el valor en memoria? Primero observa que al bloque 
+de Memory se conectan cuatro teclas marcadas como ``1, 2, 3 y 4``. Internamente el bloque Memory tiene 
+un circuito que se encarga de determinar qué tecla está presionada y luego almacena un número que la 
+representa en la posición de memoria ``MEMORY[KEYBOARD]``.
+
+El programa también está haciendo una operación de salida. Está pintando en pantalla. El truco es 
+el mismo (entrada-salida mapeada a memoria). La pantalla del computador tiene 256x512 pixeles, es decir, 
+131072 pixeles. Esos pixeles están asociados a ciertas posiciones de memoria. En este caso desde 
+la posición de ``MEMORY[16384]`` en la dirección 16384 hasta ``MEMORY[24575]`` en la dirección 24575.
+De igual manera que en el caso del teclado, en el bloque Memory hay un circuito que lee las posiciones 
+de memoria anteriores y pinta en la pantalla la información que allí se encuentra.
+
+Nota esta línea::
+
+  MEMORY[MEMORY[16]] = 0xFFFF;;
+
+Supón que en MEMORY[16] está almacenado el valor 16384, es decir, la dirección inicial del rango 
+de posiciones que representan a la pantalla. Por tanto, se puede transformar la línea anterior a::
+
+  MEMORY[16384] = 0xFFFF;
+
+¿Qué significa ``0xFFFF``? Es un número en base 16. A diferencia del sistema base 10 que usamos 
+todo el tiempo, el sistema base 16 tiene 16 símbolos para representar cantidades numéricas. Tiene 
+los mismos 10 símbolos del sistema base 10 (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) y 6 más (A, B,C, D, E, F). 
+En este caso, el número ``0xFFFF`` indica que todos los pixeles representados en la posición 
+16384 deben encenderse. Nota también la línea::
+
+  MEMORY[MEMORY[16]] = 0x0000;
+
+Si MEMORY[16] tiene almacenado el valor 16384 entonces en se está indicando lo contrario, es decir, 
+los pixeles representados por esa posición de memoria se deben apagar.
+
+
 
 
 ..
