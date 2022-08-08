@@ -274,10 +274,296 @@ En este caso, el número ``0xFFFF`` indica que todos los pixeles representados e
 
   MEMORY[MEMORY[16]] = 0x0000;
 
-Si MEMORY[16] tiene almacenado el valor 16384 entonces en se está indicando lo contrario, es decir, 
+Si MEMORY[16] tiene almacenado el valor 16384 entonces se está indicando lo contrario, es decir, 
 los pixeles representados por esa posición de memoria se deben apagar.
 
 
+.. note:: RETO (continuación)
+
+   ¿Te animas ahora a explicar el programa? 
+
+Ejercicio 5: fetch-decode-execute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+¿Cómo funciona una CPU? En términos generales una CPU hace tres cosas: fetch o 
+buscar un instrucción. Las instrucciones están guardadas, en 
+nuestro computador de ejemplo, en la memoria de programa. Luego la CPU decodifica 
+la instrucción, es decir, determina qué operación debe realizar. Finalmente, 
+la ejecuta, es decir, realiza la operación decodificada.
+
+Regresemos a nuestro programa y analicemos detenimiento cómo se ejecuta. ¿En qué 
+dirección de memoria de programa inicia la ejecución? La CPU inicia a buscar 
+instrucciones en la dirección 0 de la memoria de programa:
+
+.. image:: ../_static/CPURest.png
+  :alt: la CPU inicia
+  :align: center
+
+Nota en la figura la salida PC del circuito de la CPU. Esta salida se conecta a la 
+entrada ``A`` de la memoria ROM. La entrada A es la entrada de dirección de la memoria. 
+En respuesta, la memoria ROM muestra en su salida D el contenido de la posición 
+presentada en A. Nota que en este caso el número en D es el 0x4000. Quiere decir que 
+en la posición 0 de la memoria ROM está almacenado el número 0x4000. Si cambias el contenido 
+de la posición 0 estarás cambiando la primera instrucción del programa. La instrucción 
+0x4000 es leída por la CPU por medio de la entrada ``instruction`` y comienza el 
+proceso de decodificación. 
+
+¿Qué hace la instrucción 0x4000? Para entender mejor la instrucción te voy a mostrar 
+cómo convertir el número 0x4000 a su representación binaria. 
+
+Ejercicio 6: números en base 2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+La representación binaria no es más que la representación en base 2. Ten presente 
+que así como en base 10 hay 10 símbolos, en base 16 hay 16 símbolos, 
+en base 2 solo tendrás dos símbolos: 0 y 1. Mira con detenimiento la siguiente tabla
+que te muestra lo mismos números representados en las tres bases:
+
+======== ======== ==================
+Base 10  Base 16  Base 2
+======== ======== ==================
+0         0       0000
+1         1       0001
+2         2       0010
+3         3       0011
+4         4       0100
+5         5       0101
+6         6       0110
+7         7       0111
+8         8       1000
+9         9       1001
+10        A       1010
+11        B       1011
+12        C       1100
+13        D       1101
+14        E       1110  
+15        F       1111
+======== ======== ==================
+
+Convertir de base 16 a base 2 es muy fácil. Solo tienes que representar 
+``cada símbolo`` en base 16 por su equivalente en base 2. Así el símbolo 4 
+en base 16 se representa por medio de 3 bits: 100. Te estarás preguntando 
+¿Qué es un bit? ¿Por qué 3 bits si en la tabla me muestras 4 bits? Un bit 
+no es más que un símbolo de la representación en binario. En la cadena 
+100 el bit más significativo, el que está más a la izquierda, es ``1`` y el 
+menos significativo, el que está más a la derecha, es ``0``. Así como en 
+base 10, los ceros a la izquierda no modifican la representación del número. 
+Por tanto 0100 es equivalente a 100. Regresando a la cuestión inicial, observa:
+
+======== ===================
+Base 16   Base 2
+======== ===================
+0x4000   0100 0000 0000 0000
+======== ===================
+
+Qué tal si tu mismo lo intentas:
+
+======== ===================
+Base 16   Base 2
+======== ===================
+0x1234   0001 0010 0011 0100
+0xF0A2   1111 0000 1010 0010 
+0xFFFF   ?
+0x0C0D   ?
+0x40B0   ? 
+======== ===================
+
+Ejercicio 6: instrucciones tipo A
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Las instrucciones de la CPU que estamos analizando tienen 16 bits. 
+La CPU cuenta únicamente con dos tipos de instrucciones. Las instrucciones tipo A 
+y las instrucciones tipo C. Las instrucciones tipo A tienen, TODAS, el bit de mayor 
+peso siempre en 0. Por su parte, las instrucciones tipo C tienen los tres bits de 
+mayor peso SIEMPRE en 111.
+
+¿De qué tipo es la instrucción 0x4000? Convierte de nuevo a base 2 el número. 
+Fíjate en los bits de mayor peso. ¿Te diste cuenta? se trata de una instrucción tipo A 
+porque el bit de mayor peso está en 0. ¿Qué hacen las instrucciones tipo A? Estas 
+instrucciones SIEMPRE hacen lo mismo: almacenan en el circuito de la CPU los 15 
+bits menos significativos de la instrucción. ¿En dónde se almacenan esos bits? en 
+una memoria interna de la CPU llamada ``REGISTRO A``.
+
+En resumen. La instrucción tipo A 0x4000 al ejecutarse hace que la CPU almacene el 
+número 0x4000 en el ``REGISTRO A``. Pero profe, me habías dicho que solo almacenaba 
+los 15 bits de menor peso de la instrucción y ahora me muestras 16 bits (0x4000). No 
+te preocupes, lo que pasa es que se adiciona un bits más, a la izquierda, pero ese 
+bit es 0. Tu me dirás entonces si ¿Esto cambia el número?
+
+
+Ejercicio 7: conversión de base 2 a base 10
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+¿Puedes regresar unos ejercicios antes y ver la representación del programa 
+en lenguaje ensamblador? ¿Cuál sería la presentación de la instrucción en 
+lenguaje de máquina 0x4000 en lenguaje ensamblador? ¡Excelente! En efecto es 
+@16384. Y como sabemos que es una instrucción tipo A podemos decir que la CPU 
+está cargando en el registro A el número 16384. ¿Qué? ¿Te perdiste? Tranquilo vas 
+bien. Si pensaste que el valor cargado en el registro A era 0x4000 déjame decirte 
+que estás entendiendo. Lo que pasa es que 0x4000 es el número 16384 en base 10. 
+¿Cómo se convierte? Mira, es muy fácil:
+
+* Escribe 0x4000 en base 2: 0100 0000 0000 0000
+* Cada uno de los bits tiene un peso. El bit menos significativo (:math:`b_0`) tiene 
+  un peso de :math:`2⁰` el siguiente hacia la izquierda (:math:`b_1`) :math:`2¹` 
+  y así sucesivamente hasta la posición 16 (:math:`b_{15}`) que tendrá un peso de :math:`2^{15}`.
+* Puedes calcular el valor en base 10 así:
+
+  .. math::
+    \sum_{i=0}^{15} 2^i*b_i = 2^{14}*1 = 16384
+
+Ejercicio 8: instrucciones tipo C
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Luego de buscar la instrucción en la posición 0 de la ROM, decodificarla y 
+ejecutarla ¿Qué sigue? La verdad es muy simple la respuesta ¿Quieres intentarlo? 
+La CPU busca ahora en la dirección 1 de la ROM y así seguirá a menos que una 
+de las instrucciones que ejecute le indique que debe buscar en otra posición 
+de la memoria ROM.
+
+Observa la siguiente figura:
+
+.. image:: ../_static/CPUPos1.png
+  :alt: la CPU inicia
+  :align: center
+
+¿Qué valor tiene la instrucción almacenada en la posición 1 de la memoria ROM?
+
+Tienes razón es 0xEC10. La convertimos juntos a base 2:
+
+======== ===================
+Base 16   Base 2
+======== ===================
+0xEC10   1110 1100 0001 0000
+======== ===================
+
+¿Qué tipo de instrucción es? ¿Será tipo A? No porque el bit de mayor peso no 
+es 0. ¿Será tipo C? Si porque los tres bits de mayor peso son 1. ¡Genial! ¿Qué 
+hace esta instrucción? Esta respuesta es un pelín (pero solo un pelín) más complicada. 
+Resulta que las instrucciones tipo C pueden hacer MUCHAS cosas. Observa de nuevo el 
+programa en lenguaje ensamblador. Dime cuál es la representación 
+en ese lenguaje de la instrucción 0xEC10. ¿Ya lo tienes? Muy bien, la representación 
+es ``D=A``. En general una instrucción tipo C se represente en lenguaje 
+ensamblador así: ``destino=operación;salto``. Los campos destino y salto son opcionales. 
+Si los omites entonces debes hacer los mismo con los símbolos = y ; respectivamente. En ``D=A`` el 
+destino será C y la operación es A. Te explico. D es otro REGISTRO de la CPU. Llevamos tres. 
+El registro A, el registro D y el registro PC. ¿PC? Si, en este registro se almacena la dirección 
+de la instrucción que se está ejecutando. Por tanto ``D=A`` almacena en el registro 
+D el contenido del registro A. Como te comenté, las instrucciones tipo C codifican MUCHAS 
+funciones. Cada uno de los 16 bits de la instrucción tipo C sirve para indicar qué debe hacer la 
+CPU. Observa:
+
+  1 1 1 a c1 c2 c3 c4 c5 c6 d1 d2 d3 j1 j2 j3
+
+* Los tres bit de mayor peso siempre en 1 indicando que es una instrucción tipo C.
+* a c1 c2 c3 c4 c5 c6 indican la operación que debe realizar la CPU.
+* d1 d2 d3 indican el destino o el resultado de la operación.
+* j1 j2 j3 indican si debe ocurrir un salto, es decir, si el registro PC debe 
+  modificarse con un valor particular para saltar a una posición específica de la memoria 
+  de programa.
+
+¿Cuáles son las posibles operaciones?
+
+.. note:: ¿Qué es Memoria[A] en tabla?
+
+    Se refiere al contenido de la posición de memoria cuya dirección 
+    está almacenada en el registro A.
+
+==================== =========================================================
+a c1 c2 c3 c4 c5 c6  Operación 
+==================== =========================================================
+0 1 0 1 0 1 0        Produce un 0
+0 1 1 1 1 1 1        Produce un 1
+0 1 1 1 0 1 0        Produce un -1
+0 0 0 1 1 0 0        Lee el valor del registro D
+0 1 1 0 0 0 0        Lee el valor del registro A
+0 0 0 1 1 0 1        Invierte todos los bits del registro D
+0 1 1 0 0 0 1        Invierte todos los bits del registro A
+0 0 0 1 1 1 1        Realiza el complemento a 2 del registro D: -D
+0 1 1 0 0 1 1        Realiza el complemento a 2 del registro A: -A
+0 0 1 1 1 1 1        Realiza D+1
+0 1 1 0 1 1 1        Realiza A+1
+0 0 0 1 1 1 0        Realiza D-1
+0 1 1 0 0 1 0        Realiza A-1
+0 0 0 0 0 1 0        Realiza D+A
+0 0 1 0 0 1 1        Realiza D-A
+0 0 0 0 1 1 1        Realiza A-D  
+0 0 0 0 0 0 0        Realiza D and A bit a bit
+0 0 1 0 1 0 1        Realiza D or A bit a bit
+1 1 1 0 0 0 0        Lee el valor Memoria[A]     
+1 1 1 0 0 0 1        Invierte todos los bits de Memoria[A]   
+1 1 1 0 0 1 1        Realiza el complemento a 2 de Memoria[A]: -Memoria[A] 
+1 1 1 0 1 1 1        Realiza Memoria[A] + 1 
+1 1 1 0 0 1 0        Realiza Memoria[A] - 1
+1 0 0 0 0 1 0        Realiza D+Memoria[A]
+1 0 1 0 0 1 1        Realiza D-Memoria[A]
+1 0 0 0 1 1 1        Realiza Memoria[A]-D
+1 0 0 0 0 0 0        Realiza D and Memoria[A] bit a bit
+1 0 1 0 1 0 1        Realiza D or Memoria[A] bit a bit 
+==================== =========================================================
+
+¿Cuáles son las posibles destinos?
+
+========= ====================================
+d1 d2 d3  Destino 
+========= ====================================
+0 0 0     Ninguno
+0 0 1     Almacena en Memoria[A]
+0 1 0     Almacena en D
+0 1 1     Almacena en Memoria[A] y en D
+1 0 0     Almacena en A
+1 0 1     Almacena en A y en Memoria[A]
+1 1 0     Almacena en A y en D
+1 1 1     Almacena en A, en Memoria[A] y en D
+========= ====================================
+
+Y ¿Cuáles son las posibles saltos?
+
+Aquí tengo que explicarte antes varias cosas. Las instrucciones tipo C con saltos modifican el PC. 
+Estas instrucciones son MUY, MUY importantes porque permiten modificar el ``FLUJO DEL PROGRAMA``.
+¿Para que sirve modificar el flujo del programa? Pues nada más ni nada menos que para 
+implementar estructuras de control como los IF, los WHILE, los FOR, etc. Estas instrucciones 
+dependen de las operaciones que realiza la CPU, basado en esas operaciones se decide 
+si el salto se realiza o no. ¿Hacia que dirección de memoria ROM se salta? tu lo decides 
+previamente almacenando en el registro A el valor de la dirección.
+
+========= ============== ==================================
+j1 j2 j3  Mnemotécnico   Efecto 
+========= ============== ==================================
+0 0 0                    No modifica el PC
+0 0 1     JGT            Si operación > 0 entonces PC = A  
+0 1 0     JEQ            Si operación == 0 entonces PC = A  
+0 1 1     JGE            Si operación >= 0 entonces PC = A   
+1 0 0     JLT            Si operación < 0 entonces PC = A   
+1 0 1     JNE            Si operación != 0 entonces PC = A   
+1 1 0     JLE            Si operación <= 0 entonces PC = A   
+1 1 1     JMP            No hay condición PC=A 
+========= ============== ==================================
+
+.. note:: RETO
+
+  Con toda la información anterior te animas a analizar la instrucción 
+  D=A
+
+.. note:: ALERTA DE SPOILER 
+
+  Ahora analicemos juntos para que repases
+
+La instrucción ``D=A`` tiene la representación en hexadecimal y en binario así:
+
+======== ===================
+Base 16   Base 2
+======== ===================
+0xEC10   1110 1100 0001 0000
+======== ===================
+
+Analizando de izquierda a derecha:
+
+* 111: instrucción tipo C 
+* 0 1100 00: a c1 c2 c3 c4 c5 c6. Esta combinación indica que la operación es leer 
+  el registro A.
+* 01 0: d1 d2 d3. Almacenar en el registro D.
+* 000: No modifica el PC, no hace salto. La próxima instrucción la tomará de PC = PC + 1.
 
 
 ..
