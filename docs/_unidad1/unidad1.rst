@@ -587,46 +587,179 @@ Analizando de izquierda a derecha:
 Ejercicio 10: escribir una variable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Continuamos analizando el programa:
+
+========= ===================
+Dirección Código ensamblador  
+========= =================== 
+0	        @16384
+1	        D=A
+2	        @16
+3	        M=D
+
+Las instrucciones @16 y M=D permiten almacenar en una variable ubicada en la dirección de 
+memoria 16 el valor 16384. Observa la siguiente figura:
+
+.. image:: ../_static/CPUPos3.png
+  :alt: CPU-dirección 3
+  :align:
+
+¿Qué instrucción está ejecutado la CPU?
+
+Muy bien, se ejecuta M=D. Observa la salida addressM de la CPU. ¿Ves un 0x10? este número 
+corresponde a la dirección donde se almacenará el valor en Memory. En la salida outM de la CPU ¿Puedes 
+ver el 0x4000? Pues ese es precisamente el 16384 que será almacenado.
+
+Te voy a preguntar algo. Si cambio el orden de las instrucciones así:
+
+========= ===================
+Dirección Código ensamblador  
+========= =================== 
+0	        @16
+1	        D=A
+2	        @16384
+3	        M=D
+========= =================== 
+
+¿El resultado es el mismo?
+
+Ejercicio 11: RETO
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+¿Te animas a traducir las instrucciones anteriores a lenguaje de máquina? Recuerda 
+que ya tienes la respuesta para que compares, pero la idea es que practiques. ¿Vale?
+
+Ejercicio 12: leer una variable e implementación de un IF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+En el ejercicio anterior, la instrucción ``M=D`` guarda en memoria el valor 
+que esté en D. ¿Recuerdas en qué dirección de memoria? La dirección será 
+el último valor que almacenes en el registro A.
+
+Observa las siguientes instrucciones:
+
+========= ===================
+Dirección Código ensamblador  
+========= =================== 
+
+4	        @24576
+5	        D=M
+6	        @19
+7	        D;JNE
+========= =================== 
+
+En la instrucción ``D=M`` M está a la derecha del igual. En este caso la CPU NO está escribiendo 
+en memoria, sino que está leyendo. ¿De qué dirección lee? La dirección será el último 
+valor almacenado en el registro A. Por tanto, en este caso la CPU está guardando en el 
+registro D el contenido de la dirección de memoria 24576. ¿Recuerdas que hay en esa dirección? 
+MUY BIEN. Así es, ahí está el código de la tecla actualmente presionada o cero si no hay tecla 
+presionada.
+
+Ahora mira las instrucciones @19 y D;JNE. La primera almacena un 19 en el registro A. 
+La segunda hace UNA OPERACIÓN Y UN SALTO. Nota que el resultado de la operación NO SE GUARDA.
+¿Cual es la operación? Leer el contenido del registro D. En ese registro previamente se había 
+almacenado el valor de la posición de memoria 24576. Si D es igual a cero quiere decir que no 
+se está presionando una tecla. Si D es diferente a cero indica que se está presionando 
+una tecla. ¿Puedes ver entonces lo que pasa? Si se está presionando una tecla el valor de D 
+será diferente de cero. Por tanto, la operación será diferente de cero y el contador de programa 
+se escribirá con un 19. Por consiguiente, la próxima instrucción a ejecutar no será la que esté 
+almacenada en la dirección 8 de la ROM sino la que esté en la posición 19. 
+
+========= ============== ==================================
+j1 j2 j3  Mnemotécnico   Efecto 
+========= ============== ==================================
+1 0 1     JNE            Si operación != 0 entonces PC = A   
+========= ============== ==================================
+
+¿Te diste cuenta lo que pasó? Acabas de ver en vivo y en directo la implementación de 
+una estructura de control IF-ELSE. ``SI`` hay tecla presionada se ejecutan la instrucción en la 
+dirección 19 de la ROM, ``SINO`` se ejecuta la instrucción en la dirección 8 de la ROM.
+
+Ahora te voy a dar un momento para que respires profundo y te seques las lágrimas. ¡NO ES PARA 
+MENOS!
+
+Ejercicio 13: ¡EL RETO!
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Es hora de tu primera transformación ``Saiyajin``. Con todo lo que has aprendido 
+vas a analizar el programa en lenguaje C++ y vas a traducirlo a lenguaje ensamblador. 
+RECUERDA que ya tienes la respuesta, pero la idea es que intentes llegar a la traducción 
+tu mismo:
+
+.. code-block:: c
+
+    MEMORY[16] = 16384;
+
+    while (true)
+    {
+        if (MEMORY[KEYBOARD] == 0)
+        {
+            if ((MEMORY[16] - 16384) > 0)
+            {
+                MEMORY[16] = MEMORY[16] - 1;
+                MEMORY[MEMORY[16]] = 0x0000;
+            }
+        }
+        else
+        {
+            if ((MEMORY[16] - 24576) < 0)
+            {
+                MEMORY[MEMORY[16]] = 0xFFFF;
+                MEMORY[16] = MEMORY[16] + 1;
+            }
+        }
+    }
+
+Ejercicio 14: porque te encanta leer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+¿Quieres leer un poco más? Te voy a dejar un enlace al capítulo 4 de uno de nuestros 
+textos guía `aquí <https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/44046b_7ef1c00a714c46768f08c459a6cab45a.pdf>`__.
+
+Responde las siguientes preguntas:
+
+#. Muestra una instrucción tipo A en representación simbólica y en lenguaje de máquina. 
+   Explica qué hace esta instrucción.
+#. Muestra una instrucción tipo C en representación simbólica y en lenguaje de máquina. 
+   Explica qué hace esta instrucción.
+#. En el lenguaje hack (lenguaje ensamblador de la CPU estudiada) ¿Qué son los símbolos? muestra 
+   varios ejemplos de estos.
+#. ¿Qué son los labels? ¿Para qué sirven? ¿En que se diferencian de los símbolos?
+
+Ejercicio 15: otro ejemplo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+En la página 65 del capítulo 4 del texto guía tienes el siguiente programa:
+
+.. code-block:: c
+
+  int i = 1;
+  int sum = 0;
+  While (i <= 100){
+    sum += i;
+    i++;
+  }
+
+Traduce este programa a lenguaje ensamblador (RECUERDA que en la misma 
+página está la solución, PERO TRATA SIN VER). Una vez escribas el código en ensamblador 
+lo vas a simular:
+
+* Abre el directorio App o app del usuario pop-os.
+* Verifica si tienes la carpeta nand2tetris. Si no la tienes descarga el simulador de `este <https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ>`__ 
+  enlace y descomprime en la carpeta app o App.
+* Abre el directorio tools en la terminal.
+* Ejecuta el comando::
+
+    sudo chmod +x CPUEmulator.sh
+
+* Abre el simulador:: 
+
+    ./CPUEmulator.sh
+
+
+
+
+
 ..
-  Lee el `capítulo 4 del libro guía <https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/44046b_7ef1c00a714c46768f08c459a6cab45a.pdf>`__.
-
-  Responde las siguientes preguntas:
-
-  #. Muestra una instrucción tipo A en representación simbólica y en lenguaje de máquina. Explica qué hace esta instrucción.
-  #. Muestra una instrucción tipo C en representación simbólica y en lenguaje de máquina. Explica qué hace esta instrucción.
-  #. En el lenguaje hack ¿Qué son los símbolos? muestra varios ejemplos de estos.
-  #. ¿Qué son los labels? ¿Para qué sirven? ¿En que se diferencian de los símbolos?
-
-  Sesión 4
-  **********
-  (Tiempo estimado: 1 hora 40 minutos)
-
-  Ejercicio 6: introducción al lenguaje ensamblador
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-  Realiza el proyecto 4 que encuentras `aquí <https://www.nand2tetris.org/project04>`__
-
-  Antes de comenzar a programar realiza un diagrama de flujo que indique cómo solucionarás el 
-  problema.
-
-  .. warning::
-      CONTROL DE VERSIÓN
-
-      Desde el inicio del proyecto debes crear un repositorio y realizar commits periódicamente. Tu repositorio 
-      debe mostrar el proceso de trabajo.
-
-  Trabajo autónomo 4
-  ********************
-  (Tiempo estimado: 1 hora 20 minutos)
-
-  Terminar el proyecto 4.
-
-  Sesión 5
-  **********
-  (Tiempo estimado: 1 hora 40 minutos)
-
-  Ejercicio 7: de ensamblador a alto nivel 
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   En esta sesión analizaremos el siguiente programa:
 
