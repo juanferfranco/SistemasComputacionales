@@ -145,10 +145,8 @@ Dirección Código de máquina
 
 Muy claro el programa, ¿Verdad? :) 
 
-|
-
-Estas cadenas de unos y ceros no resultan fáciles de entender para las personas. Afortunadamente 
-cada cadena puede representarse de manera simbólica y se vería así:
+Estas cadenas de unos y ceros no resultan fáciles de entender para las personas. Afortunadamente, 
+cada cadena puede representarse de manera simbólica así:
 
 ========= ===================
 Dirección Código ensamblador  
@@ -188,7 +186,8 @@ Dirección Código ensamblador
 ========= =================== 
 
 Al lenguaje anterior se le conoce como lenguaje ensamblador y tiene una correspondencia uno a uno 
-con el lenguaje de máquina. 
+con el lenguaje de máquina. AL proceso de convertir el programa de lenguaje ensamblador a lenguaje 
+de máquina se le conoce como ``ENSAMBLADO``.
 
 ¿Ahora si es más claro qué hace el programa? Puede que no. El lenguaje ensamblador es más 
 fácil de leer y escribir que el lenguaje de máquina, pero sigue siendo un reto para las 
@@ -196,9 +195,13 @@ personas escribir programas a ese nivel. Adicionalmente, ten presente que el len
 y el lenguaje ensamblador son PARTICULARES para cada CPU. Eso quiere decir que tendrás que aprender 
 tantos lenguajes ensamblador como CPU donde quieres que se ejecute tu programa.
 
-¿Hay alguna manera de escribir un programa en un único lenguaje? Si. Aquí entran los lenguajes 
-de alto nivel, en los que tu has programado. Un posible programa en alto nivel para el programa 
-que te he venido mostrando es el siguiente, escrito en C/C++:
+¿Hay alguna manera de escribir un programa en un único lenguaje? Si. Mediante los lenguajes 
+de alto nivel. Tu ya conoces uno, C#. Si programas en un lenguaje de alto nivel puedes 
+generar el lenguaje en ensamblador mediante un proceso conocido como ``COMPILACIÓN``. Este 
+proceso es realizado por una herramienta particular para cada CPU llamada ``COMPILADOR``. 
+
+Ahora te voy a mostrar una nueva versión del programa, pero esta vez en un lenguaje de alto 
+nivel conocido como C++:
 
 .. code-block:: c
 
@@ -233,28 +236,40 @@ Ejercicio 3: concepto de variable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 El arreglo MEMORY representa al circuito Memory que te mostré previamente en el diagrama del computador. 
-``MEMORY[16]`` corresponde a la posición de memoria 16, es decir, MEMORY[16] es una ``VARIABLE``. 
-Entonces una variable no es más que una posición de memoria, en este caso, la posición 16. Ten presente 
-que en los programas que has realizado hasta ahora nunca dices de manera explícita la dirección 
-o posición de la variable, sino que usas un NOMBRE, el nombre de la variable, que representa 
-esa posición.
+``MEMORY[16]`` representa el contenido de la posición de memoria 16, es decir, MEMORY[16] es una 
+``VARIABLE``. Entonces una variable no es más que la representación del contenido de una posición de 
+memoria, en este caso, la posición 16. Ten presente que en los programas que has usado hasta ahora 
+no has tenido que indicar de manera explícita la dirección o posición de la variable, sino que usas 
+un NOMBRE, el nombre de la variable para representar el contenido de esa posición de memoria.
+
+.. note:: PARA REFLEXIONAR
+
+  ¿Cuando usas el nombre de la variable en un programa te refieres a su dirección o 
+  a su contenido? Por ejemplo::
+
+    variable1 = variable2 + 1;
+
+  ¿Qué está pasando en la expresión anterior? Piensa en direcciones y contenido cuando 
+  analices la pregunta.
+
 
 Ejercicio 4: concepto de entrada-salida mapeada a memoria
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La posición de memoria ``MEMORY[KEYBOARD]`` es especial. En esa posición se almacena un cero 
+La variable ``MEMORY[KEYBOARD]`` es especial. En esa posición se almacena un cero 
 si no hay una tecla presionada o un valor diferente de cero que indica cuál tecla se presionó. ¿Notas que 
 leer si hay una tecla presionada o no es como leer una variable? a esto se le conoce 
 como ``entrada-salida mapeada a memoria``. ¿Cómo aparece el valor en memoria? Primero observa que al bloque 
-de Memory se conectan cuatro teclas marcadas como ``1, 2, 3 y 4``. Internamente el bloque Memory tiene 
+Memory se conectan cuatro teclas marcadas como ``1, 2, 3 y 4``. Internamente, Memory tiene 
 un circuito que se encarga de determinar qué tecla está presionada y luego almacena un número que la 
-representa en la posición de memoria ``MEMORY[KEYBOARD]``.
+representa en la posición de memoria que denota KEYBOARD que será la dirección 24576 para este 
+computador.
 
 El programa también está haciendo una operación de salida. Está pintando en pantalla. El truco es 
 el mismo (entrada-salida mapeada a memoria). La pantalla del computador tiene 256x512 pixeles, es decir, 
 131072 pixeles. Esos pixeles están asociados a ciertas posiciones de memoria. En este caso desde 
-la posición de ``MEMORY[16384]`` en la dirección 16384 hasta ``MEMORY[24575]`` en la dirección 24575.
-De igual manera que en el caso del teclado, en el bloque Memory hay un circuito que lee las posiciones 
+la dirección ``16384`` hasta la ``24575``.
+De igual manera que en el caso del teclado, en Memory hay un circuito que lee las posiciones 
 de memoria anteriores y pinta en la pantalla la información que allí se encuentra.
 
 Nota esta línea::
@@ -286,13 +301,13 @@ Ejercicio 5: fetch-decode-execute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Cómo funciona una CPU? En términos generales una CPU hace tres cosas: fetch o 
-buscar un instrucción. Las instrucciones están guardadas, en 
+buscar una instrucción. Las instrucciones están guardadas, en 
 nuestro computador de ejemplo, en la memoria de programa. Luego la CPU decodifica 
 la instrucción, es decir, determina qué operación debe realizar. Finalmente, 
 la ejecuta, es decir, realiza la operación decodificada.
 
 Regresemos a nuestro programa y analicemos detenimiento cómo se ejecuta. ¿En qué 
-dirección de memoria de programa inicia la ejecución? La CPU inicia a buscar 
+dirección de la memoria de programa inicia la ejecución? La CPU inicia a buscar 
 instrucciones en la dirección 0 de la memoria de programa:
 
 .. image:: ../_static/CPURest.png
@@ -302,7 +317,7 @@ instrucciones en la dirección 0 de la memoria de programa:
 Nota en la figura la salida PC del circuito de la CPU. Esta salida se conecta a la 
 entrada ``A`` de la memoria ROM. La entrada A es la entrada de dirección de la memoria. 
 En respuesta, la memoria ROM muestra en su salida D el contenido de la posición 
-presentada en A. Nota que en este caso el número en D es el 0x4000. Quiere decir que 
+presentada en A. En este caso el número en D es el 0x4000. Quiere decir que 
 en la posición 0 de la memoria ROM está almacenado el número 0x4000. Si cambias el contenido 
 de la posición 0 estarás cambiando la primera instrucción del programa. La instrucción 
 0x4000 es leída por la CPU por medio de la entrada ``instruction`` y comienza el 
@@ -368,7 +383,7 @@ Base 16   Base 2
 0x40B0   ? 
 ======== ===================
 
-Ejercicio 6: instrucciones tipo A
+Ejercicio 7: instrucciones tipo A
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Las instrucciones de la CPU que estamos analizando tienen 16 bits. 
@@ -388,15 +403,15 @@ En resumen. La instrucción tipo A 0x4000 al ejecutarse hace que la CPU almacene
 número 0x4000 en el ``REGISTRO A``. Pero profe, me habías dicho que solo almacenaba 
 los 15 bits de menor peso de la instrucción y ahora me muestras 16 bits (0x4000). No 
 te preocupes, lo que pasa es que se adiciona un bits más, a la izquierda, pero ese 
-bit es 0. Tu me dirás entonces si ¿Esto cambia el número?
+bit es 0. Tu me dirás entonces si esto cambia el número o no.
 
 
-Ejercicio 7: conversión de base 2 a base 10
+Ejercicio 8: conversión de base 2 a base 10
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Puedes regresar unos ejercicios antes y ver la representación del programa 
-en lenguaje ensamblador? ¿Cuál sería la presentación de la instrucción en 
-lenguaje de máquina 0x4000 en lenguaje ensamblador? ¡Excelente! En efecto es 
+en lenguaje ensamblador? ¿Cuál sería la representación simbólica de la instrucción 
+0x4000 en lenguaje ensamblador? ¡Excelente! En efecto es 
 @16384. Y como sabemos que es una instrucción tipo A podemos decir que la CPU 
 está cargando en el registro A el número 16384. ¿Qué? ¿Te perdiste? Tranquilo vas 
 bien. Si pensaste que el valor cargado en el registro A era 0x4000 déjame decirte 
@@ -412,7 +427,7 @@ que estás entendiendo. Lo que pasa es que 0x4000 es el número 16384 en base 10
   .. math::
     \sum_{i=0}^{15} 2^i*b_i = 2^{14}*1 = 16384
 
-Ejercicio 8: instrucciones tipo C
+Ejercicio 9: instrucciones tipo C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Luego de buscar la instrucción en la posición 0 de la ROM, decodificarla y 
@@ -444,8 +459,12 @@ Resulta que las instrucciones tipo C pueden hacer MUCHAS cosas. Observa de nuevo
 programa en lenguaje ensamblador. Dime cuál es la representación 
 en ese lenguaje de la instrucción 0xEC10. ¿Ya lo tienes? Muy bien, la representación 
 es ``D=A``. En general una instrucción tipo C se represente en lenguaje 
-ensamblador así: ``destino=operación;salto``. Los campos destino y salto son opcionales. 
-Si los omites entonces debes hacer los mismo con los símbolos = y ; respectivamente. En ``D=A`` el 
+ensamblador así: 
+
+``destino=operación;salto``
+
+Los campos destino y salto son opcionales. 
+Si los omites entonces debes hacer lo mismo con los símbolos = y ; respectivamente. En ``D=A`` el 
 destino será C y la operación es A. Te explico. D es otro REGISTRO de la CPU. Llevamos tres. 
 El registro A, el registro D y el registro PC. ¿PC? Si, en este registro se almacena la dirección 
 de la instrucción que se está ejecutando. Por tanto ``D=A`` almacena en el registro 
@@ -524,7 +543,7 @@ Estas instrucciones son MUY, MUY importantes porque permiten modificar el ``FLUJ
 ¿Para que sirve modificar el flujo del programa? Pues nada más ni nada menos que para 
 implementar estructuras de control como los IF, los WHILE, los FOR, etc. Estas instrucciones 
 dependen de las operaciones que realiza la CPU, basado en esas operaciones se decide 
-si el salto se realiza o no. ¿Hacia que dirección de memoria ROM se salta? tu lo decides 
+si el salto se realiza o no. ¿Hacia que dirección de memoria ROM se salta? Tu lo decides 
 previamente almacenando en el registro A el valor de la dirección.
 
 ========= ============== ==================================
@@ -565,6 +584,8 @@ Analizando de izquierda a derecha:
 * 01 0: d1 d2 d3. Almacenar en el registro D.
 * 000: no modifica el PC, no hace salto. La próxima instrucción la tomará de PC = PC + 1.
 
+Ejercicio 10: escribir una variable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..
   Lee el `capítulo 4 del libro guía <https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/44046b_7ef1c00a714c46768f08c459a6cab45a.pdf>`__.
