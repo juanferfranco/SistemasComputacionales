@@ -596,13 +596,14 @@ Dirección Código ensamblador
 1	        D=A
 2	        @16
 3	        M=D
+========= =================== 
 
 Las instrucciones @16 y M=D permiten almacenar en una variable ubicada en la dirección de 
 memoria 16 el valor 16384. Observa la siguiente figura:
 
 .. image:: ../_static/CPUPos3.png
   :alt: CPU-dirección 3
-  :align:
+  :align: center
 
 ¿Qué instrucción está ejecutado la CPU?
 
@@ -641,7 +642,6 @@ Observa las siguientes instrucciones:
 ========= ===================
 Dirección Código ensamblador  
 ========= =================== 
-
 4	        @24576
 5	        D=M
 6	        @19
@@ -725,8 +725,8 @@ Responde las siguientes preguntas:
    varios ejemplos de estos.
 #. ¿Qué son los labels? ¿Para qué sirven? ¿En que se diferencian de los símbolos?
 
-Ejercicio 15: otro ejemplo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ejercicio 15: practica con otro ejercicio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 En la página 65 del capítulo 4 del texto guía tienes el siguiente programa:
 
@@ -740,12 +740,18 @@ En la página 65 del capítulo 4 del texto guía tienes el siguiente programa:
   }
 
 Traduce este programa a lenguaje ensamblador (RECUERDA que en la misma 
-página está la solución, PERO TRATA SIN VER). Una vez escribas el código en ensamblador 
-lo vas a simular:
+página está la solución, PERO TRATA SIN VER, luego compara, analiza, entiende y corrige). Una vez 
+escribas el código en ensamblador lo vas a simular. Para escribir el programa puedes usar 
+Visual Studio Code y `esta <https://marketplace.visualstudio.com/items?itemName=Throvn.nand2tetris>`__ 
+extensión. Recuerda que las extensiones las instalas directamente desde Visual Studio Code 
+ingresando al buscador de extensiones (ícono con los cuatro cuadrados). En search extensions 
+in marketplace puedes escribir la palabra nand2tetris. El autor de la extensión es Louis. Sigue 
+estos pasos una vez escribas el programa:
 
 * Abre el directorio App o app del usuario pop-os.
-* Verifica si tienes la carpeta nand2tetris. Si no la tienes descarga el simulador de `este <https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ>`__ 
-  enlace y descomprime en la carpeta app o App.
+* Verifica si tienes la carpeta nand2tetris. Si no la tienes descarga el simulador 
+  de `este <https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ>`__ 
+  enlace y descomprímelo en la carpeta app o App.
 * Abre el directorio tools en la terminal.
 * Ejecuta el comando::
 
@@ -755,167 +761,82 @@ lo vas a simular:
 
     ./CPUEmulator.sh
 
+* Guarda el archivo con el programa en lenguaje ensamblador con extensión .asm.
+* Carga en la memoria ROM el archivo .asm.
+* Puedes comenzar a simular el programa dando click en el botón single step a la 
+  tecla F11.
+* Observa los registros: PC, A y D. Observa el bloque denominado ALU. Este bloque 
+  es la parte de la CPU que realiza las operaciones. El bloque denominado RAM 
+  es el mismo bloque que llamamos Memory. Para activar el teclado debes dar click 
+  en el ícono de teclado y luego presionar cualquier tecla. Si el simulador 
+  reconoce la tecla, la deberás ver dibujada al lado del ícono. La pantalla está justo 
+  encima del ícono del teclado. Te presente que puedes ejecutar el programa desde single 
+  step hasta máxima velocidad. La velocidad de ejecución máxima la consigues moviendo 
+  la barra speed a fast y seleccionando en el menú Animate No animation. Puedes aprender 
+  más sobre esta y otras herramientas en `este <https://www.nand2tetris.org/software>`__ 
+  enlace.
+* Por último te voy a pedir que pruebes otra herramienta. Se llama el Assembler, la puedes 
+  encontrar también en el directorio tools; sin embargo, antes de ejecutarla y solo la 
+  primera vez que la abras escribe en la terminal (debes abrir la carpeta tools en la terminal)::
+
+    sudo chmod +x Assembler.sh
+
+  Ahora si la lanzas::
+
+    ./Assembler.sh
+
+  Carga el archivo .asm y dale click al botón Fast Translation. Podrás ver el código 
+  en lenguaje de máquina.
 
 
+Ejercicio 16: retrieval practice
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Vas a repetir los pasos del ejercicio anterior, pero cambiando el programa. Esta vez con el 
+ejemplo inicial de la Unidad, es decir, traduce el siguiente código a lenguaje ensamblador. 
+Una vez termines compara tu solución con la que hemos venido discutiendo. Analiza, entiende y 
+corrige. Escribe en Visual Studio Code el lenguaje ensamblador, usa CPUEmulator.sh y Assembler.sh.
+
+.. code-block:: c
+
+    MEMORY[16] = 16384;
+
+    while (true)
+    {
+        if (MEMORY[KEYBOARD] == 0)
+        {
+            if ((MEMORY[16] - 16384) > 0)
+            {
+                MEMORY[16] = MEMORY[16] - 1;
+                MEMORY[MEMORY[16]] = 0x0000;
+            }
+        }
+        else
+        {
+            if ((MEMORY[16] - 24576) < 0)
+            {
+                MEMORY[MEMORY[16]] = 0xFFFF;
+                MEMORY[16] = MEMORY[16] + 1;
+            }
+        }
+    }
 
 ..
-
-  En esta sesión analizaremos el siguiente programa:
-
-  .. image:: ../_static/asmProg.png
-    :alt: programa en ensamblador
-
-  Responderemos las siguientes preguntas:
-
-  * ¿Qué hace el programa?
-  * ¿Cómo funciona?
-  * ¿Cómo quedaría una posible traducción a lenguaje de alto nivel?
-
-  .. warning:: ALERTA DE SPOILER
-
-      Te mostraré dos posible respuestas a la última pregunta usando 
-      como lenguaje de alto nivel C. Ten presente que en este caso R0 
-      es la representación simbólica de la dirección 0, i es la dirección 
-      16 y j es la dirección 17.
-
-  Traducción 1:
-
-  .. code:: c 
-
-      int R0 =10;
-      int i;
-      int *j;
-
-      if(R0 >0){
-          i = R0;
-          j = 16384;
-
-          while(i > 0){
-          // "RAM[j]" = -1;
-          *j = -1;
-              j = j + 32;
-              i = i - 1;
-          }
-      }
-      AQUI:
-      goto AQUI;
-              
-  Traducción 2:
-
-  .. code:: c 
-
-      int R0 =10;
-      int *j = 16384;
-
-      if(R0 >0){
-          for(int i = R0; i > 0;  i--){
-          *j = -1;
-              j = j + 32;
-          }
-      }
-      while(1);
-
-  Trabajo autónomo 5
-  ********************
-  (Tiempo estimado: 1 hora 20 minutos)
-
-  Revisar la unidad hasta este punto y terminar los ejercicios pendientes.
-
-  Sesión 6
-  **********
-  (Tiempo estimado: 1 hora 40 minutos)
-
-  Ejercicio 8: implementación de una CPU
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-  En esta sesión vamos a analizar partes de la implementación del computador 
-  que realiza el set de instrucciones del lenguaje ensamblador estudiado 
-  previamente.
-
-  La herramienta que usaremos se llama Digital y se puede descargar 
-  `aquí <https://github.com/hneemann/Digital>`__.
-
-  El circuito que usaremos en clase se llama CPUplusMemDisplay.dig y se puede 
-  descargar (entre otros circuitos) 
-  `aquí <https://github.com/juanferfranco/SistemasComputacionales/tree/main/DigitalProjects/custom/project05>`__.
-
-  En la parte final de esta sesión veremos que el computador estudiado se puede 
-  llevar a una implementación física como se muestra en 
-  `este proyecto <https://gitlab.com/x653/nand2tetris-fpga/>`__. En particular 
-  puedes ver en 
-  `este video <https://gitlab.com/x653/nand2tetris-fpga/-/raw/master/08_Hack8-Sound/jack/Tetris/tetris.mp4>`__ 
-  una aplicación interactiva funcionando. 
-
-  Alguna vez te has preguntado ¿Cómo se implementa y construye un chip? Pues se 
-  parte de un diseño que se describe mediante algún lenguaje de descripción 
-  de hardware, como por ejemplo, el que puedes observar en la imagen:
-
-  .. image:: ../_static/gateHDL.png
-
-  Luego este diseño debe descomponerse en partes más simples. Esas partes se 
-  denominan `transistores <https://en.wikipedia.org/wiki/Transistor>`__:
-
-  .. image:: ../_static/transistor.png
-
-  Finalmente, los transistores y sus conexiones se deben transferir
-  a un medio físico. Esto se hace mediante un proceso conocido como
-  fotolitografía:
-
-  .. raw:: html
-
-      <div style="position: relative; padding-bottom: 5%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/vK-geBYygXo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-
-
-  .. note:: 
-      Material complementario 
-
-      ¿Cómo funciona un transistor? 
-
-  .. raw:: html
-      
-      <div style="position: relative; padding-bottom: 5%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/tz62t-q_KEc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-
-  Trabajo autónomo 6
-  ********************
-  (Tiempo estimado: 1 hora 20 minutos)
-
-  Analiza de nuevo el programa que estudiamos juntos en la sesión 5.
-
-  Evaluación de la unidad
-  -------------------------
-
-  Problema
-  ***********
+  Ejercicio 17: evaluación formativa
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   El problema está divido en dos challenges. Tu programa debe cumplir exitosamente ambos challenges.
 
-  * Challenge 1: ``leer indefinidamente el teclado`` y llenar la pantalla de negro si la tecla leída es 
-    la letra F.
-  * Challenge 2: ``leer indefinidamente el teclado`` y llenar la pantalla de negro si la tecla leída es 
-    la letra ``F`` y limpiar la pantalla si la letra leída es la ``C``. 
-
-  Sustentación 
-  **************
-
-  Para sustentar tu evaluación realizarás en el repositorio la Wiki (como aprendiste en el ejercicio 
-  20 de la introducción a Git y GitHub). 
-
-  * Tu sustentación debe tener la representación en lenguaje de alto  del programa que realizaste 
-    en ensamblador (50% del valor total de la sustentación).
-  * Debes mostrar cada instrucción de alto a nivel a qué instrucciones de bajo nivel corresponde 
-    (50% del valor total de la sustentación).
-
+  * Challenge 1: ``leer el teclado`` y llenar la pantalla de negro si la tecla leída es 
+    la letra F. Volver a repetir este proceso infinitamente (loop infinito).
+  * Challenge 2: ``leer el teclado`` y llenar la pantalla de negro si la tecla leída es 
+    la letra ``F`` y limpiar la pantalla si la letra leída es la ``C``. Repetir infinitamente 
+    este proceso (loop infinito). 
 
   Consideraciones
   *****************
 
-  * Para solucionar la evaluación debes utilizar Git y GitHub. 
-    `Aquí <https://classroom.github.com/a/U7e2yEIR>`__ está el enlace de la evaluación así como lo 
+  * `Aquí <https://classroom.github.com/a/K6fxXFex>`__ está el enlace de la evaluación así como lo 
     practicaste en el ejercicio 19 de la guía de introducción a Git y GitHub.
   * Debes realizar constantemente commit y push al repositorio en GitHub. Debe verse claramente la 
     evolución de tu evaluación en el tiempo.
@@ -953,16 +874,7 @@ lo vas a simular:
   * Ten en cuanta que cada que hagas ``push`` al repositorio remoto, las pruebas anteriores se ejecutarán 
     automáticamente y podrás ver el resultado.
 
-  Criterios de evaluación
-  ************************
-
-  * Challenge 1: 1 unidad.
-  * Challenge 2: 2 unidades.
-  * Solo sustentación del challenge 1: 1 unidad.
-  * Sustentación del challenge 2 (esta incluye el challenge 1): 2 unidades.
-
-  Retroalimentación de la evaluación
-  ------------------------------------
-
-  En `este <https://github.com/juanferfranco/scu1-e1-2022-10-feedback.git>`__ enlace podrás consultar 
-  y clonar el repositorio con una posible solución a la evaluación.
+  .. warning:: ALERTA DE SPOILER
+      
+      En `este <https://github.com/juanferfranco/scu1-e1-2022-10-feedback.git>`__ enlace podrás consultar 
+      y clonar el repositorio con una posible solución a la evaluación formativa.
