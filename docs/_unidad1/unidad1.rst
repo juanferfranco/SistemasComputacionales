@@ -229,8 +229,11 @@ nivel conocido como C++:
 
 .. note:: RETO
 
-   ¿Te animas ahora si a decir qué hace el programa? Trata de analizarlo, pero no te 
-   preocupes porque en un momento lo discutiremos.
+    ¿Te animas ahora si a decir qué hace el programa? Trata de analizarlo, pero no te 
+    preocupes porque en un momento lo discutiremos.
+
+Si te gusta la historia, te voy a dejar `aquí <https://youtu.be/cozcXiSSkwE>`__ un documental 
+muy corto sobre la invención del programa almacenado.
 
 Ejercicio 3: concepto de variable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -821,7 +824,15 @@ corrige. Escribe en Visual Studio Code el lenguaje ensamblador, usa CPUEmulator.
         }
     }
 
+
 ..
+  Ejercicio 17: (OPCIONAL) solo para los más curiosos
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  ¿Quieres jugar un poco más con el programa en C++?
+
+  * Clona `este <https://github.com/juanferfranco/playWithHack.git>`__ repositorio.
+  * 
   Ejercicio 17: evaluación formativa
   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
