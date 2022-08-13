@@ -866,68 +866,82 @@ corrige. Escribe en Visual Studio Code el lenguaje ensamblador, usa CPUEmulator.
         }
     }
 
+Ejercicio 17: (OPCIONAL) solo para los más curiosos
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-..
-  Ejercicio 17: (OPCIONAL) solo para los más curiosos
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. warning:: SOLO PARA LINUX
+ 
+    Las instrucciones en este ejercicio solo funcionan para Linux. 
+    Si quiere explorar en Windows, en `este <https://www.sfml-dev.org/tutorials/2.5/start-vc.php>`__ 
+    enlace están las instrucciones para instalar las dependencias del programa y configurar las 
+    herramientas de desarrollo).
 
-  ¿Quieres jugar un poco más con el programa en C++?
+¿Quieres jugar un poco más con el programa en C++?
 
-  * Clona `este <https://github.com/juanferfranco/playWithHack.git>`__ repositorio.
-  * 
-  Ejercicio 17: evaluación formativa
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Instala el siguiente paquete::
 
-  El problema está divido en dos challenges. Tu programa debe cumplir exitosamente ambos challenges.
+    sudo apt-get install libsfml-dev
 
-  * Challenge 1: ``leer el teclado`` y llenar la pantalla de negro si la tecla leída es 
-    la letra F. Volver a repetir este proceso infinitamente (loop infinito).
-  * Challenge 2: ``leer el teclado`` y llenar la pantalla de negro si la tecla leída es 
-    la letra ``F`` y limpiar la pantalla si la letra leída es la ``C``. Repetir infinitamente 
-    este proceso (loop infinito). 
+* Clona `este <https://github.com/juanferfranco/playWithHack.git>`__ repositorio.
+* Desde la terminal ingresa al repositorio recién clonado.
+* Abre el directorio::
+  
+    code .
 
-  Consideraciones
-  *****************
+* Abre el archivo fill.cpp y ubica la función ``hackProgram()``. En esa función 
+  está escrito el programa que hemos estudiado en la unidad.
+* Para ejecutarlo escribe en la terminal::
 
-  * `Aquí <https://classroom.github.com/a/K6fxXFex>`__ está el enlace de la evaluación así como lo 
-    practicaste en el ejercicio 19 de la guía de introducción a Git y GitHub.
-  * Debes realizar constantemente commit y push al repositorio en GitHub. Debe verse claramente la 
-    evolución de tu evaluación en el tiempo.
-  * No olvides colocar la información solicitada en la parte superior de ``program.asm``.
+    ./runFill.sh
 
-  Para realizar la evaluación: 
+* Presiona las teclas 1, 2, 3 o 4 y verifica que la pantalla se pinta. 
 
-  * CLONA el repositorio.
-  * Cámbiate al directorio problem.
-  * edita ÚNICAMENTE el archivo program.asm.
-  * No olvides hacer commits y push.
-  * Puedes hacer las pruebas usando la herramienta CPUEmulator.sh o CPUEmulator.bat dependiendo de tu 
-    sistema operativo.
-  * Al hacer las pruebas te recomiendo colocar la animación en FAST y con la opción No Animation. No 
-    olvides que debes dar click en el botón del teclado para que el programa reciba las teclas que 
-    presionarás.
-  * También puedes hacer pruebas automáticas. En este caso usarás la línea de comandos. Cámbiate al 
-    directorio problem y luego ejecuta:
 
-    Para el challenge 1:
+Ejercicio 18: evaluación formativa
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. code-block:: bash 
+El problema está divido en dos challenges. Tu programa debe cumplir exitosamente ambos challenges.
 
-        ../tools/CPUEmulator.sh programBasic.tst
-      
-    Para el challenge 2:
-    .. code-block:: bash 
+* Challenge 1: ``leer el teclado`` y llenar la pantalla de negro si la tecla leída es 
+  la letra F. Volver a repetir este proceso infinitamente (loop infinito).
+* Challenge 2: ``leer el teclado`` y llenar la pantalla de negro si la tecla leída es 
+  la letra ``F`` y limpiar la pantalla si la letra leída es la ``C``. Repetir infinitamente 
+  este proceso (loop infinito). 
 
-        ../tools/CPUEmulator.sh program.tst
+Consideraciones
+*****************
 
-    Si tienes éxito verás el mensaje ``End of script - Comparison ended successfully``. De lo contrario 
-    te aparecerá un mensaje que indicará la línea del archivo ``.out`` que no coincide con el vector de prueba 
-    en el archivo ``.cmp``.
+Para realizar la evaluación: 
 
-  * Ten en cuanta que cada que hagas ``push`` al repositorio remoto, las pruebas anteriores se ejecutarán 
-    automáticamente y podrás ver el resultado.
+* `Aquí <https://classroom.github.com/a/K6fxXFex>`__ está el enlace de la evaluación.
+* CLONA el repositorio.
+* Cámbiate al directorio problem.
+* edita ÚNICAMENTE el archivo program.asm.
+* No olvides hacer commits y push.
+* No olvides probar con la herramienta CPUEmulator.sh.
+* Al hacer las pruebas te recomiendo colocar la animación en FAST y con la opción No Animation. No 
+  olvides que debes dar click en el botón del teclado para que el programa reciba las teclas que 
+  presionarás.
+* También puedes hacer pruebas automáticas. En este caso usarás la línea de comandos. Cámbiate al 
+  directorio problem y luego ejecuta:
 
-  .. warning:: ALERTA DE SPOILER
-      
-      En `este <https://github.com/juanferfranco/scu1-e1-2022-10-feedback.git>`__ enlace podrás consultar 
-      y clonar el repositorio con una posible solución a la evaluación formativa.
+  Para el challenge 1::
+
+    ../tools/CPUEmulator.sh programBasic.tst
+    
+  Para el challenge 2::
+
+    ../tools/CPUEmulator.sh program.tst
+
+  Si tienes éxito verás el mensaje ``End of script - Comparison ended successfully``. De lo contrario 
+  te aparecerá un mensaje que indicará la línea del archivo ``.out`` que no coincide con el vector de prueba 
+  en el archivo ``.cmp``.
+
+* Ten en cuanta que cada que hagas ``push`` al repositorio remoto, las pruebas anteriores se ejecutarán 
+  automáticamente y podrás ver el resultado en Github.
+
+.. warning:: ALERTA DE SPOILER
+    
+    En `este <https://github.com/juanferfranco/scu1-e1-2022-10-feedback.git>`__ enlace podrás consultar 
+    y clonar el repositorio con una posible solución a la evaluación formativa.
+
