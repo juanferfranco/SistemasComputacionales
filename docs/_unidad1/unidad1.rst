@@ -731,6 +731,21 @@ Responde las siguientes preguntas:
 Ejercicio 15: practica con otro ejercicio
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Con este ejercicio vas a practicar la traducción a lenguaje 
+ensamblador partiendo de un programa en alto nivel. Para escribir 
+el programa en Visual Studio Code te voy a pedir que instales 
+una herramienta que reconozca el lenguaje ensamblador del 
+procesador que has estado estudiando. El objetivo es que el 
+código se vea más bonito. Vas a instalar `esta <https://marketplace.visualstudio.com/items?itemName=Throvn.nand2tetris>`__ 
+extensión así:
+
+* Abre Visual Studio Code.
+* Ingresa al buscador de extensiones. Lo encuentras dando click al ícono con los cuatro cuadrados, 
+  al lado izquierdo de la interfaz de usuario.
+* En el campo ``search extensions in marketplace`` puedes escribir la palabra nand2tetris. 
+  El autor de la extensión es Louis.
+* Click en ``install``.
+
 En la página 65 del capítulo 4 del texto guía tienes el siguiente programa:
 
 .. code-block:: c
@@ -742,19 +757,36 @@ En la página 65 del capítulo 4 del texto guía tienes el siguiente programa:
     i++;
   }
 
-Traduce este programa a lenguaje ensamblador (RECUERDA que en la misma 
-página está la solución, PERO TRATA SIN VER, luego compara, analiza, entiende y corrige). Una vez 
-escribas el código en ensamblador lo vas a simular. Para escribir el programa puedes usar 
-Visual Studio Code y `esta <https://marketplace.visualstudio.com/items?itemName=Throvn.nand2tetris>`__ 
-extensión. Recuerda que las extensiones las instalas directamente desde Visual Studio Code 
-ingresando al buscador de extensiones (ícono con los cuatro cuadrados). En search extensions 
-in marketplace puedes escribir la palabra nand2tetris. El autor de la extensión es Louis. Sigue 
-estos pasos una vez escribas el programa:
+La idea es que hagas la traducción de este programa a lenguaje ensamblador.
+
+.. warning:: IMPORTANTE
+
+  En la página 65 del capítulo 4 está la solución, PERO TRATA SIN VER, 
+  luego compara, analiza, entiende y corrige.
+  
+Sigue estos pasos:
+
+* Crea un directorio para este ejercicio.
+* Abre el directorio en Visual Studio Code.
+* Crea un nuevo archivo que puedes llamar ``ex15.asm``.
+* Inicia la traducción.
+
+.. warning:: NO TE RINDAS, ESTO NO SERÁ FÁCIL.
+
+  Te pido que por favor no te rindas ni desanimes. Este ejercicio no será 
+  fácil. De hecho, vas a poner a PRUEBA lo que has aprendido hasta ahora. 
+  Si no entiendes algo te pediré que regreses y ANALICES de nuevo el material.
+
+Una vez escribas el código en ensamblador vas a verificar que la ``sintaxis`` está 
+correcta, es decir, cumpliste todas las reglas del lenguaje y estás usando 
+instrucciones válidas. Luego lo vas a simular para verificar que es correcto 
+desde el punto de vista ``semántico``. De nuevo, necesitarás más herramientas:
 
 * Abre el directorio App o app del usuario pop-os.
-* Verifica si tienes la carpeta nand2tetris. Si no la tienes descarga el simulador 
-  de `este <https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ>`__ 
-  enlace y descomprímelo en la carpeta app o App.
+* Verifica si tienes la carpeta nand2tetris. Si no la tienes, la puedes descargar de 
+  `este <https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ>`__ 
+  enlace.
+* Descomprime el archivo descargado en la carpeta app o App.
 * Abre el directorio tools en la terminal.
 * Ejecuta el comando::
 
@@ -764,21 +796,28 @@ estos pasos una vez escribas el programa:
 
     ./CPUEmulator.sh
 
-* Guarda el archivo con el programa en lenguaje ensamblador con extensión .asm.
-* Carga en la memoria ROM el archivo .asm.
-* Puedes comenzar a simular el programa dando click en el botón single step a la 
-  tecla F11.
+* Amplia el tamaño de la ventana del simulador en la parte inferior para que puedas ver el campo
+  de texto donde aparecerán los mensajes de error.
+* Carga en la memoria ROM el archivo .asm. Si la sintaxis es correcta puedes comenzar 
+  a simular tu programa. De lo contrario debes reparar la sintaxis del programa.
+* Cada vez que modifiques el programa debes cargarlo de nuevo en la memoria ROM y 
+  verificar de nuevo que no tenga errores. ¿Cómo sabes que no tiene errores? Porque 
+  el programa se podrá cargar y no tendrás mensajes de color rojo en la parte inferior 
+  de la ventana del simulador.
+* Ahora vas a probar que el programa haga lo que se supone debe hacer, es decir, que esté 
+  bien la semántica. 
+* Para simular das click en el botón single step (ícono con una sola flecha azul apuntando 
+  a la derecha) o usa la tecla F11.
 * Observa los registros: PC, A y D. Observa el bloque denominado ALU. Este bloque 
   es la parte de la CPU que realiza las operaciones. El bloque denominado RAM 
-  es el mismo bloque que llamamos Memory. Para activar el teclado debes dar click 
-  en el ícono de teclado y luego presionar cualquier tecla. Si el simulador 
-  reconoce la tecla, la deberás ver dibujada al lado del ícono. La pantalla está justo 
-  encima del ícono del teclado. Te presente que puedes ejecutar el programa desde single 
-  step hasta máxima velocidad. La velocidad de ejecución máxima la consigues moviendo 
-  la barra speed a fast y seleccionando en el menú Animate No animation. Puedes aprender 
-  más sobre esta y otras herramientas en `este <https://www.nand2tetris.org/software>`__ 
-  enlace.
-* Por último te voy a pedir que pruebes otra herramienta. Se llama el Assembler, la puedes 
+  es el mismo bloque que llamamos Memory. 
+
+.. tip:: EL SIMULADOR TIENE UN MANUAL
+
+    Puedes aprender más sobre esta y otras herramientas en 
+    `este <https://www.nand2tetris.org/software>`__ enlace.
+    
+  Por último te voy a pedir que pruebes otra herramienta. Se llama el Assembler, la puedes 
   encontrar también en el directorio tools; sin embargo, antes de ejecutarla y solo la 
   primera vez que la abras escribe en la terminal (debes abrir la carpeta tools en la terminal)::
 
@@ -795,7 +834,7 @@ estos pasos una vez escribas el programa:
 Ejercicio 16: retrieval practice
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Vas a repetir los pasos del ejercicio anterior, pero cambiando el programa. Esta vez con el 
+Vas a repetir los pasos del ejercicio anterior, pero cambiando de programa. Esta vez con el 
 ejemplo inicial de la Unidad, es decir, traduce el siguiente código a lenguaje ensamblador. 
 Una vez termines compara tu solución con la que hemos venido discutiendo. Analiza, entiende y 
 corrige. Escribe en Visual Studio Code el lenguaje ensamblador, usa CPUEmulator.sh y Assembler.sh.
