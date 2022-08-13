@@ -817,18 +817,21 @@ desde el punto de vista ``semántico``. De nuevo, necesitarás más herramientas
     Puedes aprender más sobre esta y otras herramientas en 
     `este <https://www.nand2tetris.org/software>`__ enlace.
     
-  Por último te voy a pedir que pruebes otra herramienta. Se llama el Assembler, la puedes 
-  encontrar también en el directorio tools; sin embargo, antes de ejecutarla y solo la 
-  primera vez que la abras escribe en la terminal (debes abrir la carpeta tools en la terminal)::
+Por último te voy a pedir que pruebes otra herramienta. Se llama el Assembler, la puedes 
+encontrar también en el directorio tools; sin embargo, antes de ejecutarla y solo la 
+primera vez que la abras escribe en la terminal (debes abrir la carpeta tools en la terminal)::
 
-    sudo chmod +x Assembler.sh
+  sudo chmod +x Assembler.sh
 
-  Ahora si la lanzas::
+El paso anterior es necesario para darles permisos de ejecución al script Assembler.sh. Es 
+una operación típica en Linux. 
 
-    ./Assembler.sh
+Ahora si la lanzas::
 
-  Carga el archivo .asm y dale click al botón Fast Translation. Podrás ver el código 
-  en lenguaje de máquina.
+  ./Assembler.sh
+
+Carga el archivo .asm y dale click al botón Fast Translation. Podrás ver el código 
+en lenguaje de máquina.
 
 
 Ejercicio 16: retrieval practice
