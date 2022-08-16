@@ -908,10 +908,7 @@ El problema está divido en dos challenges. Tu programa debe cumplir exitosament
   la letra ``F`` y limpiar la pantalla si la letra leída es la ``C``. Repetir infinitamente 
   este proceso (loop infinito). 
 
-Consideraciones
-*****************
-
-Para realizar la evaluación: 
+Consideraciones para realizar la evaluación: 
 
 * `Aquí <https://classroom.github.com/a/K6fxXFex>`__ está el enlace de la evaluación.
 * CLONA el repositorio.
