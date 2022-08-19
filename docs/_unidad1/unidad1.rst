@@ -833,6 +833,49 @@ Ahora si la lanzas::
 Carga el archivo .asm y dale click al botón Fast Translation. Podrás ver el código 
 en lenguaje de máquina.
 
+.. tip:: ESTA TRADUCCIÓN LA REALIZAMOS JUNTOS EN CLASE
+
+      .. code-block::
+
+        //int i = 1;
+        //int sum = 0;
+        //While (i <= 100){
+        //  sum += i;
+        //  i++;
+        //}
+
+        //int i = 1;
+        @i     
+        M = 1  // Memory[A] o Memory[16] = 1
+        //int sum = 0;
+        @sum
+        M = 0
+        (LOOP)
+        //While (i <= 100){
+        // i <= 100 --> i - 100 <= 0
+        @i
+        D = M 
+        @100
+        D = D - A
+        @END
+        D;JGT
+        //  sum += i;
+        //  sum = sum + i;
+        @i
+        D = M
+        @sum
+        M = M + D 
+        //  i++;
+        // i = i + 1
+        @i
+        M = M + 1
+        @LOOP
+        0;JMP
+        //}
+        (END)
+        @END
+        0;JMP
+
 
 Ejercicio 16: retrieval practice
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
