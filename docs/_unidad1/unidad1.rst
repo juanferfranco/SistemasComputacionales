@@ -1031,5 +1031,6 @@ Criterios de evaluación
 *************************
 
 * Funcionamiento correcto del programa en lenguaje ensamblador 2 unidades.
-* Sustentación del programa en lenguaje C/C++ 3 unidades.
+* Sustentación del programa en lenguaje C/C++ 3 unidades 
+  por contestar correctamente las preguntas realizadas a cada miembro del equipo.
 
