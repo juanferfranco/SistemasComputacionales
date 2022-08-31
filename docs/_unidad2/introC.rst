@@ -3,13 +3,13 @@ Introducción al lenguaje C
 
 Con esta guía aprenderás a programar en lenguaje C. Vas a aprender 
 las características del lenguaje que te permitirán realizar 
-los ejercicios y proyectos propuestos.
+la evaluación.
 
 Prerrequisitos
 -----------------
 
-Esta introducción a C asumen que tu ya conoces y has trabajado con otros 
-lenguajes de programas como C#, python, java. Notarás cierta familiaridad 
+Esta introducción a C asumen que ya conoces y has trabajado con otros 
+lenguajes de programas como C#, python o java. Notarás cierta familiaridad 
 con la sintaxis de C# o de java.
 
 Temas
@@ -51,7 +51,7 @@ Características del lenguaje:
 * Tiene una `biblioteca estándar <https://en.wikipedia.org/wiki/C_standard_library>`__ externa.
 * Los programa se compilan a código nativo, es decir, no es interpretado como python. Por tanto, la ejecución 
   de los programas es rápida, siempre y cuando estén bien escritos.
-* Antes de que el programa sea compilado pasa por una fase de pre-procesado (ahora hablamos de eso) que permite 
+* Antes de que el programa sea compilado pasa por una fase de pre-procesado que permite 
   incluir en un archivo otros archivos, definir constante, macros, compilación condicional, entre otras cosas.
 * Aunque la sintaxis de C es similar a C#, ten en cuenta que son lenguajes diferentes.
 
@@ -95,8 +95,16 @@ Lectura 2: Estructura básica de un programa en c
 Ejercicio 1: estructura de un programa en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Realiza un diagrama de flujo para el programa de la lectura anterior. Te voy a recomendar una herramienta 
-muy buena para hacer lo anterior, se llama `draw.io <https://app.diagrams.net/>`__. 
+El programa de la lectura anterior es un MODELO. El computador no puede ejecutarlo directamente. Antes 
+de poder ejecutar el programa es necesario traducirlo a lenguaje ensamblador y posteriormente a lenguaje 
+de máquina como viste en la unidad anterior.
+
+La ejecución del programa inicia en la función main, luego se llama la función 
+funcPrint. Dicha función llama la función printf para imprimir un mensaje en la terminal. 
+Una vez printf termina de ejecutarse, el flujo de instrucciones regresa a funcPrint. Una vez termina 
+funcPrint, el flujo regresa a main y ejecuta las instrucciones correspondientes a return(0). Aquí el 
+programa termina.
+
 
 Ejercicio 2: compilación de un programa en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -112,7 +120,7 @@ Recuerda:
 * gcc es el compilador.
 * -Wall: habilita los mensajes de advertencia (warnings) del compilador.
 * Lab1-1.c es el archivo de entrada a compilar.
-* -o Lab1-1 indica el nombre del archivo de salida.
+* -o Lab1-1 indica el nombre del programa ejecutable, es decir, ya traducido a lenguaje de máquina.
   
 Para ejecutar el programa:
 
@@ -123,18 +131,18 @@ Para ejecutar el programa:
 Lectura 3: El preprocesador
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-El preprocesamiento es una característica muy propia de C que no es común a otros lenguajes de programación. Esta
+El preprocesamiento es una característica muy propia de C/C++ que no es común a otros lenguajes de programación. Esta
 característica permite MODIFICAR el programa ANTES de pasárselo al compilador para que este luego lo convierta 
-en lenguaje ensamblador.
+a lenguaje ensamblador. El preprocesador es llamado cuando ejecutas el comando gcc.
 
-Lo que debes hacer para usar el preprocesador es introducir en el código DIRECTIVAS, es decir, instrucciones que le das al
-preprocesador. Una vez el preprocesador lee tu programa, su tarea será remover las directivas y sustituirlas por 
+Para usar el preprocesador usa en tu programa DIRECTIVAS, es decir, instrucciones que le dicen al preprocesador 
+lo que debe hacer. Una vez el preprocesador lee tu programa, su tarea será remover las directivas y sustituirlas por 
 código C que él mismo generará usando las instrucciones que tu le has dado con la directiva específica. Luego de 
 este paso, tu programa estará listo para ser leído por el compilador.
 
-Ten en cuenta que las directivas comenzarán por el símbolo #.
+Ten en cuenta que las directivas comenzarán por el símbolo ``#``.
 
-Ahora te voy a mostrar algunos ejemplos de directiva que puedes usar:
+Ahora te voy a mostrar algunos ejemplos de directivas que puedes usar:
 
 .. code-block:: c
 
@@ -160,8 +168,9 @@ El resultado del preprocesador será algo similar a esto:
         return 0;
     }
 
-Ahora si, este archivo, será pasado al compilador para que lo convierta en código ensamblador. 
-La respuesta a la pregunta será 15.
+Una vez preprocesado el archivo, el  compilador lo convertirá en código ensamblador.
+
+Entonces, la respuesta a la pregunta de cuál será el valor de ``y`` es 15.
 
 Mira este otro ejemplo:
 
@@ -215,9 +224,9 @@ Por último prueba el comando anterior con este programa:
 
 ¿Qué puedes concluir de la directiva ``#include``? 
 
-Otro uso interesante del preprocesador son las DIRECTIVAS de compilación condicional. 
+Otro uso interesante del preprocesador es el uso de las DIRECTIVAS de compilación condicional. 
 
-Esta directivas te permiten incluir un código u otro, dependiendo de una condición:
+Estas directivas te permiten incluir un código u otro, dependiendo de una condición:
 
 .. code-block:: c
     
@@ -292,7 +301,7 @@ Y si compilas así:
 Lectura 4: Tipos de datos, tamaños y rangos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Los datos primitivos básicos en C son los ENTEROS, CARACTERES, NÚMEROS EN PUNTO FLOTANTE.
+Los datos primitivos básicos en C son los ENTEROS, CARACTERES Y NÚMEROS EN PUNTO FLOTANTE.
 
 Infortunadamente C no define tamaños fijos para los ENTEROS. Estos varían de CPU a CPU. Por ejemplo,
 en un microcontrolador de 8 bits los enteros pueden ser números de 16 bits, mientras que en una 
@@ -320,8 +329,21 @@ El tipo char puede ser con signo, ``signed char`` o sin signo ``unsigned char``.
 :math:`-128` a :math:`127` y si signo desde :math:`0` a :math:`255`. También es común observar el tipo ``char`` sin 
 especificar el signo. En este caso, por defecto el rango será desde :math:`-128` hasta :math:`127`.
 
-El lenguaje el operador de tiempo de compilación ``sizeof`` QUE SOLO FUNCIONA EN TIEMPO DE COMPILACIÓN. 
-Te repito, SOLO FUNCIONA EN TIEMPO DE COMPILACIÓN. ``sizeof`` devuelve la cantidad de bytes que ocupa un tipo de dato.
+Para saber la cantidad de bytes que ocupa un tipo de dato puedes usar el operador ``sizeof``.
+
+.. warning:: MUY IMPORTANTE
+
+	``sizeof`` SOLO FUNCIONA EN TIEMPO DE COMPILACIÓN. Te repito, SOLO FUNCIONA EN TIEMPO DE COMPILACIÓN.
+
+
+Ten presente:
+
+.. warning:: MUY IMPORTANTE 2
+
+    Es muy importante que no lo olvides. ``sizeof`` SOLO FUNCIONA EN TIEMPO DE COMPILACIÓN. Entonces 
+    con este comando NO puedes determinar en tiempo de EJECUCIÓN la cantidad de datos que contiene un 
+    arreglo en un momento dado.
+    
 
 Lectura 5: Variables
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -397,7 +419,7 @@ los distintos operadores. En la siguiente imagen podrás ver los controles bási
 .. image:: ../_static/debugIcons.png
     :alt: debugger controls
 
-Los controles 2,3 y 4 de izqueirda a derecha te permitirán ejecutar respectivamente, una función completa, sin 
+Los controles 2, 3 y 4 de izqueirda a derecha te permitirán ejecutar respectivamente, una función completa, sin 
 entrar en ella; ingreasar a una función y salir de la función una vez ingreses en ella. Prueba estos 
 controles.
 
@@ -677,8 +699,6 @@ Ejecuta el siguiente programa:
 
 .. code-block:: c
      
-
-
     #include <stdio.h>
     #include <stdint.h>
     
@@ -713,11 +733,11 @@ En mi caso la salida se ve así:
 Pues no son más que las direcciones de memoria virtual de las variables ``a``, ``b``, ``c`` y ``d``.
 
 Nota el tipo de cada varible. Mira que no importa el tipo de variable,
-el tamaño de la dirección es la misma.
+el tamaño de la dirección es siempre la misma.
 
 Ahora mira la dirección de ``b`` y la dirección de ``a``. La diferencia entre ellas es de 1; sin embargo, 
 entre ``b`` y ``c`` la diferencia de sus direcciones es de 4. ¿Por qué? ``PRESTA MUCHA ATENCIÓN``, aunque 
-las direcciones tienen el mismo tamaño, lo que hay guardado en la dirección de memoria es de diferente 
+las direcciones tienen el mismo tamaño, lo que hay guardado desde esa dirección de memoria es de diferente 
 tamaño. Mira, en la dirección de ``a`` tienes guardado un ``char``. Ya sabes que los ``char`` ocupan un byte. En la 
 dirección de ``b`` tienes almancenado un ``int``, en mi computador los ``int`` son de 4 bytes o 32 bits. 
 
@@ -725,7 +745,7 @@ Te dejo esta pregunta a ti. Considerando lo anterior, analiza la diferencia entr
 ¿Cuántos bytes necesita un float para ser representado en mi computador? 
 
 En el ejercicio anterior usamos el operador ``&`` antes de la variable a. Con este operador le estás diciendo 
-al compilador que NO QUIERES el contenido de la variable ``a``, sino la dirección de memoria de la variable 
+al compilador que NO QUIERES el contenido de la variable ``a`` sino la dirección de memoria de la variable 
 ``a``.
 
 Ejecuta el siguiente ejemplo:
@@ -841,8 +861,9 @@ Lectura 9: Arreglos y su relación con los punteros
 Reto 2: arreglos, funciones, punteros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Realiza una función que calcule el promedio de un arreglo de enteros de 32 bits de tamaño arbitrario. 
-Deberías pasarle a la función la dirección en memoria del arreglo y el tamaño.
+Realiza una función que calcule el promedio de un arreglo de enteros de 32 bits. La función 
+debe recibir el tamaño del arreglo. Por tanto, deberías pasarle a la función la dirección en memoria del arreglo 
+y su tamaño.
 
 Lectura 10: cadenas de caracteres
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -919,13 +940,13 @@ que antes de ver la salida del programa trates de predicir cuál será.
 
 #. Explica qué hace la línea ``uint8_t sizeOfNombresElement = sizeof(nombres)/sizeof(nombres[0]);``
 #. Observa el ciclo ``for``. ¿Cuál es la función de ``(char *)`` en ``(char *)(b+i)``?
-#. ¿Cómo quedan almacenada en memoria la matriz ``nombres``?
+#. ¿Cómo queda almacenada en memoria la matriz ``nombres``?
 
 
 Lectura 11: memoria dinámica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-En lenguaje C las variables se puede asignar en memoria de tres formas: estáticamente, automáticamente (en el
+En lenguaje C las variables se pueden asignar a memoria de tres formas: estáticamente, automáticamente (en el
 stack), dinámicamente (en el heap).
 
 La memoria dinámica tu la puedes solicitar en tiempo de ejecución. Piensa por ejemplo en esto: necesitas 
@@ -933,7 +954,6 @@ crear un arreglo de enteros, pero antes de ejecutar el programa no sabes cuánto
 de enteros porque la información del tamaño será ingresada por el usuario al interactuar con tu programa. 
 En este caso, por ejemplo, podrías, en tiempo de ejecución, SOLICITAR la cantidad de espacio en memoria 
 que será requerida.
-
 
 .. warning::
     LA MEMORIA DINÁMICA LA DEBES GESTIONAR DE MANERA MANUAL.
@@ -1017,17 +1037,17 @@ que tu código sea robusto), posibles errores. En este caso nota ``create_array`
 Finalmente, observa que al terminar de usar la memoria, ``destroy_array`` la libera. Tu dirás, 
 ¿Si es necesario? La respuesta es SI, aunque el programa termine en este punto y el sistema 
 operativo libere automáticamente la memoria, yo te recomiendo que adquieras el hábito de 
-liberar la memoria. NO OLVIDES es un proceso manual que siempre tendrás que realizar.
+liberar la memoria. NO OLVIDES que es un proceso manual que siempre tendrás que realizar.
 
 Lectura 12: estructuras de datos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-En C existe la palabra reservada ``struct`` con la cual puedes crear tus propios tipos de datos.
+En C existe la palabra reservada ``struct`` con la cual puedes ``crear tus propios tipos de datos``.
 Estas ``struct`` de C serán colecciones de una o más variables que pueden ser de tipos diferentes, 
 pero agrupadas bajo un mismo nombre.
 
 Por ejemplo, considera que quieres crear un punto ``(x,y)`` donde la x y la y son enteros. Tienes 
-dos opciones. La primera es manejar cada coordinada de manera independite. La segunda crear un 
+dos opciones. La primera es manejar cada coordinada de manera independite. La segunda es crear un 
 nuevo tipo de dato que incluya las dos coordenadas a la vez:
 
 .. code-block:: c 
@@ -1047,9 +1067,11 @@ Ahora vamos a explorar un poco más las estructuras con unas preguntas básicas:
 * ¿Cómo se declara una variable struct? ``struct point p1``. En este caso p1 si ocupa memoria, 
   aunque aún no has inicializado sus miembros ``x`` y ``y``. 
 * ¿Cómo puedo inicializar un variable tipo ``struct``? ``struct point p1 = {1,2};``. En este 
-  caso estás creando un memoria la varibale ``p1`` e inicializando la x en 1 y la y en 2.
+  caso se creará en memoria la varibale ``p1`` con valores iniciales 1 en x y 2 en y. Algo muy 
+  similar a lo que hacen los constructores en un lenguaje de programación orientada a objetos, es 
+  decir, inicializar los atributos del objeto.
 * ¿Cómo puedes acceder a los miembros de una ``struct``? Para acceder a ``x`` utilizas ``p1.x`` 
-  y para acceder a ``y`` ``p2.y``. 
+  y para acceder a ``y`` ``p1.y``. 
 * ¿Puedo tener ``struct`` y arreglos dentro de un ``struct``? Lo puedes hacer. Considera por ejemplo, 
   que quiere definir un nuevo tipo de dato que represente un rectángulo. Para definir un rectángulo 
   vas a necesitar dos puntos. 
@@ -1070,7 +1092,7 @@ Ahora vamos a explorar un poco más las estructuras con unas preguntas básicas:
         struct point pt2; 
     };
 
-* ¿Puedes asignar una struct en otras struct compatibles? SI lo puedes hacer:
+* ¿Puedes ASIGNAR (usar el operador =) una struct en otra struct compatible? SI lo puedes hacer:
 
 .. code-block:: c 
 
@@ -1147,7 +1169,8 @@ puntero? Si es posible:
     }
 
 ``pp1`` es una variable que almacena la dirección de ``p1``; sin embargo, 
-para acceder a los miembros de p1 a través de pp1 debes usuar el operador ``->``.
+para acceder a los miembros de p1 a través de pp1 debes usuar el operador ``->``. Por 
+ejemplo pp1->x para leer el contenido de la variable x.
 
 Lectura 14: entrada/salida (teclado-pantalla)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1159,19 +1182,19 @@ formateada y finalmente aprenderás a leer y almacenar información persistente.
 ¿Cómo puedes hacer para leer información por medio del teclado?
 
 Tu programa no puede leer directamente la información que el usuario ingresa desde 
-el teclaro. Esta tarea la debes hacer por medio del sistema operativo, es decir, debes 
+el teclado. Esta tarea la debes hacer por medio del sistema operativo, es decir, debes 
 ``pedirle el favor`` al sistema operativo (un llamado al sistema operativo). 
 ¿Cómo? Te voy a proponer una de muchas maneras usando esta función 
 ``char *fgets(char *str, int n, FILE *stream)``. A ``fgets`` 
 le debes pasar la dirección del buffer (arreglo en memoria) donde quieres colocar los 
 caracteres introducidos por el usuario, la cantidad de caracteres y la fuente (el flujo) 
-de donde estos vienen. La función con esta información se encarga de hacer el llamado o la 
+de donde estos vienen. La función, con esta información, se encarga de hacer el llamado o la 
 solicitud al sistema operativo. Mientras el sistema operativo hace lo que pediste, tu programa
 se BLOQUEA. Esto significa que le entregas el control al sistema operativo. Una vez presiones 
 la tecla ``ENTER`` el sistema operativo copiará la información ingresada por el usuario al 
 buffer que definiste y tu programa podrá continuar. 
 
-Analicemos juntos este código:
+Aquí puedes ver un ejemplo:
 
 .. code-block:: c
      
@@ -1292,7 +1315,7 @@ Al ejecutarlo:
     age[1]: 2
 
 Si ejecutas el programa con el depurador notarás que la secuencia de caracteres ``42`` no se almancea 
-en ``age`` como un número sino como el código ASCII del ``4`` (52) y el código ASCII del ``42`` (50). 
+en ``age`` como un número sino como el código ASCII del ``4`` (52) y el código ASCII del ``2`` (50). 
 NO OLVIDES ESTO POR FAVOR: si luego quieres hacer operaciones con el número ingresado, lo primero que debes 
 hacer es convertir la secuencia de caracteres '4' '2' en el número ``42``.
 
@@ -1308,7 +1331,7 @@ En C se puede hacer de muchas maneras. Algunas formas son muy simples, pero poco
 no verifican errores o son lentas. Te voy a proponer una forma un tanto más complicada pero más 
 robusta tomada del manual de Linux.
 
-Aquí viene. Copia el código, ejecutálo. Ingresa números, números con letras. Experimenta. En principio 
+Aquí viene. Copia el código, ejecutálo. Ingresa números, números con letras, experimenta. En principio 
 se puede ver complicado, pero la verdad no lo es tanto. En otros lenguajes de programación recuerda que 
 usualmente tienes bloques ``try catch``, esto que vas a ver es algo similar, solo que en C debes 
 hacer esta gestión de manera manual. De nuevo, es porque C te da todo el control a ti para que hagas 
@@ -1372,7 +1395,7 @@ La función ``strtol`` se define así:
 
 Para usuar la función debes incluir un archivo de cabezera (stdlib.h). Observa los parámetros de la función.
 nptr te permite almacenar una dirección. Será la dirección del primer carácter de la secuencias de caracteres 
-que vas a convertir. No ta la palabra reservada ``const``. Esta palabra no es obligatoria, pero si la usas la 
+que vas a convertir. Nota la palabra reservada ``const``. Esta palabra no es obligatoria, pero si la usas, le 
 estás diciendo al compilador que por medio de ``nptr`` no piensas modificar el contenido apuntado, por tanto, 
 si llegaras a olvidarlo en tu código o si cometes un error, el compilador te dirá. ``endptr`` se ve complicado, 
 pero realmente no lo es tanto. Esa variable tiene dos ``*`` que quiere decir que es una variable que almacena 
@@ -1395,8 +1418,8 @@ los signos ``+`` o ``-`` y ``strtol`` los tendrá en cuenta para la conversión.
 todos los caracteres que representan números; sin embargo, se detendrá cuando encuentre el carácter ``h``. En este 
 punto realizará la conversión. En la variable ``endptr`` quedará la dirección en memoria de ``h``.
 
-Otra de las virtudes de ``strtol`` es que puedes saber si resultado de la conversión está fuera de rango tanto 
-al máximo como al mínimo. Puedes ver un poco más en la documentación de ``strtol`` escribiendo en la terminal 
+Otra de las virtudes de ``strtol`` es que puedes saber si el resultado de la conversión está fuera de rango. 
+Puedes ver un poco más en la documentación de ``strtol`` escribiendo en la terminal 
 ``man strtol``.
 
 Se ve complicado usar ``strtol``, cierto? Tienes razón. Intentemos una ``receta`` en este punto, PERO lo importante 
@@ -1431,7 +1454,8 @@ Ejercicio 7: convertir caracteres a números (forma 2)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Puedes utilizar esta segunda manera que te voy a mostrar, pero tiene un defecto. No tienes manera de saber 
-si la conversión desbordó. Si requieres este varificación te debes quedar con strtol.
+si la conversión desbordó, es decir, si está por fuera de rango. Si requieres esta verificación te 
+debes quedar con strtol.
 
 La función será ``sscanf`` definida así (puedes leer más con ``man sscanf``):
 
@@ -1502,76 +1526,10 @@ En este ejemplo te estoy mostrando la forma rápida, tipo receta. Esto es porque
 función compleja dadas todas las posibilidades que tienes para decirle con ``format`` cómo quieres hacer 
 la conversión. Si eres muy curiosa puedes explorar, recuerda, con ``man sscanf``.
 
-Ejercicio 8: leer una cadena de caracteres desde la terminal con scanf
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Para complementar el ejercicio anterio. Vamos a leer una cadena de carteres 
-desde la terminal utilizando ``scanf``.
-
-.. code-block:: c 
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-
-    int main(void){
-
-        char *strPtr;
-        int n = scanf("%ms",&strPtr);
-        if(n == 1){
-            printf("String length: %ld\n", strlen(strPtr));
-            free(strPtr);
-        }
-        else{
-            printf("scanf fails\n");
-        }
-        return(EXIT_SUCCESS);
-    }
-
-Ejecuta el código así:
-
-.. code-block:: bash 
-
-    ./ts                            
-    hola mundo
-    String length: 4
-
-Observa que la cadena se almacenó hasta hola. ¿Y si quieres leer toda la cadena? 
-Debes decirle a ``scanf`` que lea caracteres mientras este no sea el ``ENTER`` (``\n``):
-
-.. code-block:: c
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-
-    int main(void){
-
-        char *strPtr;
-        // [^\n]: lee mientras no encuentres el enter
-        int n = scanf("%m[^\n]",&strPtr);
-        if(n == 1){
-            printf("String length: %ld\n", strlen(strPtr));
-            free(strPtr);
-        }
-        else{
-            printf("scanf fails\n");
-        }
-        return(EXIT_SUCCESS);
-    }
-
-Al ejeecutarlo:
-
-.. code-block:: bash 
-
-    ./ts                            
-    hola mundo
-    String length: 10 
-
-Ejercicio 9: imprimir con printf
+Ejercicio 8: imprimir con printf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Durante todo el curso hemos usando la función ``printf``. Llegó el momento 
+Durante todo la guías has  usando la función ``printf``. Llegó el momento 
 de profundizar un poco más en ella. Está definida así:
 
 .. code-block:: c 
@@ -1722,7 +1680,7 @@ Y si quieres vacíar la información del buffer de escritura al disco:
 
     int fflush(FILE *stream);
 
-Ejercicio 10: leer un archivo hasta el final 
+Ejercicio 9: leer un archivo hasta el final 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 En este ejercicio te voy a mostrar cómo puedes leer hasta el final un archivo 
@@ -1773,7 +1731,7 @@ Reto 5: leer y escribir en un archivo
 Modifica el programa del ejemplo anterior para copiar el contenido de ``text.txt`` en 
 otro archivo.
 
-Ejercicio 11: repaso de punteros
+Ejercicio 10: repaso de punteros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 (Este ejercicio es tomado de `aquí <https://www.geeksforgeeks.org/pointer-array-array-pointer/>`__)
 
@@ -1840,7 +1798,7 @@ enteros (5 enteros ocupan 20 bytes en memoria considerando
 que cada entero ocupa 4 bytes), ya que ptr es de tipo
 ``int (*)[5]``.
 
-Ejercicio 12: arreglos de arreglos
+Ejercicio 11: arreglos de arreglos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 El siguiente ejercicio es más complejo que el anterior, sin embargo,
@@ -1890,7 +1848,7 @@ El programa imprimirá el número ``12``.
 La expresión ``printf("%d\n", *( * ( *p + 2)+ 3));`` al ser equivalente a
 ``printf("%d\n", ( (*p)[2] )[3] );`` también mostrará un ``12``.
 
-Ejercicio 13: repaso de arreglos, punteros y funciones
+Ejercicio 12: repaso de arreglos, punteros y funciones
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Te propongo que realices un programa que:
@@ -1982,7 +1940,7 @@ El flujo del programa será:
 * Indicar cuántos elementos comunes se encontraron y un arreglo
   con dichos elementos.
 
-Ejercicio 14: repaso de archivos
+Ejercicio 13: repaso de archivos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 En este ejercicio te propongo encriptar y desencriptar un archivo.
@@ -2020,14 +1978,12 @@ El programa que desencripta:
     funcionalidad solicitada.
 
 
-.. warning:: Este código asumen que la información ingresada está
+.. warning:: Este código asume que la información ingresada está
             bien formateada y libre de errores. Por tanto, se omiten
             algunas verificaciones.
 
-.. note:: Para probar los siguientes programas (es el mismo para encriptar
-        y desencriptar) es necesario que dispongas del archivo que quieres 
-        encriptar.
-
+.. note:: El siguiente programa encripta y desencriptar. Ten presente que es necesario que 
+        dispongas del archivo que quieres encriptar.
 
 .. code-block:: c
 
