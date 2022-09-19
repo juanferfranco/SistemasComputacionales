@@ -229,7 +229,7 @@ El primer reto es entender el PROBLEMA. Te dejo algunas pistas:
 En el directorio tests encontrarás todos los vectores de prueba. Serán 19 en total.
 Los archivos .desc contienen la descripción de la prueba. Los archivos .in te 
 muestran la secuencia de comandos que ejecutará el programa. Los archivos .out 
-te muestran la salida esperado. Los archivos .err almacenarán el mensaje de error 
+te muestran la salida esperada. Los archivos .err almacenarán el mensaje de error 
 esperado. Los archivos .rc el valor que se espera que retorne el programa 
 al terminar. Los archivos .run te muestran cómo se ejecuta la prueba.
 
