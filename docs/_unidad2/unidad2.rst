@@ -243,7 +243,7 @@ MUY IMPORTANTE
 
 * No uses ninguna función para imprimir en pantalla a menos que sean las que ya están en el código
   o donde se te pide que las uses. En la función ``ListEvents`` deberás imprimir cada evento 
-  usando la cadena formateada ``"%s\n"`` y en caso de tener una lista vacía usarás esta funcióN
+  usando la cadena formateada ``"%s\n"`` y en caso de tener una lista vacía usarás esta función
   ``printf("empty\n");``. La razón de esto es que tu programa será verificado automáticamente 
   y por tanto, si imprimes información no esperada es posible que las pruebas automáticas fallen.
 * Para compilar, cámbiate el directorio donde están los archivos ``.c`` y ejecuta el comando 
