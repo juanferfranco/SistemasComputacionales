@@ -222,9 +222,9 @@ El primer reto es entender el PROBLEMA. Te dejo algunas pistas:
 
 .. warning:: ESTA EVALUACIÓN ES EN EQUIPO
 
-    Arma tu equipo de trabajo. Uno de los miembros crear el equipo
-    y los demás se unen a ese equipo. Te dejo el enlace para crear 
-    el equipo y tener acceso al repositorio q`aquí <https://classroom.github.com/a/GD4pT6wn>`__.
+    Arma tu equipo de trabajo. Uno de los miembros debe crear el equipo
+    y los demás se unen a ese equipo. El enlace para crear 
+    el equipo y tener acceso al repositorio está `aquí <https://classroom.github.com/a/GD4pT6wn>`__.
 
 En el directorio tests encontrarás todos los vectores de prueba. Serán 19 en total.
 Los archivos .desc contienen la descripción de la prueba. Los archivos .in te 
