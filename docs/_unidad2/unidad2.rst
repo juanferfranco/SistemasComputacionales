@@ -211,11 +211,32 @@ todos los vectores de prueba. Una vez termines la solución debes
 estudiarla detenidamente para preparar la sustentación. Dicha 
 sustentación será una pregunta relacionada con el proyecto.
 
+El primer reto es entender el PROBLEMA. Te dejo algunas pistas:
+
+* El programa es interactivo, es decir, para funcionar requiere 
+  que el usuario le ingrese órdenes.
+* Puedes comenzar a explorar en el archivo main.c. 
+* Nota que para cada comando el programa realizará acciones. Las 
+  acciones llamarán funciones. Son precisamente las funciones 
+  que se llaman las que tendrás que completar.
+
 .. warning:: ESTA EVALUACIÓN ES EN EQUIPO
 
     Arma tu equipo de trabajo y trabaja en el 
     repositorio que te dejo `aquí <https://classroom.github.com/a/GD4pT6wn>`__.
 
+En el directorio tests encontrarás todos los vectores de prueba. Serán 19 en total.
+Los archivos .desc contienen la descripción de la prueba. Los archivos .in te 
+muestran la secuencia de comandos que ejecutará el programa. Los archivos .out 
+te muestran la salida esperado. Los archivos .err almacenarán el mensaje de error 
+esperado. Los archivos .rc el valor que se espera que retorne el programa 
+al terminar. Los archivos .run te muestran cómo se ejecuta la prueba.
+
+.. warning:: ¿QUÉ HAGO PARA PASAR UNA PRUEBA?
+
+  Observa cuáles son los comandos que ejecutará el programa (archivo .in) y 
+  qué se espera que haga (archivo .out). Debes implementar la lógica del 
+  programa que permita conseguir el resultado.
 
 MUY IMPORTANTE 
 *****************
