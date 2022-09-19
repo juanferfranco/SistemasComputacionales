@@ -191,261 +191,108 @@ se encargará de suministrarle a ``ld`` todo los archivos con código máquina n
 generar nuestro ejecutable: ``gcc min.o main.o -o main``.
 
 
-..
-    Ejercicio 7: máquinas virtuales
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Evaluación 2
+-----------------------------------
 
-    .. note:: EN CONSTRUCCIÓN
+.. warning:: FECHA DE ENTREGA Y SUSTETACIÓN 
 
-        En los próximos días te estaré publicando este contenido
+    La evaluación debe estar en el repositorio que les daré 
+    en Github y sustentada para el viernes 23 de septiembre 
+    de 2022.
 
-..
-  En este ejercicio aprenderás acerca de las máquinas virtuales.  
+Enunciado 
+************
 
-  .. toctree::
-    :maxdepth: 3
+Una estructura de datos típica en la solución de problemas 
+de entretenimiento digital es la COLA. Te voy a proponer un 
+proyecto que hace uso de COLAS; sin embargo, el proyecto 
+está INCOMPLETO. Tu misión será completar el proyecto y pasar 
+todos los vectores de prueba. Una vez termines la solución debes 
+estudiarla detenidamente para preparar la sustentación. Dicha 
+sustentación será una pregunta relacionada con el proyecto.
 
-    Máquinas virtuales <./VM>
+El primer reto es entender el PROBLEMA. Te dejo algunas pistas:
 
-  Evaluación 1
-  -----------------
-  (Tiempo total estimado 6 horas)
+* El programa es interactivo, es decir, para funcionar requiere 
+  que el usuario le ingrese órdenes.
+* Puedes comenzar a explorar en el archivo main.c. 
+* Nota que para cada comando el programa realizará acciones. Las 
+  acciones llamarán funciones. Son precisamente las funciones 
+  que se llaman las que tendrás que completar.
 
-  La evaluación consiste de dos partes:
+.. warning:: ESTA EVALUACIÓN ES EN EQUIPO
 
-  * Parte 1: solución a un problema.
-  * Parte 2: sustentación de la solución al problema.
+    Arma tu equipo de trabajo y trabaja en el 
+    repositorio que te dejo `aquí <https://classroom.github.com/a/GD4pT6wn>`__.
 
-  .. note:: FECHA MÁXIMA DE ENTREGA
+En el directorio tests encontrarás todos los vectores de prueba. Serán 19 en total.
+Los archivos .desc contienen la descripción de la prueba. Los archivos .in te 
+muestran la secuencia de comandos que ejecutará el programa. Los archivos .out 
+te muestran la salida esperado. Los archivos .err almacenarán el mensaje de error 
+esperado. Los archivos .rc el valor que se espera que retorne el programa 
+al terminar. Los archivos .run te muestran cómo se ejecuta la prueba.
 
-      La fecha máxima de entrega es el 06 de marzo de 2022 a las 23:59
+.. warning:: ¿QUÉ HAGO PARA PASAR UNA PRUEBA?
 
+  Observa cuáles son los comandos que ejecutará el programa (archivo .in) y 
+  qué se espera que haga (archivo .out). Debes implementar la lógica del 
+  programa que permita conseguir el resultado.
 
-  Enunciado del problema
-  **************************
+MUY IMPORTANTE 
+*****************
 
-  Vas a completar la aplicación que aparece `aquí <https://classroom.github.com/a/dKXDoh5P>`__. Debes 
-  escribir el código de estas dos funciones: 
-
-  .. code-block:: c
-
-      void getArray(struct array *parr)
-      {
-          
-      }
-
-      void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
-      {
-          
-      }
-
-  Las funciones manipularán una estructura dada por:  
-
-  .. code-block:: c
-
-      struct array
-      {
-          int *pdata;
-          int size;
-      };
-
-  La variable ``pdata`` almacenará la dirección de un arreglo de enteros de tamaño ``size``. El arreglo 
-  de enteros lo debes crear en el ``HEAP``. 
-
-  La función ``getArray`` se encargará de construir el arreglo recibiendo desde la línea de comandos 
-  su tamaño y los elementos. Por ejemplo, para un arreglo de 5 elementos se ingresarán los siguientes 
-  datos en la línea de comandos:
-
-  .. code-block:: bash 
-
-      5
-      1
-      2
-      3
-      4
-      5
-
-  En este caso ``5`` es el tamaño y los elementos serán ``1,2,3,4,5``.
-
-  La función ``arrayCommon`` recibirá la dirección de tres ``struct array`` que están previamente 
-  construidos en el HEAP. Esta función deberá encontrar todos los elementos comunes de los arreglos 
-  apuntados por arrIn1 y arrIn2 y almacenar dichos elementos en el arreglo apuntado por arrOut. 
-  El arreglo apuntado por arrOut NO DEBE tener elementos repetidos.
-
-  Para interactuar con el programa podrás ejecutar los siguientes comandos una vez ejecutes la aplicación: 
-
-  * arr1: para ingresar el tamaño y los elementos del primer arreglo.
-  * arr2: para ingresar el tamaño y los elementos del segundo arreglo.
-  * printArr1: para imprimir los elementos del primer arreglo.
-  * printArr2: para imprimir los elementos del segundo arreglo.
-  * compare: para comparar los arreglos llamando a la función ``arrayCommon``.
-  * printResult: imprime el resultado mostrando la cantidad de elementos comunes y los elementos.
-  * exit: para liberar la memoria y terminar el programa.
-
-  Mira un ejemplo de cómo se ejecuta y usa el programa:
+* No uses ninguna función para imprimir en pantalla a menos que sean las que ya están en el código
+  o donde se te pide que las uses. En la función ``ListEvents`` deberás imprimir cada evento 
+  usando la cadena formateada ``"%s\n"`` y en caso de tener una lista vacía usarás esta funcióN
+  ``printf("empty\n");``. La razón de esto es que tu programa será verificado automáticamente 
+  y por tanto, si imprimes información no esperada es posible que las pruebas automáticas fallen.
+* Para compilar, cámbiate el directorio donde están los archivos ``.c`` y ejecuta el comando 
+  ``make``. Ten en cuanta que con el comando ``make clean`` puedes limpiar todos los archivos 
+  compilados y luego con ``make`` volver a generarlos.
+* Para hacer las pruebas puedes correr todos los vectores de prueba así:
 
   .. code-block:: bash
 
-      ./main 
-      arr1
-      3
-      1 
-      2
-      3
-      arr2
-      4
-      5
-      4
-      3
-      2
-      printArr1
-      1 2 3 
-      printArr2
-      5 4 3 2 
-      compare
-      printResult
-      2
-      2 3
+    ./test-main.sh
+  
+  O si quiere correr solo un vector, por ejemplo, el 10, lo haces así:
 
-  En este caso el número 3 luego del comando arr1 indica el tamaño del primer arreglo. Los elementos 
-  serán 1,2,3. El número 4 luego del comando arr2 indica el tamaño del segundo arreglo. Los elementos 
-  del segundo arreglo son 5,4,3,2. Nota que luego del comando ``compare`` se llama ``printResult`` que muestra el 
-  resultado para este ejemplo. El número 2 indica la cantidad de elementos comunes y los elementos comunes 
-  que serán 2,3.
+  .. code-block:: bash
 
-  Consideraciones
-  **************************
+    ./test-main.sh -t 10
 
-  * Para compilar la aplicación escribe en la terminal el comando ``make`` una vez te cambies 
-    al directorio problem1.
-  * Para borrar todos los archivos compilados escribe ``make clean``.
-  * Las pruebas locales las puedes hacer de dos maneras: manualmente y automáticamente. Ya te mostré 
-    como puedes hacer las pruebas manuales. Para realizar las pruebas automáticas ejecuta el siguiente 
-    comando en el directorio problem1 para aplicar todos los vectores de prueba.
+* Verifica que estás usando correctamente la memoria dinámica. Para ello instala valgrind y luego 
+  realiza la verificación. Te dejo los comandos, primero para instalar valgrind y luego para verificar.
 
-    .. code-block:: bash 
+  .. code-block:: bash 
 
-        ./test-main.sh
+        sudo apt update
+        sudo apt install valgrind
 
-  * Si quieres hacer pruebas de manera individual ejecuta en el directorio problem1 el comando anterior 
-    pero esta vez indicando el vector de prueba así:
+  .. code-block:: bash 
 
-    .. code-block:: bash 
+        valgrind ./main < ./tests/12.in
+  
+  Si la memoria está bien verás algo así en el resumen:
 
-        ./test-main.sh -t X
+  .. code-block:: none
+  
+        ==17813== 
+        ==17813== HEAP SUMMARY:
+        ==17813==     in use at exit: 0 bytes in 0 blocks
+        ==17813==   total heap usage: 12 allocs, 12 frees, 5,360 bytes allocated
+        ==17813== 
+        ==17813== All heap blocks were freed -- no leaks are possible
+        ==17813== 
+        ==17813== For lists of detected and suppressed errors, rerun with: -s
+        ==17813== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+  
+  La salida anterior se consigue ejecutando el programa con el vector de prueba 12.in. Con este 
+  vector de prueba, el programa realiza 12 reservas con malloc y detecta 12 liberaciones con free. 
+  Por tanto, al final indica que no hay errores.
 
-    Donde X puede ser un número de 1 a 7 correspondiente a las pruebas que encontrarás en el directorio 
-    tests ubicado en el directorio problem1.
+Criterios de evaluación
+*****************************
 
-  ¿Qué pasos debes seguir para realizar la evaluación?
-  ******************************************************
-
-  * Ingresa a tu repositorio `aquí <https://classroom.github.com/a/dKXDoh5P>`__ para que aceptes la 
-    evaluación y veas que se cargue tu repositorio. No olvides presionar F5 para actualizar la página.
-  * Una vez ingreses a tu repositorio verifica que la carpeta .github esté presente. Si no es así 
-    espera un momento y presiona F5. 
-  * Verifica que en la sección ``ACTIONS`` esté el Workflow ``GitHub Classroom``.
-  * Habla con el profesor si los pasos anteriores no están bien.
-  * Clona el repositorio en tu computador.
-  * Completa el programa mientras realizas commit y push frecuentemente.
-  * Realiza pruebas locales y no olvides hacer push para realizar las pruebas remotas.
-  * Sabrás que todo está bien cuando veas en GitHub la marca verde que indica que todos 
-    los vectores de prueba pasaron.
-  * Procede a realizar la wiki con la sustentación. 
-
-  Enunciado de la sustentación
-  *********************************
-
-  Para la sustentación vas a escribir un texto en la wiki donde explicarás cómo resolviste el problema.
-
-  Criterios de evaluación
-  **************************
-
-  La nota estará dada por la expresión: ``(solución_problema)*sustentación``. En Github podrás ver de manera 
-  ponderada los puntos de cada vector de prueba que pases. Este puntaje se multiplicará por la sustentación así:
-
-  * Sustentación es 1 si haces la explicación en la wiki.
-  * Sustentación es 0 si no la haces y por tanto la nota sería 0.
-
-  Evaluación 2
-  -----------------------------------
-
-  .. warning:: FECHA MÁXIMA DE ENTREGA DE LA EVALUACIÓN 
-
-      La fecha límite para entregar la evaluación es el miércoles 23 de marzo a las 11:59 p.m. 
-      Luego de esa hora se cierra el repositorio y ya no podrás enviar más versiones de 
-      tu programa.
-
-  .. warning:: REALIZA POCOS PUSH 
-
-      Realiza la menor cantidad de PUSH que puedas. Trata de hacer todas las pruebas 
-      locales y solo cuando quieras entregar lo que llevas realiza un PUSH en el repositorio.
-
-  Enunciado del problema ev2
-  *****************************
-
-  Para el desarrollo de una aplicación de comunicación se usará el esquema cliente-servidor. Cada servidor 
-  tendrá que mantener una lista enlazada con los eventos que podrá emitir. Esta lista es configurable y 
-  por tanto podrás adicionar, eliminar y buscar eventos en la lista. ``LA LISTA NO DEBE TENER EVENTOS 
-  REPETIDOS``. Se pide entonces que completes el código del proyecto que encontrarás 
-  `aquí <https://classroom.github.com/a/3v1srMtK>`__.
-
-
-  Consideraciones ev2
-  **************************
-
-  * No uses ninguna función para imprimir en pantalla a menos que sean las que ya están en el código 
-    que debes completar o en la función ``ListEvents`` donde deberás imprimir cada evento usando la cadena 
-    formateada ``"%s\n"`` y en caso de tener una lista vacía: ``printf("empty\n");``. La razón de esto es 
-    que tu programa será verificado automáticamente y por tanto, si envías información no esperada a la 
-    pantalla es posible que las pruebas automáticas fallen.
-  * Para compilar, cámbiate el directorio donde están los archivos ``.c`` y ejecuta el comando ``make``. 
-    Ten en cuanta que con el commando ``make clean`` puedes limpiar todos los archivos compilados y luego 
-    con ``make`` volver a generarlos.
-  * Para hacer las pruebas puedes correr todos los vectores de prueba así:
-
-    .. code-block:: bash
-
-      ./test-main.sh
-    
-    O si quiere correr solo un vector, por ejemplo, el 10, lo haces así:
-
-    .. code-block:: bash
-
-      ./test-main.sh -t 10
-
-  * Verifica que estás usando correctamente la memoria dinámica. Para ello instala valgrind y luego 
-    realiza la verificación. Te dejo los comandos, primero para instalar valgrind y luego para verificar.
-
-    .. code-block:: bash 
-
-          sudo apt update
-          sudo apt install valgrind
-
-    .. code-block:: bash 
-
-          valgrind ./main < ./tests/12.in
-    
-    Si la memoria está bien verás algo así en el resumen:
-
-    .. code-block:: none
-    
-          ==17813== 
-          ==17813== HEAP SUMMARY:
-          ==17813==     in use at exit: 0 bytes in 0 blocks
-          ==17813==   total heap usage: 12 allocs, 12 frees, 5,360 bytes allocated
-          ==17813== 
-          ==17813== All heap blocks were freed -- no leaks are possible
-          ==17813== 
-          ==17813== For lists of detected and suppressed errors, rerun with: -s
-          ==17813== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-    
-    La salida anterior se consigue ejecutando el programa con el vector de prueba 12.in. Con este 
-    vector de prueba, el programa realiza 12 reservas con malloc y detecta 12 liberaciones con free. 
-    Por tanto, al final indica que no hay errores.
-
-  Criterios de evaluación ev2
-  *****************************
-
-  Cada vector de prueba tiene un puntaje. El puntaje de cada punto lo puedes encontrar en el 
-  archivo ``.github/classroom/autograding.json`` que está en tu repositorio.
+Cada vector de prueba tiene un puntaje. El puntaje de cada punto lo puedes encontrar en el 
+archivo ``.github/classroom/autograding.json`` que está en tu repositorio.
