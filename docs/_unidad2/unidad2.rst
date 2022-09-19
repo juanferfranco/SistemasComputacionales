@@ -204,8 +204,8 @@ Enunciado
 ************
 
 Una estructura de datos típica en la solución de problemas 
-de entretenimiento digital es la COLA. Te voy a proponer un 
-proyecto que hace uso de COLAS; sin embargo, el proyecto 
+de entretenimiento digital es la LISTA. Te voy a proponer un 
+proyecto que hace uso de LISTAS; sin embargo, el proyecto 
 está INCOMPLETO. Tu misión será completar el proyecto y pasar 
 todos los vectores de prueba. Una vez termines la solución debes 
 estudiarla detenidamente para preparar la sustentación. Dicha 
@@ -222,8 +222,9 @@ El primer reto es entender el PROBLEMA. Te dejo algunas pistas:
 
 .. warning:: ESTA EVALUACIÓN ES EN EQUIPO
 
-    Arma tu equipo de trabajo y trabaja en el 
-    repositorio que te dejo `aquí <https://classroom.github.com/a/GD4pT6wn>`__.
+    Arma tu equipo de trabajo. Uno de los miembros crear el equipo
+    y los demás se unen a ese equipo. Te dejo el enlace para crear 
+    el equipo y tener acceso al repositorio q`aquí <https://classroom.github.com/a/GD4pT6wn>`__.
 
 En el directorio tests encontrarás todos los vectores de prueba. Serán 19 en total.
 Los archivos .desc contienen la descripción de la prueba. Los archivos .in te 
