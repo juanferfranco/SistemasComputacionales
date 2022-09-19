@@ -191,7 +191,7 @@ se encargará de suministrarle a ``ld`` todo los archivos con código máquina n
 generar nuestro ejecutable: ``gcc min.o main.o -o main``.
 
 
-Evaluación 2
+Evaluación
 -----------------------------------
 
 .. warning:: FECHA DE ENTREGA Y SUSTETACIÓN 
