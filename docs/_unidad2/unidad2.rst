@@ -299,9 +299,9 @@ Cada vector de prueba tiene un puntaje. El puntaje de cada punto lo puedes encon
 archivo ``.github/classroom/autograding.json`` que está en tu repositorio.
 
 
-Algunos video de ayuda
+Algunos videos de ayuda
 *****************************
 
 * `Entendiendo el problema <https://youtu.be/0E71tb7zRYY>`__.
-* `¿Qué debes hacer? <https://youtu.be/uMG1e4rLIXU>`__.
+* `¿Qué debes hacer? <https://youtu.be/uMG1e4rLIXU>`__
 
