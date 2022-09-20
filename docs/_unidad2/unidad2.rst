@@ -297,3 +297,11 @@ Criterios de evaluación
 
 Cada vector de prueba tiene un puntaje. El puntaje de cada punto lo puedes encontrar en el 
 archivo ``.github/classroom/autograding.json`` que está en tu repositorio.
+
+
+Algunos video de ayuda
+*****************************
+
+* `Entendiendo el problema <https://youtu.be/0E71tb7zRYY>`__.
+* `¿Qué debes hacer? <https://youtu.be/uMG1e4rLIXU>`__.
+
