@@ -4,674 +4,93 @@ Unidad 3. Programación orientada a objetos
 Introducción
 --------------
 
-En esta unidad vas a repasar y analizar cómo funcionan algunas 
-de las abstracciones usadas en la programación orientada a objetos.
+En esta unidad vas a repasar y analizar cómo implementar en C los tres conceptos 
+fundamentales de la programación orientada a objetos.
 
 Propósito de aprendizaje
 **************************
 
-Comprender cómo funcionan algunas abstracciones de la programación 
-orientada a objetos mediante la implementación de ellas en 
-lenguaje C y la comparación en C#.
+Implementar los tres conceptos fundamentales de la programación orientada a objetos 
+en el lenguaje de programación C.
 
-Temas
-******
+Evaluación
+-----------------------------------
 
-* Memoria, encapsulamiento, herencia, polimorfismo.
+.. warning:: FECHA DE ENTREGA Y SUSTENTACIÓN 
+
+    La evaluación debe estar sustentada y entregada en el repositorio 
+    el día 14 de octubre de 2022 finalizando la sesión de clase.
+
+    Recuerda confirmar tu equipo de trabajo.
+
+Enunciado 
+************
+
+Tu misión para esta evaluación es demostrar que entiendes los conceptos fundamentales de 
+la programación orientada a objetos mediante la implementación de una caso de estudio en C.
+
+Originalmente el caso de estudio está implementado en C#. Tu deberás implementar los conceptos 
+que están allí en C.
+
+La documentación y el código del caso de estudio los encuentras 
+`aquí <https://refactoring.guru/design-patterns/observer>`__ y 
+`aquí <https://refactoring.guru/design-patterns/observer/csharp/example>`__ 
+respectivamente.
+
+
+¿Qué debes entregar?
+**********************
+
+Debes entregar todo lo solicitado en 
+`este <https://classroom.github.com/a/mTTnuZJR>`__ repositorio. Entrega:
+
+* La implementación del caso de estudio en C# (esta ya está hecha).
+* La implementación del caso de estudio en C.
+* La documentación en el archivo README.md. Esta documentación debe tener:
+
+    * Un enlace a un video corto en youtube (unlisted) (1 minuto máximo), SIN EXPLICACIONES, que muestre 
+      la compilación y ejecución del caso de estudio.
+    * Explicar cómo se implementó el encapsulamiento, la herencia y el polimorfismo.
+
+
 
 Trayecto de actividades
 ------------------------
 
-Sesión 1
-**********
+Te voy a dejar en esta sección un material que puedes usar si lo deseas para preparar la solución 
+de la evaluación de la unidad.
 
-Antes de analizar la implementación de algunas abstracciones de la 
-programación orientada a objetos, vas a aprender un poco más acerca 
-del modelo de memoria de un proceso.
+Ejercicios 
+************
 
-Ejercicio 1: memoria de un proceso
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. warning:: ESTE ES EL MÁS IMPORTANTE DE LOS EJERCICIOS
 
-En la unidad anterior hablamos del concepto de proceso ¿Recuerdas? Pues
-un proceso no es más que una abstracción que emplea el sistema operativo para
-ejecutar y administrar un programa en ejecución. Los programas están almacenados
-en archivos conocidos como object files. Para ejecutar un programa el sistema
-operativo crea un proceso que ejecuta el object file, es decir, la CPU (o un
-``core``) consumirá (fetch) y ejecutará las instrucciones del object file que estarán
-almacenadas en alguna región de la memoria principal. Tu sabes también que los
-programas en ejecución necesitarán memoria para almacenar las variables. Entonces
-surge la siguiente pregunta ``¿Cómo es la memoria de un proceso
-y cuál es su estructura?``
+    El ejercicio 1 es tal vez el recurso más importante para resolver el problema 
+    propuesto. TE PUEDES concentrar solo en este ejercicio.
 
-Cuando el sistema operativo crea un proceso para ejecutar un programa, también
-es necesario asignarle memoria y aplicarle una estructura particular. En casi todos
-los sistemas operativos las estructura de memoria del proceso es más o menos la misma.
-La memoria de un proceso está dividida en múltiples partes conocidas como segmentos:
+    Los ejercicios 2 al 20 son complementarios y en algunos casos te muestran implementaciones 
+    alternativas a las que muestra el ejercicio 1.
 
-* Block Started by Symbol (BSS) es el segmentos de datos no inicializados.
-* Data.
-* Text segment o segmento de código.
-* Stack.
-* Heaps.
 
-Algunos de estos segmentos se crean con la información almacenada en el
-object file mientras que otros segmentos aparecen al momento de ejecutar el programa.
-
-Ejercicio 2: observar los segmentos del object file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-¿Cómo hacemos para ver el contenido de los segmentos de memoria provenientes del
-object file?
-
-Escribe el siguiente programa llamado main.c:
-
-.. code-block:: c
-
-    int main(int argc, char* argv[]) {
-
-        return 0;
-    }
-
-Compila el programa con ``gcc -Wall main.c -o main``. Podrás observar el tamaño de 
-algunos segmentos:
-
-``size main`` 
-
-.. code-block:: bash
-
-    text	   data	    bss	    dec	    hex	filename
-    1418	    544	      8	   1970	    7b2	main
-
-Puedes observar tres segmentos: text, data y bss.
-
-Ejercicio 3: ¿Qué se almacena en los segmentos?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Te estarás preguntado ¿Para qué sirve cada uno de los segmentos
-que acabas de ver?
-
-El segmento BSS denota la cantidad de memoria reservada para variables globales
-que no se inicializaron o que se inicializan a 0.
-
-Modifica el programa anterior así:
-
-.. code-block:: c
-
-    int var1;
-    int var2;
-    int var3 = 0;
-
-    int main(int argc, char* argv[]) {
-
-        return 0;
-    }
-
-De nuevo, compila y ejecuta ``size main``:
-
-.. code-block:: bash
-
-    text	   data	    bss	    dec	    hex	filename
-    1418	    544	     16	   1978	    7ba	main
-
-Compara esta salida con la anterior. ¿Notas un cambio en BSS?
-
-Ejercicio 4: segmento data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Para analizar el segmento data te propongo modificar de nuevo nuestro programa:
-
-.. code-block:: c
-
-    int var1;
-    int var2;
-    int var3 = 0;
-    int var4 = 69;
-    int var5 = 666;
-
-    int main(int argc, char* argv[]) {
-
-        return 0;
-    }
-
-Compila y ejecuta ``size main``:
-
-.. code-block:: bash
-
-    text	   data	    bss	    dec	    hex	filename
-    1418	    552	     16	   1986	    7c2	main
-
-Compara, ¿El segmento data cambió? El segmento ``data`` entonces te sirve para almacenar
-las variables inicializadas con valores diferentes de 0.
-
-Ejercicio 5: variables estáticas 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Modifica de nuevo el archivo:
-
-.. code-block:: c
-
-    int var1;
-    int var2;
-    int var3 = 0;
-    int var4 = 69;
-    int var5 = 666;
-
-    void func(){
-        static int i = 10;
-        i++;
-    }
-
-    int main(int argc, char* argv[]) {
-        func();
-        return 0;
-    }
-
-Compila y ejecuta ``size main``:
-
-.. code-block:: bash
-
-    text	   data	    bss	    dec	    hex	filename
-    1506	    556	     20	   2082	    822	main
-
-Nota que los segmentos cambiaron de nuevo al incluir una nueva variable.
-
-
-Ejercicio 7: ver el contenido del segmento .data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-¿Cómo hago para ver el contenido del segmento data?
-
-Toma como referencia el programa anterior y escribe el comando ``objdump -s -j .data main``
-
-.. code-block:: bash
-
-    main:     file format elf64-x86-64
-
-    Contents of section .data:
-    4000 00000000 00000000 08400000 00000000  .........@......
-    4010 45000000 9a020000                    E....... 
-
-¿Puedes ver efectivamente el contenido? observa los valores iniciales de ``var4`` y ``var5`` en
-el programa. Ten presente que ``4000`` y ``4010`` son direcciones. El resto de información
-es datos, cada file muestra 16 bytes (máximo) y luego se ve la representación de cada byte en ASCII.
-
-Ejercicio 8: ver el contenido del segmento de texto
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-En el segmento de texto está contenido todo el código de máquina del programa producido por
-el compilador.
-
-¿Cómo puedes ver el contenido?
-
-Ejecuta ``objdump -S main``
-
-Podrás observar el código de máquina y la representación simbólica en lenguaje ensamblador.
-
-Ejercicio 9: contenido del stack y del heap
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-¿Cómo hacemos para ver el contenido de los segmentos stack y heap?
-
-Solo podemos ver esta parte de la memoria cuando el programa esté en ejecución. Cuando
-quieres ejecutar un object file, el sistema operativo crea un nuevo proceso e inicializa
-su memoria. Los segmentos BSS, data y text son inicializados con la información que está en
-el object file y, el stack y el heap se añaden y son modificados a medida que el código
-del segmento text es leído por parte de la CPU.
-
-Veamos un ejemplo:
-
-.. code-block:: c
-
-    #include <unistd.h> 
-    int main(int argc, char* argv[]) {
-        while (1) {
-            sleep(1); 
-        };
-
-        return 0;
-    }
-
-Compila el código con ``gcc -Wall main.c -o main``
-
-Y ahora ejecuta el programa así ``./main &`` para que quede en background y retomes
-el control de la terminal para que puedas seguir escribiendo comandos. Ten en cuenta
-que el número que te aparece en la terminal al ejecutar el programa es el ``pid`` o
-identificador del proceso en el sistema operativo:
-
-.. code-block:: bash
-
-    juanfranco@pop-os:/tmp/linker$ ./main &
-    [1] 295236
-
-Más tarde cuando quieras matar el proceso escribe en la terminal 
-``kill -9 295236``.
-
-En Linux puedes consultar información del proceso en el directorio ``/proc`` allí tendrás
-una entrada para el proceso identificada con el pid del mismo.
-
-Ejecuta el comando ``ls -al /proc/295236``:
-
-.. code-block:: c 
-
-    total 0
-    dr-xr-xr-x   9 juanfranco juanfranco 0 Sep 21 14:17 .
-    dr-xr-xr-x 714 root       root       0 Sep 18 07:13 ..
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 arch_status
-    dr-xr-xr-x   2 juanfranco juanfranco 0 Sep 21 15:12 attr
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 autogroup
-    -r--------   1 juanfranco juanfranco 0 Sep 21 15:12 auxv
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 cgroup
-    --w-------   1 juanfranco juanfranco 0 Sep 21 15:12 clear_refs
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 14:17 cmdline
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 comm
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 coredump_filter
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 cpuset
-    lrwxrwxrwx   1 juanfranco juanfranco 0 Sep 21 15:12 cwd -> /tmp/linker
-    -r--------   1 juanfranco juanfranco 0 Sep 21 15:12 environ
-    lrwxrwxrwx   1 juanfranco juanfranco 0 Sep 21 14:17 exe -> /tmp/linker/main
-    dr-x------   2 juanfranco juanfranco 0 Sep 21 15:12 fd
-    dr-x------   2 juanfranco juanfranco 0 Sep 21 15:12 fdinfo
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 gid_map
-    -r--------   1 juanfranco juanfranco 0 Sep 21 15:12 io
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 limits
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 loginuid
-    dr-x------   2 juanfranco juanfranco 0 Sep 21 15:12 map_files
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 maps
-    -rw-------   1 juanfranco juanfranco 0 Sep 21 15:12 mem
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 mountinfo
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 mounts
-    -r--------   1 juanfranco juanfranco 0 Sep 21 15:12 mountstats
-    dr-xr-xr-x   5 juanfranco juanfranco 0 Sep 21 15:12 net
-    dr-x--x--x   2 juanfranco juanfranco 0 Sep 21 15:12 ns
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 numa_maps
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 oom_adj
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 oom_score
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 oom_score_adj
-    -r--------   1 juanfranco juanfranco 0 Sep 21 15:12 pagemap
-    -r--------   1 juanfranco juanfranco 0 Sep 21 15:12 patch_state
-    -r--------   1 juanfranco juanfranco 0 Sep 21 15:12 personality
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 projid_map
-    lrwxrwxrwx   1 juanfranco juanfranco 0 Sep 21 15:12 root -> /
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 sched
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 schedstat
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 sessionid
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 setgroups
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 smaps
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 smaps_rollup
-    -r--------   1 juanfranco juanfranco 0 Sep 21 15:12 stack
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 14:17 stat
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 statm
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:11 status
-    -r--------   1 juanfranco juanfranco 0 Sep 21 15:12 syscall
-    dr-xr-xr-x   3 juanfranco juanfranco 0 Sep 21 15:12 task
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 timers
-    -rw-rw-rw-   1 juanfranco juanfranco 0 Sep 21 15:12 timerslack_ns
-    -rw-r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 uid_map
-    -r--r--r--   1 juanfranco juanfranco 0 Sep 21 15:12 wchan
-
-Cada una de estas entradas corresponde a una característica del proceso.
-
-Para preguntar por el mapa de memoria del proceso ejecuta: ``cat /proc/295236/maps``:
-
-.. code-block:: c
-
-    563fa1aeb000-563fa1aec000 r--p 00000000 08:03 8393449                    /tmp/linker/main
-    563fa1aec000-563fa1aed000 r-xp 00001000 08:03 8393449                    /tmp/linker/main
-    563fa1aed000-563fa1aee000 r--p 00002000 08:03 8393449                    /tmp/linker/main
-    563fa1aee000-563fa1aef000 r--p 00002000 08:03 8393449                    /tmp/linker/main
-    563fa1aef000-563fa1af0000 rw-p 00003000 08:03 8393449                    /tmp/linker/main
-    7f28fb8f9000-7f28fb91e000 r--p 00000000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f28fb91e000-7f28fba96000 r-xp 00025000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f28fba96000-7f28fbae0000 r--p 0019d000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f28fbae0000-7f28fbae1000 ---p 001e7000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f28fbae1000-7f28fbae4000 r--p 001e7000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f28fbae4000-7f28fbae7000 rw-p 001ea000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f28fbae7000-7f28fbaed000 rw-p 00000000 00:00 0 
-    7f28fbb0b000-7f28fbb0c000 r--p 00000000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f28fbb0c000-7f28fbb2f000 r-xp 00001000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f28fbb2f000-7f28fbb37000 r--p 00024000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f28fbb38000-7f28fbb39000 r--p 0002c000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f28fbb39000-7f28fbb3a000 rw-p 0002d000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f28fbb3a000-7f28fbb3b000 rw-p 00000000 00:00 0 
-    7ffdd8feb000-7ffdd900c000 rw-p 00000000 00:00 0                          [stack]
-    7ffdd9183000-7ffdd9186000 r--p 00000000 00:00 0                          [vvar]
-    7ffdd9186000-7ffdd9187000 r-xp 00000000 00:00 0                          [vdso]
-    ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
-
-Observa cada línea. Tomemos por ejemplo la primera:
-
-``563fa1aeb000-563fa1aec000 r--p 00000000 08:03 8393449                    /tmp/linker/main``
-
-Primero tienes un rango de direcciones: ``563fa1aeb000-563fa1aec000`` en ese 
-rango tienes mapeada información del object file ``/tmp/linker/main``. Después del 
-rango de direcciones encuentras los permisos: r se puede leer, w modificar, x ejecutar, p para
-indicar si la región de memoria es privada o compartida con otro procesos (s). Si la región
-está mapeada a un archivo, lo que sigue es el offset en el archivo. Si la región está mapeada
-a un archivo verás el identificador del dispositivo (08:03) donde está el archivo. Luego aparece
-el inode (lo vemos luego). Y finalmente el path del archivo que está mapeado a esta región. También
-puedes ver un espacio en blanco o el propósito de la región, por ejemplo [stack] para indicar
-que es una región utilizada para implementar el segmento de stack.
-
-Ejercicio 10: stack
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-Profundicemos un poco más en el stack.
-
-¿Recuerdas qué se almacena en el stack?
-
-* Variables locales que no sean estáticas.
-* El ``stack frame`` cuando llamas una función. Allí se encuentra 
-  la dirección a la que debe retornar el programa luego de llamar la función.
-* Parámetros de entrada y salida de una función.
-
-MUY MUY IMPORTANTE: 
-
-* Al llamar un función, las variables que declares en el stack se van
-  apilando, como si fueran una columna de platos. El puntero de pila se va ajustando siempre
-  el TOP del stack; sin embargo, cuando retornes de la función el puntero de pila se ajustará
-  nuevamente a la base de la columna de platos (las variables). Los datos de las variables 
-  locales siguen allí pero en cualquier momento pueden ser destruidos al llamar otra función 
-  o al producirse una interrupción. Las interrupciones interrumpen el flujo de instrucciones,
-  para ejecutar un nuevo flujo conocido como servicio de atención a la interrupción, y hacen
-  uso del stack para almacenar temporalmente parte del contexto de la CPU. EN CONCLUSIÓN: una
-  vez retornes de una función NO PUEDES contar con las variables locales (¡Murieron!).
-
-* Como el stack no es tan grande comparado con el HEAP debes evitar llamados recursivos
-  infinitos para evitar desbordar su capacidad.
-
-¿Cómo puedes ver el contenido del stack? Necesitas un depurador (un debugger).
-
-Ejercicio 11: el heap
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Profundicemos un poco más en el heap.
-
-Considera el siguiente código:
-
-.. code-block:: c
-
-    #include <unistd.h>
-    #include <stdlib.h> 
-    #include <stdio.h> 
-    
-    int main(int argc, char* argv[]) {
-        void* ptr = malloc(1024); 
-        printf("Address: %p\n", ptr);
-    
-        while (1) {
-            sleep(1); 
-        };
-        
-        return 0;
-    }
-
-Compila y ejecuta:
-
-.. code-block:: c
-
-    ./main &
-    [2] 321982
-    Address: 0x55f05576b2a0
-
-Ahora ejecuta de nuevo ``cat /proc/321982/maps`` (nota que estamos usando el pid del nuevo
-proceso):
-
-.. code-block:: c
-
-    55f054ece000-55f054ecf000 r--p 00000000 08:03 8394826                    /tmp/linker/main
-    55f054ecf000-55f054ed0000 r-xp 00001000 08:03 8394826                    /tmp/linker/main
-    55f054ed0000-55f054ed1000 r--p 00002000 08:03 8394826                    /tmp/linker/main
-    55f054ed1000-55f054ed2000 r--p 00002000 08:03 8394826                    /tmp/linker/main
-    55f054ed2000-55f054ed3000 rw-p 00003000 08:03 8394826                    /tmp/linker/main
-    55f05576b000-55f05578c000 rw-p 00000000 00:00 0                          [heap]
-    7f4b21bb2000-7f4b21bd7000 r--p 00000000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f4b21bd7000-7f4b21d4f000 r-xp 00025000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f4b21d4f000-7f4b21d99000 r--p 0019d000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f4b21d99000-7f4b21d9a000 ---p 001e7000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f4b21d9a000-7f4b21d9d000 r--p 001e7000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f4b21d9d000-7f4b21da0000 rw-p 001ea000 08:03 1049202                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
-    7f4b21da0000-7f4b21da6000 rw-p 00000000 00:00 0 
-    7f4b21dc4000-7f4b21dc5000 r--p 00000000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f4b21dc5000-7f4b21de8000 r-xp 00001000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f4b21de8000-7f4b21df0000 r--p 00024000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f4b21df1000-7f4b21df2000 r--p 0002c000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f4b21df2000-7f4b21df3000 rw-p 0002d000 08:03 1049197                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
-    7f4b21df3000-7f4b21df4000 rw-p 00000000 00:00 0 
-    7fffc1d25000-7fffc1d46000 rw-p 00000000 00:00 0                          [stack]
-    7fffc1dec000-7fffc1def000 r--p 00000000 00:00 0                          [vvar]
-    7fffc1def000-7fffc1df0000 r-xp 00000000 00:00 0                          [vdso]
-    ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
-
-Mira el rango de direcciones del heap: ``55f05576b000-55f05578c000``, ahora observa la dirección
-de ``ptr``: ``0x55f05576b2a0`` Ah! está en el rango, está en el heap.
-
-Volvamos al programa. Considera esta línea: ``void* ptr = malloc(1024)`` ¿La variable ptr
-en qué segmento está?
-
-¿Qué pasa con la dirección de la región que reservamos una vez salgamos del ámbito en el cual
-se declaró prt?
-
-Y si perdemos la dirección ¿Qué pasa con esa memoria que reservamos? ¿Y qué pasa si esto
-nos comienza a ocurrir mucho en nuestro programa?
-
-¿Recuerdas cómo evitamos este desperdicio de memoria? (¿Cuál es la función que libera la reserva?)
-
-No olvides que reservar y devolver la reserva de la memoria es tu responsabilidad cuando
-trabajas en con lenguajes como C y C++. Otros implementaciones de lenguajes cuentan con un componente que 
-se ejecuta concurrente a tu código y se denomina el garbage collector (por ejemplo C#). 
-El garbage collector se encarga de liberar o devolver la reserva de memoria por nosotros.
-
-Y ¿Cómo puedes hacer para detectar errores en la gestión de memoria? Puedes utilizar una herramienta
-llamada valgrind.
-
-Considera este programa:
-
-.. code-block:: c
-
-    #include <stdio.h>
-    #include <stdlib.h>
-
-    int main(int argc, char* argv[]) {
-        char *ptr = malloc(20*sizeof(char));
-        return 0;
-    }
-
-Compila el programa así: ``gcc -g -Wall main.c -o main``. Instala valgrind
-con ``sudo apt install valgrind``. Corre el programa así: ``valgrind ./main``:
-
-.. code-block:: none
-
-    ==331725== Memcheck, a memory error detector
-    ==331725== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-    ==331725== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-    ==331725== Command: ./main
-    ==331725== 
-    ==331725== 
-    ==331725== HEAP SUMMARY:
-    ==331725==     in use at exit: 20 bytes in 1 blocks
-    ==331725==   total heap usage: 1 allocs, 0 frees, 20 bytes allocated
-    ==331725== 
-    ==331725== LEAK SUMMARY:
-    ==331725==    definitely lost: 20 bytes in 1 blocks
-    ==331725==    indirectly lost: 0 bytes in 0 blocks
-    ==331725==      possibly lost: 0 bytes in 0 blocks
-    ==331725==    still reachable: 0 bytes in 0 blocks
-    ==331725==         suppressed: 0 bytes in 0 blocks
-    ==331725== Rerun with --leak-check=full to see details of leaked memory
-    ==331725== 
-    ==331725== For lists of detected and suppressed errors, rerun with: -s
-    ==331725== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-
-Podrás observar en la sección LEAK SUMMARY que valgrind detectó un leak de 20 bytes.
-
-¿Pero en dónde está el error?
-
-Ejecuta ``valgrind --leak-check=full  ./main``
-
-.. code-block:: none
-
-    ==331978== Memcheck, a memory error detector
-    ==331978== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-    ==331978== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-    ==331978== Command: ./main
-    ==331978== 
-    ==331978== 
-    ==331978== HEAP SUMMARY:
-    ==331978==     in use at exit: 20 bytes in 1 blocks
-    ==331978==   total heap usage: 1 allocs, 0 frees, 20 bytes allocated
-    ==331978== 
-    ==331978== 20 bytes in 1 blocks are definitely lost in loss record 1 of 1
-    ==331978==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    ==331978==    by 0x109165: main (main.c:5)
-    ==331978== 
-    ==331978== LEAK SUMMARY:
-    ==331978==    definitely lost: 20 bytes in 1 blocks
-    ==331978==    indirectly lost: 0 bytes in 0 blocks
-    ==331978==      possibly lost: 0 bytes in 0 blocks
-    ==331978==    still reachable: 0 bytes in 0 blocks
-    ==331978==         suppressed: 0 bytes in 0 blocks
-    ==331978== 
-    ==331978== For lists of detected and suppressed errors, rerun with: -s
-    ==331978== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-
-Puedes ver que el error ocurrió en la línea 5 del programa ``main.c``. ¡Genial!
-
-Ejercicio 12: corrección del memory leak
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-¿Te animas a corregir el error del ejercicio anterior y verificar con valgrind que
-todo esté bien?
-
-Ejercicio 13: el debugger
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-¿Recuerdas que para poder ver el contenido del stack necesitas un debugger? Pues
-vamos a probar uno. En este caso usaremos GDB. Escribe gdb en la terminal. Si el comando
-no es reconocido, lo puedes instalar con ``sudo apt-get install build-essentials``.
-
-Considera este programa:
-
-.. code-block:: c
-
-    #include <stdio.h>
-
-    int main(int argc, char* argv[]) {
-        char arr[14];
-        
-        arr[0] = 'C';
-        arr[1] = 'o';
-        arr[2] = 'n';
-        arr[3] = 't';
-        arr[4] = 'r';
-        arr[5] = 'o';
-        arr[6] = 'l';
-        arr[7] = 'a';
-        arr[8] = 'd';
-        arr[9] = 'o';
-        arr[10] = 'r';
-        arr[11] = 'e';
-        arr[12] = 's';
-        arr[13] = 0;
-
-        printf("arr: %s", arr);
-
-        return 0;
-    }
-
-Compila el programa con ``gcc -g -Wall main.c -o main``. La opción ``-g`` le
-dice al compilador que genere el ejecutable incluyendo información de depuración
-en la tabla de símbolos. Esta información será usada posteriormente por GDB
-
-Ejecuta el programa con GDB: ``gdb main``:
-
-.. code-block:: bash
-
-    GNU gdb (Ubuntu 9.1-0ubuntu1) 9.1
-    Copyright (C) 2020 Free Software Foundation, Inc.
-    License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-    This is free software: you are free to change and redistribute it.
-    There is NO WARRANTY, to the extent permitted by law.
-    Type "show copying" and "show warranty" for details.
-    This GDB was configured as "x86_64-linux-gnu".
-    Type "show configuration" for configuration details.
-    For bug reporting instructions, please see:
-    <http://www.gnu.org/software/gdb/bugs/>.
-    Find the GDB manual and other documentation resources online at:
-        <http://www.gnu.org/software/gdb/documentation/>.
-
-    For help, type "help".
-    Type "apropos word" to search for commands related to "word"...
-    Registered pretty printers for UE4 classes
-    Reading symbols from main...
-    (gdb) 
-
-Observa que te aparecerá un nuevo prompt: ``(gdb)`` donde escribirás comandos
-para GBD.
-
-* Para comenzar la ejecución del programa escribe ``run``
-* Coloca un breakpoint al iniciar la función main: ``break main``. El breakpoint le indica
-  al depurador que debe tener la ejecución del proceso en ese punto.
-* Escribe ``run``. Verás que la ejecución del programa se detiene en en la función
-  main.
-* Utiliza el comando ``n`` para ejecutar la siguiente línea de código.
-* Imprime el contenido de la variable arr con ``print arr``.
-
-La variable arr está en el stack. Puedes ver el contenido del stack con ``x/16x arr``. 
-El comando es ``x`` pero además puedas indicar la cantidad de bytes (16) y el formato
-(x para hexadecimal):
-
-.. code-block:: bash
-
-    (gdb) x/16x arr
-    0x7fffffffdb8a:	0x43	0x6f	0x6e	0x74	0x72	0x6f	0x6c	0x61
-    0x7fffffffdb92:	0x64	0x6f	0x72	0x65	0x73	0x00	0x00	0xcd
-    (gdb)
-
-Puedes ver el interpretados en ASCII de los valores:
-
-.. code-block:: bash
-
-    (gdb) x/16c arr
-    0x7fffffffdb8a:	67 'C'	111 'o'	110 'n'	116 't'	114 'r'	111 'o'	108 'l'	97 'a'
-    0x7fffffffdb92:	100 'd'	111 'o'	114 'r'	101 'e'	115 's'	0 '\000'	0 '\000'	-51 '\315'
-    (gdb) 
-
-Cambia el contenido del stack:
-
-.. code-block:: bash
-
-    (gdb) set arr[11] = 'a'
-    (gdb) print arr
-    $2 = "Controladoras"
-    (gdb) x/16x arr
-    0x7fffffffdb8a:	0x43	0x6f	0x6e	0x74	0x72	0x6f	0x6c	0x61
-    0x7fffffffdb92:	0x64	0x6f	0x72	0x61	0x73	0x00	0x00	0xcd
-    (gdb) x/16c arr
-    0x7fffffffdb8a:	67 'C'	111 'o'	110 'n'	116 't'	114 'r'	111 'o'	108 'l'	97 'a'
-    0x7fffffffdb92:	100 'd'	111 'o'	114 'r'	97 'a'	115 's'	0 '\000'	0 '\000'	-51 '\315'
-    (gdb)
-
-Trabajo autónomo 1
-*******************
-(Tiempo estimado: 1 hora 20 minutos)
-
-Construye un programa que te permite visualizar cada uno de los segmentos 
-de memoria de un proceso. Experimenta, adiciona más variables. NO OLVIDES 
-usar GDB y valgrind.
-
-
-Sesión 2
-**********
-
-El concepto de encapsulamiento.
-
-Ejercicio 14: el concepto de clase en C
+Ejercicio 1: implementación en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-El siguiente ejemplo te mostrará una técnica para el manejo de la memoria dinámica
-que le entrega la responsabilidad de reservar y liberar la memoria dinámica al
-código definido en el archivo queue.c. Si analizas detenidamente podrás ver
-que el código en queue.h y queue.c trata de implementar el concepto de ``CLASE`` que
+En `este <https://github.com/QuantumLeaps/OOP-in-C/blob/master/doc/AN_OOP_in_C.pdf>`__ enlace 
+encontrarás un documento que te explicará detalladamente cómo implementar los conceptos 
+fundamentales de la programación orientada a objetos en lenguaje C.
+
+Todo el código fuente con la implementación del encapsulamiento, la herencia y el polimorfismo 
+lo encontrarás en `este <https://github.com/QuantumLeaps/OOP-in-C>`__ repositorio.
+
+
+.. warning:: EJERCICIOS COMPLEMENTARIOS
+
+    Ahora te dejaré más material que puede serte de utilidad.
+
+Ejercicio 2: el concepto de clase en C
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+En el siguiente ejemplo, el código en queue.h y queue.c tratan de implementar el concepto de ``CLASE`` que
 ya conoces de otros lenguajes de programación.
 
 queue.h:
@@ -773,24 +192,20 @@ Ejecuta el código y verifica con valgrind el manejo de la memoria
 ¿En qué parte de la memoria está almacenada la variable q?
 ¿Explica cuánta memoria y dónde se está creando con la función create(10)?
 
-Ejercicio 15: el concepto de objeto
+Ejercicio 3: el concepto de objeto
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora que conoces más detalles de la memoria de un proceso y luego
-del ejercicio anterior, ya tienes buenas herramientas para hablar del
-modelo de programación orientado a objetos.
-
-Como te has dado cuenta hasta ahora, C no es un lenguaje de programación
+Como te has dado cuenta hasta ahora, C NO es un lenguaje de programación
 orientado a objetos; sin embargo, te preguntarás ¿Es posible escribir 
 programas orientados a objetos con C? La respuesta es si. El punto es que
-en su sintaxis C no soporta los conceptos de clases, herencia y polimorfismo.
+en su sintaxis C NO soporta los conceptos de clases, herencia y polimorfismo.
 Aún así, es posible implementar estos conceptos de manera indirecta.
 
 ¿Y en últimas qué son los objetos?
 
 Mira, no le demos vueltas conceptuales al asunto. Un objeto no es más que
-un conjunto de datos en la memoria de un proceso. OJO: SON DATOS y están en la
-MEMORIA DE UN PROCESO. Esto último es clave. Los objetos solo viven en tiempo
+un conjunto de datos en la memoria. OJO: SON DATOS y están en la
+MEMORIA. Esto último es clave. Los objetos solo viven en tiempo
 de ejecución.
 
 Entonces cuando estoy escribiendo el programa hay objetos? NO, ese es el punto
@@ -810,7 +225,7 @@ cuando DISEÑAS un programa orientado a objetos te tienes qué imaginar cómo se
 OBJETOS, cuándo se crearán y cuáles serán las relaciones entre ellos cuando 
 ejecutes el programa.
 
-Ejercicio 16: concepto de mutabilidad e inmutabilidad
+Ejercicio 4: concepto de mutabilidad e inmutabilidad
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Profe, si yo pudiera ir a ver un objeto en memoria ¿Cómo se vería?
@@ -824,7 +239,7 @@ corre se dice que el objeto es MUTABLE. Pero también el objeto puede ser INMUTA
 es decir, que una vez creado el objeto e inicializados sus atributos, no podrás cambiar
 sus valores o su estado.
 
-Ejercicio 17: concepto de relación entre objetos
+Ejercicio 5: concepto de relación entre objetos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ya te comenté que los objetos (colecciones de bytes) pueden estar relacionados entre
@@ -835,18 +250,18 @@ el estado de uno de ellos se afecte el estado del otro. Ya en términos más con
 decir que un objeto está relacionado con otro cuando uno de sus atributos contiene la dirección
 de memoria del otro objeto.
 
-Ejercicio 18: el concepto de método
+Ejercicio 6: el concepto de método
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 No lo olvides, un objeto son bytes en memoria. Pero entonces, ¿Qué pasa con el código?
 
 Parte de tus tareas al diseñar o PLANEAR un programa orientado a objetos es decir qué
 OPERACIONES vas a realizar para crear los objetos (asignarles memoria), iniciar su estado
-(¿Qué es eso?) (construirlos), destruirlos, leer y modificar su ESTADO. PERO, POR FAVOR,
+(construirlos), destruirlos, leer y modificar su ESTADO. PERO, POR FAVOR,
 no lo olvides, cuando estás escribiendo el programa estás MODELANDO tu solución,
 tu programa es un PLAN que DESCRIBE lo que ocurrirá cuando sea ejecutado.
 
-Ejercicio 19: relación estado-comportamiento
+Ejercicio 7: relación estado-comportamiento
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Cómo puedes definir la construcción de un objeto?
@@ -865,14 +280,14 @@ los atributos que tendrá un objeto al ejecutar el programa.
 Te preguntarás, pero en un clase también hay código, entonces ¿Los objetos tienen código? 
 Nop. Por lo que hemos venido discutiendo ya sabes que los objetos son solo datos. 
 También ya sabes que cuando escribes una clase estás PLANEANDO qué atributos tendrá cada
-objeto en memoria. Entonces cuando escribes código en una clase está indicando que ese código
+objeto en memoria. Entonces cuando escribes código en una clase estás indicando que ese código
 y los atributos están relacionados, es decir, estás indicando de manera explícita 
 las posibles OPERACIONES que puedes realizar sobre los DATOS. De esta manera ENCAPSULAS
-en el conceptos de CLASE los DATOS y el CÓDIGO. Ten en cuenta que al código también
+en el concepto de CLASE los DATOS y el CÓDIGO. Ten en cuenta que al código también
 se le conoce cómo el COMPORTAMIENTO de los objetos, es decir, las acciones que se realizarán
 sobre los datos.  
 
-Ejercicio 20: implementación del concepto de clase
+Ejercicio 8: implementación del concepto de clase
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Cómo hacemos para implementar las ideas anteriores en C? Ya sabes que C no soporta 
@@ -1017,7 +432,7 @@ en heap para el objeto y adicionalmente inicializa sus atributos:
         return(q);
     }
 
-Ejercicio 21: comparación con C#
+Ejercicio 9: comparación con C#
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ahora compara el programa anterior con una implementación en C#:
@@ -1166,19 +581,8 @@ reservada ``this``. Esta variable contiene la dirección en memoria del
 objecto a través del cual llamamos el método. Observa de nuevo el código
 en C. Notas ¿Cómo están relacionados los conceptos?
 
-Trabajo autónomo 2 
-********************
-(Tiempo estimado: 1 hora 20 minutos)
 
-Vuelve a leer el material de esta sección y asegúrate de analizar con 
-detenimiento los ejercicios 20 y 21.
-
-Sesión 3 
-*************
-
-En esta sección revisaremos el concepto de relaciones entre objetos.
-
-Ejercicio 22: relación de composición entre objetos
+Ejercicio 10: relación de composición entre objetos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cuando DISEÑAS un programa orientado a objetos
@@ -1246,7 +650,7 @@ destruye el objeto contenido:
         free(this);
     }
 
-Ejercicio 23: relación de agregación
+Ejercicio 11: relación de agregación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Qué es la agregación?
@@ -1256,7 +660,7 @@ gran diferencia con la composición es que la vida del objeto contenido no depen
 de la vida del objeto contenedor. El objeto contenido puede ser construido incluso
 antes de que el objeto contenedor sea construido.
 
-Ejercicio 24: MINI-RETO
+Ejercicio 12: MINI-RETO
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Con todo lo anterior en mente y esta nueva definición, te tengo un mini RETO:
@@ -1469,7 +873,7 @@ Para compilar:
     gcc -Wall main.o player.o gun.o -o app
 
 
-Ejercicio 25: representación UML de las relaciones
+Ejercicio 13: representación UML de las relaciones
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Recuerdas que en tu curso de programación y diseño orientado a objetos
@@ -1486,13 +890,13 @@ una imagen:
 .. image:: ../_static/UMLasoc.png
     :alt: relaciones en UML
 
-Ejercicio 26: ejercicio de modelado UML
+Ejercicio 14: ejercicio de modelado UML
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-¿Te animas a realizar un modelo UML para nuestros dos ejemplos de composición
+¿Te animas a realizar un modelo UML para nuestros los ejemplos anteriores de composición
 y agregación?
 
-Ejercicio 27: relación de herencia
+Ejercicio 15: relación de herencia
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 El otro tipo de relación que podemos tener entre dos objetos es la relación TO-BE, 
@@ -1571,7 +975,7 @@ aquí:
         return 0;
     }
 
-Ejercicio 28: para reflexionar
+Ejercicio 16: para reflexionar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 En este punto te pido que te pongas cómodo. Lo que viene será alucinante...
@@ -1579,10 +983,10 @@ En este punto te pido que te pongas cómodo. Lo que viene será alucinante...
 Del ejercicio anterior concluimos que student_t está heredando de person_t.
 Por tanto, a las funciones que definas para manipular un objeto de tipo
 person_t también le puedes pasar un puntero a un student_t (para manipular
-sus atributos correspondiente a person_t). SEÑORES y SEÑORAS, estamos
+sus atributos correspondiente a person_t). SEÑORAS y SEÑORES, estamos
 reutilizando código.
 
-Ejercicio 29: implementación de herencia simple
+Ejercicio 17: implementación de herencia simple
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ahora te voy a mostrar una técnica para implementar herencia simple en C.
@@ -1773,18 +1177,7 @@ Para compilar y generar la aplicación:
     gcc -Wall main.o person.o student.o -o app
 
 
-Trabajo autónomo 3
-*********************
-(Tiempo estimado: 1 hora 20 minutos)
-
-Revisa de nuevo todo el material de esta sesión en particular el ejercicio 29.
-
-Sesión 4
-**********
-
-En esta sesión abordarás el concepto de polimorfismo.
-
-Ejercicio 30: POLIMORFISMO en tiempo de ejecución
+Ejercicio 18: POLIMORFISMO en tiempo de ejecución
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ahora te voy a mostrar una técnica para implementar polimorfismo en tiempo de 
@@ -2044,14 +1437,14 @@ Para ejecutar el código realizas las siguientes operaciones:
     gcc -Wall -c main.c -o main.o    
     gcc -Wall main.o cat.o duck.o animal.o -o app
 
-Ejercicio 31: implementación en C#
+Ejercicio 19: implementación en C#
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora vas a implementar el ejercicio 30 en C#. Compara, analiza, questiona y concluye.
+Ahora vas a implementar el ejercicio 18 en C#. Compara, analiza, questiona y concluye.
 
 .. warning:: ALERTA DE SPOILER
 
-    Te dejo una posible implementación del ejercicio 30 en C#
+    Te dejo una posible implementación del ejercicio 18 en C#
 
 .. code-block:: csharp
 
@@ -2124,7 +1517,7 @@ El resultado sería:
     Nucita: Meow
     Lindo: Quacks
 
-Ejercicio 32: clases abstractas
+Ejercicio 20: clases abstractas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Qué son las clases abstractas? Son un tipo de clases de las cuales no puedes
@@ -2152,107 +1545,6 @@ abstracta se llamará el código que varía o métodos VIRTUALES, pero este cód
 implementado. Por tanto, los métodos virtuales tendrás que implementarlo en la clase que
 hereda, de la cual, si PUEDES crear OBJETOS. Hermoso, ¿No?.
 
-En lenguajes de programación como C# se hace
-`así <https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/abstract>`__.
-En C++ sería `así <https://www.geeksforgeeks.org/virtual-function-cpp/>`__.
-
 Ten presente que en la medida que llevas al extremo este concepto de abstracción podrás
 llegar a clases que no tengan atributos sino SOLO métodos virtuales. En este punto habrás
 llegado a las INTERFACES, de las cuales tampoco podrás crear objetos.
-
-Trabajo autónomo 4 
-********************
-(Tiempo estimado: 1 hora 20 minutos)
-
-Analiza de nuevo el ejercicio 30 y trata de 
-realizar diagramas donde visualices la relación entre los diferentes objetos.
-
-Sesión 5
-**********
-
-Ejercicio 33: REPASO
-^^^^^^^^^^^^^^^^^^^^^^
-
-En esta sesión te voy a proponer un ejercicio de lectura y práctica. En 
-`este <https://www.state-machine.com/oop>`__ sitio hay una lectura que resume 
-varios de los conceptos estudiados en esta unidad. Te pediré que realices la lectura 
-y reproduzcas los ejercicios que encontrarás allí. El código de todos los ejemplos los puedes 
-encontrar en `este <https://github.com/QuantumLeaps/OOP-in-C>`__ repositorio.
-
-Trabajo autónomo 5 
-********************
-(Tiempo estimado: 1 hora 20 minutos)
-
-Termina el trabajo de la sesión 5. 
-
-Evaluación Unidad 3
----------------------
-(Tiempo total estimado: 6 horas)
-
-.. warning:: PLAZO MÁXIMO DE ENTREGA DEL TRABAJO 
-
-    El plazo máximo será este domingo 24 de abril a las 11:59 p.m.
-
-.. warning:: EQUIPO DE TRABAJO 
-
-    La evaluación puede ser realizada por una o máximo dos personas.
-    NO OLVIDAR indicar el nombre de los integrantes en el README.md
-
-
-
-.. warning:: EN LA SESIÓN DE TRABAJO 2 DE ESTA SEMANA NO HAY ENCUENTRO PRESENCIAL
-
-    En la segunda sesión de clase de esta semana no hay encuentro presencial. Ese 
-    tiempo será destinado a la producción y montaje del video.
-
-
-
-Enunciado
-*************
-
-Vas a realizar un video tutorial que subirás como video público a youtube. Considera lo 
-siguiente:
-
-* El video debe durar entre 4 minutos y 5 minutos máximo. Si el video se sale de el rango 
-  anterior, automáticamente la nota base sobre la cual se calificará será 3.
-* Vas a pensar en un ejemplo DIFERENTE a los estudiados en esta unidad, donde puedas explicar 
-  los conceptos de encapsulamiento, herencia y polimorfismo. El ejemplo se debe implementar en C y C#. 
-  Y debes explicar el equivalente de cada concepto en cada lenguaje.
-* Debes analizar en que parte de la memoria se almacenan TODOS los datos que uses 
-  en tu aplicación (recuerda que debes analizar tanto la implementación en C como en C#).
-* En tu reposotorio debes organizar tu trabajo así:
-  
-  * Archivo README.md con las imágenes del análisis de memoria de tu aplicación y el diagrama de clases.
-    Así mismo, debes incluir la URL del video en youtube.
-  * Carpeta con el ejemplo en C.
-  * Carpeta con el ejemplo en C#.
-
-.. warning:: DEBES VERIFICAR QUE EL VIDEO SE PUEDE VER de manera pública.
-
-    No olvides verificar (puede ser en modo incógnito o desde el celular de un familiar) que 
-    el video se puede ver y tiene la duración correcta.
-
-Entrega 
-**********
-
-Vas a subir todos lo solicitado a tu repositorio privado 
-que encuentras `aquí <https://classroom.github.com/a/a4Nn9p88>`__.
-
-* No olvides que en el archivo README.md debes colocar la URL al video. NO DEBES SUBIR VIDEOS 
-  al respositorio.
-* No olvides indicar el nombre de los integrantes en el README.md.
-
-Criterios de evaluación 
-*************************
-
-* Análisis de la memoria de la aplicación en C y en C#: 1
-* Diagrama de clases de tu ejemplo donde muestres las relaciones implementadas: 1
-* Explicación del concepto de encapsulamiento: 1
-* Explicación del concepto de herencia: 1
-* Explicación del concepto de polimorfismo: 1
-
-
-
-
-
-
