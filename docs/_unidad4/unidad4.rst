@@ -40,8 +40,8 @@ Evaluación
 Enunciado 
 ************
 
-Vas a utilizar lo aprendido en las unidades 2, 3 y 4. De la unidad 1 tomarás la implementación 
-de la lista enlazada. De la unidad 3 tomarás el caso de estudio del patrón observer. Y de la unidad 
+Vas a utilizar lo aprendido en las unidades 2, 3 y 4. De la unidad 2 tomarás la implementación 
+de la lista enlazada. De la unidad 3 tomarás el patrón observer. Finalmente, de la unidad 
 4 el mecanismo de comunicación por colas POSIX y los hilos.
 
 Vas a implementar dos programas: un servidor y un cliente. En ejecución solo tendrás un servidor 
