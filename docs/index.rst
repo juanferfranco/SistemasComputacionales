@@ -7,8 +7,10 @@ Nombre del docente moderador: Juan Fernando Franco Higuita
 
 Créditos y horas totales del curso: 2 créditos - 96 horas totales 
 
+      
 .. toctree::
    :maxdepth: 1
+   :caption: UNIDADES
 
    ¿De qué se trata este curso? <_intro/intro>
    ¿Cómo aprender a aprender? <_intro/learning>
@@ -16,11 +18,6 @@ Créditos y horas totales del curso: 2 créditos - 96 horas totales
    Introducción al control de versión <_intro/introGit>
    Trabajo en equipo <_intro/gitWorkflow>
    Evaluación 1 <_intro/evalVersionControl>
-      
-.. toctree::
-   :maxdepth: 1
-   :caption: UNIDADES
-
    Unidad 1: Arquitectura del computador <_unidad1/unidad1>
    Unidad 2: De lenguaje de alto nivel a código ejecutable <_unidad2/unidad2>
    Unidad 3: Programación orientada a objetos <_unidad3/unidad3>
