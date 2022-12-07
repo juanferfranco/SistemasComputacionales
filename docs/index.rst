@@ -10,7 +10,7 @@ Créditos y horas totales del curso: 2 créditos - 96 horas totales
       
 .. toctree::
    :maxdepth: 3
-   :caption: UNIDADES
+   :caption: SECCIONES
 
    ¿De qué se trata este curso? <_intro/intro>
    ¿Cómo aprender a aprender? <_intro/learning>
