@@ -35,7 +35,7 @@ Ejercicio 1: creación de ramas
 
 Considera la siguiente figura:
 
-.. image:: ../_static/projectInit.svg
+.. image:: ../_static/projectInit.png
     :alt: Inicio del proyecto
 
 Acabas de iniciar un proyecto, tu estás en la rama 
@@ -43,18 +43,18 @@ master y acabas de realizas el primer commit (tomas la primera foto).
 Ahora aparece un nuevo compañero que comienza a trabajar a partir de tu commit, 
 pero en una nueva rama llamada feature1:
 
-.. image:: ../_static/projectFeatur1Init.svg
+.. image:: ../_static/projectFeatur1Init.png
     :alt: Inicia feature1
 
 Tu y tu compañero podrán seguir trabajando en paralelo, cada uno en su propia rama, 
 es decir, tu en la rama master y tu compañero en la rama feature1:
 
-.. image:: ../_static/projectMasterAndFeature1.svg
+.. image:: ../_static/projectMasterAndFeature1.png
     :alt: Trabajo en paralelo de master y feature1
 
 El proyecto sigue progresando y ahora se une otro compañero:
 
-.. image:: ../_static/projectMasterF1F2.svg
+.. image:: ../_static/projectMasterF1F2.png
     :alt: se añade feature2
 
 Entonces, para crear una rama debes ejecutar::
@@ -71,7 +71,7 @@ Considera la última figura del ejercicio anterior. ¿Te animas a reproducirla?
 La idea es que simules tres personas trabajando en paralelon, una 
 para master, otra para feature1 y la otra para feature2.
 
-.. image:: ../_static/branchesResultWithFiles.svg
+.. image:: ../_static/branchesResultWithFiles.png
     :alt: ramas con archivos
     :align: center
 
@@ -534,9 +534,9 @@ ____________________________________________
     gcc feature4.c  -c -g -o feature4.o
     gcc feature5.c  -c -g -o feature5.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature1) ✗ ./main 
+       teamProject git:(feature1) x ./main 
     hello from feature1
-    ➜  teamProject git:(feature1) ✗
+       teamProject git:(feature1) x
 
 * A medida que va trabajando realiza commits::
 
@@ -665,7 +665,7 @@ ____________________________________________
     gcc feature4.c  -c -g -o feature4.o
     gcc feature5.c  -c -g -o feature5.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature4) ✗ ./main 
+       teamProject git:(feature4) x ./main 
     hello from feature1
     hello from feature4
 
@@ -741,11 +741,11 @@ ________________________________________________
 * Realiza las pruebas en la rama feature4. Si todo está bien puedes 
   aceptar el pull request::
 
-    ➜  teamProject git:(feature4) make
+       teamProject git:(feature4) make
     gcc feature1.c  -c -g -o feature1.o
     gcc feature4.c  -c -g -o feature4.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature4) ./main 
+       teamProject git:(feature4) ./main 
     hello from feature1
     hello from feature4
 
@@ -846,7 +846,7 @@ _______________________________________________
     gcc feature4.c  -c -g -o feature4.o
     gcc feature5.c  -c -g -o feature5.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature5) ✗ ./main 
+       teamProject git:(feature5) x ./main 
     hello from feature1
     hello from feature4
     hello from feature5!!!
@@ -925,11 +925,11 @@ __________________________________________________
 
 * Compila y verifica que todo esté bien::
 
-    ➜  teamProject git:(feature5) make 
+       teamProject git:(feature5) make 
     gcc feature4.c  -c -g -o feature4.o
     gcc feature5.c  -c -g -o feature5.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature5) ./main 
+       teamProject git:(feature5) ./main 
     hello from feature1
     hello from feature4
     hello from feature5!!!
@@ -947,10 +947,10 @@ ______________________________________________________________
 
 * Lee las correcciones que indica Persona 1 y procede a arreglar el código::
 
-    ➜  teamProject git:(feature5) make 
+       teamProject git:(feature5) make 
     gcc feature5.c  -c -g -o feature5.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature5) ./main 
+       teamProject git:(feature5) ./main 
     hello from feature1
     hello from feature4
     hello from feature5
@@ -998,10 +998,10 @@ _________________________________________________________________________
 
 * Compila y ejecuta::
 
-    ➜  teamProject git:(feature5) make 
+       teamProject git:(feature5) make 
     gcc feature5.c  -c -g -o feature5.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature5) ./main 
+       teamProject git:(feature5) ./main 
     hello from feature1
     hello from feature4
     hello from feature5
@@ -1061,11 +1061,11 @@ las features 2 y 3.
   
 * Termina el código::
 
-    ➜  teamProject git:(feature2_3) make 
+       teamProject git:(feature2_3) make 
     gcc feature2.c  -c -g -o feature2.o
     gcc feature3.c  -c -g -o feature3.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature2_3) ✗ ./main 
+       teamProject git:(feature2_3) x ./main 
     hello from feature1
     hello from feature2
     hello from feature3
@@ -1201,10 +1201,10 @@ Persona 1:
 
 * Compila y prueba::
 
-    ➜  teamProject git:(feature2-update) make 
+       teamProject git:(feature2-update) make 
     gcc feature2.c  -c -g -o feature2.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature2-update) ✗ ./main 
+       teamProject git:(feature2-update) x ./main 
     hello from feature1
     *hello from feature2*
     hello from feature3
@@ -1266,11 +1266,11 @@ Persona 2:
   
 * Compila y prueba::
 
-    ➜  teamProject git:(feature2-myupdate) ✗ make 
+       teamProject git:(feature2-myupdate) x make 
     gcc feature2.c  -c -g -o feature2.o
     gcc feature3.c  -c -g -o feature3.o
     gcc -Wall -g -o main *.o
-    ➜  teamProject git:(feature2-myupdate) ✗ ./main 
+       teamProject git:(feature2-myupdate) x ./main 
     hello from feature1
     #hello from feature2#
     hello from feature3
@@ -1314,7 +1314,7 @@ Persona 1:
 
 * Trata de aceptar el pull request desde la terminal::
 
-    ➜  teamProject git:(main) gh pr merge 6 
+       teamProject git:(main) gh pr merge 6 
     X Pull request #6 is not mergeable: the merge commit cannot be cleanly created.
     To have the pull request merged after all the requirements have been met, add the `--auto` flag.
     Run the following to resolve the merge conflicts locally:
@@ -1405,9 +1405,9 @@ Como sea Persona 1 tiene que resolver el conflicto.
 
   Realiza el commit::
 
-    ➜  teamProject git:(feature2-myupdate) ✗ git commit -am "resolve conflic in feature2"
+       teamProject git:(feature2-myupdate) x git commit -am "resolve conflic in feature2"
     [feature2-myupdate 3bb07b9] resolve conflic in feature2
-    ➜  teamProject git:(feature2-myupdate) 
+       teamProject git:(feature2-myupdate) 
 
   Verifica::
 

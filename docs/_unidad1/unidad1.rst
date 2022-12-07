@@ -423,7 +423,7 @@ que estás entendiendo. Lo que pasa es que 0x4000 es el número 16384 en base 10
 
 * Escribe 0x4000 en base 2: 0100 0000 0000 0000
 * Cada uno de los bits tiene un peso. El bit menos significativo (:math:`b_0`) tiene 
-  un peso de :math:`2⁰` el siguiente hacia la izquierda (:math:`b_1`) :math:`2¹` 
+  un peso de :math:`2^{0}` el siguiente hacia la izquierda (:math:`b_1`) :math:`2^{1}` 
   y así sucesivamente hasta la posición 16 (:math:`b_{15}`) que tendrá un peso de :math:`2^{15}`.
 * Puedes calcular el valor en base 10 así:
 

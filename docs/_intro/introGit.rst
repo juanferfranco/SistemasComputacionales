@@ -718,10 +718,10 @@ Ahora conecta el cliente local de git con tu cuenta de GitHub::
 Acepta todas las opciones por defecto. Una vez hagas todo correctamente saldrá algo similar 
 a esto::
 
-    ✓ Authentication complete.
-    - gh config set -h github.com git_protocol https
-    ✓ Configured git protocol
-    ✓ Logged in as juanferfranco    
+     Authentication complete.
+     gh config set -h github.com git_protocol https
+     Configured git protocol
+     Logged in as juanferfranco    
 
 
 El comando anterior te permitirá autorizar el acceso desde la termina de tu computador 
@@ -740,10 +740,10 @@ Ahora ejecuta el siguiente comando::
 
 Si todo sale bien verás esto::
 
-    ✓ Created repository juanferfranco/project1 on GitHub
-    ✓ Added remote https://github.com/juanferfranco/project1.git
-    ✓ Pushed commits to https://github.com/juanferfranco/project1.git
-    ➜  project1 git:(master)
+     Created repository juanferfranco/project1 on GitHub
+     Added remote https://github.com/juanferfranco/project1.git
+     Pushed commits to https://github.com/juanferfranco/project1.git
+      project1 git:(master)
 
 ¿Qué estás haciendo? ``gh repo create project1``  te permiten crear el repositorio 
 remoto project1 en GitHub. ``--public`` hace que el repositorio sea público y lo puedas compartir 
