@@ -1,4 +1,4 @@
-Curso Sistemas Computacionales 2022-20
+Curso Sistemas Computacionales 2023-10
 ========================================
 
 Docente diseñador del curso: Juan Fernando Franco Higuita
@@ -16,6 +16,7 @@ Créditos y horas totales del curso: 2 créditos - 96 horas totales
    ¿Cómo aprender a aprender? <_intro/learning>
    ¿Qué herramientas necesitas? <_intro/tools>
    Introducción al control de versión <_intro/introGit>
+..
    Trabajo en equipo <_intro/gitWorkflow>
    Evaluación 1 <_intro/evalVersionControl>
    Unidad 1: Arquitectura del computador <_unidad1/unidad1>
