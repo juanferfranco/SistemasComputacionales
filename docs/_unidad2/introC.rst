@@ -776,7 +776,7 @@ La salida, en mi computador es:
     pvar'address: 0x7ffdcf216ff0
     pvar content: 0x7ffdcf216fec
 
-Observa que la dirección de ``a`` concuerda con el contenido de pvar. ¿Por qué? porque le has 
+Observa que la dirección de ``var`` concuerda con el contenido de pvar. ¿Por qué? porque le has 
 dicho al compilador que en pvar vas a guadar la dirección de una VARIABLE DE TIPO uint32_t ( uint32_t * ) y adicionalmente, 
 con el operador ``&`` antes de ``var``, estás indicando que quieres la dirección de ``var`` y además la estás 
 asignado ( ``=`` ) a la variable ``pvar``.   
