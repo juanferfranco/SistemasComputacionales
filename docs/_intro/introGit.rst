@@ -216,828 +216,430 @@ De nuevo tómate unos minutos para:
 #. ¿Qué es una ruta absoluta?
 #. ¿Qué es una ruta relativa?
 
-..
-    Ejercicio 5: tu primer proyecto bajo control de versión
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ejercicio 5: añade un archivo al control de versión
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    * Crea un directorio llamado project1 (mkdir) PERO por fuera del directorio 
-    .codespaces.
-    * Cámbiate a ese directorio (cd)
+Te voy a explicar lentamente lo que viene. Actualmente tienes un repositorio 
+en Github, pero cuando creas un Codespace lo que ocurre es que Github le da 
+vida a un computador en Internet, lo llamaremos servidor, que correrá el sistema 
+operativo Linux al cual tu tendrás acceso desde el browser e interactuarás con él 
+desde la línea de comandos que tienes disponible.
 
-    En ``project1`` vas a simular la creación de un proyecto de software.
+El servidor tendrá un copia del repositorio que tienes en Github. TE REPITO, tendrás 
+de entrada una copia del repositorio. Ten presente que es una copia. Entonces lo 
+que hagas en la copia no se verá reflejado en el servidor a menos que tu lo indiques 
+de manera explícita. Vamos bien?
 
-    Ahora crea un archivo en el directorio::
+En resumen. Tienes en Github un repositorio que te creó el profe. El profe también 
+se encarga de configurar todo para que puedas tener un servidor en Internet. Ese 
+servidor correrá el sistema operativo Linux. Cuando el servidor arranca hará una 
+copia del repositorio en Github. Cualquier cosa que hagas en esta copia no modificará 
+el repositorio en Github a menos que tu se lo digas.
 
-        touch main.c
+Ahora si. Vas a crear en la copia del repositorio un archivo, lo vas a modificar y 
+luego lo vas a enviar a Github, es decir, vas a sincronizar el repositorio en Github 
+con el repositorio que tienes en el servidor. Vale?
 
-    Abre el directorio::
+* Asegúrate de cambiarte al directorio introgit.
+* Escribe ls -al. Deberás ver un directorio oculto llamado ``.git```.
+  Ese directorio ``.git`` es lo que llamamos un ``REPOSITORIO DE GIT``. En ese repositorio 
+  el sistema de control de versión, ``Git```, que está corriendo en el servidor, 
+  realizará el control de versión de todo lo que le indiquemos. Ten presente que en 
+  este repositorio, Git guardará toda la información relacionada con los cambios e 
+  historia de los archivos de tu proyecto que estén bajo control de versión. Puedes 
+  pensar que el repositorio es una especie de base de datos donde Git almacena un 
+  diario de qué está pasando con cada uno de los archivos de tu proyecto, PERO tu 
+  le debes decir a Git a qué archivos debe hacerle control de versión.
+* Crea un directorio llamado project1 (mkdir).
+* Cámbiate a ese directorio (cd)
 
-        code .
+En ``project1`` vas a simular la creación de un proyecto.
 
-    .. warning:: MUY IMPORTANTE
+Ahora crea un archivo en el directorio::
 
-        Siempre que trabajes en visual studio code abre DIRECTORIOS completos, no ARCHIVOS individuales.
+    touch main.c
 
+Ahora modifica el archivo main.c con el siguiente código:
 
-    ``code`` es el comando que escribes en la terminal para abrir el programa visual studio code. 
-    ¿Qué significa el ``.`` luego del comando?
+.. code-block:: c
 
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    .. note:: ALERTA DE SPOILER 
+    int main(){
+        printf("La vida es bella\n");
+        return(EXIT_SUCCESS);
+    }
 
-        No olvides que la entrada de directorio ``.`` se refiere al directorio actual en el que estás 
-        posicionado. 
-        
-        Trata de recordar de nuevo ¿Qué era ``..``?
+Antes de continuar ejecuta el comando::
 
-    Ahora modifica el archivo main.c con el siguiente código:
+    ls -al
 
-    .. code-block:: c
+Deberías tener solo tres entradas::
 
-        #include <stdio.h>
-        #include <stdlib.h>
+    .
+    ..
+    main.c
 
-        int main(){
-            printf("La vida es bella\n");
-            return(EXIT_SUCCESS);
-        }
+Ahora dile a Git que coloque bajo control de versión el nuevo archivo main.c::
 
-    Antes de continuar ejecuta el comando::
+    git add main.c
 
-        ls -al
+Esto solo debes decírselo una vez a Git. De aquí en adelante cada que hagas 
+cambios a main.c solo debes indicarle a Git cuándo debe guardar la versión de ese archivo 
+en el repositorio.
 
-    Deberías tener solo tres entradas::
+Entonces, en este punto ya añadiste main.c al control de versión. Cuando añades un 
+archivo, Git automáticamente lo pasa a una zona lógica llamada el ``STAGE``. Puedes 
+entrar y sacar archivos del STAGE. Pero una vez tengas allí todos los archivos que quieras 
+lo único que debes hacer es pedirle a Git que les tome una foto, es decir, que haga 
+un COMMIT. Ese commit será una foto de tu proyecto que incluirá el nuevo archivo main.c 
+con los cambios que recién realizaste. 
 
-        .
-        ..
-        main.c
+.. note:: NO PIERDAS DE VISTA 
 
+    Git solo le toma la foto (hace el commit) de los archivos que tengas en el stage
 
-    Ahora si vamos a crear el repositorio::
+Ahora escribe el comando::
 
-        git init
+    git status
 
-    Y solo con esto ya tienes un proyecto con control de versión. ¿Fácil, no?
+Observa que el sistema de control de versión te dirá que tienes un archivo listo 
+para el commit. Realiza el commit::
 
-    Escribe en la terminal el comando::
+    git commit -am "version inicial de main.c"
 
-        ls -al
+Escribe de nuevo::
 
-    Notas que hay una nuevo directorio que no tenías antes::
+    git status
 
-        .
-        ..
-        main.c 
-        .git
+Ahora el sistema te dirá que no hay nada disponible para hacerle commit.
 
-    Ese directorio ``.git`` es lo que llamamos un ``REPOSITORIO DE GIT``. En ese repositorio 
-    el sistema de control de versión que tenemos instalado realizará el control de versión 
-    de todo lo que le indiquemos. Ten presente que en este repositorio, Git guardará toda la información 
-    relacionada con los cambios e historia de los archivos de tu proyecto que estén bajo control de versión.
-    Puedes pensar que el repositorio es una especie de base de datos donde Git almacena un diario de qué 
-    está pasando con cada uno de los archivos de tu proyecto.
+Te pediré ahora que regreses a tu repositorio en Github. Ves la carpeta project1 y 
+el archivo main.c?
 
-    Ejercicio 6: configura Git
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La respuesta debería ser no. ¿Por qué?
 
-    Para hacer tus primeros experimentos con Git vas a realizar unas configuraciones 
-    mínimas para informarle a Git un nombre de usuario y un correo. Esta información
-    permite que Git identifique a la persona responsable de realizar los cambios 
-    a un archivo. Recuerda que Git está diseñado para que puedas trabajar en equipo.
+.. warning:: NO SIGAS POR FA
 
-    Escribe los siguientes comandos, pero cambia name y email por tus datos::
+    Si aún no sabes la respuesta a la pregunta anterior te pediré que leas 
+    de nuevo el ejercicio. Si aún así aún no entiendes llama al profe.
 
-        git config --local user.name "yo"
-        git config --local user.email "yo@yolandia.com"
+El archivo aún no está en Github porque recuerda que se encuentra en el repositorio 
+del servidor que aún no está sincronizado con el repositorio en Github.
 
+Para sincronizar los repositorios escribe::
 
-    Ejercicio 7: para pensar
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    git push
 
-    ¿Qué crees qué pase si borras el directorio ``.git`` en relación con el historial
-    de cambios de tus archivos?
+Regresa a Github. Presiona F5 para refrescar. ¿Qué pasó?
 
-    ¿Qué crees que pase si creas un directorio vacío y mueves allí todo los archivos 
-    de tu proyecto incluyendo el directorio .git?
+Ejercicio 6: para pensar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Ejercicio 8: reconocer el estado del repositorio 
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* ¿Qué crees que pase si borras el directorio .git del servidor?
+* ¿Si borras el directorio .git del servidor qué crees que pase 
+  con el repositorio en Github?
 
-    Ahora ejecuta el siguiente comando::
+Ejercicio 7: adiciona un nuevo archivo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        git status
+* Adiciona a project1 en el servidor un nuevo archivo llamado file1.txt
+* Adiciona al repositorio el archivo.
+* Realiza el commit.
+* Sincroniza el repositorio en el servidor con el repositorio en Github.
 
-    Verás algo así::
+.. note:: LLAMA al profe
 
-        On branch master
+    Llama al profe y muéstrale este paso.
 
-        No commits yet
 
-        Untracked files:
-        (use "git add <file>..." to include in what will be committed)
-            main.c
+Ejercicio 8: analicemos un poco más lo que está pasando 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        nothing added to commit but untracked files present (use "git add" to track)
+Adiciona un segundo archivo, file2.txt al sistema de control de versión, 
+PERO no hagas commit aún. Escribe::
 
+    git status
 
-    El resultado por ahora es muy interesante. Verás que estás trabajando en la 
-    rama (branch) master. Las ramas son una característica MUY útil de Git. Como 
-    su nombre indica te puedes ir por las ramas. Te lo explico con una historia. 
-    Supón que estás trabajando en tu proyecto y se te ocurre una idea, algo nuevo 
-    para implementar; sin embargo, no quieres dañar tu proyecto principal. Entonces 
-    lo que haces es que te creas una rama que tomará como punto de partida el estado 
-    actual de tu proyecto. En esa nueva rama realizas los ensayos que quieras. Si 
-    al final no te gusta el resultado, simplemente destruyes la rama y tu proyecto 
-    seguirá como lo habías dejado antes de crear la rama. Pero si el resultado te gusta 
-    entonces podrás hacer un ``MERGE`` e incorporar las ideas de la nueva rama a la rama 
-    inicial. Ten presente que si no quieres trabajar en la nueva rama y deseas retomar el 
-    trabajo en la rama principal lo puedes hacer, te puedes cambiar de ramas. Incluso puedes 
-    crear muchas más y probar varias ideas en simultáneo.
+El resultado por ahora es muy interesante. Verás que estás trabajando en la 
+rama (branch) main. Las ramas son una característica MUY útil de Git. Como 
+su nombre indica te puedes ir por las ramas. Te lo explico con una historia. 
+Supón que estás trabajando en tu proyecto y se te ocurre una idea, algo nuevo 
+para implementar; sin embargo, no quieres dañar tu proyecto principal. Entonces 
+lo que haces es que te creas una rama que tomará como punto de partida el estado 
+actual de tu proyecto. En esa nueva rama realizas los ensayos que quieras. Si 
+al final no te gusta el resultado, simplemente destruyes la rama y tu proyecto 
+seguirá como lo habías dejado antes de crear la rama. Pero si el resultado te gusta 
+entonces podrás hacer un ``MERGE`` e incorporar las ideas de la nueva rama a la rama 
+inicial. Ten presente que si no quieres trabajar en la nueva rama y deseas retomar el 
+trabajo en la rama principal lo puedes hacer, te puedes cambiar de ramas. Incluso puedes 
+crear muchas más y probar varias ideas en simultáneo.
 
-    Ahora observa el mensaje ``No commits yet``. Este mensaje quiere decir que aún no has guardado 
-    nada en el repositorio.  Luego te dice ``Untracked files`` y te muestra una lista de los 
-    archivos detectados en tu proyecto (main.c en este caso), pero que no están bajo control 
-    de versión. Tu debes decirle explícitamente a Git a qué archivos debe hacer ``tracking``.
-    Finalmente, ``nothing added to commit but untracked files present (use "git add" to track)`` quiere 
-    decir que si en este momento le pides a Git que guarde en el repositorio una ``FOTO`` (``commit``) 
-    del estado actual de los archivos que están bajo tracking, Git te dice que no hay nada para guardar.
-    Nota que Git da sugerencias: ``(use "git add" to track)``, es decir, te dice qué necesitas 
-    hacer para colocar el archivo main.c en tracking.
+Observa el mensaje ``Untracked files`` y el nombre del archivo file2.txt. Quiere 
+decir que Git detecta que hay un nuevo archivo en el sistema de archivos PERO no 
+le está haciendo tracking, es decir, no está en el repositorio bajo control de versión.
 
+¿Vamos bien? 
 
-    Ejercicio 9: adiciona tu primer archivo al repositorio 
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Finalmente, observa el mensaje 
+``nothing added to commit but untracked files present (use "git add" to track)`` quiere 
+decir que si en este momento le pides a Git que guarde en el repositorio una 
+``FOTO`` (``commit``) del estado actual de los archivos que están bajo tracking, 
+Git te dice que no hay nada para guardar.Nota que Git da sugerencias: 
+``(use "git add" to track)``, es decir, te dice qué necesitas hacer para colocar 
+el archivo file2.txt en tracking.
 
-    .. code-block:: bash 
+Ejercicio 9: termina de sincronizar los cambios  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        git add main.c 
+Sincroniza el repositorio local con el ``REMOTO`` (en Github) para 
+que puedas ver los cambios.
 
-    Y de nuevo observa el estado del repositorio::
+Ejercicio 10: ahora modifica file1.txt
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        git status
+* Añade a file1.txt el mensaje ``HOLA PROFE``.
+* Salva el archivo (CRTL+S).
+* Escribe::
 
-    El resultado será::
+    git status
 
-        On branch master
+Nota que ahora ya no te sale el menaje ``Untracked files``. El mensaje ahora 
+será ``Changes not staged for commit``. Quiere decir que Git le está 
+haciendo tracking a tu archivo, pero que si quieres que salga en la próxima 
+foto del proyecto (COMMIT) tendrás que pasarlo al stage. ¿Cómo?::
 
-        No commits yet
+    git commit -am "Saludando al profe"
 
-        Changes to be committed:
-        (use "git rm --cached <file>..." to unstage)
-            new file:   main.c
+De nuevo escribe::
 
+    git status
 
-    Te explico con una metáfora lo que está pasando. Imagina que Git 
-    le toma fotos al estado de tu proyecto cada que se lo solicitas; sin embargo, 
-    antes de tomar la foto tienes que decirle a Git (``con add``) a qué archivos 
-    le tomará la foto. Todos los archivos que serán tenidos en cuenta para la 
-    próxima foto se ubican en una zona lógica denominada el ``STAGE``. Mira el mensaje 
-    ``(use "git rm --cached <file>..." to unstage)``. Observa que Git te está diciendo
-    que main.c ya está listo para la foto (``Changes to be committed``), pero si te arrepientes de incluir el archivo 
-    en la foto puedes ejecutar el comando sugerido. Prueba sacar de la foto a main.c::
+Ahora solo tiene que sincronizar el repositorio local (en el servidor) con 
+el remoto (en Github). ¿Cómo se hace eso? Lee la salida de status ahí te dice.
 
-        git rm --cache main.c
+.. note:: NO OLVIDES
 
-    Mira el estado del repositorio::
+    Cada que regreses al repositorio en Github para comprobar los cambios no 
+    olvides presionar F5 para refrescar la página.
 
-        git status
+Ejercicio 11: volver a una versión anterior del proyecto 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Verás algo así::
+Recuerda que con Git puedes irle tomando fotos al estado del proyecto.
 
-        On branch master
+Ahora supón que quieres volver a una versión anterior del proyecto (una foto del pasado). 
+Git ofrece varias alternativas que irás aprendiendo con el tiempo. Por ahora, 
+piensa que lo que harás es pedirle a Git que traiga una versión del pasado y haga 
+un nuevo commit (tome una nueva foto) de esa versión en el presente.
 
-        No commits yet
+¿Cuál versión del proyecto quieres recuperar? Para saberlo puedes leer 
+el historial de mensajes que adicionaste a cada COMMIT::
 
-        Untracked files:
-        (use "git add <file>..." to include in what will be committed)
-            main.c
+    git log --oneline
 
-        nothing added to commit but untracked files present (use "git add" to track)
+En mi caso la salida es::
 
+    938007f (HEAD -> main, origin/main, origin/HEAD) Saludando al profe
+    6c238ac ADd file2.txt
+    23b3d8f add file1
+    9e88a2c version inicial de main.c
+    2e12222 Setting up GitHub Classroom Feedback
+    92a8419 (origin/feedback) GitHub Classroom Feedback
+    36a2798 Initial commit
 
-    ¿Te das cuenta? Acabas de sacar de la foto (DEL STAGE) a main.c. Ahora vuelve a invitar a 
-    main.c a la foto::
+Ahora digamos que deseas ver cómo estaba el proyecto en el commit 23b3d8f (estos son 
+los primeros 7 números del identificador del commit o hash único que se calcula con 
+el algoritmo sha-1)::
 
-        git add main.c 
+    git checkout 23b3d8f
 
-    Ahora ``TOMA LA FOTO`` (realiza el commit)::
+El resultado es::
 
-        git commit -m "Initial version of the project main file"
+    Note: switching to '23b3d8f'.
 
-    Consulta el estado del repositorio::
+    You are in 'detached HEAD' state. You can look around, make experimental
+    changes and commit them, and you can discard any commits you make in this
+    state without impacting any branches by switching back to a branch.
 
-        git status
-
-    El resultado será::
-
-        On branch master
-        nothing to commit, working tree clean
-
-    Puedes ver que Git está observando todo lo que pasa en el directorio de tu 
-    proyecto. Por ahora Git sabe que no has hecho nada más y por eso te dice 
-    ``nothing to commit, working tree clean``.
-
-    Lo último que te voy a pedir que hagas con este ejercicio es que le preguntes 
-    a Git qué fotos (``COMMITS``) se han tomado en el repositorio::
-
-        git log 
-
-    El resultado es::
-
-        commit 1f2009fabfc4895ee6b063c23c6f5c7ea7175209 (HEAD -> master)
-        Author: yo <yo@yolandia.com>
-        Date:   Wed Jul 20 10:52:46 2022 -0500
-
-            Initial version of the project main file
-
-    Nota que el commit está identificado con el hash ``1f2009fabfc4895ee6b063c23c6f5c7ea7175209``, 
-    el autor, correo, fecha, hora y la descripción del commit.
-
-    Ejercicio 10: recuerda
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    Para un momento. Repasa los ejercicios anteriores, actualiza tu lista 
-    de comandos con la explicación de qué hacen.
-
-    Ejercicio 11: modificar el contenido de un archivo 
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    Modifica el contenido del archivo main.c añadiendo otro mensaje para imprimir 
-    (escribe lo que tu corazón te dicte). ``Salva el archivo``. NO LO OLVIDES, salva 
-    el archivo.
-
-    Al verificar el estado del repositorio verás::
-
-        On branch master
-        Changes not staged for commit:
-        (use "git add <file>..." to update what will be committed)
-        (use "git restore <file>..." to discard changes in working directory)
-            modified:   main.c
-
-        no changes added to commit (use "git add" and/or "git commit -a")
-
-    ¿Ves la diferencia con respecto al momento en el que creaste el archivo? Déjame recordarte 
-    el mensaje:
-
-    .. code-block:: bash 
-
-        On branch master
-
-        No commits yet
-
-        Untracked files:
-        (use "git add <file>..." to include in what will be committed)
-            main.c
-
-        nothing added to commit but untracked files present (use "git add" to track)
-
-    Nota que al crear el archivo, Git te dice que no le está haciendo seguimiento (untracked); 
-    sin embargo, una vez está creado el archivo y lo modificas, Git te dice 
-    ``Changes not staged for commit``. 
-
-    En este caso, Git le hace tracking a tu archivo, pero tu no has decidido pasar el 
-    archivo a ``STAGE`` para poderle tomar la foto con los cambios que tiene ahora. 
-    ¿Cómo lo haces? Mira que en el mensaje Git te dice: ``git add main.c``. Nota que Git 
-    también te dice que puedes descartar los cambios en el archivo con 
-    ``git restore main.c``. ¿Por qué no haces la prueba?
-
-    Escribe::
-
-        git restore main.c
-
-    Vuelve a visual studio code y verifica qué paso con el archivo.
-
-    ¿Ya no está la modificación anterior, cierto? Mira el estado del repositorio::
-
-        On branch master
-        nothing to commit, working tree clean
-
-    Vuelve a modificar main.c, pero esta vez si guardarás los cambios 
-    en el repositorio. Recuerda los pasos:
-
-    #. Cambias el archivo
-    #. Verifica el estado del repositorio (status)
-    #. Adiciona los cambios en el STAGE (add) 
-    #. Toma la foto (commit)
-    #. Verifica de nuevo el estado del repositorio (status)
-    #. Verifica el historial del repositorio (log)
-
-    Te debe quedar algo así::
-
-        commit 2a0afbb7efa9c58a364143edf6c5cf76dccfab0b (HEAD -> master)
-        Author: yo <yo@yolandia.com>
-        Date:   Wed Jul 20 11:02:03 2022 -0500
-
-            add a new print
-
-        commit 1f2009fabfc4895ee6b063c23c6f5c7ea7175209
-        Author: yo <yo@yolandia.com>
-        Date:   Wed Jul 20 10:52:46 2022 -0500
-
-            Initial version of the project main file    
-
-    Y ahora main.c está así::
-
-        #include <stdio.h>
-        #include <stdlib.h>
-
-        int main(){
-            printf("La vida es bella\n");
-            printf("El feo es uno\n");
-            return(EXIT_SUCCESS);
-        }
-
-
-    Ejercicio 12: volver a una versión anterior del proyecto 
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    Ahora supón que quieres volver a una versión anterior del proyecto. 
-    Git ofrece varias alternativas que irás aprendiendo con el tiempo. Por ahora, 
-    piensa que lo que harás es pedirle a Git que traiga una versión del pasado y haga 
-    un nuevo commit de esa versión en el presente.
-
-    ¿Cuál versión del proyecto quieres recuperar? Para saberlo puedes leer 
-    el historial de mensajes que adicionaste a cada COMMIT::
-
-        git log --oneline
-
-    En el ejemplo que estás trabajando::
-
-        2a0afbb (HEAD -> master) add a new print
-        1f2009f Initial version of the project main file
-
-    Ahora digamos que deseas ver cómo estaba el proyecto en el commit 1f2009f (estos son 
-    los primeros 7 números del identificador del commit o hash único que se calcula con 
-    el algoritmo sha-1)::
-
-        git checkout 1f2009f
-
-    El resultado es::
-
-        Note: switching to '1f2009f'.
-
-        You are in 'detached HEAD' state. You can look around, make experimental
-        changes and commit them, and you can discard any commits you make in this
-        state without impacting any branches by switching back to a branch.
-
-        If you want to create a new branch to retain commits you create, you may
-        do so (now or later) by using -c with the switch command. Example:
+    If you want to create a new branch to retain commits you create, you may
+    do so (now or later) by using -c with the switch command. Example:
 
         git switch -c <new-branch-name>
 
-        Or undo this operation with:
+    Or undo this operation with:
 
         git switch -
 
-        Turn off this advice by setting config variable advice.detachedHead to false
+    Turn off this advice by setting config variable advice.detachedHead to false
 
-        HEAD is now at 1f2009f Initial version of the project main file
+    HEAD is now at 23b3d8f add file1
 
-    Escribe el comando::
+Escribe el comando::
 
-        git status
+    git status
 
-    El resultado es::
+El resultado es::
 
-        HEAD detached at 1f2009f
-        nothing to commit, working tree clean
+    HEAD detached at 23b3d8f
+    nothing to commit, working tree clean
 
-    Ahora revisa el archivo main.c. ¿Qué concluyes hasta ahora? En este momento estás en 
-    un estado especial llamado detached HEAD. En este estado puedes jugar con el código y 
-    hacer ensayos y luego puedes descartar todo lo que hagas sin dañar lo que ya tenías. Mira 
-    que Git te dice qué debes hacer para conservar los experimentos o para descartarlos.
+Observa qué paso con file2. 
 
-    En este caso, supon que solo quieres ver el estado del archivo main.c en el commit 1f2009f::
+¿Ya no está cierto? Lo que hace el sistema de control de versión es ajustar 
+el sistema de archivos local a la foto de lo que tenías en el pasado. PERO NO TE 
+PREOCUPES, no se ha perdido nada, SOLO viajaste en el tiempo.
 
-        #include <stdio.h>
-        #include <stdlib.h>
+En este momento estás en un estado especial llamado detached HEAD. En este estado 
+puedes jugar con el código y hacer ensayos y luego puedes descartar todo lo que 
+hagas sin dañar lo que ya tenías. Mira que Git te dice qué debes hacer para 
+conservar los experimentos o para descartarlos.
 
-        int main(){
-            printf("La vida es bella\n");
-            return(EXIT_SUCCESS);
-        }
+¿Quieres volver a la foto actual?::
 
-    ¿Quieres volver main.c al último commit? Simplemente escribes::
+    git switch -
 
-        git switch -
+Ahora deberás ver de nuevo en el sistema de archivos a file2.txt
 
-    Ahora main.c se verá así::
+Ejercicio 12: repasa (evaluación formativa)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        #include <stdio.h>
-        #include <stdlib.h>
+En este punto te pediré que descanses un momento. En este 
+ejercicio vas a repasar el material que has trabajo. Te pediré 
+que hagas lo siguiente:
 
-        int main(){
-            printf("La vida es bella\n");
-            printf("El feo es uno\n");
-            return(EXIT_SUCCESS);
-        }
+#. Crea un directorio llamado project2 por fuera de project1.
+#. Crea unos cuantos archivos de texto.
+#. Dile a Git que haga tracking de esos archivos.
+#. Realiza un primer commit.
+#. Sincroniza el repositorio local con el remoto.
+#. Modifica los archivos creados.
+#. Realiza un par de commits más.
+#. Sincroniza los cambios con el repositorio remoto.
 
-    Luego de analizar las dos versiones de main.c decides que vas a conservar la versión del 
-    commit 1f2009f. Para que compares escribe::
+Ejercicio 13: entrega de evaluaciones
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        git log --oneline
+(El framework de pruebas para este ejercicio está tomado de 
+`aquí <https://github.com/remzi-arpacidusseau/ostep-projects>`__)
 
-    El resultado::
+Te voy a proponer un ejercicio que será muy importante para el curso 
+porque será la manera típica como entregarás las evaluaciones.
 
-        2a0afbb (HEAD -> master) add a new print
-        1f2009f Initial version of the project main file
+Para la entrega de las evaluaciones utilizarás GitHub. Para cada evaluación 
+te enviaré un enlace con una invitación para la evaluación. Cuando aceptes la 
+invitación, automáticamente se creará un repositorio para ti con la estructura 
+de directorios y archivos necesarios para comenzar a realizar la evaluación. Ten 
+en cuenta que tu tendrás permisos para editar el nuevo repositorio. Podrás aplicar 
+todo lo que trabajaste en esta guía.
 
-    Ahora::
+Entonces vamos a simular una invitación a una evaluación en la cual tendrás que 
+escribir un programa. En este caso deberás completar el programa wcat.c al cual 
+se le aplicarán automáticamente unos vectores de prueba para verificar si es 
+correcta la implementación.
 
-        git revert HEAD
+Por ahora, los detalles del programa y las pruebas no importan. Lo importante es 
+que puedas practicar el flujo de trabajo usando Git y GitHub.
 
-    El resultado::
+Sigue estos pasos:
 
-        [master 882d93e] Revert "add a new print"
-        1 file changed, 1 deletion(-)
+* Abre un browser e ingresa a tu cuenta de GitHub. ASEGÚRATE POR FAVOR que estás 
+  en tu cuenta.
+* Abre una nueva pestaña e ingresa a `este <https://classroom.github.com/a/sXNRDAEb>`__ sitio.
+* Por último acepta la tarea.
+* Espera un momento y refresca (con F5) el browser.
+* Abre tu nuevo repositorio en otra pestaña.
+* Selecciona el menú Actions y dale click al botón ``Enable Actions on this 
+  repository``. Si no aparece el botón es porque ya están habilitadas las acciones.
+* Observa el archivo wcat.c inicial:
 
-    Y si observas el historial::
-
-        git log --oneline
-
-    Verás::
-
-        882d93e (HEAD -> master) Revert "add a new print"
-        2a0afbb add a new print
-        1f2009f Initial version of the project main file
-
-    Si abres el archivo main.c::
-
-        #include <stdio.h>
-        #include <stdlib.h>
-
-        int main(){
-            printf("La vida es bella\n");
-            return(EXIT_SUCCESS);
-        }
-
-    Entonces el comando::
-
-        git revert HEAD
-
-    Hace un ``revert`` del commit ``2a0afbb`` creando un nuevo commit, el ``882d93e``, con el 
-    estado del proyecto en el commit ``1f2009f``.    
-
-    Ejercicio 13: GitHub
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    Ahora te pediré que compartas el repositorio local ``project1`` con el mundo. 
-    Para hacerlo necesitarás usar GitHub. 
-
-    Ejecuta el comando
-
-    .. code-block::
-        
-        gh auth status
-
-    Este comando te debe mostrar que te encuentras autenticado en tu cuenta de 
-    Github.
-
-    Ejercicio 14: comparte tu trabajo usando GitHub
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    Ahora ejecuta el siguiente comando::
-
-        gh repo create project1 --public --source=. --push --remote=origin
-
-    Si todo sale bien verás esto::
-
-        Created repository juanferfranco/project1 on GitHub
-        Added remote https://github.com/juanferfranco/project1.git
-        Pushed commits to https://github.com/juanferfranco/project1.git
-        project1 git:(master)
-
-    ¿Qué estás haciendo? ``gh repo create project1``  te permiten crear el repositorio 
-    remoto project1 en GitHub. ``--public`` hace que el repositorio sea público y lo puedas compartir 
-    con cualquier persona. ``--source=.`` especifica en dónde está el 
-    repositorio local que enviarás a Internet. ``--push`` permite enviar todos los commits locales al repositorio 
-    remoto. Finalmente, ``--remote=origin`` permite asignarle un nombre corto 
-    al servidor remoto, en este caso ``origin``.
-
-    Ingresa al sitio: https://github.com/TU_USUARIO/project1 para observar tu repositorio 
-    en GitHub. NO OLVIDES modificar la cadena ``TU_USUARIO`` con tu nombre de usuario 
-    en GitHub.
-
-    Ejercicio 15: actualiza tu repositorio remoto
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    Ahora modifica de nuevo el archivo main.c así::
-
-        #include <stdio.h>
-        #include <stdlib.h>
-
-        int main(){
-            printf("La vida es bella!!!\n");
-            return(EXIT_SUCCESS);
-        }
-
-    Realiza un commit en el respositorio local::
-
-        git commit -am "add exclamation marks"
-
-
-    ¿Notaste algo? En un solo paso pasaste main.c a la zona de fotos (STAGE) y 
-    realizaste el commit.
-
-    Verifica el estado del repositorio::
-
-        On branch master
-        Your branch is ahead of 'origin/master' by 1 commit.
-        (use "git push" to publish your local commits)
-
-        nothing to commit, working tree clean
-
-    Observa el mensaje ``Your branch is ahead of 'origin/master' by 1 commit.`` 
-    Git detecta que tu repositorio local está adelantado un commit con respecto 
-    al repositorio remoto. Observa que el propio Git te dice cómo actualizar 
-    el repositorio remoto::
-
-        git push 
-
-    Vuelve el verificar el estado::
-
-        git status
-
-    Y el resultado será::
-
-        On branch master
-        Your branch is up to date with 'origin/master'.
-
-        nothing to commit, working tree clean
-
-
-    Y finalmente vuelve a mirar el historial del proyecto::
-
-        git log 
-
-    El resultado será::
-
-        commit 56cef2b7d4a8f6fd03dcf302890d4e110cccb861 (HEAD -> master, origin/master)
-        Author: yo <yo@yolandia.com>
-        Date:   Wed Jul 20 16:02:12 2022 -0500
-
-            add exclamation marks
-
-        commit 882d93e233a7634ae03566c267f5cb9e55a42f45
-        Author: yo <yo@yolandia.com>
-        Date:   Wed Jul 20 15:22:00 2022 -0500
-
-            Revert "add a new print"
-            
-            This reverts commit 2a0afbb7efa9c58a364143edf6c5cf76dccfab0b.
-
-        commit 2a0afbb7efa9c58a364143edf6c5cf76dccfab0b
-        Author: yo <yo@yolandia.com>
-        Date:   Wed Jul 20 11:02:03 2022 -0500
-
-            add a new print
-
-        commit 1f2009fabfc4895ee6b063c23c6f5c7ea7175209
-        Author: yo <yo@yolandia.com>
-        Date:   Wed Jul 20 10:52:46 2022 -0500
-
-            Initial version of the project main file
-
-    Mira el texto ``(HEAD -> master, origin/master)``. Indica que tu repositorio 
-    local y remoto apuntan al mismo commit.
-
-    Ejercicio 16: repasa (evaluación formativa)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    En este punto te pediré que descanses un momento. En este 
-    ejercicio vas a repasar el material que has trabajo. Te pediré 
-    que hagas lo siguiente:
-
-    #. Crea un directorio llamado project2. Ten presente cambiarte 
-    primero al directorio padre de project1. NO DEBES tener un repositorio 
-    en otro repositorio.
-    #. Inicia un repositorio allí.
-    #. Crea unos cuantos archivos de texto.
-    #. Dile a Git que haga tracking de esos archivos.
-    #. Realiza un primer commit.
-    #. Crea un repositorio remoto en GitHub que esté sincronizado con 
-    tu repositorio local. No olvides comprobar su creación.
-    #. Modifica los archivos creados.
-    #. Realiza un par de commits más.
-    #. Sincroniza los cambios con el repositorio remoto.
-
-    Ejercicio 17: clona un repositorio de GitHub
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    Ahora vas a descargar un repositorio de GitHub. Cámbiate al directorio padre 
-    de project2. Escribe el comando::
-
-        git clone https://github.com/juanferfrancoudea/demo4.git
-
-    Cámbiate al directorio demo4.
-
-    #. Verifica el estado del repositorio (status).
-    #. Verifica el historial (log).
-    #. Realiza un cambio a f1.txt.
-    #. Realiza un commit al repositorio local.
-
-    Ahora trata de actualizar el repositorio remoto con::
-
-        git push
-        
-    Deberías obtener un mensaje similar a este::
-
-        remote: Permission to juanferfrancoudea/demo4.git denied to juanferfranco.
-        fatal: unable to access 'https://github.com/juanferfrancoudea/demo4.git/': The requested URL returned error: 403
-
-    ¿Qué está pasando? Lo que ocurre es que el repositorio que clonaste NO ES DE TU PROPIEDAD y por 
-    tanto NO TIENES permiso de actualizarlo. Para poderlo modificar, el dueño del repositorio te 
-    debe dar acceso.
-
-    .. note::
-
-        Más de una persona puede trabajar en un repositorio siguiendo una serie de pasos 
-        y consideraciones. Para aprender más al respecto tendrías que leer sobre Git Workflows. 
-        De todas maneras no te preocupes, por ahora hay otras cosas que debes entender y practicar 
-        antes de abordar el TRABAJO EN EQUIPO usando Git. PERO OJO, TE RUEGO que más adelante 
-        lo aprendas porque será tu día a día cuando estés trabajando en la industria.
-
-
-    Ejercicio 18: repasa (evaluación formativa)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    Ha llegado la hora de volver a repasar TODOS los comandos que has aprendido. 
-    Actualiza tu lista de comandos y escribe al frente de cada uno, con tus palabras,  
-    qué hace. En este punto ya deberías tener más claridades. Por tanto, revisa de nuevo 
-    la redacción de los comandos que ya tenías.
-
-    Ejercicio 19: entrega de evaluaciones usando GitHub
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    (El framework de pruebas para este ejercicio está tomado de 
-    `aquí <https://github.com/remzi-arpacidusseau/ostep-projects>`__)
-
-    Te voy a proponer un ejercicio que será muy importante para el curso 
-    porque será la manera típica como entregarás las evaluaciones.
-
-    Para la entrega de las evaluaciones utilizarás GitHub. Para cada evaluación 
-    te enviaré un enlace con una invitación para la evaluación. Cuando aceptes la 
-    invitación, automáticamente se creará un repositorio para ti con la estructura 
-    de directorios y archivos necesarios para comenzar a realizar la evaluación. Ten 
-    en cuenta que tu tendrás permisos para editar el nuevo repositorio. Podrás aplicar 
-    todo lo que trabajaste en esta guía.
-
-    Entonces vamos a simular una invitación a una evaluación en la cual tendrás que 
-    escribir un programa. En este caso deberás completar el programa wcat.c al cual 
-    se le aplicarán automáticamente unos vectores de prueba para verificar si es 
-    correcta la implementación.
-
-    Por ahora, los detalles del programa y las pruebas no importan. Lo importante es 
-    que puedas practicar el flujo de trabajo usando Git y GitHub.
-
-    Sigue estos pasos:
-
-    * Abre un browser e ingresa a tu cuenta de GitHub. ASEGÚRATE POR FAVOR que estás 
-    en tu cuenta.
-    * Abre una nueva pestaña e ingresa a `este <https://classroom.github.com/a/sXNRDAEb>`__ sitio.
-    * Busca y selecciona tu nombre y ID. Esta operación ENLAZARÁ tu cuenta de GitHub con tu nombre 
-    y ID.
-    * Por último acepta la tarea.
-    * Espera un momento y refresca (con F5) el browser.
-    * Abre tu nuevo repositorio en otra pestaña.
-    * Selecciona el menú Actions y dale click al botón ``Enable Actions on this 
-    repository``. Si no aparece el botón es porque ya están habilitadas las acciones.
-    * CLONA el repositorio a tu computador. En tu repositorio despliega el botón ``Code``, selecciona 
-    la pestaña http y copia la URL de tu repositorio. Usa esta URL con el comando git clone. Recuerda 
-    NO CLONAR el respositorio dentro de otro repositorio LOCAL.
-    * Ingresa al directorio ``dirTest/project``.
-    * Lee el archivo ``README.md``. Lo puedes hacer en tu computador y en Internet. Cuando 
-    lo leas en tu computador verás que está escrito en un lenguaje llamado 
-    `Markdown <https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>`__. 
-    Ve mirando este lenguaje porque lo usarás para escribir la documentación de las evaluaciones. PERO 
-    no te preocupes es muy fácil. Además, en un rato te propondré un ejercicio para que practiques. Por 
-    otro lado, cuando leas el archivo README.md en GitHub notarás que este lo renderiza para que se 
-    vea bonito.
-    * Observa el archivo wcat.c inicial:
-
-    .. code-block:: c 
-
-            #include <stdio.h>
-            #include <stdlib.h>
-
-
-            int main(int argc, char *argv[]){
-                exit(EXIT_SUCCESS);
-            }
-
-    * Modifica wcat.c con este código:
-
-    .. code-block:: c 
+.. code-block:: c 
 
         #include <stdio.h>
         #include <stdlib.h>
 
 
         int main(int argc, char *argv[]){
-
-            //printf("arc: %d\n",argc);
-
-            if(argc <= 1){
-                exit(EXIT_SUCCESS);
-            }
-
-            FILE *inFile = NULL;
-            char buffer[256];
-            char *status =  NULL;
-
-
-            for(int i = 1 ; i < argc; i++){
-
-                inFile = fopen(argv[i],"r");
-                if (inFile == NULL){
-                    printf("wcat: cannot open file");
-                    printf("\n");
-                    exit(EXIT_FAILURE);
-                }
-                do{
-                    status = fgets(buffer, sizeof(buffer),inFile);
-                    if(status != NULL){
-                        printf("%s",buffer);
-                        //printf("hola mundo cruel");
-                    }
-                }while (status !=NULL);
-
-                fclose(inFile);
-            }
-            
             exit(EXIT_SUCCESS);
         }
 
-    * Salva wcat.c y realiza un commit.
-    * Luego sincroniza con el repositorio remoto (push). Esto hará que se disparen 
-    las pruebas (acciones) en GitHub.
-    * Ingresa de nuevo al repositorio en GitHub. Ingresa al menú Actions. 
-    Espera un minuto y refresca la página. Si todo está bien verás 
-    una marca verde al lado izquierdo del commit que enviaste.
-    * Dale click al mensaje al lado de la marca verde. Luego dale click a 
-    Autograding para observar todos los pasos que se realizaron para verificar 
-    tu trabajo.
+* Modifica wcat.c con este código:
 
-    Ejercicio 20: documentación de las evaluaciones
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: c 
 
-    Todas las entregas que realices deben estar acompañadas de una documentación 
-    que explique los aspectos técnicos (y otros que te pediré) de la solución que 
-    propongas a los problemas que te plantearé para las evaluaciones. Lo interesante 
-    de GitHub es que te permite almacenar repositorios no solo para el código, sino 
-    también para la documentación. En el ejercicio anterior te hablé del lenguaje con el 
-    cual se escribió el archivo README.md. Se trata del lenguaje Markdown que será 
-    el mismo que utilizarás para escribir la documentación de tus entregas. Como 
-    te comenté antes, no tienes de qué preocuparte, realmente es muy fácil.
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    #. Crea un directorio llamado project4. Ten presente cambiarte 
-    primero al directorio padre donde están almacenados los projects anteriores.
-    #. Inicia un repositorio allí.
-    #. Crea unos cuantos archivos.
-    #. Dile a Git que haga tracking de esos archivos.
-    #. Realiza un primer commit.
-    #. Crea un repositorio remoto en GitHub que esté sincronizado con 
-    tu repositorio local. No olvides comprobar su creación.
 
-    .. note:: RECUERDA cómo crear el repositorio
+    int main(int argc, char *argv[]){
 
-        .. code-block:: bash 
+        //printf("arc: %d\n",argc);
 
-            gh repo create NOMBRE --public --source=. --push --remote=origin
+        if(argc <= 1){
+            exit(EXIT_SUCCESS);
+        }
 
-    #. Modifica los archivos creados.
-    #. Realiza un par de commits más.
-    #. Sincroniza los cambios con el repositorio remoto.
+        FILE *inFile = NULL;
+        char buffer[256];
+        char *status =  NULL;
 
-    Hasta aquí nada nuevo, ¿Verdad? 
 
-    #. Ingresa a GitHub y selecciona la opción Create New File en el botón ``Add file``.
-    #. Le vas a poner de nombre ``README.md``.
-    #. Verás que se abre un editor en el cual podrás añadir tu documentación. Además 
-    podrás formatearlo en lenguaje Markdown.
-    #. En `este <https://www.markdownguide.org/cheat-sheet/>`__ sitio puedes encontrar una 
-    cheat sheet del lenguaje.
-    #. Cambia el título del documento por ``DOCUMENTACIÓN DEL PROJECT 4``.
-    #. Indica que ese texto tendrá formato ``h1`` colocando el símbolo ``#`` seguido de un espacio antes del título.
-    #. Puedes hacer click en el menú ``preview`` para que puedas ver cómo te va quedando el 
-    documento.
-    #. Ahora te pediré que insertes una imagen, un hipervínculo, un título de tipo h2 y otro tipo h3, 
-    escribas unas cuantas líneas de texto y coloques una palabra en negrita, itálica y resaltada,
-    crea una lista ordenada y una lista no ordenada.
-    #. A medida que experimentas ve observando en preview cómo te queda.
-    #. Una vez termines, dale click al botón ``Commit changes``.
-    #. Regresa al inicio del repositorio para que veas tu obra de arte.
-    #. En este ejercicio creaste un archivo en GitHub que no tienes en tu computador local. Escribe 
-    en tu repositorio local los comando::
+        for(int i = 1 ; i < argc; i++){
+
+            inFile = fopen(argv[i],"r");
+            if (inFile == NULL){
+                printf("wcat: cannot open file");
+                printf("\n");
+                exit(EXIT_FAILURE);
+            }
+            do{
+                status = fgets(buffer, sizeof(buffer),inFile);
+                if(status != NULL){
+                    printf("%s",buffer);
+                    //printf("hola mundo cruel");
+                }
+            }while (status !=NULL);
+
+            fclose(inFile);
+        }
         
-        git fetch
-        git status
-        git pull
-        git status
+        exit(EXIT_SUCCESS);
+    }
 
-    ¿Qué puedes ver en el primer status y luego en el segundo? ¿Alguna diferencia?
+* Salva wcat.c y realiza un commit.
+* Luego sincroniza con el repositorio remoto. Esto hará que se disparen 
+  las pruebas (acciones) en GitHub.
+* Ingresa de nuevo al repositorio en GitHub. Ingresa al menú Actions. 
+  Espera un minuto y refresca la página. Si todo está bien verás 
+  una marca verde al lado izquierdo del commit que enviaste.
+* Dale click al mensaje al lado de la marca verde. Luego dale click a 
+  Autograding para observar todos los pasos que se realizaron para verificar 
+  tu trabajo.
 
-    .. note:: ESCRIBIR documentos en GitHub
+Ejercicio 14: documentación de las evaluaciones
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        En `este <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>`__ 
-        enlace puedes encontrar más información.
+La documentación de las evaluaciones la realizarás en el archivo 
+README.md. Vas a escribir la documentación en un lenguaje llamado Markdown.
+
+Tu repositorio actualmente debe tener un archivo README.md, ¿Verdad?
+
+Abre README.md y realiza las siguientes modificaciones:
+
+#. Cambia el título del documento por ``DOCUMENTACIÓN DEL LA EVALUACIÓN``.
+#. Indica que ese texto tendrá formato ``h1``.
+#. Ahora te pediré que insertes una imagen, un hipervínculo, un título de tipo h2 y otro tipo h3, 
+   escribe unas cuantas líneas de texto y coloques una palabra en negrita, 
+   itálica y resaltada, crea una lista ordenada y una lista no ordenada.
+#. Una vez termines sincroniza el repositorio local con el remoto.
+#. Verifica el resultado en Github. No olvides presionar F5.
+
+.. note:: ESCRIBIR documentos en GitHub
+
+    En `este <https://www.markdownguide.org/cheat-sheet/>`__ sitio puedes encontrar una 
+    cheat sheet del lenguaje.
+
+    En `este <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>`__ 
+    enlace puedes encontrar más información.
+

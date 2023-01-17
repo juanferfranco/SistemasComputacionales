@@ -13,7 +13,7 @@ si quieres instalarla en tu computador debes hacer lo siguiente:
 
   .. code-block:: bash 
 
-      java --version
+      java -version
 
   Si obtienes una salida informando la versión del JRE o JDK de java ya estás listo.
 
