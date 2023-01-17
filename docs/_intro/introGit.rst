@@ -564,7 +564,12 @@ Sigue estos pasos:
             exit(EXIT_SUCCESS);
         }
 
-* Modifica wcat.c con este código:
+* Regresa al repositorio y espera que aparezca una marca roja indicando que el código 
+  actual no pasa los vectores de prueba.
+* Dale click a la marca roja y luego click en Details.
+* Despliega ``Run education/autograding@v1``. Podrás ver allí que algunos vectores de 
+  prueba tienen marcas rojas (falló la prueba) y otros marcas verdes (pasó la prueba).
+* Ahora vamos a simular que arreglaremos el código. Modifica wcat.c con este código:
 
 .. code-block:: c 
 
@@ -610,12 +615,10 @@ Sigue estos pasos:
 * Salva wcat.c y realiza un commit.
 * Luego sincroniza con el repositorio remoto. Esto hará que se disparen 
   las pruebas (acciones) en GitHub.
-* Ingresa de nuevo al repositorio en GitHub. Ingresa al menú Actions. 
-  Espera un minuto y refresca la página. Si todo está bien verás 
-  una marca verde al lado izquierdo del commit que enviaste.
-* Dale click al mensaje al lado de la marca verde. Luego dale click a 
-  Autograding para observar todos los pasos que se realizaron para verificar 
-  tu trabajo.
+* Ingresa de nuevo al repositorio en GitHub. Espera un minuto y refresca la página. 
+  Si todo está bien verás una marca verde al lado izquierdo del commit que enviaste.
+* Despliega de nuevo ``Run education/autograding@v1`` para observar cómo se ven 
+  los vectores cuando todo funciona bien.
 
 Ejercicio 14: documentación de las evaluaciones
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
