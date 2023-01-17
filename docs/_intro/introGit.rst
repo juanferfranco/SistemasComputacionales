@@ -646,3 +646,59 @@ Abre README.md y realiza las siguientes modificaciones:
     En `este <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>`__ 
     enlace puedes encontrar más información.
 
+..
+    Evaluación 1
+    -----------------
+
+    Enunciado
+    ^^^^^^^^^^^^
+    (El framework de pruebas para esta evaluación está tomado de 
+    `aquí <https://github.com/remzi-arpacidusseau/ostep-projects>`__)
+
+    #. Ingresa y acepta la evaluación en 
+    `este <https://classroom.github.com/a/2ZfA7C8p>`__ enlace.
+    #. Crear el archivo main.c en el ``directorio dirTest/project`` 
+    con el siguiente código:
+
+        .. code-block:: c
+        
+            #include <stdio.h>
+            #include <stdlib.h>
+
+            int main(int argc, char *argv[]){
+
+                FILE *fin = fopen(argv[1],"r");
+
+                if(fin == NULL){
+                    perror("fopen-fin fails: ");
+                    exit(EXIT_FAILURE);
+                }
+
+                char buffer[64];
+                char *status = NULL;
+                do{
+                    status = fgets(buffer, sizeof(buffer),fin);
+                    if(status != NULL){
+                        printf("%s",buffer);
+                    }
+                }while(status !=NULL);
+                fclose(fin);
+                exit(EXIT_SUCCESS);
+            }
+
+    #. Envía los cambios al repositorio con tu evaluación.
+    #. Verifica que la evaluación se calificó correctamente.
+    #. Edita el archivo README.md SOLO con lo siguiente y en 
+    el mismo orden.
+
+        * Adiciona un título de tipo H1 que diga: EVALUACIÓN CONTROL DE VERSIÓN
+        * Coloca tu nombre y ID
+        * Adiciona una foto tuya.
+        * Adiciona un hipervínculo a algún trabajo tuyo que esté publicado 
+          en Internet.
+        * Crea una lista ordenada mostrando cómo sería el comando en cada caso:
+        
+            * ¿Cómo se adiciona un archivo nuevo al repositorio?
+            * Una vez modificado un archivo ¿Cómo se adiciona al stage?
+            * ¿Cómo se realiza un commit?
+            * ¿Cómo se sincroniza un repositorio local con un repositorio remoto?
