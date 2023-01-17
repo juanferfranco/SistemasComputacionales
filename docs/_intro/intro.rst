@@ -73,10 +73,11 @@ Ver el proyecto docente.
 Evaluación
 -----------
 
-* Evaluación unidad 1: 25%. 
-* Evaluación unidad 2: 25%.
-* Evaluación unidad 3: 25%.
-* Evaluación unidad 4: 25%.
+* Control de versión: 5%. 
+* unidad 1: 25%. 
+* unidad 2: 25%.
+* unidad 3: 25%.
+* unidad 4: 20%.
 
 Dedicación
 -----------
