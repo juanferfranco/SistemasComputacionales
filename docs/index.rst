@@ -9,15 +9,13 @@ Créditos y horas totales del curso: 2 créditos - 96 horas totales
 
       
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    :caption: SECCIONES
 
    ¿De qué se trata este curso? <_intro/intro>
-   ¿Cómo aprender a aprender? <_intro/learning>
    ¿Qué herramientas necesitas? <_intro/tools>
    Introducción al control de versión <_intro/introGit>
 ..
-   Trabajo en equipo <_intro/gitWorkflow>
    Evaluación 1 <_intro/evalVersionControl>
    Unidad 1: Arquitectura del computador <_unidad1/unidad1>
    Unidad 2: De lenguaje de alto nivel a código ejecutable <_unidad2/unidad2>

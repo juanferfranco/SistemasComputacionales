@@ -25,9 +25,10 @@ abordar aquellos conceptos que permitirán sacar provecho al sistemas de cómput
 Propósito del curso
 ---------------------
 
-El entendimiento de los fundamentos y las abstracciones de los sistemas computacionales desde la perspectiva del 
-programador con el fin de construir aplicaciones que usen apropiadamente y saquen el mayor provecho de 
-la plataforma de cómputo en la cual se ejecutan.
+El entendimiento de los fundamentos y las abstracciones de los sistemas computacionales 
+desde la perspectiva del programador con el fin de construir aplicaciones que usen 
+apropiadamente y saquen el mayor provecho de la plataforma de cómputo en la cual se 
+ejecutan.
 
 Competencia
 ------------
@@ -35,18 +36,24 @@ Competencia
 Construye aplicaciones que posibilitan la interacción entre personas, mediada por tecnologías digitales, 
 utilizando lenguajes y metodologías apropiadas según el contexto.
 
-Criterios de competencia
----------------------------
+Resultado de aprendizaje del curso 
+------------------------------------
 
 Aplico los conceptos necesarios para el correcto diseño, implementación, funcionamiento y diagnóstico del 
 software en la producción de sistemas de entretenimiento digital utilizando los procedimientos y herramientas 
-adecuadas según el contexto.
+adecuadas según el contexto. ``NIVEL RESOLUTIVO``.
 
 Carta Descriptiva
 -------------------
 
 En `este <https://drive.google.com/file/d/1PL4qBnIoSF9ouQGUoocduUrqU-KSoOIo/view?usp=sharing>`__ enlace puedes 
 consultar la carta descriptiva del curso.
+
+Proyecto docente
+------------------
+
+`Aquí <https://github.com/juanferfranco/SistemasComputacionales/blob/main/docs/_static/FormatoPlaneacionComputacionales2023-10.xlsx>`__ 
+encontrarás el proyecto docente con la planeación del curso.
 
 Estructura y metodología del curso
 -----------------------------------
@@ -80,25 +87,28 @@ Dedicación
 -----------
 
 Este curso es de 2 créditos y se desarrolla en 16 semanas. Cada semana tendrás
-3 horas 20 minutos de trabajo presencial y 2 hora 40 minutos de trabajo autónomo.
+3 horas 20 minutos de trabajo presencial y 2 hora de trabajo autónomo.
 
 Bibliografía
 -------------
 
-Todo el material que necesitarás estará en este sitio web; sin embargo, te 
-recomiendo mucho estos textos:
+Todo el material que necesitarás estará en este sitio web.
 
-* `The Elements of Computing Systems: Building a Modern
-  Computer from First Principles <https://mitpress.mit.edu/books/elements-computing-systems-second-edition>`__. 
-  Este libro es un recorrido por el funcionamiento de un sistema de cómputo desde las compuertas que componen 
-  el computador hasta un videojuegos conocido como tetris. Este texto soporta un curso muy popular llamado 
-  from `nand to tetris <https://www.nand2tetris.org/>`__.
-* `Computer Systems: A Programmer's Perspective <https://www.pearson.com/us/higher-education/program/Bryant-Computer-Systems-A-Programmer-s-Perspective-3rd-Edition/PGM2476825.html>`__. Una 
-  verdadera joya que aborda la arquitectura y organización de los sistema de cómputo desde la perspectiva del programador.
-* `Operating Systems: Three Easy Pieces <https://pages.cs.wisc.edu/~remzi/OSTEP/>`__. Este excelente libro gratuito de 
-  sistemas operativos hace un recorrido por las abstracciones más importantes que este software ofrece.
-* `Dive into Systems <https://diveintosystems.org/>`__. Este texto gratuito captura la esencia de nuestro curso. El 
-  material que está allí te permitirá complementar y profundizar todo lo que vas a estudiar.
+.. warning:: SI QUIERES APRENDER MÁS
+  
+  Te recomiendo mucho estos textos, son unas verdaderas joyas:
+
+  * `The Elements of Computing Systems: Building a Modern
+    Computer from First Principles <https://mitpress.mit.edu/books/elements-computing-systems-second-edition>`__. 
+    Este libro es un recorrido por el funcionamiento de un sistema de cómputo desde las compuertas que componen 
+    el computador hasta un videojuegos conocido como tetris. Este texto soporta un curso muy popular llamado 
+    from `nand to tetris <https://www.nand2tetris.org/>`__.
+  * `Computer Systems: A Programmer's Perspective <https://www.pearson.com/us/higher-education/program/Bryant-Computer-Systems-A-Programmer-s-Perspective-3rd-Edition/PGM2476825.html>`__. Una 
+    verdadera joya que aborda la arquitectura y organización de los sistema de cómputo desde la perspectiva del programador.
+  * `Operating Systems: Three Easy Pieces <https://pages.cs.wisc.edu/~remzi/OSTEP/>`__. Este excelente libro gratuito de 
+    sistemas operativos hace un recorrido por las abstracciones más importantes que este software ofrece.
+  * `Dive into Systems <https://diveintosystems.org/>`__. Este texto gratuito captura la esencia de nuestro curso. El 
+    material que está allí te permitirá complementar y profundizar todo lo que vas a estudiar.
 
 Evidencias de evaluación
 -------------------------
@@ -135,7 +145,3 @@ En GitHub mantendrás todo tu código bajo control de versión.
 
 En Notion llevarás tu bitácora electrónica (opcional)
 
-Control de versión
---------------------
-
-* Crea una cuenta en GitHub.
