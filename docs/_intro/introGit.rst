@@ -21,7 +21,7 @@ Enunciado
 #. Ingresa y acepta la evaluación en 
   `este <https://classroom.github.com/a/2ZfA7C8p>`__ enlace.
 #. Crear el archivo main.c en el ``directorio dirTest/project`` 
-con el siguiente código:
+   con el siguiente código:
 
     .. code-block:: c
     
@@ -52,7 +52,7 @@ con el siguiente código:
 #. Envía los cambios al repositorio con tu evaluación.
 #. Verifica que la evaluación se calificó correctamente.
 #. Edita el archivo README.md SOLO con lo siguiente y en 
-el mismo orden.
+   el mismo orden.
 
     * Adiciona un título de tipo H1 que diga: EVALUACIÓN CONTROL DE VERSIÓN
     * Coloca tu nombre y ID
@@ -65,8 +65,6 @@ el mismo orden.
         * Una vez modificado un archivo ¿Cómo se adiciona al stage?
         * ¿Cómo se realiza un commit?
         * ¿Cómo se sincroniza un repositorio local con un repositorio remoto?
-
-
 
 
 Trayecto de actividades
