@@ -65,6 +65,12 @@ El curso está divido en 4 unidades:
 #. Unidad 3: Programación orientada a objetos.
 #. Unidad 4: Sistema operativo.
 
+La metodología del curso es de aula invertida. En este sitio web está todo el material 
+necesario para que puedas preparar la evaluación de cada unidad. Debes utilizar 
+el tiempo autónomo para preparar el material y resolver los ejercicios y retos en clase 
+con ayuda de tus compañeros de equipo y la asesoría del profesor.
+
+
 Cronograma
 ------------
 
