@@ -19,7 +19,7 @@ Enunciado
 `aquí <https://github.com/remzi-arpacidusseau/ostep-projects>`__)
 
 #. Ingresa y acepta la evaluación en 
-  `este <https://classroom.github.com/a/2ZfA7C8p>`__ enlace.
+   `este <https://classroom.github.com/a/2ZfA7C8p>`__ enlace.
 #. Crear el archivo main.c en el ``directorio dirTest/project`` 
    con el siguiente código:
 
