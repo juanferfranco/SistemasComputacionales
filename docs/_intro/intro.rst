@@ -79,6 +79,24 @@ Evaluación
 * unidad 3: 25%.
 * unidad 4: 20%.
 
+¿Cuándo se consideran entregada una evaluación?
+--------------------------------------------------
+
+Cuando cumplas TODAS las condiciones siguientes:
+
+* Incluye toda la documentación solicitada.
+* Pasa los vectores de prueba, cuando aplique.
+* Incluye los enlaces a videos públicos en youtube donde se muestre 
+  la evaluación funcionado.
+* El aval de unidad entregada por parte del profesor.
+
+.. warning:: IMPORTANTE
+
+  No hay entregas parciales. Si tu trabajo está 
+  incompleto el docente simplemente no te dará el aval de entregado.
+  Recuerda que una vez tengas el aval la nota en el sistema 
+  de la unidad será 5.
+
 Dedicación
 -----------
 
