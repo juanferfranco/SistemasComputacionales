@@ -4,23 +4,52 @@ Unidad 1. Arquitectura del computador
 Introducción
 --------------
 
-En esta unidad vas a aprender los bloques de construcción básicos del hardware de un sistema de cómputo 
-moderno, cómo esos bloques pueden combinarse para construir computadores y cómo hacen para ejecutar 
-programas.
+En esta unidad vas a aprender los bloques de construcción básicos del hardware de un 
+sistema de cómputo moderno, cómo esos bloques pueden combinarse para construir 
+computadores y cómo hacen para ejecutar programas.
 
 Propósito de aprendizaje
 ****************************
 
-Comprender cómo funciona el hardware de un computador moderno desde una perspectiva sistémica, es decir, 
-estudiando las partes que lo componen y cómo se conectan para conseguir funciones más complejas.
+Comprender cómo funciona el hardware de un computador moderno desde una 
+perspectiva sistémica, es decir, estudiando las partes que lo componen y cómo 
+se conectan para conseguir funciones más complejas.
 
-Te acercarás al lenguaje de programación ensamblador y verás la relación de este con el lenguaje C.
+Te acercarás al lenguaje de programación ensamblador y verás la relación de este 
+con el lenguaje C.
 
 Temas
 ********
 
 * Organización básica de un computador digital moderno.
 * Lenguaje de máquina-lenguaje ensamblador-lenguaje C
+
+
+Evaluación
+---------------
+
+Enunciado
+************
+
+Debes hacer una aplicación en el lenguaje ensamblador estudiado en esta unidad.
+La aplicación deberá funcionar en un loop infinito. La aplicación ``lee el teclado`` y pinta 
+en la pantalla un cuadrado si presionas la letra c. Si presionas la letra b debe borrar la 
+pantalla.
+
+Consideraciones
+******************
+
+.. warning:: LA CREACIÓN DE EQUIPOS
+
+    Habla con el profesor para crear el equipo de trabajo.
+
+* `Aquí <https://classroom.github.com/a/OFOi51-c>`__ está el enlace de la evaluación.
+* Debes crear un equipo de trabajo al cual se unirán todos los miembros. El equipo 
+  solo lo crea un integrante y los demás miembros solo deben unirse.
+* Al repositorio solo debes subir dos archivos. El archivo README.md y un archivo program.asm con 
+  la solución. Ten presente que puedes hacer pruebas en windows utilizando las herramientas gráficas.
+* En la documentación del repositorio debes explicar cómo resolviste el problema.
+* Una vez termines debes validar la solución con el profesor.
 
 Trayecto de actividades
 ------------------------
@@ -35,12 +64,14 @@ Ejercicios
 Ejercicio 1: Demo 
 ^^^^^^^^^^^^^^^^^^^^
 
-Verifica si en tu sistema tienes la aplicación Digital (escribe Digital en el lanzador de 
-aplicaciones). Si no la tienes la puedes descargar `aquí <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/Digital.zip>`__
+Lo primero que harás es utilizar un simulador en el cual te he construido 
+un computador. Lo puedes descargar `aquí <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/Digital.zip>`__. 
+En los compu de la U está instalada la máquina virtual de java. Es posible 
+que en tu computador personal no la tengas. En ese caso ve a la sección ¿Qué 
+herramientas necesitas?
 
-Si tuviste que descargar la aplicación, la puedes descomprimir en el directorio ``apps``. Luego 
-abre el directorio en la terminal (click derecho, open in terminal). Ejecuta el archivo 
-install.sh. Abre la aplicación.
+Una vez descargues el archivo .zip, lo debes descomprimir. Busca el archivo 
+Digital.exe y ejecútalo. 
 
 Ve a la opción Edit/Settings/Advanced y en Java library adiciona 
 esta biblioteca que está en ``Digital/custom/digitaln2t-1.0-SNAPSHOT.jar``.
@@ -186,7 +217,7 @@ Dirección Código ensamblador
 ========= =================== 
 
 Al lenguaje anterior se le conoce como lenguaje ensamblador y tiene una correspondencia uno a uno 
-con el lenguaje de máquina. AL proceso de convertir el programa de lenguaje ensamblador a lenguaje 
+con el lenguaje de máquina. Al proceso de convertir el programa de lenguaje ensamblador a lenguaje 
 de máquina se le conoce como ``ENSAMBLADO``.
 
 ¿Ahora si es más claro qué hace el programa? Puede que no. El lenguaje ensamblador es más 
@@ -782,20 +813,10 @@ correcta, es decir, cumpliste todas las reglas del lenguaje y estás usando
 instrucciones válidas. Luego lo vas a simular para verificar que es correcto 
 desde el punto de vista ``semántico``. De nuevo, necesitarás más herramientas:
 
-* Abre el directorio App o app del usuario pop-os.
-* Verifica si tienes la carpeta nand2tetris. Si no la tienes, la puedes descargar de 
-  `este <https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ>`__ 
-  enlace.
-* Descomprime el archivo descargado en la carpeta app o App.
-* Abre el directorio tools en la terminal.
-* Ejecuta el comando::
-
-    sudo chmod +x CPUEmulator.sh
-
-* Abre el simulador:: 
-
-    ./CPUEmulator.sh
-
+* Descarga `este <https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ>`__ 
+  archivo.
+* Descomprime el archivo descargado.
+* Abre el directorio tools y ejecuta el archivo CPUEmulator.bat. 
 * Amplia el tamaño de la ventana del simulador en la parte inferior para que puedas ver el campo
   de texto donde aparecerán los mensajes de error.
 * Carga en la memoria ROM el archivo .asm. Si la sintaxis es correcta puedes comenzar 
@@ -817,23 +838,12 @@ desde el punto de vista ``semántico``. De nuevo, necesitarás más herramientas
     Puedes aprender más sobre esta y otras herramientas en 
     `este <https://www.nand2tetris.org/software>`__ enlace.
     
-Por último te voy a pedir que pruebes otra herramienta. Se llama el Assembler, la puedes 
-encontrar también en el directorio tools; sin embargo, antes de ejecutarla y solo la 
-primera vez que la abras escribe en la terminal (debes abrir la carpeta tools en la terminal)::
-
-  sudo chmod +x Assembler.sh
-
-El paso anterior es necesario para darles permisos de ejecución al script Assembler.sh. Es 
-una operación típica en Linux. 
-
-Ahora si la lanzas::
-
-  ./Assembler.sh
+Por último te voy a pedir que pruebes otra herramienta. Se llama el Assembler.bat.
 
 Carga el archivo .asm y dale click al botón Fast Translation. Podrás ver el código 
 en lenguaje de máquina.
 
-.. tip:: ESTA TRADUCCIÓN LA REALIZAMOS JUNTOS EN CLASE
+.. tip:: Observa el código en comentarios (//) y su traducción
 
       .. code-block::
 
@@ -883,7 +893,7 @@ Ejercicio 16: retrieval practice
 Vas a repetir los pasos del ejercicio anterior, pero cambiando de programa. Esta vez con el 
 ejemplo inicial de la Unidad, es decir, traduce el siguiente código a lenguaje ensamblador. 
 Una vez termines compara tu solución con la que hemos venido discutiendo. Analiza, entiende y 
-corrige. Escribe en Visual Studio Code el lenguaje ensamblador, usa CPUEmulator.sh y Assembler.sh.
+corrige. Escribe en Visual Studio Code el lenguaje ensamblador, usa CPUEmulator.bat y Assembler.bat.
 
 .. code-block:: c
 
@@ -909,38 +919,8 @@ corrige. Escribe en Visual Studio Code el lenguaje ensamblador, usa CPUEmulator.
         }
     }
 
-Ejercicio 17: (OPCIONAL) solo para los más curiosos
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. warning:: SOLO PARA LINUX
- 
-    Las instrucciones en este ejercicio solo funcionan para Linux. 
-    Si quiere explorar en Windows, en `este <https://www.sfml-dev.org/tutorials/2.5/start-vc.php>`__ 
-    enlace están las instrucciones para instalar las dependencias del programa y configurar las 
-    herramientas de desarrollo).
-
-¿Quieres jugar un poco más con el programa en C++?
-
-* Instala el siguiente paquete::
-
-    sudo apt-get install libsfml-dev
-
-* Clona `este <https://github.com/juanferfranco/playWithHack.git>`__ repositorio.
-* Desde la terminal ingresa al repositorio recién clonado.
-* Abre el directorio::
-  
-    code .
-
-* Abre el archivo fill.cpp y ubica la función ``hackProgram()``. En esa función 
-  está escrito el programa que hemos estudiado en la unidad.
-* Para ejecutarlo escribe en la terminal::
-
-    ./runFill.sh
-
-* Presiona las teclas 1, 2, 3 o 4 y verifica que la pantalla se pinta. 
-
-
-Ejercicio 18: evaluación formativa
+Ejercicio 17: evaluación formativa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 El problema está divido en dos challenges. Tu programa debe cumplir exitosamente ambos challenges.
@@ -953,12 +933,13 @@ El problema está divido en dos challenges. Tu programa debe cumplir exitosament
 
 Consideraciones para realizar la evaluación: 
 
-* `Aquí <https://classroom.github.com/a/K6fxXFex>`__ está el enlace de la evaluación.
+* `Aquí <https://classroom.github.com/a/sBkXFFaq>`__ está el enlace de la evaluación.
 * CLONA el repositorio.
 * Cámbiate al directorio problem.
 * edita ÚNICAMENTE el archivo program.asm.
 * No olvides hacer commits y push.
-* No olvides probar con la herramienta CPUEmulator.sh.
+* Para probar el programa de manera gráfica, puedes copiar el contenido del archivo program.asm 
+  para probar localmente en Windows con CPUEmulator.bat.
 * Al hacer las pruebas te recomiendo colocar la animación en FAST y con la opción No Animation. No 
   olvides que debes dar click en el botón del teclado para que el programa reciba las teclas que 
   presionarás.
@@ -977,60 +958,10 @@ Consideraciones para realizar la evaluación:
   te aparecerá un mensaje que indicará la línea del archivo ``.out`` que no coincide con el vector de prueba 
   en el archivo ``.cmp``.
 
-* Ten en cuanta que cada que hagas ``push`` al repositorio remoto, las pruebas anteriores se ejecutarán 
+* Ten en cuenta que cada que hagas ``push`` al repositorio remoto, las pruebas anteriores se ejecutarán 
   automáticamente y podrás ver el resultado en Github.
 
 .. warning:: ALERTA DE SPOILER
     
     En `este <https://github.com/juanferfranco/scu1-e1-2022-10-feedback.git>`__ enlace podrás consultar 
     y clonar el repositorio con una posible solución a la evaluación formativa.
-
-
-Evaluación
----------------
-
-.. warning:: SUSTENTACIÓN DE LA EVALUACIÓN
-
-    La evaluación debe estar lista ANTES de la sesión del viernes 26 de agosto. En la primera hora 
-    aprovecha para estudiar con tu equipo de trabajo la solución. En la segunda hora realizarás 
-    la sustentación con tu equipo de trabajo.
-
-    LEE TODAS LAS SECCIONES DE LA EVALUACIÓN ANTES DE COMENZAR.
-
-Enunciado
-************
-
-Debes hacer una aplicación en el lenguaje ensamblador estudiado en esta unidad.
-La aplicación deberá funcionar en un loop infinito. La aplicación ``lee el teclado`` y pinta la pantalla 
-de negro si la tecla presionada es la misma almacenada en la posición 0 de la RAM. La aplicación 
-debe borrar la pantalla si la tecla presionada es la misma almacenada en la posición 1 de la RAM. 
-No olvides que la aplicación debe correr en un ciclo infinito. 
-
-Una vez crees la aplicación en lenguaje ensamblador y funcione, debes traducirla a lenguaje 
-C/C++ tal como lo realizaste en esta unidad.
-
-Consideraciones
-******************
-
-* `Aquí <https://classroom.github.com/a/GHYxVVec>`__ está el enlace de la evaluación.
-* Debes crear un equipo de trabajo al cual se unirán todos los miembros. El equipo 
-  solo lo crea un integrante y los demás miembros solo deben unirse.
-* CLONA el repositorio.
-* Cámbiate al directorio problem.
-* Edita ÚNICAMENTE el archivo program.asm.
-* No olvides hacer commits y push.
-* Cuando pruebes el programa con la herramienta CPUEmulator.sh no olvides 
-  escribir manualmente en las posiciones 0 y 1 de la RAM el código `ASCII <https://www.asciitable.com/>`__ 
-  de las teclas que usarás.
-* Ten en cuanta que cada que hagas ``push`` al repositorio remoto se probará tu código.
-* La traducción al lenguaje C/C++ la debes realizar en el archivo README.md. Indica al comienzo 
-  del archivo los nombre completos de todos los integrantes del equipo y el ID.
-
-
-Criterios de evaluación 
-*************************
-
-* Funcionamiento correcto del programa en lenguaje ensamblador 2 unidades.
-* Sustentación del programa en lenguaje C/C++ 3 unidades 
-  por contestar correctamente las preguntas realizadas a cada miembro del equipo.
-
