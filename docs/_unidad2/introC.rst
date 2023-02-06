@@ -15,7 +15,7 @@ con la sintaxis de C# o de java.
 Temas
 -------
 
-#. ¿Qué es C y sus características?
+#. ¿Qué es C y cuáles son sus características principales?
 #. Estructura básica de un programa en c
 #. Proceso de compilación
 #. El preprocesador
@@ -34,8 +34,8 @@ Temas
 Lecturas, ejercicios y retos
 ---------------------------------
 
-Lectura 1: ¿Qué es C y sus características?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lectura 1: ¿Qué es C y cuáles sus características principales?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Es un lenguaje de programación de propósito general desarrollado por Dennis Ritchie entre
 1969 y 1973 en Bell Labs. Es uno de los lenguajes más utilizados actualmente en sistemas operativos como Linux

@@ -19,12 +19,19 @@ Propósito de aprendizaje
 Aprender un nuevo lenguaje de programación que te acerque a los conceptos 
 de los sistemas de cómputo más naturalmente: lenguaje C.
 
+Evaluación
+-----------------------------------
 
-Temas
-*********
+.. warning:: EN CONSTRUCCIÓN 
 
-* Introducción al lenguaje C
+  Evaluación en construcción. Cada que visites 
+  esta página presiona F5 para refrescarla y cargar 
+  la evaluación cuando esté disponible
 
+Enunciado 
+************
+
+.. note:: EN CONSTRUCCIÓN
 
 Trayecto de actividades
 ------------------------
@@ -32,29 +39,119 @@ Trayecto de actividades
 Ejercicios
 **********
 
-Ejercicio 1: lenguaje de programación C
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Para la realización de los ejercicios de la unidad te voy a crear 
+`este <https://classroom.github.com/a/EN6l5Lyr>`__ repositorio donde puedas 
+experimentar tu solo. Recuerda que la evaluación 
+de la unidad tendrá su propio repositorio. USA CODESPACES.
 
-Este será uno de los ejercicios más largos de la unidad porque vamos a introducir 
-el lenguaje de programación con el cual estudiaremos los conceptos que nos quedan del curso: ``lenguaje C``.
+Ejercicio 1: retrieval practice
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    :maxdepth: 3
+En la unidad anterior programaste en el lenguaje ensamblador de 
+una CPU específica. Viste cómo traducir de lenguaje ensamblador 
+a lenguaje de máquina. También te mostré algunas traducciones de 
+lenguaje C a lenguaje ensamblador. Te voy a pedir que lo recuerdes, 
+mira:
 
-    Introducción a C <./introC>
+.. code-block:: c
+
+    MEMORY[16] = 16384;
+
+    while (true)
+    {
+        if (MEMORY[KEYBOARD] == 0)
+        {
+            if ((MEMORY[16] - 16384) > 0)
+            {
+                MEMORY[16] = MEMORY[16] - 1;
+                MEMORY[MEMORY[16]] = 0x0000;
+            }
+        }
+        else
+        {
+            if ((MEMORY[16] - 24576) < 0)
+            {
+                MEMORY[MEMORY[16]] = 0xFFFF;
+                MEMORY[16] = MEMORY[16] + 1;
+            }
+        }
+    }
+
+Este programa escrito en C puede tener una traducción a 
+lenguaje ensamblador de la CPU que simulaste en la unidad anterior así:
+
+========= ===================
+Dirección Código ensamblador  
+========= =================== 
+0	        @16384
+1	        D=A
+2	        @16
+3	        M=D
+4	        @24576
+5	        D=M
+6	        @19
+7	        D;JNE
+8	        @16
+9	        D=M
+10	      @16384
+11	      D=D-A
+12	      @4
+13	      D;JLE
+14	      @16
+15	      AM=M-1
+16	      M=0
+17	      @4
+18	      0;JMP
+19	      @16
+20	      D=M
+21	      @24576
+22	      D=D-A
+23	      @4
+24	      D;JGE
+25	      @16
+26	      A=M
+27	      M=-1
+28	      @16
+29	      M=M+1
+30	      @4
+31	      0;JMP
+========= ===================
+
+* Identifica en el código ensamblador la inicialización 
+  de una variable.
+* Identifica en el código ensamblador una estructura IF/ELSE.
+* Identifica en el código ensamblador una while.
+
 
 Ejercicio 2: de lenguaje de alto nivel a código ejecutable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-¿Cómo llegamos del código fuente  al binario (el ejecutable)?
+Ahora te voy a mostrar cómo puedes hacer la traducción 
+anterior, pero esta vez para la CPU de tu computador y usando 
+herramientas (toolchain) específicas.
+
+.. warning:: ESTE EJERCICIO ES DIDÁCTICO
+
+  En este ejercicio te muestro los pasos para que observes 
+  cómo funciona el proceso, PERO no es una manera práctica de 
+  trabajar. Al final te muestro cómo puedes hacer el proceso 
+  de traducción de forma más práctica.
+
+Vamos a explorar juntos esta pregunta:
+
+¿Cómo llegamos del código fuente en C al binario (unos y ceros, el ejecutable)?
 
 En el caso del lenguaje C se siguen unos pasos conocidos como el
 pipeline de compilación compuesto por 4 pasos: preprocesamiento,
 compilación, ensamblado y enlazado.
 
-IMPORTANTE: para poder conseguir un ejecutable desde el código fuente,
-es necesario que nuestro código pase por todas las etapas del pipeline
-de manera exitosa.
+.. note:: IMPORTANTE 
+
+    Para poder conseguir un ejecutable desde el código fuente,
+    es necesario que nuestro código pase por todas las etapas del pipeline
+    de manera exitosa.
+
+    ¿Qué significa para ti la afirmación anterior?
 
 Para ilustrar el proceso vamos a crear un programa compuesto por 3 archivos:
 dos archivos .c y un archivo .h. Todos los archivos estarán almacenados
@@ -92,12 +189,12 @@ main.c
         return 0;
     }
 
-La idea será crear un ejecutable partiendo de estos tres archivos.
+La idea será crear un ``ejecutable`` partiendo de estos tres archivos.
 Ten presente que los archivos ``.h`` se usan para informarle al compilador
 qué tipo de datos recibe la función min y qué tipo de dato devuelve. Los
 archivos .h no se compilan, solo los archivos ``.c``.
 
-Compilamos primero ``min.c``:
+Iniciemos entonces el proceso con ``min.c``:
 
 * Preprocesamiento:  ``gcc -E min.c``. Al ejecutar este comando nota como
   el preprocesador incluye la información de min.h a min.c
@@ -105,6 +202,8 @@ Compilamos primero ``min.c``:
   que ``gcc`` debe hacer el proceso de preprocesador y con la
   salida de este paso se alimenta al compilador y detenerse en ese punto. El archivo
   de salida generado será ``min.s`` que contendrá el código ensamblador.
+  ¿Notas que el lenguaje ensamblador de la CPU de tu computador es diferente 
+  al de la unidad anterior?
 
 .. code-block:: bash
 
@@ -165,6 +264,12 @@ Compilamos primero ``min.c``:
   ejecutará automáticamente todos los pasos previos, es decir, el preprocesado,
   la compilación y el proceso de ensamblado.
 
+.. note:: HASTA AQUÍ YA TIENES TODOS LOS .o
+
+  Mira, si generar el ejecutable fuera como hacer una torta, 
+  en este momento ya tienes todos los ingredientes (archivos .o) listos 
+  para que los revuelvas (el proceso de enlazado).
+
 * Enlazado: una vez tengas todos los archivos ``.o`` lo último que debes hacer
   es enlazar todos los archivos para generar un archivo ejecutable. Este archivo
   contiene el código de máquina de todos los ``.o`` pero organizado en un formato
@@ -190,118 +295,75 @@ Una forma fácil de generar el ejecutable es utilizar de nuevo ``gcc``. Este com
 se encargará de suministrarle a ``ld`` todo los archivos con código máquina necesarios para
 generar nuestro ejecutable: ``gcc min.o main.o -o main``.
 
+.. warning:: MANERA PRÁCTICA DE HACER LA TRADUCCIÓN 
 
-Evaluación
------------------------------------
+  Como te comenté al comienzo, una manera más práctica de hacer todo el proceso 
+  anterior es con este comando::
 
-.. warning:: FECHA DE ENTREGA Y SUSTETACIÓN 
+    gcc -Wall main.c min.c -o main
 
-    La evaluación debe estar en el repositorio que les daré 
-    en Github y sustentada para el viernes 23 de septiembre 
-    de 2022.
+  Nota que el comando ``gcc`` se encargará de llamar todos 
+  los programas por ti. Inicialmente le dices a gcc cuáles son los archivos 
+  .c de tu programa y con la opción -o cómo se llamará el ejecutable. La opción 
+  -Wall le dice a gcc que te muestre TODAS la advertencias.
 
-Enunciado 
-************
+  No olvides que cada que cambies un archivo DEBES volver a llamar gcc 
+  para repetir todo el proceso de traducción.
 
-Una estructura de datos típica en la solución de problemas 
-de entretenimiento digital es la LISTA. Te voy a proponer un 
-proyecto que hace uso de LISTAS; sin embargo, el proyecto 
-está INCOMPLETO. Tu misión será completar el proyecto y pasar 
-todos los vectores de prueba. Una vez termines la solución debes 
-estudiarla detenidamente para preparar la sustentación. Dicha 
-sustentación será una pregunta relacionada con el proyecto.
+  Finalmente para ejecutar el programa::
 
-El primer reto es entender el PROBLEMA. Te dejo algunas pistas:
+    ./main
 
-* El programa es interactivo, es decir, para funcionar requiere 
-  que el usuario le ingrese órdenes.
-* Puedes comenzar a explorar en el archivo main.c. 
-* Nota que para cada comando el programa realizará acciones. Las 
-  acciones llamarán funciones. Son precisamente las funciones 
-  que se llaman las que tendrás que completar.
+  Observa que no estoy colocando main.c. Nota que main.c es uno de los 
+  archivos de código fuente, no es el ejecutable. De hecho el ejecutable 
+  no tiene extensión. ¿Ves la diferencia? y si en vez de main llamas al ejecutable 
+  con el nombre ``ejecutable`` ¿Hay alguna diferencia? ¿Tendrías que cambiar algo 
+  cuando llames a gcc?
 
-.. warning:: ESTA EVALUACIÓN ES EN EQUIPO
+Ejercicio 3: retrieval practice (evaluación formativa)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Arma tu equipo de trabajo. Uno de los miembros debe crear el equipo
-    y los demás se unen a ese equipo. El enlace para crear 
-    el equipo y tener acceso al repositorio está `aquí <https://classroom.github.com/a/GD4pT6wn>`__.
+* Realiza un diagrama mostrando los pasos necesarios para traducir 
+  un programa escritor en lenguaje C compuesto por 3 archivos .c, dos 
+  de los cuales tienen su archivo .h correspondiente. Muestra en tu 
+  diagrama que información entra y sale de cada paso.
 
-En el directorio tests encontrarás todos los vectores de prueba. Serán 19 en total.
-Los archivos .desc contienen la descripción de la prueba. Los archivos .in te 
-muestran la secuencia de comandos que ejecutará el programa. Los archivos .out 
-te muestran la salida esperada. Los archivos .err almacenarán el mensaje de error 
-esperado. Los archivos .rc el valor que se espera que retorne el programa 
-al terminar. Los archivos .run te muestran cómo se ejecuta la prueba.
+* ¿Cuál es la diferencia entre preprocesamiento y compilación?
+* ¿Cuál es la diferencia entre ensamblado y compilación?
+* ¿Para qué sirve el proceso de ensamblado?
+* ¿Cuál es la diferencia entre un error reportado en compilación 
+  y otro reportado en compilación?
 
-.. warning:: ¿QUÉ HAGO PARA PASAR UNA PRUEBA?
+Ejercicio 4: retrieval practice (evaluación formativa)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  Observa cuáles son los comandos que ejecutará el programa (archivo .in) y 
-  qué se espera que haga (archivo .out). Debes implementar la lógica del 
-  programa que permita conseguir el resultado.
+* En una sola línea de comando ¿Cómo puedes generar el ejecutable?
+* ¿Qué debes hacer para compilar SOLO un archivo .c?
+* ¿Por qué crees que puede ser útil compilar solo un archivo .c?
 
-MUY IMPORTANTE 
-*****************
+Ejercicio 5: para pensar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* No uses ninguna función para imprimir en pantalla a menos que sean las que ya están en el código
-  o donde se te pide que las uses. En la función ``ListEvents`` deberás imprimir cada evento 
-  usando la cadena formateada ``"%s\n"`` y en caso de tener una lista vacía usarás esta función
-  ``printf("empty\n");``. La razón de esto es que tu programa será verificado automáticamente 
-  y por tanto, si imprimes información no esperada es posible que las pruebas automáticas fallen.
-* Para compilar, cámbiate el directorio donde están los archivos ``.c`` y ejecuta el comando 
-  ``make``. Ten en cuanta que con el comando ``make clean`` puedes limpiar todos los archivos 
-  compilados y luego con ``make`` volver a generarlos.
-* Para hacer las pruebas puedes correr todos los vectores de prueba así:
+* Inventa un programa que genere un error de compilación, es decir 
+  un error sintáctico.
+* Inventa un programa que genere un error semántico, es decir, compila 
+  pero no hace lo que se espera.
+* Inventa un error generado por el enlazador.
 
-  .. code-block:: bash
+.. warning:: ERRORES DEL ENLAZADOR VS EL COMPILADOR 
 
-    ./test-main.sh
-  
-  O si quiere correr solo un vector, por ejemplo, el 10, lo haces así:
+  ¿Cómo haces para diferenciar, observando la salida en terminal, 
+  un error de compilación vs un error en enlazado?
 
-  .. code-block:: bash
+Ejercicio 6: lenguaje de programación C
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    ./test-main.sh -t 10
+Este será uno de los ejercicios más largos de la unidad porque te voy a mostrar 
+el lenguaje de programación con el cual estudiarás los conceptos que quedan 
+del curso: ``lenguaje C``.
 
-* Verifica que estás usando correctamente la memoria dinámica. Para ello instala valgrind y luego 
-  realiza la verificación. Te dejo los comandos, primero para instalar valgrind y luego para verificar.
+.. toctree::
+    :maxdepth: 3
 
-  .. code-block:: bash 
-
-        sudo apt update
-        sudo apt install valgrind
-
-  .. code-block:: bash 
-
-        valgrind ./main < ./tests/12.in
-  
-  Si la memoria está bien verás algo así en el resumen:
-
-  .. code-block:: none
-  
-        ==17813== 
-        ==17813== HEAP SUMMARY:
-        ==17813==     in use at exit: 0 bytes in 0 blocks
-        ==17813==   total heap usage: 12 allocs, 12 frees, 5,360 bytes allocated
-        ==17813== 
-        ==17813== All heap blocks were freed -- no leaks are possible
-        ==17813== 
-        ==17813== For lists of detected and suppressed errors, rerun with: -s
-        ==17813== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-  
-  La salida anterior se consigue ejecutando el programa con el vector de prueba 12.in. Con este 
-  vector de prueba, el programa realiza 12 reservas con malloc y detecta 12 liberaciones con free. 
-  Por tanto, al final indica que no hay errores.
-
-Criterios de evaluación
-*****************************
-
-Cada vector de prueba tiene un puntaje. El puntaje de cada punto lo puedes encontrar en el 
-archivo ``.github/classroom/autograding.json`` que está en tu repositorio.
-
-
-Algunos videos de ayuda
-*****************************
-
-* `Entendiendo el problema <https://youtu.be/0E71tb7zRYY>`__.
-* `¿Qué debes hacer? <https://youtu.be/uMG1e4rLIXU>`__
+    Introducción a C <./introC>
 
