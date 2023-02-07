@@ -31,7 +31,17 @@ Evaluación
 Enunciado 
 ************
 
-.. note:: EN CONSTRUCCIÓN
+Vas a construir una aplicación interactiva de terminal. La aplicación 
+servirá para extraer información de una base de datos de jugadores.
+La base de 
+
+
+ que estará 
+atenta todo el tiempo a comandos que escriba el usuario. Implementa 
+los siguientes comandos:
+
+* 
+
 
 Trayecto de actividades
 ------------------------
@@ -332,7 +342,7 @@ Ejercicio 3: retrieval practice (evaluación formativa)
 * ¿Cuál es la diferencia entre ensamblado y compilación?
 * ¿Para qué sirve el proceso de ensamblado?
 * ¿Cuál es la diferencia entre un error reportado en compilación 
-  y otro reportado en compilación?
+  y otro reportado en enlazado?
 
 Ejercicio 4: retrieval practice (evaluación formativa)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
