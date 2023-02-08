@@ -22,26 +22,71 @@ de los sistemas de cómputo más naturalmente: lenguaje C.
 Evaluación
 -----------------------------------
 
-.. warning:: EN CONSTRUCCIÓN 
+.. tip:: RESULTADO DE APRENDIZAJE DEL CURSO 
 
-  Evaluación en construcción. Cada que visites 
-  esta página presiona F5 para refrescarla y cargar 
-  la evaluación cuando esté disponible
+  ¿Recuerdas el resultado de aprendizaje del curso?
+
+  Aplico los conceptos necesarios para el correcto diseño, implementación, 
+  funcionamiento y diagnóstico del software en la producción de sistemas de 
+  entretenimiento digital utilizando los procedimientos y herramientas 
+  adecuadas según el contexto. ``NIVEL RESOLUTIVO``.
+
+  La idea de esta evaluación es que evidencies que eres capaz de aplicar 
+  los conceptos estudiados en la unidad anterior y esta mediante 
+  la construcción de una aplicación interactiva. Se espera que puedas realizar:
+
+  * Lectura de comandos de entrada mediante teclado.
+  * Lectura de archivos en memoria usando el HEAP.
+  * Procesamiento de la información y manipulación de la memoria.
+  * Escritura de archivos.
+
+  No solo se espera que apliques los conceptos para construir la aplicación, sino 
+  también para resolver los problemas (errores) que se presenten al construir 
+  la aplicación.
 
 Enunciado 
 ************
 
-Vas a construir una aplicación interactiva de terminal. La aplicación 
-servirá para extraer información de una base de datos de jugadores.
-La base de 
+Vas a construir una ``aplicación interactiva de terminal``. La aplicación 
+servirá para extraer información de una base de datos (Pokemon.csv).
+`Aquí <https://github.com/lgreski/pokemonData>`__ está la base de datos. 
+En el archivo Pokemon.csv está la base completa, pero puedes encontrar 
+en archivos separados cada generación de pokémons.
 
+Los requisitos de la aplicación son:
 
- que estará 
-atenta todo el tiempo a comandos que escriba el usuario. Implementa 
-los siguientes comandos:
+* La aplicación funciona en un loop infinito esperando comandos desde 
+  la terminal.
+* Si escribes el comando ``exit`` la aplicación termina.
+* El comando ``load archivo`` carga la base de datos en memoria. Cada 
+  registro (fila) de la base de datos se debe cargar en el HEAP como una 
+  estructura al igual que la estructura que representa como tal a la 
+  base de datos. 
+* El comando ``size`` reporta la cantidad de registros de la base de datos
+* El comando ``range n`` muestra los ``n`` primeros registros de la base de 
+  datos.
+* El comando ``show n`` muestra el registro con ID ``n``
+* El comando ``search stat value`` busca todos los registros cuyo value 
+  en el stat es el mismo y los va almacenado en una ``LISTA DINÁMICA`` en el HEAP. 
+  Por ejemplo ``search Generation 1`` busca todos los pokémons de generación 1. 
+* El comando ``show search`` muestra la última lista generada con 
+  el comando search.
+* El comando ``save name`` salva en un archivo la última lista generada. El nombre del 
+  archivo será ``name``.
 
-* 
+Entrega
+*********
 
+* Entrega la evaluación en `este <https://classroom.github.com/a/MgD98ERn>`__ 
+  repositorio con tu equipo de trabajo.
+* Debes incluir SOLO los archivo .c y .h con tu solución.
+* Debes incluir un archive README.md con:
+
+  * Nombres y IDs.
+  * ¿Cómo se compila tu aplicación?
+  * ¿Cómo se ejecuta tu aplicación?
+  * Un enlace a un video con tu aplicación funcionando.
+  * Una explicación que diga cómo solucionaste cada problema.
 
 Trayecto de actividades
 ------------------------
