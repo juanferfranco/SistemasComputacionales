@@ -4,245 +4,160 @@ Unidad 3. Programación orientada a objetos
 Introducción
 --------------
 
-En esta unidad vas a repasar y analizar cómo implementar en C los tres conceptos 
-fundamentales de la programación orientada a objetos.
+En esta unidad vas a revisar los conceptos fundamentales de la programación 
+orientada a objetos, pero desde una perspectiva diferente a la que ya usaste en 
+tu curso de programación y diseño orientado a objetos. Por tanto, esta nueva 
+perspectiva se abordará desde la implementación de dichos conceptos usando un lenguaje 
+de programación que no los soporta, C, pero en el que puedes implementarlos. Mira, 
+en últimas lo que quiero que desarrolles es pensamiento crítico frente a estos pilares 
+de la programación orientada a objectos para que desarrolles el criterio necesario 
+para aplicarlos o no a la resolución de un problema particular.
 
 Propósito de aprendizaje
 **************************
 
-Implementar los tres conceptos fundamentales de la programación orientada a objetos 
-en el lenguaje de programación C.
+Reflexionar profundamente sobre tres conceptos fundamentales de la programación orientada a objetos 
+como son el encapsulamiento, la herencia y el polimorfismo mediante la implementación de estos 
+usando el lenguaje de programación C.
 
 Evaluación
 -----------------------------------
 
-.. warning:: FECHA DE ENTREGA Y SUSTENTACIÓN 
+.. tip:: RESULTADO DE APRENDIZAJE DEL CURSO 
 
-    La evaluación debe estar sustentada y entregada en el repositorio 
-    el día 14 de octubre de 2022 finalizando la sesión de clase.
+  ¿Recuerdas el resultado de aprendizaje del curso?
 
-    Recuerda confirmar tu equipo de trabajo.
+  Aplico los conceptos necesarios para el correcto diseño, implementación, 
+  funcionamiento y diagnóstico del software en la producción de sistemas de 
+  entretenimiento digital utilizando los procedimientos y herramientas 
+  adecuadas según el contexto. ``NIVEL RESOLUTIVO``.
+
+  La idea de esta evaluación es que evidencies que eres capaz de aplicar 
+  los conceptos fundamentales de la programación orientada a objetos para la 
+  solución de los problemas que encontrarás en la construcción de la 
+  aplicación interactiva que te propondré.
+  
+  Se espera que puedas evidenciar:
+
+  * Un entendimiento profundo de los conceptos de encapsulamiento, herencia y polimorfismo.
+  * Aplicar un patrón de diseño donde verás los conceptos anteriores relacionados.
+  * Diagnosticar y solucionar problemas en el proceso de implementación de la aplicación.
+
+  No solo se espera que apliques los conceptos para construir la aplicación, sino 
+  también para resolver los problemas (errores) que se presenten al construirla.
 
 Enunciado 
 ************
 
-Tu misión para esta evaluación es demostrar que entiendes los conceptos fundamentales de 
-la programación orientada a objetos mediante la implementación de una caso de estudio en C.
+Tu misión para esta evaluación es aplicar los conceptos de encapsulamiento, herencia y polimorfismo, 
+mediante:
 
-Originalmente el caso de estudio está implementado en C#. Tu deberás implementar los conceptos 
-que están allí en C.
+* La implementación de un patrón de diseño.
+* La ampliación de las funcionalidades del proyecto de la unidad anterior.
+* Un refactoring a la aplicación aplicando los conceptos adecuados.
 
-La documentación y el código del caso de estudio los encuentras 
-`aquí <https://refactoring.guru/design-patterns/observer>`__ y 
-`aquí <https://refactoring.guru/design-patterns/observer/csharp/example>`__ 
-respectivamente.
+Los requisitos de la aplicación son:
 
+* Vas a realizar un refactoring a la solución del proyecto anterior aplicando los conceptos 
+  de encapsulamiento, herencia y polimorfismo. Ten presente que deberás corregir los comandos 
+  que implementaste con otro nombre o empleando una estrategia diferente a la solicitada. 
+* Adicionarás la posibilidad de crear filas nuevas en tiempo de ejecución a la base de datos.
+  Lo harás de dos maneras. Cargando los pokémon de un archivo o con el comando: 
+  
+  ``mkpok ID,Name,Form,Type1,Type2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation``
+
+* Adicionarás la posibilidad de editar un pokémon con el comando:
+
+    ``edit stat_name stat_value``
+
+* Adicionarás un comando para configurar la cantidad máxima de comandos que se podrán deshacer así:
+
+  ``undomax value``
+
+* Aplicarás el patrón de diseño Command para agregarle a la aplicación la posibilidad de deshacer 
+  los últimos n comandos:
+
+  ``undo n``
 
 ¿Qué debes entregar?
 **********************
 
-Debes entregar todo lo solicitado en 
-`este <https://classroom.github.com/a/mTTnuZJR>`__ repositorio. Entrega:
+Debes entregar todo lo solicitado en `este <https://classroom.github.com/a/pD6bXkPG>`__ repositorio. 
 
-* La implementación del caso de estudio en C# (esta ya está hecha).
-* La implementación del caso de estudio en C.
-* La documentación en el archivo README.md. Esta documentación debe tener:
+Entrega:
 
-    * Un enlace a un video corto en youtube (unlisted) (1 minuto máximo), SIN EXPLICACIONES, que muestre 
-      la compilación y ejecución del caso de estudio.
-    * Explicar cómo se implementó el encapsulamiento, la herencia y el polimorfismo.
-
-
+* El código con la solución del problema.
+* En el README.md explicarás por qué y cómo aplicaste los conceptos de encapsulamiento, herencia 
+  y polimorfismo a cada aspecto de la solución.
 
 Trayecto de actividades
 ------------------------
 
-Te voy a dejar en esta sección un material que puedes usar si lo deseas para preparar la solución 
-de la evaluación de la unidad.
+Para realizar los ejercicios y responder las preguntas del trayecto de actividades 
+te voy a crear un repositorio. Es muy importante que evidencies tu avance por el trayecto 
+dejando toda la evidencia en el repositorio del proceso.
 
 Ejercicios 
 ************
 
-.. warning:: ESTE ES EL MÁS IMPORTANTE DE LOS EJERCICIOS
+Para la realización de los ejercicios de la unidad te voy a crear 
+`este <https://classroom.github.com/a/NrcyB4P5>`__ repositorio donde puedas 
+experimentar tu solo. Recuerda que la evaluación de la unidad tendrá su propio repositorio. USA CODESPACES.
 
-    El ejercicio 1 es tal vez el recurso más importante para resolver el problema 
-    propuesto. TE PUEDES concentrar solo en este ejercicio.
+Ejercicio 1: el concepto de encapsulamiento en C
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Los ejercicios 2 al 20 son complementarios y en algunos casos te muestran implementaciones 
-    alternativas a las que muestra el ejercicio 1.
+El encapsulamiento es la habilidad de empacar datos y funciones JUNTAS en clases. En 
+`este <https://github.com/juanferfranco/OOP-in-C/blob/main/encapsulation/main.c>`__ enlace encontrarás un 
+ejemplo que ilustra el concepto.
 
-
-Ejercicio 1: implementación en C
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-En `este <https://github.com/QuantumLeaps/OOP-in-C/blob/master/doc/AN_OOP_in_C.pdf>`__ enlace 
-encontrarás un documento que te explicará detalladamente cómo implementar los conceptos 
-fundamentales de la programación orientada a objetos en lenguaje C.
-
-Todo el código fuente con la implementación del encapsulamiento, la herencia y el polimorfismo 
-lo encontrarás en `este <https://github.com/QuantumLeaps/OOP-in-C>`__ repositorio.
-
-
-.. warning:: EJERCICIOS COMPLEMENTARIOS
-
-    Ahora te dejaré más material que puede serte de utilidad.
-
-Ejercicio 2: el concepto de clase en C
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-En el siguiente ejemplo, el código en queue.h y queue.c tratan de implementar el concepto de ``CLASE`` que
-ya conoces de otros lenguajes de programación.
-
-queue.h:
+El siguiente código muestra un fragmento del ejemplo donde puedes observar la 
+declaración de la clase. Nota que se declaran los datos: x y y y las funciones 
+que modificarán esos datos.
 
 .. code-block:: c 
 
-    #ifndef _QUEUE_H
-    #define _QUEUE_H
+    /***************************************************************************
+    * Class
+    ****************************************************************************/
+    typedef struct Shape Shape;
 
-    typedef struct {
-        int front;
-        int rear;
-        double* arr;
-    } queue_t;
+    struct Shape{
+        int16_t x; 
+        int16_t y; 
+    };
 
-    queue_t* create(int size);
-    void destroy(queue_t* this);
-    int size(queue_t* this);
-    void enqueue(queue_t* this, double item);
-    double dequeue(queue_t* q);
+    void Shape_ctor(Shape * const me, int16_t x, int16_t y);
+    void Shape_dtor(Shape * const me);
+    void Shape_moveBy(Shape * const me, int16_t dx, int16_t dy);
+    int16_t Shape_getX(Shape const * const me);
+    int16_t Shape_getY(Shape const * const me);
 
-    #endif
+Ahora te pediré que hagas lo siguiente:
 
-queue.c:
+* Ejecuta el programa y analiza cada aspecto detenidamente.
+* ¿En qué parte del programa se crean objetos?
+* ¿En qué parte de la memoria están creados esos objetos?
+* ¿Qué es un objeto entonces?
+* Vas a crear tres versiones del programa creando los objetos en el stack, el 
+  heap y en memoria global.
 
-.. code-block:: c 
+.. warning:: MUY IMPORTANTE 
 
-    #include "queue.h"
-    #include <stdlib.h> 
+    NO AVANCES hasta que no hagas este ejercicio con detenimiento.
 
-    static void init(queue_t* this, int size) {
-        this->front = 0;
-        this->rear = 0;
-        this->arr = (double*)malloc(size * sizeof(double));
-    }
-
-    queue_t* create(int size){
-        queue_t* q = malloc(sizeof(queue_t));
-        init(q,size);
-        return(q);
-    }
-
-    void destroy(queue_t* this){
-        free(this->arr);
-        free(this);
-    }
-
-    int size(queue_t* this){
-        return this->rear - this->front;
-    }
-
-    void enqueue(queue_t* this, double item) {
-        this->arr[this->rear] = item;
-        this->rear++;
-    }
-    
-    double dequeue(queue_t* this) {
-        double item = this->arr[this->front];
-        this->front++;
-        return item;
-    }
-
-main.c:
-
-.. code-block:: c 
-
-    #include <stdio.h> 
-    #include "queue.h"
-
-    int main(int argc, char** argv) {
-
-        queue_t* q = create(10);
-        enqueue(q, 6.5);
-        enqueue(q, 1.3);
-        enqueue(q, 2.4);
-        printf("%f\n", dequeue(q));
-        printf("%f\n", dequeue(q));
-        printf("%f\n", dequeue(q));
-        destroy(q);
-        return 0;
-    }
-
-Para compilar este ejemplo sigue los siguientes pasos:
-
-.. code-block:: bash
-
-    gcc -c -g -Wall queue.c -o queue.o
-    gcc -c -g -Wall main.c -o main.o
-    gcc -g -Wall queue.o main.o -o exe
-
-Ejecuta el código y verifica con valgrind el manejo de la memoria
-
-.. code-block:: bash
-
-    ./exe
-    valgrind ./exe
-
-¿Qué resultado obtienes?
-¿En qué parte de la memoria está almacenada la variable q?
-¿Explica cuánta memoria y dónde se está creando con la función create(10)?
-
-Ejercicio 3: el concepto de objeto
+Ejercicio 2: el concepto de objeto
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Como te has dado cuenta hasta ahora, C NO es un lenguaje de programación
-orientado a objetos; sin embargo, te preguntarás ¿Es posible escribir 
-programas orientados a objetos con C? La respuesta es si. El punto es que
-en su sintaxis C NO soporta los conceptos de clases, herencia y polimorfismo.
-Aún así, es posible implementar estos conceptos de manera indirecta.
+Entonces, considerando el ejercicio anterior define:
 
-¿Y en últimas qué son los objetos?
+* ¿Qué es una clase?
+* ¿Qué es un objeto?
 
-Mira, no le demos vueltas conceptuales al asunto. Un objeto no es más que
-un conjunto de datos en la memoria. OJO: SON DATOS y están en la
-MEMORIA. Esto último es clave. Los objetos solo viven en tiempo
-de ejecución.
-
-Entonces cuando estoy escribiendo el programa hay objetos? NO, ese es el punto
-precisamente que intento aclararte de entrada. Cuando escribes un programa orientado
-a objetos, NO TIENES OBJETOS aún. Lo que defines es cómo serán esos objetos,
-cómo se crearán, cuándo se crearán, cómo y cuándo se usarán y cómo y cuándo
-se destruirán (en algunos lenguajes de programación). Es decir, tu programa
-describe lo que pasará con los OBJETOS cuando lo ejecutes.
-
-Te lo repito de nuevo: cuando programas orientado a objetos NO estás creando objetos.
-Estás más bien indicando qué se debe hacer para crearlos cuando el programa se EJECUTE.
-
-¿Claro lo anterior? Pregunta si no es claro.
-
-Por lo anterior, es que existe el término DISEÑO ORIENTADO A OBJECTOS. Porque
-cuando DISEÑAS un programa orientado a objetos te tienes qué imaginar cómo serán esos
-OBJETOS, cuándo se crearán y cuáles serán las relaciones entre ellos cuando 
-ejecutes el programa.
-
-Ejercicio 4: concepto de mutabilidad e inmutabilidad
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Profe, si yo pudiera ir a ver un objeto en memoria ¿Cómo se vería?
-
-No lo olvides, en últimas, un objeto es una colección de bytes en la memoria. A esas 
-posiciones de memoria que componen el objeto las denominamos ATRIBUTOS y al contenido
-de esos atributos los llamamos EL ESTADO DEL OBJETO. 
-
-Cuando puedes modificar los valor de los atributos de un objeto mientras el programa
-corre se dice que el objeto es MUTABLE. Pero también el objeto puede ser INMUTABLE,
-es decir, que una vez creado el objeto e inicializados sus atributos, no podrás cambiar
-sus valores o su estado.
-
-Ejercicio 5: concepto de relación entre objetos
+Ejercicio 3: concepto de relación entre objetos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ya te comenté que los objetos (colecciones de bytes) pueden estar relacionados entre
+Los objetos (colecciones de bytes) pueden estar relacionados entre
 ellos. ¿Qué significa eso?
 
 En términos muy generales, si dos objetos están relacionados, es posible que al modificar
@@ -250,7 +165,10 @@ el estado de uno de ellos se afecte el estado del otro. Ya en términos más con
 decir que un objeto está relacionado con otro cuando uno de sus atributos contiene la dirección
 de memoria del otro objeto.
 
-Ejercicio 6: el concepto de método
+Crea un programa donde practiques el concepto de encapsulamiento y relaciones 
+dos objetos.
+
+Ejercicio 4: el concepto de método
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 No lo olvides, un objeto son bytes en memoria. Pero entonces, ¿Qué pasa con el código?
@@ -261,21 +179,20 @@ OPERACIONES vas a realizar para crear los objetos (asignarles memoria), iniciar 
 no lo olvides, cuando estás escribiendo el programa estás MODELANDO tu solución,
 tu programa es un PLAN que DESCRIBE lo que ocurrirá cuando sea ejecutado.
 
-Ejercicio 7: relación estado-comportamiento
+* ¿Qué significa eso que te acabo de decir acerca de ver un programa como un PLAN o MODELO?
+* Construye un ejemplo (puedes usar el de algún ejercicio anterior) donde implementes 
+  una operación o método.
+
+Ejercicio 5: el concepto de constructor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-¿Cómo puedes definir la construcción de un objeto?
+¿En los ejercicios anteriores puedes identificar al constructor de la clase?
 
-Lo puedes hacer de dos formas:
+Considerando lo que vienes analizando, define entonces qué es el constructor de una 
+clase y para qué sirve.
 
-* Construyes un objeto vacío o con un conjuntos mínimo de atributos. A medida que el programa
-  se ejecuta, se van añadiendo más atributos. A esta técnica se le conoce como 
-  prototype-based OOP, por ejemplo en python y javascript.
-* El objeto ya tiene unos atributos predeterminados. A esta
-  técnica se le conoce como class-based OOP, por ejemplo en C++, C#, java y python.
-
-Para utilizar la segunda forma, debes crear una plantilla predeterminada o CLASE que indique
-los atributos que tendrá un objeto al ejecutar el programa.
+Ejercicio 6: relación estado-comportamiento
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Te preguntarás, pero en un clase también hay código, entonces ¿Los objetos tienen código? 
 Nop. Por lo que hemos venido discutiendo ya sabes que los objetos son solo datos. 
@@ -285,900 +202,125 @@ y los atributos están relacionados, es decir, estás indicando de manera explí
 las posibles OPERACIONES que puedes realizar sobre los DATOS. De esta manera ENCAPSULAS
 en el concepto de CLASE los DATOS y el CÓDIGO. Ten en cuenta que al código también
 se le conoce cómo el COMPORTAMIENTO de los objetos, es decir, las acciones que se realizarán
-sobre los datos.  
+sobre los datos. A la información en si que almacena un objeto se le conoce como el ESTADO.  
 
-Ejercicio 8: implementación del concepto de clase
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+En el ejemplo de encapsulamiento:
 
-¿Cómo hacemos para implementar las ideas anteriores en C? Ya sabes que C no soporta 
-de manera explícita el concepto de clase, pero podemos implementar dicho concepto de manera
-implícita:
+* ¿Cuál es el estado y el comportamiento?
 
-* Usa una estructura para encapsular los atributos del objeto.
-* Utiliza funciones para definir el comportamiento de los objetos. Las funciones
-  que definen el comportamiento del objeto recibirán como argumento la dirección en 
-  memoria de la estructura que encapsula los atributos del objeto.
-
-Analiza de nuevo este código:
-
-queue.h:
-
-.. code-block:: c 
-
-    #ifndef _QUEUE_H
-    #define _QUEUE_H
-
-    typedef struct {
-        int front;
-        int rear;
-        double* arr;
-    } queue_t;
-
-    queue_t* create(int size);
-    void destroy(queue_t* this);
-    int size(queue_t* this);
-    void enqueue(queue_t* this, double item);
-    double dequeue(queue_t* q);
-
-    #endif
-
-queue.c:
-
-.. code-block:: c 
-
-    #include "queue.h"
-    #include <stdlib.h> 
-
-    static void init(queue_t* this, int size) {
-        this->front = 0;
-        this->rear = 0;
-        this->arr = (double*)malloc(size * sizeof(double));
-    }
-
-    queue_t* create(int size){
-        queue_t* q = malloc(sizeof(queue_t));
-        init(q,size);
-        return(q);
-    }
-
-    void destroy(queue_t* this){
-        free(this->arr);
-        free(this);
-    }
-
-    int size(queue_t* this){
-        return this->rear - this->front;
-    }
-
-    void enqueue(queue_t* this, double item) {
-        this->arr[this->rear] = item;
-        this->rear++;
-    }
-    
-    double dequeue(queue_t* this) {
-        double item = this->arr[this->front];
-        this->front++;
-        return item;
-    }
-
-Nota que en queue.h declaras qué atributos tendrá el objeto:
-
-.. code-block:: c 
-
-    #ifndef _QUEUE_H
-    #define _QUEUE_H
-
-    typedef struct {
-        int front;
-        int rear;
-        double* arr;
-    } queue_t;
-
-Y qué funciones podrás invocar para leer o escribir dichos atributos, es decir, el comportamiento
-del objeto:
-
-.. code-block:: c 
-
-    queue_t* create(int size);
-    void destroy(queue_t* this);
-    int size(queue_t* this);
-    void enqueue(queue_t* this, double item);
-    double dequeue(queue_t* q);
-
-Estas cuatro funciones te permiten crear una cola, destruirla, conocer su tamaño,
-almacenar en la cola y leer información de ella. Nota que casi todas las funciones
-definen un parámetro llamado this. Este parámetro contendrá la dirección del objeto
-sobre el cual actuará el código definido en la función.
-
-Por último, observa de nuevo la función main.c:
-
-.. code-block:: c 
-
-    #include <stdio.h> 
-    #include "queue.h"
-
-    int main(int argc, char** argv) {
-
-        queue_t* q = create(10);
-        enqueue(q, 6.5);
-        enqueue(q, 1.3);
-        enqueue(q, 2.4);
-        printf("%f\n", dequeue(q));
-        printf("%f\n", dequeue(q));
-        printf("%f\n", dequeue(q));
-        destroy(q);
-        return 0;
-    }
-
-Nota que debemos incluir queue.h para poder utilizar las funciones y el nuevo
-tipo de dato ``queue_t``. Observa que la función ``create(10)`` nos permite
-crear un cola (un objeto) de 10 enteros en el heap. La dirección de la cola la almacenamos
-en la variable ``q`` que estará en el stack.
-
-Si analizas un poco más el archivo ``queue.c`` varás que ``create`` reserva el espacio
-en heap para el objeto y adicionalmente inicializa sus atributos:
-
-.. code-block:: c 
-
-    static void init(queue_t* this, int size) {
-        this->front = 0;
-        this->rear = 0;
-        this->arr = (double*)malloc(size * sizeof(double));
-    }
-
-    queue_t* create(int size){
-        queue_t* q = malloc(sizeof(queue_t));
-        init(q,size);
-        return(q);
-    }
-
-Ejercicio 9: comparación con C#
+Ejercicio 7: comparación con C#
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora compara el programa anterior con una implementación en C#:
+Ahora te pediré que implementes el ejemplo de encapsulamiento en C#. 
 
-.. code-block:: csharp
-
-    using System;
-
-    public class Queue{
-        
-        private int front;
-        private int rear;
-        private double[] arr;
-        
-        public Queue(int size){
-            
-            front = 0;
-            rear = 0;
-            arr = new double[size];
-        }    
-        
-        public int size(){
-            return (rear - front);
-        }
-        
-        public void enqueue(double item) {
-            arr[rear] = item;
-            rear++;
-        }
-        
-        public double dequeue() {
-            double item = arr[front];
-            front++;
-            return item;
-        }
-    }
-
-    class Program {
-        static void Main() {
-            Queue q = new Queue(10);
-            q.enqueue(6.5);
-            q.enqueue(1.3);
-            q.enqueue(2.4);
-            Console.WriteLine(q.dequeue());
-            Console.WriteLine(q.dequeue());
-            Console.WriteLine(q.dequeue());
-        }
-    }
-
-Mira los atributos:
-
-En C:
-
-.. code-block:: c 
-
-    #ifndef _QUEUE_H
-    #define _QUEUE_H
-
-    typedef struct {
-        int front;
-        int rear;
-        double* arr;
-    } queue_t;
-
-En C#:
-
-.. code-block:: csharp
-
-    using System;
-
-    public class Queue{
-        
-        private int front;
-        private int rear;
-        private double[] arr;
-
-Mira cómo se crea el objeto y se llaman los métodos:
-
-En C:
-
-.. code-block:: c
-
-    queue_t* q = create(10);
-    enqueue(q, 6.5);
-
-.. code-block:: csharp
-
-Queue q = new Queue(10);
-q.enqueue(6.5);
-
-En la comparación anterior, notas que la implementación en C# no tiene
-código para ``destroy``. ¿Recuerdas por qué es esto?
-
-El programa en C# también podríamos escribirlo así:
-
-.. code-block:: csharp
-
-    using System;
-
-    public class Queue{
-        
-        private int front;
-        private int rear;
-        private double[] arr;
-        
-        public Queue(int size){
-            
-            this.front = 0;
-            this.rear = 0;
-            this.arr = new double[size];
-        }    
-        
-        public int size(){
-            return (this.rear - this.front);
-        }
-        
-        public void enqueue(double item) {
-            this.arr[rear] = item;
-            this.rear++;
-        }
-        
-        public double dequeue() {
-            double item = this.arr[front];
-            this.front++;
-            return item;
-        }
-    }
-    
-    
-    class Program {
-        
-        static void Main() {
-            Queue q = new Queue(10);
-            q.enqueue(6.5);
-            q.enqueue(1.3);
-            q.enqueue(2.4);
-            Console.WriteLine(q.dequeue());
-            Console.WriteLine(q.dequeue());
-            Console.WriteLine(q.dequeue());
-        }
-    }
-
-Nota qué cambió con respecto a la primera implementación que te mostré.
-¿Lo notaste? En esta segunda implementación estoy utilizando la palabra
-reservada ``this``. Esta variable contiene la dirección en memoria del
-objecto a través del cual llamamos el método. Observa de nuevo el código
-en C. Notas ¿Cómo están relacionados los conceptos?
-
-
-Ejercicio 10: relación de composición entre objetos
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Cuando DISEÑAS un programa orientado a objetos
-también debes considerar las relaciones entre esos objetos. Pues bien, en general
-hay dos tipos:
-
-* Relaciones TO-HAVE o HAS-TO (TIENE UN)
-
-* Relaciones TO-BE o IS-A (ES UN) (¿recuerdas la herencia?)
-
-Vamos a concentrarnos primero en las TO-HAVE: la composición y la agregación.
-
-¿Qué es una relación de composición? 
-
-Dos objetos tienen una relación de composición cuando uno de ellos contiene a
-otro objeto. Debes tener en cuenta que en una relación de composición la VIDA del objeto
-contenido depende de la vida del objeto contenedor, es decir, 
-si el objeto contenedor muere, el objeto contenido también. Cuando el objeto
-contenedor se va destruir, primero tendrá que hacerse con el objeto contenido.
-
-Mira de nuevo este código:
-
-.. code-block:: c 
-
-    #include "queue.h"
-    #include <stdlib.h> 
-
-    static void init(queue_t* this, int size) {
-        this->front = 0;
-        this->rear = 0;
-        this->arr = (double*)malloc(size * sizeof(double));
-    }
-
-    queue_t* create(int size){
-        queue_t* q = malloc(sizeof(queue_t));
-        init(q,size);
-        return(q);
-    }
-
-
-Observa la función ``create``. Dicha función crear una ``queue``.
-¿Qué datos componen la cola?
-
-.. code-block:: c 
-
-    typedef struct {
-        int front;
-        int rear;
-        double* arr;
-    } queue_t;
-
-    #endif
-
-A su vez se en ``init`` estamos creando un nuevo objeto que no es más
-que un arreglo de ``size`` ``doubles``. La relación entre estos dos objetos
-es de composición.  
-
-Ahora nota que al momento de destruir el objeto contenedor, primero se
-destruye el objeto contenido:
-
-.. code-block:: c 
-
-    void destroy(queue_t* this){
-        free(this->arr);
-        free(this);
-    }
-
-Ejercicio 11: relación de agregación
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-¿Qué es la agregación?
-
-En esta relación tenemos también un objeto contenedor y un objeto contenido, la
-gran diferencia con la composición es que la vida del objeto contenido no depende
-de la vida del objeto contenedor. El objeto contenido puede ser construido incluso
-antes de que el objeto contenedor sea construido.
-
-Ejercicio 12: MINI-RETO
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Con todo lo anterior en mente y esta nueva definición, te tengo un mini RETO:
-
-Implementa un programa en C modelado con objetos que implemente una relación de
-agregación para esta situación: " ...el jugador recoge un arma, la usa varias veces 
-y luego la tira..."
-
-.. note::
-    ¡Alerta de Spoiler!
-
-    Una posible implementación a este mini-reto la puedes ver en el siguiente código
-    tomado de `este <https://www.packtpub.com/free-ebook/extreme-c/9781789343625>`__ 
-    . Le hice unas pequeñas modificaciones al código para que puedas ver el resultado
-    en la terminal.
-
-gun.h:
-
-.. code-block:: c 
-
-    #ifndef GUN_H_
-    #define GUN_H_
-
-    typedef struct
-    {
-        int bullets;
-    } gun_t;
-
-    gun_t *gun_new();
-    void gun_ctor(gun_t *, int);
-    void gun_dtor(gun_t *);
-
-    int gun_has_bullets(gun_t *);
-    void gun_trigger(gun_t *);
-    void gun_refill(gun_t *);
-
-    #endif /* GUN_H_ */
-
-
-gun.c:
-
-.. code-block:: c 
-
-    #include <stdlib.h>
-    #include <stdio.h>
-    #include "gun.h"
-
-    gun_t *gun_new()
-    {
-        return (gun_t *)malloc(sizeof(gun_t));
-    }
-
-    void gun_ctor(gun_t *this, int initial_bullets)
-    {
-        this->bullets = 0;
-        if (initial_bullets > 0)
-        {
-            this->bullets = initial_bullets;
-        }
-    }
-
-    void gun_dtor(gun_t *this)
-    {
-
-    }
-
-    int gun_has_bullets(gun_t *this)
-    {
-        return (this->bullets > 0);
-    }
-
-    void gun_trigger(gun_t *this)
-    {
-        this->bullets--;
-        printf("gun triggered\n");
-    }
-
-    void gun_refill(gun_t *this)
-    {
-        this->bullets = 7;
-    }
-
-    
-player.h:
-
-.. code-block:: c 
-
-    #ifndef PLAYER_H_
-    #define PLAYER_H_
-
-    #include "gun.h"
-
-    typedef struct
-    {
-        char *name;
-        gun_t *gun;
-    } player_t;
-
-    player_t *player_new();
-    void player_ctor(player_t *, const char *);
-    void player_dtor(player_t *);
-
-    void player_pickup_gun(player_t *, gun_t *);
-    void player_shoot(player_t *);
-    void player_drop_gun(player_t *);
-
-    #endif /* PLAYER_H_ */
-
-
-player.c:
-
-.. code-block:: c 
-
-    #include <stdlib.h>
-    #include <string.h>
-    #include <stdio.h>
-    #include "gun.h"
-    #include "player.h"
-
-    player_t *player_new()
-    {
-        return (player_t *)malloc(sizeof(player_t));
-    }
-
-    void player_ctor(player_t *this, const char *name)
-    {
-        this->name = (char *)malloc((strlen(name) + 1) * sizeof(char));
-        strcpy(this->name, name);
-        this->gun = NULL;
-    }
-
-    void player_dtor(player_t *this)
-    {
-        free(this->name);
-    }
-
-    void player_pickup_gun(player_t *this, gun_t *gun)
-    {
-        this->gun = gun;
-    }
-
-    void player_shoot(player_t *this)
-    {
-        if (this->gun)
-        {
-            gun_trigger(this->gun);
-        }
-        else
-        {
-            printf("Player wants to shoot but he doesn't have a gun!\n");
-            exit(1);
-        }
-    }
-
-    void player_drop_gun(player_t *this)
-    {
-        this->gun = NULL;
-    }
-
-
-main.c:
-
-.. code-block:: c 
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include "gun.h"
-    #include "player.h"
-
-    int main(int argc, char *argv[])
-    {
-        gun_t *gun = gun_new();
-        gun_ctor(gun, 3);
-
-        player_t *player = player_new();
-        player_ctor(player, "Billy");
-
-        player_pickup_gun(player, gun);
-
-        while (gun_has_bullets(gun))
-        {
-            player_shoot(player);
-        }
-
-        gun_refill(gun);
-
-        while (gun_has_bullets(gun))
-        {
-            player_shoot(player);
-        }
-
-        player_drop_gun(player);
-
-        player_dtor(player);
-        free(player);
-
-        gun_dtor(gun);
-        free(gun);
-
-        return 0;
-    }
-
-Para compilar:
-
-.. code-block:: bash
-
-    gcc -Wall -c  player.c -o player.o    
-    gcc -Wall -c  gun.c -o gun.o          
-    gcc -Wall -c  main.c -o main.o        
-    gcc -Wall main.o player.o gun.o -o app
-
-
-Ejercicio 13: representación UML de las relaciones
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-¿Recuerdas que en tu curso de programación y diseño orientado a objetos
-vistes las relaciones anteriores?
-
-En ese curso a los dos relaciones anteriores: agregación y composición
-se les denomina en general asociaciones, es decir, dos objetos pueden estar
-asociados mediante una relación de agregación o composición.
-
-Estas relaciones pueden mostrarse de manera gráfica utilizando un
-lenguaje de modelado conocido como `UML <http://uml.org/>`__. Te dejo aquí
-una imagen:
-
-.. image:: ../_static/UMLasoc.png
-    :alt: relaciones en UML
-
-Ejercicio 14: ejercicio de modelado UML
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-¿Te animas a realizar un modelo UML para nuestros los ejemplos anteriores de composición
-y agregación?
-
-Ejercicio 15: relación de herencia
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-El otro tipo de relación que podemos tener entre dos objetos es la relación TO-BE, 
-mejor conocida como herencia. 
-
-¿Cómo funciona la herencia?
-
-En términos simples, la herencia permite añadirle a un objeto atributos de otro
-objeto. 
-
-.. code-block:: c
-
-    typedef struct {
-        char first_name[32];
-        char last_name[32];
-        unsigned int birth_year;
-    } person_t;
-
-    typedef struct {
-        char first_name[32];
-        char last_name[32];
-        unsigned int birth_year;
-        char student_number[16]; // Extra attribute
-        unsigned int passed_credits; // Extra attribute
-    } student_t;
-
-En el ejemplo anterior (tomado del de `aquí <https://www.packtpub.com/free-ebook/extreme-c/9781789343625>`__
-nota los atributos de la estructura person_t y student_t. ¿Ves alguna relación entre ellos?
-
-student_t ``extiende`` los atributos de person_t. Por tanto, podemos decir que student_t también
-ES UNA (IS-A) person_t.
-
-Observa entonces que podemos escribir de nuevo el código anterior así:
-
-.. code-block:: c
-
-    typedef struct {
-        char first_name[32];
-        char last_name[32];
-        unsigned int birth_year;
-    } person_t;
-    
-    typedef struct {
-        person_t person;
-        char student_number[16]; // Extra attribute
-        unsigned int passed_credits; // Extra attribute
-    }student_t;personPrivate
-
-¿Ves lo que pasó? estamos anidando una estructura en otra estructura. Por tanto student_t hereda
-de person_t. Observa que un puntero a student_t estará apuntando al primer atributo que es
-un person_t. ¿Lo ves? Por eso decimos que un student_t también ES UN person_t. Míralo en acción
-aquí:
-
-.. code-block:: c
-
-    #include <stdio.h>
-
-    typedef struct {
-        char first_name[32];
-        char last_name[32];
-        unsigned int birth_year;
-    }person_t;
-
-    typedef struct {
-        person_t person;
-        char student_number[16]; // Extra attribute
-        unsigned int passed_credits; // Extra attribute
-    } student_t;
-
-    int main(int argc, char* argv[]) {
-        student_t s;
-        student_t* s_ptr = &s;
-        person_t* p_ptr = (person_t*)&s;
-        printf("Student pointer points to %p\n", (void*)s_ptr);
-        printf("Person pointer points to %p\n", (void*)p_ptr);
-        return 0;
-    }
-
-Ejercicio 16: para reflexionar
+Ejercicio 8: representación UML 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-En este punto te pido que te pongas cómodo. Lo que viene será alucinante...
-
-Del ejercicio anterior concluimos que student_t está heredando de person_t.
-Por tanto, a las funciones que definas para manipular un objeto de tipo
-person_t también le puedes pasar un puntero a un student_t (para manipular
-sus atributos correspondiente a person_t). SEÑORAS y SEÑORES, estamos
-reutilizando código.
-
-Ejercicio 17: implementación de herencia simple
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Ahora te voy a mostrar una técnica para implementar herencia simple en C.
-Analiza con detenimiento este código por favor 
-(`tomado de aquí <https://www.packtpub.com/free-ebook/extreme-c/9781789343625>`__):
-
-person.h:
-
-.. code-block:: c
-
-    #ifndef PERSON_H_
-    #define PERSON_H_
-
-    typedef struct {
-        char first_name[32];
-        char last_name[32];
-        unsigned int birth_year;
-    } person_t;
-
-    person_t *person_new();
-    void person_ctor( person_t *, const char *, const char *, unsigned int);
-    void person_dtor(person_t *);
-
-    void person_get_first_name(person_t *, char *);
-    void person_get_last_name(person_t *, char *);
-    unsigned int person_get_birth_year(person_t *);
-
-    #endif /* PERSON_H_ */
-
-Código para person.c:
-
-.. code-block:: c
-
-    #include <stdlib.h>
-    #include <string.h>
-    #include <stdlib.h>
-    #include "person.h"
-
-    person_t *person_new() {
-        return malloc(sizeof(person_t));
-    }
-
-    void person_ctor(person_t *this,
-            const char *first_name,
-            const char *last_name,
-            unsigned int birth_year) {
-
-                strcpy(this->first_name, first_name);
-                strcpy(this->last_name, last_name);
-                this->birth_year = birth_year;
-    }
-
-    void person_dtor(person_t *this) {
-
-    }
-
-    void person_get_first_name(person_t *this, char *buffer) {
-        strcpy(buffer, this->first_name);
-    }
-
-    void person_get_last_name(person_t *this, char *buffer) {
-        strcpy(buffer, this->last_name);
-    }
-
-    unsigned int person_get_birth_year(person_t *this) {
-        return this->birth_year;
-    }
-
-    void person_get_last_name(person_t *this, char *buffer) {
-        strcpy(buffer, this->last_name);
-    }
-
-    unsigned int person_get_birth_year(person_t *this) {
-        return this->birth_year;
-    }
-
-student.h:
-
-.. code-block:: c
-
-    #ifndef STUDENT_H_
-    #define STUDENT_H_
-
-    #include "person.h"
-
-    typedef struct {
-        person_t person;
-        char *student_number;
-        unsigned int passed_credits;
-    } student_t;
-
-    student_t *student_new();
-    void student_ctor(student_t *,
-                    const char * /* first name */,
-                    const char * /* last name */,
-                    unsigned int /* birth year */,
-                    const char * /* student number */,
-                    unsigned int /* passed credits */);
-    void student_dtor(student_t *);
-
-    void student_get_student_number(student_t *, char *);
-    unsigned int student_get_passed_credits(student_t *);
-
-    #endif /* STUDENT_H_ */
+¿Cómo sería el diagrama de clases del ejemplo de encapsulamiento?
 
 
-student.c:
+Ejercicio 9: el concepto de encapsulamiento en C
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: c
+La herencia es la habilidad de definir una nueva clase basada en clases existentes para reusar 
+y organizar el código (aunque te cuento que hay mucha controversia con este concepto y 
+algunos lenguajes de programación modernos han prescindido de él porque son más los problemas 
+que lo beneficios que trae). En `este <https://github.com/juanferfranco/OOP-in-C/blob/main/inheritance/main.c>`__ 
+enlace encontrarás un ejemplo que ilustra el concepto.
 
-    #include <stdlib.h>
-    #include <stdio.h>
-    #include <string.h>
-    #include "person.h"
-    #include "student.h"
+El siguiente código te muestro cómo la clase Rectangle hereda de la clase Shape.
 
-    student_t *student_new() {
-        return (student_t *)malloc(sizeof(student_t));
-    }
+.. code-block:: c 
 
-    void student_ctor(student_t *this,
-                    const char * first_name,
-                    const char * last_name,
-                    unsigned int birth_year,
-                    const char * student_number,
-                    unsigned int passed_credits) {
+    /*****************************************************
+    * Class Shape
+    ******************************************************/
+    typedef struct Shape Shape;
+    struct Shape{
+        int16_t x; 
+        int16_t y; 
+    };
 
-        person_ctor((person_t *)this,
-        first_name, last_name, birth_year);
-        this->student_number = (char *)malloc(16 * sizeof(char));
-        strcpy(this->student_number, student_number);
-        this->passed_credits = passed_credits;
-    }
+    /*****************************************************
+    * Class Rectangle
+    ******************************************************/
+    typedef struct Rectangle Rectangle;
 
-    void student_dtor(student_t *this) {
-        free(this->student_number);
-        person_dtor((person_t *)this);
-    }
+    struct Rectangle {
+        Shape super;
+        uint16_t width;
+        uint16_t height;
+    };
 
-    void student_get_student_number(student_t *this,
-            char *buffer) {
-            strcpy(buffer, this->student_number);
-    }
+Analiza con detenimiento el ejemplo y piensa:
 
-    unsigned int student_get_passed_credits(student_t *this) {
-        return this->passed_credits;
-    }
+* ¿Cómo se vería en memoria un objeto de la clase Shape?
+* ¿Cómo se vería en memoria un objeto de la clase Rectangle?
+* ¿Qué relación ves entre los dos objetos en términos de cómo se ven en memoria?
+* Cuando decimos que un Rectangle también es un Shape ¿Tiene sentido?
+* ¿Qué está pasando en el siguiente código?
 
-main.c:
+.. code-block:: c 
 
-.. code-block:: c
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include "person.h"
-    #include "student.h"
-
-    int main(int argc, char* argv[]) {
-        char buffer[32];
-
-        student_t *student = student_new();
-        student_ctor(student, "John", "Doe", 1987, "TA5667", 134);
-        
-        person_t *person_ptr = (person_t *)student;
-        person_get_first_name(person_ptr, buffer);
-        printf("First name: %s\n", buffer);
-        person_get_last_name(person_ptr, buffer);
-        printf("Last name: %s\n", buffer);
-        printf("Birth year: %d\n", person_get_birth_year(person_ptr));
-
-        student_get_student_number(student, buffer);
-        printf("Student number: %s\n", buffer);
-        printf("Passed credits: %d\n",
-        student_get_passed_credits(student));
-
-        student_dtor(student);
-        free(student);
-        return 0;
-    }
-
-Para compilar y generar la aplicación:
-
-.. code-block:: bash
-
-    gcc -Wall -c person.c -o person.o                             
-    gcc -Wall -c student.c -o student.o                           
-    gcc -Wall -c main.c -o main.o      
-    gcc -Wall main.o person.o student.o -o app
+    (Shape *)r1
 
 
-Ejercicio 18: POLIMORFISMO en tiempo de ejecución
+Ejercicio 10: comparación con C#
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ahora es un buen momento para que construyas la versión en C# del ejercicio anterior 
+y compares.
+
+Ejercicio 11: el concepto de polimorfismo en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+El polimorfismo es la habilidad de sustituir, en tiempo de ejecución, objetos que tengan interfaces que coinciden. 
+En `este <https://github.com/juanferfranco/OOP-in-C/blob/main/polymorphism/main.c>`__ 
+enlace encontrarás un ejemplo que ilustra el concepto.
+
+El siguiente código te muestro una manera de lograr lo anterior. Nota que Rectangle y Circle 
+
+
+.. code-block:: c 
+
+    /*****************************************************
+    * Class Shape
+    ******************************************************/
+    typedef struct IShapeOperations IShapeOperations;
+    typedef struct Shape Shape;
+
+    struct IShapeOperations {
+        uint32_t (*area)(Shape const * const me);
+        void (*draw)(Shape const * const me);
+    };
+
+    struct Shape{
+        IShapeOperations const *vptr;
+        int16_t x; 
+        int16_t y; 
+    };
+
+    /*****************************************************
+    * Class Rectangle
+    ******************************************************/
+    typedef struct Rectangle Rectangle;
+
+    struct Rectangle {
+        Shape super;
+        uint16_t width;
+        uint16_t height;
+    };
+
+    /*****************************************************
+    * Class Circle
+    ******************************************************/
+    typedef struct Circle Circle;
+
+    struct Circle {
+        Shape super;
+        uint16_t rad;
+    };
+
 
 Ahora te voy a mostrar una técnica para implementar polimorfismo en tiempo de 
 ejecución en C (`tomado de aquí <https://www.packtpub.com/free-ebook/extreme-c/9781789343625>`__).
