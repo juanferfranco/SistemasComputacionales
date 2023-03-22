@@ -154,7 +154,7 @@ Entonces, considerando el ejercicio anterior define:
 * ¿Qué es una clase?
 * ¿Qué es un objeto?
 
-Ejercicio 3: concepto de relación entre objetos
+Ejercicio 3: el concepto de relación entre objetos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Los objetos (colecciones de bytes) pueden estar relacionados entre
@@ -191,8 +191,8 @@ Ejercicio 5: el concepto de constructor
 Considerando lo que vienes analizando, define entonces qué es el constructor de una 
 clase y para qué sirve.
 
-Ejercicio 6: relación estado-comportamiento
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ejercicio 6: la relación estado-comportamiento
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Te preguntarás, pero en un clase también hay código, entonces ¿Los objetos tienen código? 
 Nop. Por lo que hemos venido discutiendo ya sabes que los objetos son solo datos. 
@@ -219,7 +219,7 @@ Ejercicio 8: representación UML
 ¿Cómo sería el diagrama de clases del ejemplo de encapsulamiento?
 
 
-Ejercicio 9: el concepto de encapsulamiento en C
+Ejercicio 9: el concepto de herencia en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La herencia es la habilidad de definir una nueva clase basada en clases existentes para reusar 
@@ -228,7 +228,7 @@ algunos lenguajes de programación modernos han prescindido de él porque son m�
 que lo beneficios que trae). En `este <https://github.com/juanferfranco/OOP-in-C/blob/main/inheritance/main.c>`__ 
 enlace encontrarás un ejemplo que ilustra el concepto.
 
-El siguiente código te muestro cómo la clase Rectangle hereda de la clase Shape.
+En el siguiente código te muestro cómo la clase Rectangle hereda de la clase Shape.
 
 .. code-block:: c 
 
@@ -271,14 +271,35 @@ Ejercicio 10: comparación con C#
 Ahora es un buen momento para que construyas la versión en C# del ejercicio anterior 
 y compares.
 
-Ejercicio 11: el concepto de polimorfismo en C
+Ejercicio 11: representación UML
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Construye un diagrama de clases para el ejemplo de herencia. 
+
+
+Ejercicio 12: el concepto de polimorfismo en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 El polimorfismo es la habilidad de sustituir, en tiempo de ejecución, objetos que tengan interfaces que coinciden. 
 En `este <https://github.com/juanferfranco/OOP-in-C/blob/main/polymorphism/main.c>`__ 
 enlace encontrarás un ejemplo que ilustra el concepto.
 
-El siguiente código te muestro una manera de lograr lo anterior. Nota que Rectangle y Circle 
+En el siguiente código te muestro una manera de lograr lo anterior. Nota que Rectangle y Circle están 
+heredando de la clase Shape, pero a diferencia del ejercicio de herencia observa que hay un elemento nuevo. 
+Se trata de IShapeOperations. Esta estructura es el primer miembro de Shape y por tanto será también 
+el primer atributo de Rectangle y Circle. Nota que IShapeOperations tiene punteros a las funciones 
+area y draw. Rectangle y Circle tendrán por defecto la implementación que la clase Shape aporte 
+para estos métodos. El truco es hacer que las clases que hereden de Shape hagan una sobre escritura o 
+OVERRIDE de los punteros de IShapeOperations. De esta manera harás que 
+
+con sus propias immplementaciones de  
+De esta manera, area y draw pueden recibir 
+referencias (pointer me) a cualquier Shape y es precisamente esta habilidad lo que permite 
+que area y draw se comporten diferente dependiendo del Shape que les pase.
+
+.. tip:: PAUSA
+
+    Pausa para suspirar y secarse las lágrimas luego de un momento tan emotivo.
 
 
 .. code-block:: c 
