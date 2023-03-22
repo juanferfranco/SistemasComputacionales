@@ -290,17 +290,15 @@ Se trata de IShapeOperations. Esta estructura es el primer miembro de Shape y po
 el primer atributo de Rectangle y Circle. Nota que IShapeOperations tiene punteros a las funciones 
 area y draw. Rectangle y Circle tendrán por defecto la implementación que la clase Shape aporte 
 para estos métodos. El truco es hacer que las clases que hereden de Shape hagan una sobre escritura o 
-OVERRIDE de los punteros de IShapeOperations. De esta manera harás que 
-
-con sus propias immplementaciones de  
-De esta manera, area y draw pueden recibir 
-referencias (pointer me) a cualquier Shape y es precisamente esta habilidad lo que permite 
-que area y draw se comporten diferente dependiendo del Shape que les pase.
+OVERRIDE de los punteros de IShapeOperations. De esta manera harás que tanto area como draw sean polimórficas.
+No pierdas de vista que area y draw reciben una referencia a Shape, pero es que Rectangle y Circle son también 
+Shapes. Es precisamente este truco lo que permite que area y draw se comporten de manera polimórfica.
 
 .. tip:: PAUSA
 
-    Pausa para suspirar y secarse las lágrimas luego de un momento tan emotivo.
+    ¿Qué te parece? ¿Genial no?
 
+    Pausa para suspirar y secarse las lágrimas de felicidad luego de un momento tan emotivo.
 
 .. code-block:: c 
 
@@ -343,371 +341,26 @@ que area y draw se comporten diferente dependiendo del Shape que les pase.
     };
 
 
-Ahora te voy a mostrar una técnica para implementar polimorfismo en tiempo de 
-ejecución en C (`tomado de aquí <https://www.packtpub.com/free-ebook/extreme-c/9781789343625>`__).
+* Analiza con detenimiento el código.
+* Modifica la aplicación para agregar un nuevo Shape.
 
-Pero antes ¿Qué es el polimorfismo en tiempo de ejecución? Antes mira qué te permite hacer
-el polimorfismo. Considera que tienes estos tres objetos:
+Ejercicio 13: comparación con C#
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: c
+Ahora es un buen momento para que construyas la versión en C# del ejercicio anterior 
+y compares. Repasa antes qué son las clases abstractas en C#, ¿Vale?
 
-    animal_t *animal = animal_new();
-    animal_ctor(animal);
+Ejercicio 14: representación UML
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    struct cat_t *cat = cat_new();
-    cat_ctor(cat);
+Construye un diagrama de clases para el ejemplo de polimorfismo. 
 
-    struct duck_t *duck = duck_new();
-    duck_ctor(duck);
-
-cat y duck heredan de animal. Por tanto, como cat y duck son animal también,
-entonces al hacer esto:
-
-.. code-block:: c
-
-    // This is a polymorphism
-    animal_sound(animal);
-    animal_sound((animal_t *)cat);
-    animal_sound((animal_t *)duck);
-
-Consigues esta salida:
-
-.. code-block:: c
-
-    Animal: Beeeep
-    Cat: Meow
-    Duck: Quack
-
-Entonces puedes ver que la función animal_sound exhibe un comportamiento polimórfico
-dependiendo del tipo de referencia que le pasemos.
-
-¿Para qué sirve esto? Supón que tienes un código base al cual quieres adicionarle
-funcionalidades nuevas. El polimorfismo te permite mantener el código base lo más intacto
-posible a medida que añades más comportamientos por medio de la herencia.
-
-Ahora, si. Mira cómo se puede implementar:
-
-animal.h:
-
-.. code-block:: c
-
-    #ifndef ANIMAL_H_
-    #define ANIMAL_H_
-
-    typedef void (*sound_func_t)(void *);
-
-    typedef struct {
-        char *name;
-        // This member is a pointer to the function which
-        // performs the actual sound behavior
-        sound_func_t sound_func;
-    } animal_t;
-
-
-    animal_t *animal_new();
-
-    void animal_ctor(animal_t *);
-    void animal_dtor(animal_t *);
-
-    void animal_get_name(animal_t *, char *);
-    void animal_sound(animal_t *);
-
-    #endif /* ANIMAL_H_ */
-
-animal.c:
-
-.. code-block:: c
-
-    #include <stdlib.h>
-    #include <string.h>
-    #include <stdio.h>
-    #include "animal.h"
-
-    void __animal_sound(void *this) {
-        animal_t* animal = (animal_t *)this;
-        printf("%s: Beeeep\n", animal->name);
-    }
-
-    animal_t *animal_new() {
-        return (animal_t *)malloc(sizeof(animal_t));
-    }
-
-    void animal_ctor(animal_t *this) {
-        this->name = (char *)malloc(10 * sizeof(char));
-        strcpy(this->name, "Animal");
-        this->sound_func = &__animal_sound;
-    }
-
-    void animal_dtor(animal_t *this) {
-        free(this->name);
-    }
-
-    void animal_get_name(animal_t *this, char *buffer) {
-        strcpy(buffer, this->name);
-    }
-
-    void animal_sound(animal_t *this) {
-        this->sound_func(this);
-    }
-
-cat.h:
-
-.. code-block:: c
-
-    #ifndef CAT_H_
-    #define CAT_H_
-
-    #include "animal.h"
-
-    typedef struct {
-        animal_t animal;
-    } cat_t;
-
-    cat_t *cat_new();
-
-    void cat_ctor(cat_t *);
-
-    void cat_dtor(cat_t *);
-
-    #endif /* CAT_H_ */
-
-cat.c:
-
-.. code-block:: c
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    #include "cat.h"
-
-    void __cat_sound(void *this) {
-        animal_t *animal = (animal_t *) this;
-        printf("%s: Meow\n", animal->name);
-    }
-
-    // Memory allocator
-    cat_t *cat_new() {
-        return (cat_t *)malloc(sizeof(cat_t));
-    }
-    // Constructor
-    void cat_ctor(cat_t *this) {
-        animal_ctor((animal_t *)this);
-        strcpy(this->animal.name, "Cat");
-        this->animal.sound_func = __cat_sound;
-    }
-
-    void cat_dtor(cat_t *this) {
-        animal_dtor((animal_t *)this);
-    }
-
-duck.h:
-
-.. code-block:: c
-
-    #ifndef DUCK_H_
-    #define DUCK_H_
-
-    #include "animal.h"
-
-    typedef struct {
-        animal_t animal;
-    } duck_t;
-
-    duck_t *duck_new();
-
-    void duck_ctor(duck_t *);
-
-    void duck_dtor(duck_t *);
-
-
-    #endif /* DUCK_H_ */
-
-
-duck.c:
-
-.. code-block:: c
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    #include "duck.h"
-
-    void __duck_sound(void *this) {
-        animal_t* animal = (animal_t*)this;
-        printf("%s: Quacks\n", animal->name);
-    }
-
-    duck_t *duck_new() {
-        return (duck_t *)malloc(sizeof(duck_t));
-    }
-
-    void duck_ctor(duck_t *this) {
-        animal_ctor((animal_t *)this);
-        strcpy(this->animal.name, "Duck");
-        this->animal.sound_func = __duck_sound;
-    }
-
-    void duck_dtor(duck_t *this) {
-        animal_dtor((animal_t *)this);
-    }
-
-main.c:
-
-.. code-block:: c
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    #include "animal.h"
-    #include "cat.h"
-    #include "duck.h"
-
-
-    int main(int argc, char* argv[]) {
-
-        animal_t *animal = animal_new();
-        animal_ctor(animal);
-
-        cat_t *cat = cat_new();
-        cat_ctor(cat);
-
-        duck_t *duck = duck_new();
-        duck_ctor(duck);
-
-        animal_sound(animal);
-        animal_sound((animal_t *)cat);
-        animal_sound((animal_t *)duck);
-
-        animal_dtor(animal);
-        free(animal);
-
-        cat_dtor(cat);
-        free(cat);
-
-        duck_dtor(duck);
-        free(duck);
-
-        return EXIT_SUCCESS;
-    }
-
-Para ejecutar el código realizas las siguientes operaciones:
-
-.. code-block:: bash 
-
-    gcc -Wall -c cat.c -o cat.o
-    gcc -Wall -c duck.c -o duck.o
-    gcc -Wall -c animal.c -o animal.o
-    gcc -Wall -c main.c -o main.o    
-    gcc -Wall main.o cat.o duck.o animal.o -o app
-
-Ejercicio 19: implementación en C#
+Ejercicio 15: interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora vas a implementar el ejercicio 18 en C#. Compara, analiza, questiona y concluye.
+¿Recuerdas el concepto de interfaz en C#?  Si no lo recuerdas dale una lectura y mira 
+algunos ejemplos.
 
-.. warning:: ALERTA DE SPOILER
+Analiza de nuevo el ejemplo de polimorfismo. ¿Cómo podrías implementar una interfaz en 
+C?
 
-    Te dejo una posible implementación del ejercicio 18 en C#
-
-.. code-block:: csharp
-
-    using System;
-
-    public class Animal
-    {
-        public string Name { get; private set; }
-
-        public Animal(string name)
-        {
-            Name = name;
-        }
-        public virtual void AnimalSound()
-        {
-            Console.WriteLine(Name + ": Beep");
-        }
-    }
-
-    public class Cat : Animal
-    {
-
-        public Cat(string name) : base(name)
-        {
-
-        }
-        public override void AnimalSound()
-        {
-            Console.WriteLine(Name + ": Meow");
-        }
-    }
-
-    public class Duck : Animal
-    {
-
-        public Duck(string name) : base(name)
-        {
-
-        }
-        public override void AnimalSound()
-        {
-            Console.WriteLine(Name + ": Quacks");
-        }
-    }
-
-
-    public class Program
-    {
-        static void Main(string[] args)
-        {
-
-            var Animals = new List<Animal>
-            {
-                new Animal("Animal"),
-                new Cat("Nucita"),
-                new Duck("Lindo")
-            };
-
-            foreach(var animal in Animals){
-                animal.AnimalSound();
-            }
-        }
-    }
-
-El resultado sería:
-
-.. code-block:: bash
-
-    Animal: Beep
-    Nucita: Meow
-    Lindo: Quacks
-
-Ejercicio 20: clases abstractas
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-¿Qué son las clases abstractas? Son un tipo de clases de las cuales no puedes
-crear OBJETOS porque les falta o tienen incompleta una parte. 
-Entonces ¿Para qué sirven? Sirven para crear programas
-orientados a objetos que puedan extenderse al máximo y con la menor cantidad
-de dependencias entre sus componentes. ¿Te suena que vale la pena?
-
-Mira este problema: tienes que construir una biblioteca que te permita comunicar,
-por un puerto serial, a Unity con un sensor. Las responsabilidades del código
-son: gestionar el puerto serial, gestionar la comunicación con el hilo
-principal o hilo del motor y enviar-recibir datos siguiendo un protocolo específico.
-En este escenario podrías escribir una biblioteca que resuelva este problema solo
-para el sensor particular o escribirla de tal manera que puedas reutilizar
-casi todo el código y solo cambiar el protocolo de comunicación si a futuro
-cambias de sensor.
-
-¿Cuál de las dos opciones de suena más?
-
-Si te suena más la segunda, entonces todas las partes comunes del código irán
-en la clase abstracta y las partes que varían, en este caso el protocolo de comunicación,
-irán en otra clase que herede de la clase abstracta. Aquí entra en juego el otro concepto
-que estudiamos, el POLIMORFISMO, ¿Cómo? En el código de la clase
-abstracta se llamará el código que varía o métodos VIRTUALES, pero este código no estará 
-implementado. Por tanto, los métodos virtuales tendrás que implementarlo en la clase que
-hereda, de la cual, si PUEDES crear OBJETOS. Hermoso, ¿No?.
-
-Ten presente que en la medida que llevas al extremo este concepto de abstracción podrás
-llegar a clases que no tengan atributos sino SOLO métodos virtuales. En este punto habrás
-llegado a las INTERFACES, de las cuales tampoco podrás crear objetos.
