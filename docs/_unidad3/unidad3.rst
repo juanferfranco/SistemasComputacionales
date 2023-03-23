@@ -1,6 +1,13 @@
 Unidad 3. Programación orientada a objetos 
 ================================================
 
+.. warning:: UNIDAD EN CONSTRUCCIÓN
+
+    Esta unidad se encuentra casi lista, le estoy dando una última revisión 
+    antes de que comiences a trabajar en ella. Esta unidad es un refactoring 
+    de la unidad 3 de los semestres anteriores. Si llegas aquí luego 
+    de terminar la unidad 2 habla con el profesor.
+
 Introducción
 --------------
 
@@ -23,7 +30,7 @@ usando el lenguaje de programación C.
 Evaluación
 -----------------------------------
 
-.. tip:: RESULTADO DE APRENDIZAJE DEL CURSO 
+.. note:: RESULTADO DE APRENDIZAJE DEL CURSO 
 
   ¿Recuerdas el resultado de aprendizaje del curso?
 
@@ -281,24 +288,28 @@ Ejercicio 12: el concepto de polimorfismo en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 El polimorfismo es la habilidad de sustituir, en tiempo de ejecución, objetos que tengan interfaces que coinciden. 
-En `este <https://github.com/juanferfranco/OOP-in-C/blob/main/polymorphism/main.c>`__ 
-enlace encontrarás un ejemplo que ilustra el concepto.
+Te pongo un ejemplo con C#. Piensa que tienes
+un método que puede recibir objetos de diferentes clases, pero todos tienen en común que implementan 
+la misma interfaz. El truco es hacer que el tipo de dato que recibe el método sea del tipo de la interfaz. 
+De esta manera podrás pasarle un objeto de cualquier clase que implemente la interfaz. De ahí que el método 
+tendrá un comportamiento polimórfico porque el método hará cosas diferentes dependiendo del tipo de objeto 
+que le pases. Ufffff. ¡Es muy cool!
 
-En el siguiente código te muestro una manera de lograr lo anterior. Nota que Rectangle y Circle están 
-heredando de la clase Shape, pero a diferencia del ejercicio de herencia observa que hay un elemento nuevo. 
-Se trata de IShapeOperations. Esta estructura es el primer miembro de Shape y por tanto será también 
-el primer atributo de Rectangle y Circle. Nota que IShapeOperations tiene punteros a las funciones 
-area y draw. Rectangle y Circle tendrán por defecto la implementación que la clase Shape aporte 
-para estos métodos. El truco es hacer que las clases que hereden de Shape hagan una sobre escritura o 
-OVERRIDE de los punteros de IShapeOperations. De esta manera harás que tanto area como draw sean polimórficas.
-No pierdas de vista que area y draw reciben una referencia a Shape, pero es que Rectangle y Circle son también 
-Shapes. Es precisamente este truco lo que permite que area y draw se comporten de manera polimórfica.
+.. warning:: ESTE CONCEPTO ES MUY IMPORTANTE 
 
-.. tip:: PAUSA
+    Este concepto es muy importante y es la base de muchas de las estrategias de diseño 
+    orientado a objetos que verás en el curso de Scripting.
+
+.. warning:: PAUSA
 
     ¿Qué te parece? ¿Genial no?
 
     Pausa para suspirar y secarse las lágrimas de felicidad luego de un momento tan emotivo.
+
+En `este <https://github.com/juanferfranco/OOP-in-C/blob/main/polymorphism/main.c>`__ 
+enlace encontrarás un ejemplo que ilustra el concepto implementado en lenguaje C. Trata de hacer 
+una primer lectura y entender lo que está pasando. Ahora me gustaría pedirte que te enfoques en 
+el siguiente fragmento y leas luego algo que te diré para que analicemos juntos lo que está pasando.
 
 .. code-block:: c 
 
@@ -341,7 +352,31 @@ Shapes. Es precisamente este truco lo que permite que area y draw se comporten d
     };
 
 
-* Analiza con detenimiento el código.
+Nota que Rectangle y Circle están heredando de la clase Shape, pero a diferencia del ejercicio de herencia 
+observa que hay un elemento nuevo. Se trata de IShapeOperations. Esta estructura es el primer miembro 
+de Shape y por tanto será también el primer atributo de Rectangle y Circle. 
+
+Nota que IShapeOperations tiene punteros a las funciones area y draw. Mira ahora por favor, el constructor 
+de Shape:
+
+.. code-block:: c 
+
+  void Shape_ctor(Shape * const me, int16_t x, int16_t y){
+    static IShapeOperations const vptr = {Shape_area,Shape_draw};
+    me->vptr = &vptr;
+    me->x = x;
+    me->y = y;
+  }
+
+¿Viste que los punteros están inicializados por defecto con dos implementaciones de area y draw? Se trata 
+de Shape_area y Shape_draw. Por tanto, si no hacemos nada en los constructores de Rectangle y Circle 
+estos tendrán por defecto la implementación que la clase Shape aporte para estos métodos. El truco es hacer 
+que las clases que hereden de Shape hagan una ``sobre escritura`` o 
+``OVERRIDE`` de los punteros de IShapeOperations. De esta manera harás que tanto area como draw sean polimórficas.
+No pierdas de vista que area y draw reciben una referencia a Shape, pero es que Rectangle y Circle son también 
+Shapes. Es precisamente este truco lo que permite que area y draw se comporten de manera polimórfica.
+
+* ¿Le das una mirada de nueva al código?
 * Modifica la aplicación para agregar un nuevo Shape.
 
 Ejercicio 13: comparación con C#
@@ -361,6 +396,18 @@ Ejercicio 15: interfaces
 ¿Recuerdas el concepto de interfaz en C#?  Si no lo recuerdas dale una lectura y mira 
 algunos ejemplos.
 
-Analiza de nuevo el ejemplo de polimorfismo. ¿Cómo podrías implementar una interfaz en 
-C?
+Analiza de nuevo el ejemplo de polimorfismo. 
 
+* ¿Cómo podrías implementar una interfaz en C con lo que acabas de aprender sobre polimorfismo?
+
+.. warning:: EJERCICIO IMPORTANTE
+
+  Inventa un ejemplo que haga uso del concepto de interfaz usando lenguaje C. ¿Me lo muestras 
+  cuando lo tengas para hacerme muy feliz?
+
+Ejercicio 16: ejemplo de implementación del patrón Command en C
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+En `este <https://github.com/juanferfranco/OOP-in-C/blob/main/commandPattern/main.c>`__ enlace te mostraré 
+un ejemplo donde se implementa el patrón de diseño Command. Este ejemplo es una implementación en C 
+del ejemplo en C# que puedes encontrar `aquí <https://refactoring.guru/design-patterns/command/csharp/example>`__.
