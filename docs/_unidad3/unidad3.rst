@@ -13,11 +13,11 @@ Introducción
 
 En esta unidad vas a revisar los conceptos fundamentales de la programación 
 orientada a objetos, pero desde una perspectiva diferente a la que ya usaste en 
-tu curso de programación y diseño orientado a objetos. Por tanto, esta nueva 
+tu curso de programación y diseño orientado a objetos. Esta nueva 
 perspectiva se abordará desde la implementación de dichos conceptos usando un lenguaje 
 de programación que no los soporta, C, pero en el que puedes implementarlos. Mira, 
 en últimas lo que quiero que desarrolles es pensamiento crítico frente a estos pilares 
-de la programación orientada a objectos para que desarrolles el criterio necesario 
+de la programación orientada a objectos para que tengas el criterio necesario 
 para aplicarlos o no a la resolución de un problema particular.
 
 Propósito de aprendizaje
