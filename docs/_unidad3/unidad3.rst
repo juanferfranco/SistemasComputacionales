@@ -1,13 +1,6 @@
 Unidad 3. Programación orientada a objetos 
 ================================================
 
-.. warning:: UNIDAD EN CONSTRUCCIÓN
-
-    Esta unidad se encuentra casi lista, le estoy dando una última revisión 
-    antes de que comiences a trabajar en ella. Esta unidad es un refactoring 
-    de la unidad 3 de los semestres anteriores. Si llegas aquí luego 
-    de terminar la unidad 2 habla con el profesor.
-
 Introducción
 --------------
 
@@ -122,7 +115,7 @@ El encapsulamiento es la habilidad de empacar datos y funciones JUNTAS en clases
 ejemplo que ilustra el concepto.
 
 El siguiente código muestra un fragmento del ejemplo donde puedes observar la 
-declaración de la clase. Nota que se declaran los datos: x y y y las funciones 
+declaración de la clase. Nota que se declaran los datos: (x,y) y las funciones 
 que modificarán esos datos.
 
 .. code-block:: c 
@@ -173,10 +166,11 @@ ellos. ¿Qué significa eso?
 En términos muy generales, si dos objetos están relacionados, es posible que al modificar
 el estado de uno de ellos se afecte el estado del otro. Ya en términos más concretos podemos
 decir que un objeto está relacionado con otro cuando uno de sus atributos contiene la dirección
-de memoria del otro objeto.
+de memoria del otro objeto. También es posible establecer una relación cuando un método de 
+una clase requiere como parámetro una referencia a un objeto de otra clase.
 
 Crea un programa donde practiques el concepto de encapsulamiento y relaciones 
-dos objetos.
+dos objetos. Puedes modificar el ejemplo que ya te di, ¿Vale?
 
 Ejercicio 4: el concepto de método
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -205,9 +199,12 @@ Ejercicio 6: la relación estado-comportamiento
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Te preguntarás, pero en un clase también hay código, entonces ¿Los objetos tienen código? 
-Nop. Por lo que hemos venido discutiendo ya sabes que los objetos son solo datos. 
-También ya sabes que cuando escribes una clase estás PLANEANDO qué atributos tendrá cada
-objeto en memoria. Entonces cuando escribes código en una clase estás indicando que ese código
+Nop. Por lo que hemos venido discutiendo ya sabes que los objetos son solo datos, pero 
+ten presente que si es posible que algunos objetos tengan, como atributos, la dirección de memoria 
+de algunos métodos. 
+
+Ya sabes que al escribir una clase estás PLANEANDO qué atributos tendrá cada
+objeto en memoria. Entonces, cuando escribes código en una clase estás indicando que ese código
 y los atributos están relacionados, es decir, estás indicando de manera explícita 
 las posibles OPERACIONES que puedes realizar sobre los DATOS. De esta manera ENCAPSULAS
 en el concepto de CLASE los DATOS y el CÓDIGO. Ten en cuenta que al código también
@@ -221,13 +218,12 @@ En el ejemplo de encapsulamiento:
 Ejercicio 7: comparación con C#
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora te pediré que implementes el ejemplo de encapsulamiento en C#. 
+Ahora te pediré que implementes el ejemplo de encapsulamiento (el que está en C) en C#. 
 
 Ejercicio 8: representación UML 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ¿Cómo sería el diagrama de clases del ejemplo de encapsulamiento?
-
 
 Ejercicio 9: el concepto de herencia en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -295,7 +291,7 @@ Te pongo un ejemplo con C#. Piensa que tienes
 un método que puede recibir objetos de diferentes clases, pero todos tienen en común que implementan 
 la misma interfaz. El truco es hacer que el tipo de dato que recibe el método sea del tipo de la interfaz. 
 De esta manera podrás pasarle un objeto de cualquier clase que implemente la interfaz. De ahí que el método 
-tendrá un comportamiento polimórfico porque el método hará cosas diferentes dependiendo del tipo de objeto 
+tendrá un comportamiento polimórfico porque hará cosas diferentes dependiendo del tipo de objeto 
 que le pases. Ufffff. ¡Es muy cool!
 
 .. warning:: ESTE CONCEPTO ES MUY IMPORTANTE 
@@ -307,12 +303,13 @@ que le pases. Ufffff. ¡Es muy cool!
 
     ¿Qué te parece? ¿Genial no?
 
-    Pausa para suspirar y secarse las lágrimas de felicidad luego de un momento tan emotivo.
+    Pausa para suspirar y secarte las lágrimas de felicidad luego de un momento tan emotivo.
 
 En `este <https://github.com/juanferfranco/OOP-in-C/blob/main/polymorphism/main.c>`__ 
 enlace encontrarás un ejemplo que ilustra el concepto implementado en lenguaje C. Trata de hacer 
-una primer lectura y entender lo que está pasando. Ahora me gustaría pedirte que te enfoques en 
-el siguiente fragmento y leas luego algo que te diré para que analicemos juntos lo que está pasando.
+una primer lectura y entender lo que está pasando. 
+
+Ahora me gustaría pedirte que te enfoques en el siguiente fragmento:
 
 .. code-block:: c 
 
@@ -359,7 +356,7 @@ Nota que Rectangle y Circle están heredando de la clase Shape, pero a diferenci
 observa que hay un elemento nuevo. Se trata de IShapeOperations. Esta estructura es el primer miembro 
 de Shape y por tanto será también el primer atributo de Rectangle y Circle. 
 
-Nota que IShapeOperations tiene punteros a las funciones area y draw. Mira ahora por favor, el constructor 
+Nota que IShapeOperations tiene punteros a las funciones area y draw. Mira ahora por favor el constructor 
 de Shape:
 
 .. code-block:: c 
@@ -414,3 +411,10 @@ Ejercicio 16: ejemplo de implementación del patrón Command en C
 En `este <https://github.com/juanferfranco/OOP-in-C/blob/main/commandPattern/main.c>`__ enlace te mostraré 
 un ejemplo donde se implementa el patrón de diseño Command. Este ejemplo es una implementación en C 
 del ejemplo en C# que puedes encontrar `aquí <https://refactoring.guru/design-patterns/command/csharp/example>`__.
+
+Ahora te toca a ti:
+
+* Analiza el código y trata de explicarle a tu compañero de trabajo cómo funciona.
+* Analiza en parte de la memoria están los datos y trata de realizar diagramas que 
+  relacionen las partes.
+* Trata de decir en una frase CORTA para qué sirve el polimorfismo.
