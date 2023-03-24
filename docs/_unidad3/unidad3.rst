@@ -108,9 +108,11 @@ dejando toda la evidencia en el repositorio del proceso.
 Ejercicios 
 ************
 
-Para la realización de los ejercicios de la unidad te voy a crear 
-`este <https://classroom.github.com/a/NrcyB4P5>`__ repositorio donde puedas 
-experimentar tu solo. Recuerda que la evaluación de la unidad tendrá su propio repositorio. USA CODESPACES.
+.. warning:: REPOSITORIO PARA EL TRAYECTO DE ACTIVIDADES
+
+    Para la realización de los ejercicios de la unidad te voy a crear 
+    `este <https://classroom.github.com/a/NrcyB4P5>`__ repositorio donde puedas 
+    experimentar tu solo. Recuerda que la evaluación de la unidad tendrá su propio repositorio. USA CODESPACES.
 
 Ejercicio 1: el concepto de encapsulamiento en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
