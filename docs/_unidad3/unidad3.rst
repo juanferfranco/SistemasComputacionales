@@ -67,7 +67,7 @@ Los requisitos de la aplicación son:
 
 * Vas a realizar un refactoring a la solución del proyecto anterior aplicando los conceptos 
   de encapsulamiento, herencia y polimorfismo. Ten presente que deberás corregir los comandos 
-  que implementaste con otro nombre o empleando una estrategia diferente a la solicitada. 
+  que implementaste con otro nombre o empleando una estrategia diferente a la solicitada.
 * Adicionarás la posibilidad de crear filas nuevas en tiempo de ejecución a la base de datos.
   Lo harás de dos maneras. Cargando los pokémon de un archivo o con el comando: 
   
@@ -96,6 +96,7 @@ Entrega:
 * El código con la solución del problema.
 * En el README.md explicarás por qué y cómo aplicaste los conceptos de encapsulamiento, herencia 
   y polimorfismo a cada aspecto de la solución.
+* Explicarás detalladamente cómo usaste el patrón Command para resolver el problema.
 
 Trayecto de actividades
 ------------------------
