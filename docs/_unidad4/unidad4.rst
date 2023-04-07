@@ -18,92 +18,73 @@ algunos de esos servicios para la construcción de aplicaciones.
 Evaluación
 -------------------
 
-.. warning:: ESTA EVALUACIÓN ES UN RETO!!!
+.. warning:: ¡¡¡MUY IMPORTANTE!!!
 
-    Esta evaluación busca que demuestres tu capacidad de integrar los conceptos 
-    que trabajaste en el curso. ES UN RETO y necesitarás creatividad 
-    para solucionarlo. PIENSA MUCHO primero, luego programa. Ten en cuenta 
-    que es una RETO para PENSAR en la solución no para BUSCARLA.
+    Llegamos al final del recorrido. Este punto también nos marca 
+    el último plazo para entregar TODAS las evaluaciones pendientes 
+    del curso. ESE PLAZO SERÁ el 12 de mayo de 2023 hasta las 11:40 a.m.
 
+.. warning:: ¡¡¡PLAZO FINAL!!!
 
-.. warning:: FECHA DE ENTREGA Y SUSTENTACIÓN 
-
-    La evaluación debe estar sustentada y entregada en el repositorio 
-    el día 4 de noviembre de 2022 finalizando la sesión de clase.
-
-    El viernes 4 de noviembre al finalizar la sesión de clase FINALIZA el curso.
-    Finalizan todos los plazos. No se aceptarán más entregas luego de este plazo 
-    MÁXIMO.
-
-    Recuerda conformar tu equipo de trabajo.
+    El plazo final para entregar esta y LAS OTRAS evaluaciones 
+    es el 12 de mayo de 2023 a las 11:40 a.m. A esa hora deben quedar 
+    entregadas y sustentadas TODAS LAS EVALUACIONES. Recuerda que una evaluación 
+    está entregada cuando esté TODO lo solicitado en el repositorio y la 
+    presentes al profesor. TODO eso debe ocurrir antes de las 11:40 a.m. del 
+    12 de mayo de 2023. LUEGO DE ESO NO HAY MÁS PLAZOS.
 
 Enunciado 
 ************
 
-Vas a utilizar lo aprendido en las unidades 2, 3 y 4. De la unidad 2 tomarás la implementación 
-de la lista enlazada. De la unidad 3 tomarás el patrón observer. Finalmente, de la unidad 
-4 el mecanismo de comunicación por colas POSIX y los hilos.
+Vas a realizar dos programas. El primero, que llamaremos servir, es una modificación del programa 
+de la unidad anterior así:
 
-Vas a implementar dos programas: un servidor y un cliente. En ejecución solo tendrás un servidor 
-o publicador (con su propia terminal). Tendrás un número arbitrario de clientes o suscriptores (de ahí la necesidad de usar  
-una estructura de datos dinámica como la lista enlazada) cada uno con su propia terminal.
+* Este programa se ejecutará en la terminal.
+* Podrá recibir comandos de otros programas, que llamaremos clientes, que se ejecuten en otra 
+  terminal.
+* También podrá recibir solicitudes locales en su propia terminal.
+* Si el programa termina deberá avisarle a los clientes conectados a él y
+  estos deberán terminar.
 
-La idea es que crees eventos en el servidor que podrás guardar en una lista enlazada. Para crear un evento 
-solo tienes que asignarle un nombre. A cada evento podrán suscribirse los clientes que deseen hacerlo. 
-Cada cliente puede retirar la suscripción a un evento. Ten presente que cada evento tendrá que mantener 
-una lista de interesados. Para publicar un evento tendrás que darle la orden al servidor desde la terminal y 
-este enviará el evento a cada cliente suscrito.
+El segundo programa, el cliente:
 
-Características del servidor:
-
-* El servidor debe ser capaz de atender al mismo tiempo las órdenes que le darás desde la terminal 
-  y las solicitudes que le enviarán los clientes.
-* Cada petición de un cliente será visualizada con un mensaje en la terminal que incluirá un identificador del
-  cliente y el mensaje de la petición.
-* Las órdenes que le darás al servidor serán:
-  
-  * Listar la cantidad de eventos que puede publicar.
-  * Crear un evento.
-  * Publicar un evento.
-  * Borrar un evento.
-  * Muestra los clientes o suscriptores conectados.
-  * Terminar. El servidor termina, pero antes debe avisarle a todos los cliente conectados para 
-    que ellos también terminen.
-
-Características de cada cliente:
-
-* Debe visualizar en la terminal cada que evento publicado por el servidor.
-* Cada cliente debe ser capaz de atender al mismo tiempo las órdenes que le darás desde la terminal y 
-  los mensajes enviados por el servidor.
-* Debe soportar las siguientes órdenes:
-
-    * Suscribirse a un evento.
-    * Retirar la suscripción a un evento.
-    * Listar todos los eventos a los que está suscrito.
-    * Preguntarle al servidor todos los eventos que hay disponibles.
+* Se conectará al servidor desde otra terminal.
+* Deberá terminar en caso de que el servidor termine.
+* Se pueden ejecutar tantos clientes como se deseen en terminales diferentes.
 
 ¿Qué debes entregar?
 **********************
 
 .. warning:: MUY IMPORTANTE
 
-    No se recibirán entregas parciales. El problema debe estar 100% solucionado.
+    Recuerda que no se recibirán entregas parciales. El problema debe estar 100% solucionado.
 
 
 Debes entregar todo lo solicitado en 
-`este <https://classroom.github.com/a/5cv9ZIs2>`__ repositorio. Entrega:
+`este <https://classroom.github.com/a/gNTXzkux>`__ repositorio. Entrega:
 
-* El código con la solución al problema.
+* Los códigos con la solución al problema tanto para el cliente como el servidor.
 * La documentación en el archivo README.md. Esta documentación debe tener:
 
     * Un enlace a un video corto en youtube (unlisted) (2 minutos máximo), SIN EXPLICACIONES, que muestre 
-      la compilación y ejecución del caso de estudio.
-    * Explicar (EN TEXTO) cómo se solucionó el problema.
+      la compilación y ejecución de los programas.
+    * Explicar (EN TEXTO) cómo se solucionó el problema tanto para el cliente como para el servidor.
 
 
 Trayecto de actividades
 ------------------------
- 
+
+Para realizar los ejercicios y responder las preguntas del trayecto de actividades 
+te voy a crear un repositorio. Es muy importante que evidencies tu avance por el trayecto 
+dejando toda la evidencia del proceso en este repositorio. 
+
+
+.. warning:: REPOSITORIO PARA EL TRAYECTO DE ACTIVIDADES
+
+    Para la realización de los ejercicios de la unidad te voy a crear 
+    `este <https://classroom.github.com/a/XCkJZAc4>`__ repositorio donde puedas 
+    experimentar tu solo. Recuerda que la evaluación de la unidad tendrá su propio repositorio. USA CODESPACES.
+
 Ejercicios preparatorios para el problema
 ************************************************
 
@@ -113,7 +94,7 @@ Ejercicio 1: concepto de sistema operativo
 ¿Qué es un sistema operativo?
 
 En términos generales, un sistema operativo es un SOFTWARE que administra
-RECURSOS de hardware y software del computador Y provee servicios mediante
+``RECURSOS de hardware y software del computador`` Y provee servicios mediante
 los cuales los programas de usuario pueden hacer uso de esos recursos.
 
 Los siguientes ejercicios explorarán algunos servicios que ofrece el sistema
@@ -130,7 +111,8 @@ la evaluación de esta Unidad.
 Ejercicio 2: preguntas sobre los conceptos básicos de los procesos 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Vamos a discutir juntos estas preguntas:
+Ahora te propondré que busques en Internet información para 
+responder las siguientes preguntas:
 
 * ¿Cuál es la diferencia entre un programa y un proceso?
 * ¿Puedo tener múltiples procesos corriendo el mismo programa?
@@ -145,9 +127,9 @@ Vamos a discutir juntos estas preguntas:
 Ejercicio 3: concepto de hilo 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Hasta ahora todos los programas que has realizado tienen un SOLO flujo de instrucciones. ¿Y si 
-quieres tener en el mismo programa VARIOS flujos independientes? Lo puedes hacer con los hilos.
-Los hilos permitirán que un programa pueda ``HACER VARIAS COSAS AL MISMO TIEMPO``.
+Hasta ahora todos los programas que has realizado tienen ``un SOLO flujo de instrucciones``. ¿Y si 
+quieres tener en el mismo programa ``VARIOS flujos de instrucciones independientes``? Lo puedes hacer 
+con los hilos. Los hilos permitirán que un programa pueda ``HACER VARIAS COSAS AL MISMO TIEMPO``.
 
 Ejercicio 4: creación de hilos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -182,6 +164,8 @@ Compila el código así:
 Ejecuta el código como siempre, pero esta vez para terminar el programa debes enviar 
 la señal ``CRTL+C`` a la terminal.
 
+* ¿Pudiste identificar cuáles son los hilos?
+* Explica cómo podría funciona este programa en el computador.
 
 Ejercicio 5: análisis de código con hilos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -227,15 +211,18 @@ Ahora vas a escribir este código, compilarlo y ejecutarlo:
 * Notaste que el programa no hace nada, te animas a proponer un hipótesis 
   al respecto de lo que puede estar ocurriendo?
   
-NO TE PREOCUPES, ya te digo qué pasa.
+NO TE PREOCUPES, ya te digo qué pasa en el ejercicio siguiente, PERO te 
+invito a que te animes ha pensar una posible explicación. Te doy una pista, 
+este programa tiene 3 hilos.
 
 Ejercicio 6: esperar un hilo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 El problema con el código anterior es que el proceso está terminando antes 
-que los hilos puedan comenzar incluso a funcionar. Por tanto, será necesario 
+que los hilos puedan comenzar incluso a funcionar (porque termina 
+el hilo principal). Por tanto, será necesario 
 que el hilo principal espere a que los dos hilos creados terminen antes de 
-que el pueda terminar. 
+que el mismo pueda terminar. 
 
 .. code-block:: c
 
@@ -299,11 +286,11 @@ Ejercicio 7: comunicación de procesos mediante colas
 
 Existe varios mecanismos de comunicación entre procesos. En este ejercicio
 te voy a proponer un servicio de comunicación entre procesos denominado POSIX 
-queues. Este servicio te permitirá enviar mensajes en una dirección de un proceso 
+queues. Este servicio te permitirá enviar mensajes de un proceso 
 a otro.
 
 ¿Y si necesitas recibir mensajes en el sentido opuesto? Necesitarás crear 
-una segunda queue.
+una segunda queue. Puedes crear tantas queues como el sistema operativo te lo permita.
 
 Ejercicio 8: ejemplo
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -311,7 +298,8 @@ Ejercicio 8: ejemplo
 En este ejemplo comunicarás dos procesos. Uno de ellos esperará los mensajes 
 que enviará el otro.
 
-Vas a lanzar primero el proceso que ejecutará la imagen receiver:
+Vas a lanzar, en un terminal, primero el proceso que ejecutará la versión 
+ejecutable de este programa:
 
 .. code-block:: c
 
@@ -354,7 +342,8 @@ Para compilar:
 
     gcc -Wall receiver.c -lrt -o receiver
 
-Luego lanza el proceso que ejecutará la imagen sender:
+Luego lanza, en una segunda terminal, el proceso que ejecutará la versión 
+ejecutable de este programa:
 
 .. code-block:: c
 
@@ -402,7 +391,7 @@ se terminen de usuar debes solicitarle al sistema operativo que la destruya.
 Para crear una cola necesitarás:
 
 * Guardar en descriptor de la cola en una variable.
-* Definir unos atributos para la cola como son la cantidad máximo 
+* Definir unos atributos para la cola como son la cantidad máxima 
   de mensajes y el tamaño máximo que podría tener un mensaje.
 
 .. code-block:: c
@@ -464,4 +453,4 @@ un mensaje para enviarlo al otro proceso.
 .. warning:: SI NO PIENSAS ESTE EJERCICIO NO PODRÁS RESOLVER LA EVALUACIÓN
 
     Este ejercicio es crítico para poder resolver la evaluación de la unidad. 
-    Te recomiendo que lo hagas antes de comenzar la evaluación.
+    Te recomiendo que lo hagas antes de comenzar dicho RETO.
