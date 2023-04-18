@@ -33,6 +33,29 @@ Evaluación
     presentes al profesor. TODO eso debe ocurrir antes de las 11:40 a.m. del 
     12 de mayo de 2023. LUEGO DE ESO NO HAY MÁS PLAZOS.
 
+.. note:: RESULTADO DE APRENDIZAJE DEL CURSO
+
+    ¿Recuerdas el resultado de aprendizaje del curso?
+
+    Aplico los conceptos necesarios para el correcto diseño, implementación, funcionamiento 
+    y diagnóstico del software en la producción de sistemas de entretenimiento digital 
+    utilizando los procedimientos y herramientas adecuadas según el contexto. 
+    NIVEL RESOLUTIVO.
+
+    La idea de esta evaluación es que evidencies que eres capaz de aplicar los 
+    conceptos de esta unidad para la solución de los problemas que encontrarás en 
+    la construcción de la aplicación interactiva que te propondré. 
+    Todos estos conceptos están relacionados con servicios que provee el SISTEMA OPERATIVO.
+    
+    
+    Se espera que puedas evidenciar:
+
+    * Entiendes y aplicas los conceptos de proceso, hilo y un mecanismo de 
+      comunicación entre hilos.
+
+    * Eres capaz de diagnosticar y solucionar problemas en el proceso de 
+      implementación de la aplicación. 
+    
 Enunciado 
 ************
 
