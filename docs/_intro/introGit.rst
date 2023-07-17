@@ -4,69 +4,6 @@ Introducción al control de versión con git y GitHub
 Con esta guía aprenderás los herramientas básicas para realizar 
 todos los proyectos y ejercicios del curso bajo control de versión.
 
-Evaluación sobre control de versión
----------------------------------------
-
-.. warning:: TEN MUCHO CUIDADO
-
-  Te recomiendo que leas la evaluación para que enfoques tus 
-  esfuerzos; TODO lo que necesitas para resolverla la encontrarás 
-  en el trayecto de actividades.
-
-Enunciado
-^^^^^^^^^^^^
-(El framework de pruebas para esta evaluación está tomado de 
-`aquí <https://github.com/remzi-arpacidusseau/ostep-projects>`__)
-
-#. Ingresa y acepta la evaluación en 
-   `este <https://classroom.github.com/a/2ZfA7C8p>`__ enlace.
-#. Crear el archivo main.c en el ``directorio dirTest/project`` 
-   con el siguiente código:
-
-    .. code-block:: c
-    
-        #include <stdio.h>
-        #include <stdlib.h>
-
-        int main(int argc, char *argv[]){
-
-            FILE *fin = fopen(argv[1],"r");
-
-            if(fin == NULL){
-                perror("fopen-fin fails: ");
-                exit(EXIT_FAILURE);
-            }
-
-            char buffer[64];
-            char *status = NULL;
-            do{
-                status = fgets(buffer, sizeof(buffer),fin);
-                if(status != NULL){
-                    printf("%s",buffer);
-                }
-            }while(status !=NULL);
-            fclose(fin);
-            exit(EXIT_SUCCESS);
-        }
-
-#. Envía los cambios al repositorio con tu evaluación.
-#. Verifica que la evaluación se calificó correctamente.
-#. Edita el archivo README.md SOLO con lo siguiente y en 
-   el mismo orden.
-
-    * Adiciona un título de tipo H1 que diga: EVALUACIÓN CONTROL DE VERSIÓN
-    * Coloca tu nombre y ID
-    * Adiciona una foto tuya.
-    * Adiciona un hipervínculo a algún trabajo tuyo que esté publicado 
-      en Internet.
-    * Crea una lista ordenada mostrando cómo sería el comando en cada caso:
-    
-        * ¿Cómo se adiciona un archivo nuevo al repositorio?
-        * Una vez modificado un archivo ¿Cómo se adiciona al stage?
-        * ¿Cómo se realiza un commit?
-        * ¿Cómo se sincroniza un repositorio local con un repositorio remoto?
-
-
 Trayecto de actividades
 ---------------------------------
 
@@ -76,7 +13,7 @@ Antes de comenzar el trayecto de actividades haremos lo siguiente:
 * Si estás en una cuenta que no es la tuya realiza un sign out (esquina superior derecha
   desplegando el menú).
 * Ingresa a tu cuenta.
-* Ingresa a este `este <https://classroom.github.com/a/B7iTtsIL>`__ sitio para unirte 
+* Ingresa a este `este <https://classroom.github.com/a/7UrkjC-v>`__ sitio para unirte 
   al classroom del curso. Busca tu nombre y ID. En este paso asociarás tu cuenta 
   de Github al classroom del curso.
 * Acepta el assigment.
@@ -708,3 +645,78 @@ Abre README.md y realiza las siguientes modificaciones:
 
     En `este <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>`__ 
     enlace puedes encontrar más información.
+
+Evaluación sobre control de versión
+---------------------------------------
+
+.. warning:: TEN MUCHO CUIDADO
+
+  No inicies la evaluación hasta que no hagas el trayecto de actividades.
+  En ese espacio podrás ensayar TODO lo que quieras antes de hacer la evaluación.
+
+  Ten presente que durante el curso siempre tendrás un repositorio 
+  para experimentar el trayecto de actividades y otro para entregar las 
+  evaluaciones.
+
+
+.. warning:: TEN MUCHO CUIDADO
+
+  Te recomiendo que leas la evaluación para que enfoques tus 
+  esfuerzos; TODO lo que necesitas para resolverla la encontrarás 
+  en el trayecto de actividades.
+
+Enunciado
+^^^^^^^^^^^^
+
+Con esta evaluación vas a aprender cómo entregarás las evaluaciones 
+del curso. Vamos a simular un escenario de prueba en el cual tendrás 
+que entregar la solución a problema en el archivo main.c y la 
+documentación del mismo en el archivo README.md.
+
+#. Ingresa y acepta la evaluación en 
+   `este <https://classroom.github.com/a/OqezBq1Z>`__ enlace.
+#. Crea dos archivos en el repositorio llamados: main.c y README.md
+#. El archivo main.c tendrá este código con el cual simularemos 
+   la entrega de una evaluación:
+
+    .. code-block:: c
+    
+        #include <stdio.h>
+        #include <stdlib.h>
+
+        int main(int argc, char *argv[]){
+
+            FILE *fin = fopen(argv[1],"r");
+
+            if(fin == NULL){
+                perror("fopen-fin fails: ");
+                exit(EXIT_FAILURE);
+            }
+
+            char buffer[64];
+            char *status = NULL;
+            do{
+                status = fgets(buffer, sizeof(buffer),fin);
+                if(status != NULL){
+                    printf("%s",buffer);
+                }
+            }while(status !=NULL);
+            fclose(fin);
+            exit(EXIT_SUCCESS);
+        }
+
+#. En el archivo README.md te pediré que escribas la documentación siguiendo 
+   estos lineamientos:
+
+    * Adiciona un título de tipo H1 que diga: EVALUACIÓN CONTROL DE VERSIÓN
+    * Coloca tu nombre y ID
+    * Adiciona una foto tuya.
+    * Adiciona un hipervínculo a algún trabajo tuyo que esté publicado 
+      en Internet.
+    * Crea una lista ordenada mostrando cómo sería el comando de git en 
+      la terminal para hacer cada una de las siguientes operaciones
+    
+        * ¿Cómo se adiciona un archivo nuevo al repositorio?
+        * Una vez modificado un archivo ¿Cómo se adiciona al stage?
+        * ¿Cómo se realiza un commit?
+        * ¿Cómo se sincroniza un repositorio local con un repositorio remoto?

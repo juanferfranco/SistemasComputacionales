@@ -68,8 +68,7 @@ El curso está divido en 4 unidades:
 La metodología del curso es de aula invertida. En este sitio web está todo el material 
 necesario para que puedas preparar la evaluación de cada unidad. Debes utilizar 
 el tiempo autónomo para preparar el material y resolver los ejercicios y retos en clase 
-con ayuda de tus compañeros de equipo y la asesoría del profesor.
-
+con el apoyo de tus compañeros y la asesoría del profesor.
 
 Cronograma
 ------------
@@ -85,29 +84,38 @@ Evaluación
 * unidad 3: 25%.
 * unidad 4: 20%.
 
+Plazos de entrega de las evaluaciones
+---------------------------------------
+=========== ==================  ===================== =====================
+Evaluación  Plazo 1 (sobre 5)   Plazo 2 (sobre 4)     Plazo 3 (sobre 3)
+=========== ==================  ===================== ===================== 
+Git         julio 25            agosto 1              agosto 8
+Unidad 1    agosto 17           agosto 24             agosto 31
+Unidad 2    septiembre 14       septiembre 21         septiembre 28
+Unidad 3    octubre 12          octubre 19            octubre 26
+Unidad 4    noviembre 2         no hay                no hay 
+=========== ==================  ===================== ===================== 
+
 ¿Cuándo se consideran entregada una evaluación?
 --------------------------------------------------
 
 Cuando cumplas TODAS las condiciones siguientes:
 
 * Incluye toda la documentación solicitada.
-* Pasa los vectores de prueba, cuando aplique.
-* Incluye los enlaces a videos públicos en youtube donde se muestre 
-  la evaluación funcionado.
-* El aval de unidad entregada por parte del profesor.
+* Tiene el aval de unidad entregada por parte del profesor.
 
 .. warning:: IMPORTANTE
 
   No hay entregas parciales. Si tu trabajo está 
   incompleto el docente simplemente no te dará el aval de entregado.
   Recuerda que una vez tengas el aval la nota en el sistema 
-  de la unidad será 5.
+  será 5.
 
 Dedicación
 -----------
 
-Este curso es de 2 créditos y se desarrolla en 16 semanas. Cada semana tendrás
-3 horas 20 minutos de trabajo presencial y 2 hora de trabajo autónomo.
+Este curso es de 2 créditos y se desarrolla en 16 semanas. En total debes 
+invertir 6 horas de trabajo semanal.
 
 Bibliografía
 -------------
@@ -152,16 +160,3 @@ Para realizar el trabajo de cada unidad se espera que hagas lo siguiente:
   experimentes, crea hipótesis, experimenta de nuevo, observa y concluye.
 * NO OLVIDES, este curso se trata de PENSAR y experimentar NO de
   BUSCAR soluciones en Internet.
-
-Bitácora  
-------------------------------
-
-Te recomiendo utilizar dos herramientas para que documentes y organices tu trabajo:
-
-* GitHub
-* `Notion <https://www.notion.so>`__
-
-En GitHub mantendrás todo tu código bajo control de versión.
-
-En Notion llevarás tu bitácora electrónica (opcional)
-
