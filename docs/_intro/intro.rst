@@ -86,8 +86,15 @@ Evaluación
 
 Plazos de entrega de las evaluaciones
 ---------------------------------------
+
+.. warning:: NO TENDREMOS ENTREGAS POR FUERA DE HORARIOS DE clase
+
+  No tendremos entregas por fuera del horario de clase. 
+  Luego del plazo 1 la nota será cero a menos que se entregue en los plazos siguientes. 
+  Luego del plazo 3 la nota quedará en cero.
+
 =========== ==================  ===================== =====================
-Evaluación  Plazo 1 (sobre 5)   Plazo 2 (sobre 4)     Plazo 3 (sobre 3)
+Evaluación  Plazo 1 (sobre 5)   Plazo 2 (sobre 5)     Plazo 3 (sobre 4)
 =========== ==================  ===================== ===================== 
 Git         julio 25            agosto 1              agosto 8
 Unidad 1    agosto 17           agosto 24             agosto 31
@@ -109,7 +116,8 @@ Cuando cumplas TODAS las condiciones siguientes:
   No hay entregas parciales. Si tu trabajo está 
   incompleto el docente simplemente no te dará el aval de entregado.
   Recuerda que una vez tengas el aval la nota en el sistema 
-  será 5.
+  será 5 si cumpliste con el plazo. De lo contrario tendrás la penalización 
+  que corresponda.
 
 Dedicación
 -----------
