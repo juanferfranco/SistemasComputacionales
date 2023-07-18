@@ -9,13 +9,13 @@ Trayecto de actividades
 
 Antes de comenzar el trayecto de actividades haremos lo siguiente:
 
-* Abre el browser e ingresa a `Github <https://github.com/>`__.
+* Abre el browser e ingresa a `GitHub <https://github.com/>`__.
 * Si estás en una cuenta que no es la tuya realiza un sign out (esquina superior derecha
   desplegando el menú).
 * Ingresa a tu cuenta.
 * Ingresa a este `este <https://classroom.github.com/a/7UrkjC-v>`__ sitio para unirte 
   al classroom del curso. Busca tu nombre y ID. En este paso asociarás tu cuenta 
-  de Github al classroom del curso.
+  de GitHub al classroom del curso.
 * Acepta el assigment.
 * Ya estamos listos para comenzar a trabajar.
 
@@ -23,7 +23,7 @@ Lectura 1: sistemas de control de versión
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 En este curso vas a realizar todos los ejercicios y evaluaciones usando 
-un sistema de control de versión: Git y Github.
+un sistema de control de versión: Git y GitHub.
 
 ¿Qué es un sistema de control versión?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -89,7 +89,7 @@ es un programa que te permite interactuar con el sistema operativo y los program
 que tienes instalados por medio de comandos. Es por ello que a la terminal 
 también la conocemos como interfaz de línea de comandos.
 
-Abre la terminal. Escribe el siguiente comando::
+Abre la terminal ( profe!!!!!!! Aiuda :) ). Escribe el siguiente comando::
 
   pwd
 
@@ -161,7 +161,7 @@ comandos::
 Al cambiarte al padre de demo1, ``.`` se refiere al directorio padre de ``demo1``. 
 Por tanto, ``./demo1`` será la ruta RELATIVA de demo1 con respecto a su padre. 
 
-Ejercicio 2: Vas a practicar 
+Ejercicio 2: vas a practicar 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ahora te voy a pedir que hagas varias cosas y preguntes si tienes dudas:
@@ -213,34 +213,39 @@ De nuevo tómate unos minutos para:
 
 #. Listar cada uno de los comandos que has aprendido hasta ahora y escribe al 
    frete de cada uno qué hace.
-#. ¿Qué es una ruta absoluta?
-#. ¿Qué es una ruta relativa?
+#. ¿Qué es una ruta absoluta? (¿Y dónde está el ejemplo?)
+#. ¿Qué es una ruta relativa? (¿Y mi ejemplo?)
 
 Ejercicio 5: añade un archivo al control de versión
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Te voy a explicar lentamente lo que viene. Actualmente tienes un repositorio 
-en Github, pero cuando creas un Codespace lo que ocurre es que Github le da 
+en GitHub, pero cuando creas un Codespaces lo que ocurre es que GitHub le da 
 vida a un computador en Internet, lo llamaremos servidor, que correrá el sistema 
-operativo Linux al cual tu tendrás acceso desde el browser e interactuarás con él 
-desde la línea de comandos que tienes disponible.
+operativo Linux al cual tu tendrás acceso desde el browser (de tu computador local).
+¿Cómo vas a interactuar con el sistema operativo del servidor? Desde la línea 
+de comandos cuyo intérprete corre en el servidor y que podrás abrir desde el 
+browser. ¿Te estás enredando? Relax, es normal. Posiblemente esta sea tu primera 
+vez con estas cosas, pero no será la última. Lo importante es que sigas intentando 
+y trates de entender.
 
-El servidor tendrá un copia del repositorio que tienes en Github. TE REPITO, tendrás 
+El servidor tendrá un copia del repositorio que tienes en GitHub. TE REPITO, tendrás 
 de entrada una copia del repositorio. Ten presente que es una copia. Entonces lo 
-que hagas en la copia no se verá reflejado en el servidor a menos que tu lo indiques 
-de manera explícita. Vamos bien?
+que hagas en la copia no se verá reflejado en GitHub a menos que tu lo indiques 
+de manera explícita. ¿Vamos bien? Si no es así pregunta por fa.
 
-En resumen. Tienes en Github un repositorio que te creó el profe. El profe también 
+En resumen. Tienes en GitHub un repositorio que te creó el profe. El profe también 
 se encarga de configurar todo para que puedas tener un servidor en Internet. Ese 
 servidor correrá el sistema operativo Linux. Cuando el servidor arranca hará una 
-copia del repositorio en Github. Cualquier cosa que hagas en esta copia no modificará 
-el repositorio en Github a menos que tu se lo digas.
+copia del repositorio de GitHub. Cualquier cosa que hagas en esta copia no modificará 
+el repositorio en GitHub a menos que tu se lo digas. ¿Cómo se lo digo? Ya casi te digo.
 
 Ahora si. Vas a crear en la copia del repositorio un archivo, lo vas a modificar y 
-luego lo vas a enviar a Github, es decir, vas a sincronizar el repositorio en Github 
-con el repositorio que tienes en el servidor. Vale?
+luego lo vas a enviar a GitHub, es decir, vas a **sincronizar** el repositorio local 
+con el repositorio en GitHub. ¿Vale? No profe. ¿Cómo así que sincronizar? Es decir, 
+los repositorios en GitHub y en el servidor en Codespaces tendrán los mismos archivos 
+y en ese momento del tiempo al estar en ese estado decimos que están sincronizados.
 
-* Asegúrate de cambiarte al directorio introgit.
 * Escribe ls -al. Deberás ver un directorio oculto llamado ``.git```.
   Ese directorio ``.git`` es lo que llamamos un ``REPOSITORIO DE GIT``. En ese repositorio 
   el sistema de control de versión, ``Git```, que está corriendo en el servidor, 
@@ -285,16 +290,12 @@ Ahora dile a Git que coloque bajo control de versión el nuevo archivo main.c::
 
     git add main.c
 
-Esto solo debes decírselo una vez a Git. De aquí en adelante cada que hagas 
-cambios a main.c solo debes indicarle a Git cuándo debe guardar la versión de ese archivo 
-en el repositorio.
-
 Entonces, en este punto ya añadiste main.c al control de versión. Cuando añades un 
 archivo, Git automáticamente lo pasa a una zona lógica llamada el ``STAGE``. Puedes 
 entrar y sacar archivos del STAGE. Pero una vez tengas allí todos los archivos que quieras 
 lo único que debes hacer es pedirle a Git que les tome una foto, es decir, que haga 
-un COMMIT. Ese commit será una foto de tu proyecto que incluirá el nuevo archivo main.c 
-con los cambios que recién realizaste. 
+un COMMIT. Ese commit será una foto de tu proyecto en ese momento temporal que incluirá 
+el nuevo archivo main.c con los cambios que recién realizaste. 
 
 .. note:: NO PIERDAS DE VISTA 
 
@@ -315,31 +316,31 @@ Escribe de nuevo::
 
 Ahora el sistema te dirá que no hay nada disponible para hacerle commit.
 
-Te pediré ahora que regreses a tu repositorio en Github. Ves la carpeta project1 y 
+Te pediré ahora que regreses a tu repositorio en GitHub. Ves la carpeta project1 y 
 el archivo main.c?
 
 La respuesta debería ser no. ¿Por qué?
 
-.. warning:: NO SIGAS POR FA
+.. warning:: Alerta de spoiler
 
     Si aún no sabes la respuesta a la pregunta anterior te pediré que leas 
     de nuevo el ejercicio. Si aún así aún no entiendes llama al profe.
 
-El archivo aún no está en Github porque recuerda que se encuentra en el repositorio 
-del servidor que aún no está sincronizado con el repositorio en Github.
+El archivo aún no está en GitHub porque recuerda que se encuentra en el repositorio 
+del servidor que aún no está sincronizado con el repositorio en GitHub.
 
 Para sincronizar los repositorios escribe::
 
     git push
 
-Regresa a Github. Presiona F5 para refrescar. ¿Qué pasó?
+Regresa a GitHub. Presiona F5 para refrescar. ¿Qué pasó?
 
 Ejercicio 6: para pensar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * ¿Qué crees que pase si borras el directorio .git del servidor?
 * ¿Si borras el directorio .git del servidor qué crees que pase 
-  con el repositorio en Github?
+  con el repositorio en GitHub?
 
 Ejercicio 7: adiciona un nuevo archivo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -347,7 +348,7 @@ Ejercicio 7: adiciona un nuevo archivo
 * Adiciona a project1 en el servidor un nuevo archivo llamado file1.txt
 * Adiciona al repositorio el archivo.
 * Realiza el commit.
-* Sincroniza el repositorio en el servidor con el repositorio en Github.
+* Sincroniza el repositorio en el servidor con el repositorio en GitHub.
 
 .. note:: LLAMA al profe
 
@@ -364,7 +365,7 @@ PERO no hagas commit aún. Escribe::
 
 El resultado por ahora es muy interesante. Verás que estás trabajando en la 
 rama (branch) main. Las ramas son una característica MUY útil de Git. Como 
-su nombre indica te puedes ir por las ramas. Te lo explico con una historia. 
+su nombre indica, te puedes ir por las ramas. Te lo explico con una historia. 
 Supón que estás trabajando en tu proyecto y se te ocurre una idea, algo nuevo 
 para implementar; sin embargo, no quieres dañar tu proyecto principal. Entonces 
 lo que haces es que te creas una rama que tomará como punto de partida el estado 
@@ -386,14 +387,14 @@ Finalmente, observa el mensaje
 ``nothing added to commit but untracked files present (use "git add" to track)`` quiere 
 decir que si en este momento le pides a Git que guarde en el repositorio una 
 ``FOTO`` (``commit``) del estado actual de los archivos que están bajo tracking, 
-Git te dice que no hay nada para guardar.Nota que Git da sugerencias: 
+Git te dice que no hay nada para guardar. Nota que Git da sugerencias: 
 ``(use "git add" to track)``, es decir, te dice qué necesitas hacer para colocar 
 el archivo file2.txt en tracking.
 
 Ejercicio 9: termina de sincronizar los cambios  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sincroniza el repositorio local con el ``REMOTO`` (en Github) para 
+Sincroniza el repositorio local con el ``REMOTO`` (en GitHub) para 
 que puedas ver los cambios.
 
 Ejercicio 10: ahora modifica file1.txt
@@ -417,11 +418,11 @@ De nuevo escribe::
     git status
 
 Ahora solo tiene que sincronizar el repositorio local (en el servidor) con 
-el remoto (en Github). ¿Cómo se hace eso? Lee la salida de status ahí te dice.
+el remoto (en GitHub). ¿Cómo se hace eso? Lee la salida de status ahí te dice.
 
 .. note:: NO OLVIDES
 
-    Cada que regreses al repositorio en Github para comprobar los cambios no 
+    Cada que regreses al repositorio en GitHub para comprobar los cambios no 
     olvides presionar F5 para refrescar la página.
 
 Ejercicio 11: volver a una versión anterior del proyecto 
@@ -518,115 +519,14 @@ que hagas lo siguiente:
 #. Realiza un par de commits más.
 #. Sincroniza los cambios con el repositorio remoto.
 
-Ejercicio 13: entrega de evaluaciones
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-(El framework de pruebas para este ejercicio está tomado de 
-`aquí <https://github.com/remzi-arpacidusseau/ostep-projects>`__)
-
-Te voy a proponer un ejercicio que será muy importante para el curso 
-porque será la manera típica como entregarás las evaluaciones.
-
-Para la entrega de las evaluaciones utilizarás GitHub. Para cada evaluación 
-te enviaré un enlace con una invitación para la evaluación. Cuando aceptes la 
-invitación, automáticamente se creará un repositorio para ti con la estructura 
-de directorios y archivos necesarios para comenzar a realizar la evaluación. Ten 
-en cuenta que tu tendrás permisos para editar el nuevo repositorio. Podrás aplicar 
-todo lo que trabajaste en esta guía.
-
-Entonces vamos a simular una invitación a una evaluación en la cual tendrás que 
-escribir un programa. En este caso deberás completar el programa wcat.c al cual 
-se le aplicarán automáticamente unos vectores de prueba para verificar si es 
-correcta la implementación.
-
-Por ahora, los detalles del programa y las pruebas no importan. Lo importante es 
-que puedas practicar el flujo de trabajo usando Git y GitHub.
-
-Sigue estos pasos:
-
-* Abre un browser e ingresa a tu cuenta de GitHub. ASEGÚRATE POR FAVOR que estás 
-  en tu cuenta.
-* Abre una nueva pestaña e ingresa a `este <https://classroom.github.com/a/sXNRDAEb>`__ sitio.
-* Por último acepta la tarea.
-* Espera un momento y refresca (con F5) el browser.
-* Abre tu nuevo repositorio en otra pestaña.
-* Selecciona el menú Actions y dale click al botón ``Enable Actions on this 
-  repository``. Si no aparece el botón es porque ya están habilitadas las acciones.
-* Observa el archivo wcat.c inicial:
-
-.. code-block:: c 
-
-        #include <stdio.h>
-        #include <stdlib.h>
-
-
-        int main(int argc, char *argv[]){
-            exit(EXIT_SUCCESS);
-        }
-
-* Regresa al repositorio y espera que aparezca una marca roja indicando que el código 
-  actual no pasa los vectores de prueba.
-* Dale click a la marca roja y luego click en Details.
-* Despliega ``Run education/autograding@v1``. Podrás ver allí que algunos vectores de 
-  prueba tienen marcas rojas (falló la prueba) y otros marcas verdes (pasó la prueba).
-* Ahora vamos a simular que arreglaremos el código. Modifica wcat.c con este código:
-
-.. code-block:: c 
-
-    #include <stdio.h>
-    #include <stdlib.h>
-
-
-    int main(int argc, char *argv[]){
-
-        //printf("arc: %d\n",argc);
-
-        if(argc <= 1){
-            exit(EXIT_SUCCESS);
-        }
-
-        FILE *inFile = NULL;
-        char buffer[256];
-        char *status =  NULL;
-
-
-        for(int i = 1 ; i < argc; i++){
-
-            inFile = fopen(argv[i],"r");
-            if (inFile == NULL){
-                printf("wcat: cannot open file");
-                printf("\n");
-                exit(EXIT_FAILURE);
-            }
-            do{
-                status = fgets(buffer, sizeof(buffer),inFile);
-                if(status != NULL){
-                    printf("%s",buffer);
-                    //printf("hola mundo cruel");
-                }
-            }while (status !=NULL);
-
-            fclose(inFile);
-        }
-        
-        exit(EXIT_SUCCESS);
-    }
-
-* Salva wcat.c y realiza un commit.
-* Luego sincroniza con el repositorio remoto. Esto hará que se disparen 
-  las pruebas (acciones) en GitHub.
-* Ingresa de nuevo al repositorio en GitHub. Espera un minuto y refresca la página. 
-  Si todo está bien verás una marca verde al lado izquierdo del commit que enviaste.
-* Despliega de nuevo ``Run education/autograding@v1`` para observar cómo se ven 
-  los vectores cuando todo funciona bien.
-
-Ejercicio 14: documentación de las evaluaciones
+Ejercicio 13: documentación de las evaluaciones
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La documentación de las evaluaciones la realizarás en el archivo 
 README.md. Vas a escribir la documentación en un lenguaje llamado Markdown.
 
-Tu repositorio actualmente debe tener un archivo README.md, ¿Verdad?
+En la raíz de tu repositorio crea el archivo README.md (así igualito para 
+que GitHub pueda hacer su magia).
 
 Abre README.md y realiza las siguientes modificaciones:
 
@@ -646,6 +546,7 @@ Abre README.md y realiza las siguientes modificaciones:
     En `este <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>`__ 
     enlace puedes encontrar más información.
 
+
 Evaluación sobre control de versión
 ---------------------------------------
 
@@ -658,26 +559,26 @@ Evaluación sobre control de versión
   para experimentar el trayecto de actividades y otro para entregar las 
   evaluaciones.
 
-
 .. warning:: TEN MUCHO CUIDADO
 
-  Te recomiendo que leas la evaluación para que enfoques tus 
-  esfuerzos; TODO lo que necesitas para resolverla la encontrarás 
-  en el trayecto de actividades.
+  En las próximas unidades verás que siempre las iniciaré con el enunciado 
+  de la evaluación. La idea es que la leas para que puedas enfocar tu 
+  atención en los puntos del trayecto de actividades que creas que más te aportarán 
+  a la solución de dicha evaluación.
 
 Enunciado
 ^^^^^^^^^^^^
 
 Con esta evaluación vas a aprender cómo entregarás las evaluaciones 
-del curso. Vamos a simular un escenario de prueba en el cual tendrás 
-que entregar la solución a problema en el archivo main.c y la 
+del curso. Vas a simular un escenario de prueba en el cual tendrás 
+que entregar la solución a un problema en el archivo main.c y la 
 documentación del mismo en el archivo README.md.
 
 #. Ingresa y acepta la evaluación en 
    `este <https://classroom.github.com/a/OqezBq1Z>`__ enlace.
 #. Crea dos archivos en el repositorio llamados: main.c y README.md
-#. El archivo main.c tendrá este código con el cual simularemos 
-   la entrega de una evaluación:
+#. El archivo main.c tendrá este código con el cual simularás que estás 
+   entregando una evaluación:
 
     .. code-block:: c
     
@@ -720,3 +621,8 @@ documentación del mismo en el archivo README.md.
         * Una vez modificado un archivo ¿Cómo se adiciona al stage?
         * ¿Cómo se realiza un commit?
         * ¿Cómo se sincroniza un repositorio local con un repositorio remoto?
+
+Profe, ya terminé y ahora ¿Qué hago? Mira, no es por molestarte, sino que 
+necesito que te familiarices con la sección ¿De qué se trata este curso? La 
+idea es que consultes todo el tiempo esta sección porque allí están los plazos 
+y la respuesta a la pregunta profe y ahora ¿Qué hago?
