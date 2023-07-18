@@ -168,3 +168,9 @@ Para realizar el trabajo de cada unidad se espera que hagas lo siguiente:
   experimentes, crea hipótesis, experimenta de nuevo, observa y concluye.
 * NO OLVIDES, este curso se trata de PENSAR y experimentar NO de
   BUSCAR soluciones en Internet.
+
+Tablero de curso
+------------------
+
+`Aquí <https://upbeduco-my.sharepoint.com/:wb:/g/personal/juanf_franco_upb_edu_co/ET-JxKhvIshNlVGiOyWQj-UB8RMO6zwl-OHo4T0cKon5hw?e=ecEFhO>`__
+está el tablero del curso.
