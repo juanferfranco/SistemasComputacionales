@@ -4,26 +4,14 @@ Unidad 1. Arquitectura del computador
 Introducción
 --------------
 
-En esta unidad vas a aprender los bloques de construcción básicos del hardware de un 
-sistema de cómputo moderno, cómo esos bloques pueden combinarse para construir 
-computadores y cómo hacen para ejecutar programas.
+En esta unidad vas a estudiar cómo funciona un computador digital moderno entendiendo 
+cómo hace este para ejecutar un programa en lenguaje ensamblador.
 
 Propósito de aprendizaje
 ****************************
 
-Comprender cómo funciona el hardware de un computador moderno desde una 
-perspectiva sistémica, es decir, estudiando las partes que lo componen y cómo 
-se conectan para conseguir funciones más complejas.
-
-Te acercarás al lenguaje de programación ensamblador y verás la relación de este 
-con el lenguaje C.
-
-Temas
-********
-
-* Organización básica de un computador digital moderno.
-* Lenguaje de máquina-lenguaje ensamblador-lenguaje C
-
+Acercarse al funcionamiento de un computador digital moderno desde el estudio 
+del lenguaje ensamblador.
 
 Evaluación
 ---------------
@@ -31,25 +19,27 @@ Evaluación
 Enunciado
 ************
 
-Debes hacer una aplicación en el lenguaje ensamblador estudiado en esta unidad.
-La aplicación deberá funcionar en un loop infinito. La aplicación ``lee el teclado`` y pinta 
-en la pantalla un cuadrado si presionas la letra c. Si presionas la letra b debe borrar la 
-pantalla.
+Construye una aplicación interactiva en el lenguaje ensamblador 
+de la CPU que estudiaste en esta unidad. La aplicación la vas a correr 
+en el simulador CPUEmulator. La aplicación debe:
+
+* Funcionar en un ciclo infinito.
+* Leer el teclado. Si la tecla presionada es la primera 
+  letra de tu primer apellido entonces debes mostrar en la pantalla 
+  tu primer apellido. Si la letra presionada es la última de tu primer 
+  apellido entonces debes borrar la pantalla. Si la última letra de 
+  tu apellido es la misma que la primera letra entonces toma la penúltima y 
+  así sucesivamente hasta que encuentres una diferente.
 
 Consideraciones
 ******************
 
-.. warning:: LA CREACIÓN DE EQUIPOS
-
-    Habla con el profesor para crear el equipo de trabajo.
-
-* `Aquí <https://classroom.github.com/a/OFOi51-c>`__ está el enlace de la evaluación.
-* Debes crear un equipo de trabajo al cual se unirán todos los miembros. El equipo 
-  solo lo crea un integrante y los demás miembros solo deben unirse.
-* Al repositorio solo debes subir dos archivos. El archivo README.md y un archivo program.asm con 
-  la solución. Ten presente que puedes hacer pruebas en windows utilizando las herramientas gráficas.
-* En la documentación del repositorio debes explicar cómo resolviste el problema.
-* Una vez termines debes validar la solución con el profesor.
+* `Aquí <https://classroom.github.com/a/8P8BS14y>`__ está el enlace de la evaluación.
+* Al repositorio solo debes subir DOS archivos: program.asm y README.md.
+* En el README.md vas a explicar detalladamente cómo solucionaste el problema 
+  en general y también cómo solucionaste el problema de pintar tu apellido 
+  en la pantalla. A medida que explicas muestra que parte del programa en 
+  ensamblador hace lo que estás explicando.
 
 Trayecto de actividades
 ------------------------
@@ -74,7 +64,7 @@ Una vez descargues el archivo .zip, lo debes descomprimir. Busca el archivo
 Digital.exe y ejecútalo. 
 
 Ve a la opción Edit/Settings/Advanced y en Java library adiciona 
-esta biblioteca que está en ``Digital/custom/digitaln2t-1.0-SNAPSHOT.jar``.
+la biblioteca que está en ``Digital/custom/digitaln2t-1.0-SNAPSHOT.jar``.
 
 Ahora abre el archivo demo que está en ``Digital/custom/project05/ComputerFull4Key.dig``.
 
@@ -224,7 +214,7 @@ de máquina se le conoce como ``ENSAMBLADO``.
 fácil de leer y escribir que el lenguaje de máquina, pero sigue siendo un reto para las 
 personas escribir programas a ese nivel. Adicionalmente, ten presente que el lenguaje de máquina 
 y el lenguaje ensamblador son PARTICULARES para cada CPU. Eso quiere decir que tendrás que aprender 
-tantos lenguajes ensamblador como CPU donde quieres que se ejecute tu programa.
+un nuevo lenguaje ensamblador para cada CPU donde quieres que se ejecute el programa.
 
 ¿Hay alguna manera de escribir un programa en un único lenguaje? Si. Mediante los lenguajes 
 de alto nivel. Tu ya conoces uno, C#. Si programas en un lenguaje de alto nivel puedes 
@@ -763,11 +753,13 @@ Ejercicio 15: practica con otro ejercicio
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Con este ejercicio vas a practicar la traducción a lenguaje 
-ensamblador partiendo de un programa en alto nivel. Para escribir 
+ensamblador partiendo de un programa en alto nivel. Puedes escribir 
+el programa en Visual Studio Code. Para escribir 
 el programa en Visual Studio Code te voy a pedir que instales 
 una herramienta que reconozca el lenguaje ensamblador del 
 procesador que has estado estudiando. El objetivo es que el 
-código se vea más bonito. Vas a instalar `esta <https://marketplace.visualstudio.com/items?itemName=Throvn.nand2tetris>`__ 
+código se vea más bonito. Vas a instalar 
+`esta <https://marketplace.visualstudio.com/items?itemName=Throvn.nand2tetris>`__ 
 extensión así:
 
 * Abre Visual Studio Code.
@@ -819,7 +811,7 @@ desde el punto de vista ``semántico``. De nuevo, necesitarás más herramientas
 * Abre el directorio tools y ejecuta el archivo CPUEmulator.bat. 
 * Amplia el tamaño de la ventana del simulador en la parte inferior para que puedas ver el campo
   de texto donde aparecerán los mensajes de error.
-* Carga en la memoria ROM el archivo .asm. Si la sintaxis es correcta puedes comenzar 
+* Carga en la memoria ROM el archivo ex15.asm. Si la sintaxis es correcta puedes comenzar 
   a simular tu programa. De lo contrario debes reparar la sintaxis del programa.
 * Cada vez que modifiques el programa debes cargarlo de nuevo en la memoria ROM y 
   verificar de nuevo que no tenga errores. ¿Cómo sabes que no tiene errores? Porque 
@@ -842,6 +834,11 @@ Por último te voy a pedir que pruebes otra herramienta. Se llama el Assembler.b
 
 Carga el archivo .asm y dale click al botón Fast Translation. Podrás ver el código 
 en lenguaje de máquina.
+
+.. warning:: ALERTA DE SPOILER
+
+  Te mostraré ahora una posible solución (que también encontrarás 
+  en el texto guía).
 
 .. tip:: Observa el código en comentarios (//) y su traducción
 
@@ -923,45 +920,10 @@ corrige. Escribe en Visual Studio Code el lenguaje ensamblador, usa CPUEmulator.
 Ejercicio 17: evaluación formativa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-El problema está divido en dos challenges. Tu programa debe cumplir exitosamente ambos challenges.
+Vas a realizar y simular dos programas:
 
 * Challenge 1: ``leer el teclado`` y llenar la pantalla de negro si la tecla leída es 
   la letra F. Volver a repetir este proceso infinitamente (loop infinito).
 * Challenge 2: ``leer el teclado`` y llenar la pantalla de negro si la tecla leída es 
   la letra ``F`` y limpiar la pantalla si la letra leída es la ``C``. Repetir infinitamente 
-  este proceso (loop infinito). 
-
-Consideraciones para realizar la evaluación: 
-
-* `Aquí <https://classroom.github.com/a/sBkXFFaq>`__ está el enlace de la evaluación.
-* CLONA el repositorio.
-* Cámbiate al directorio problem.
-* edita ÚNICAMENTE el archivo program.asm.
-* No olvides hacer commits y push.
-* Para probar el programa de manera gráfica, puedes copiar el contenido del archivo program.asm 
-  para probar localmente en Windows con CPUEmulator.bat.
-* Al hacer las pruebas te recomiendo colocar la animación en FAST y con la opción No Animation. No 
-  olvides que debes dar click en el botón del teclado para que el programa reciba las teclas que 
-  presionarás.
-* También puedes hacer pruebas automáticas. En este caso usarás la línea de comandos. Cámbiate al 
-  directorio problem y luego ejecuta:
-
-  Para el challenge 1::
-
-    ../tools/CPUEmulator.sh programBasic.tst
-    
-  Para el challenge 2::
-
-    ../tools/CPUEmulator.sh program.tst
-
-  Si tienes éxito verás el mensaje ``End of script - Comparison ended successfully``. De lo contrario 
-  te aparecerá un mensaje que indicará la línea del archivo ``.out`` que no coincide con el vector de prueba 
-  en el archivo ``.cmp``.
-
-* Ten en cuenta que cada que hagas ``push`` al repositorio remoto, las pruebas anteriores se ejecutarán 
-  automáticamente y podrás ver el resultado en Github.
-
-.. warning:: ALERTA DE SPOILER
-    
-    En `este <https://github.com/juanferfranco/scu1-e1-2022-10-feedback.git>`__ enlace podrás consultar 
-    y clonar el repositorio con una posible solución a la evaluación formativa.
+  este proceso (loop infinito).

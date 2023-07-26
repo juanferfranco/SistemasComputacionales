@@ -96,11 +96,11 @@ Plazos de entrega de las evaluaciones
 =========== ==================  ===================== =====================
 Evaluación  Plazo 1 (sobre 5)   Plazo 2 (sobre 5)     Plazo 3 (sobre 4)
 =========== ==================  ===================== ===================== 
-Git         julio 25            agosto 1              agosto 8
-Unidad 1    agosto 17           agosto 24             agosto 31
-Unidad 2    septiembre 14       septiembre 21         septiembre 28
-Unidad 3    octubre 12          octubre 19            octubre 26
-Unidad 4    noviembre 2         no hay                no hay 
+Git         semana 2 jul 24     semana 3              semana 4
+Unidad 1    semana 5 ago 14     semana 6              semana 7
+Unidad 2    semana 9 sep 11     semana 10             semana 11
+Unidad 3    semana 13 oct 9     semana 14             semana 15
+Unidad 4    semanas 16 oct 30   no hay                no hay 
 =========== ==================  ===================== ===================== 
 
 ¿Cuándo se consideran entregada una evaluación?
