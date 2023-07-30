@@ -1,0 +1,42 @@
+Recursos. Solo para los más curiosos
+=======================================
+
+Hardware
+-----------
+* `History of Retro Game Consoles for Programmers <https://pikuma.com/blog/game-console-history-for-programmers>`__.
+* Proyecto: `nand2tetris-fpga <https://gitlab.com/x653/nand2tetris-fpga/>`__.
+* Proyecto: `FPGA NES <https://danstrother.com/fpga-nes/>`__. 
+
+Cursos
+--------
+
+Sitios
+-------
+
+* `NES Programming <https://en.wikibooks.org/wiki/NES_Programming>`__.
+* `Programming NES games in C <https://shiru.untergrund.net/articles/programming_nes_games_in_c.htm>`__.
+* `NESICIDE is an Integrated Development Environment for the 8-bit Nintendo Entertainment System <https://knob.phreneticappsllc.com/nesicide/?s=about>`__.
+* `BSNES - Snes Emulator <https://bsnes.org/>`__.
+* `super-mario-bros <https://github.com/feresr/super-mario-bros>`__.
+* Fernando Raviola `Writing Super Mario Bros in C++ <https://feresr.medium.com/writing-super-mario-bros-in-c-e59dfc5743af>`__.
+
+Videos
+--------
+
+* `Super Mario - C++ & SDL2 (with Source Code) <https://youtu.be/HkLZ9ESYxCU>`__.
+
+
+Libros
+--------
+
+* `The Elements of Computing Systems: Building a Modern
+  Computer from First Principles <https://mitpress.mit.edu/books/elements-computing-systems-second-edition>`__. 
+  Este libro es un recorrido por el funcionamiento de un sistema de cómputo desde las compuertas que componen 
+  el computador hasta un videojuego conocido como tetris. Este texto soporta un curso muy popular llamado 
+  from `nand to tetris <https://www.nand2tetris.org/>`__.
+* `Computer Systems: A Programmer's Perspective <https://www.pearson.com/us/higher-education/program/Bryant-Computer-Systems-A-Programmer-s-Perspective-3rd-Edition/PGM2476825.html>`__. Una 
+  verdadera joya que aborda la arquitectura y organización de los sistema de cómputo desde la perspectiva del programador.
+* `Operating Systems: Three Easy Pieces <https://pages.cs.wisc.edu/~remzi/OSTEP/>`__. Este excelente libro gratuito de 
+  sistemas operativos hace un recorrido por las abstracciones más importantes que este software ofrece.
+* `Dive into Systems <https://diveintosystems.org/>`__. Este texto gratuito captura la esencia de nuestro curso. El 
+  material que está allí te permitirá complementar y profundizar todo lo que vas a estudiar.

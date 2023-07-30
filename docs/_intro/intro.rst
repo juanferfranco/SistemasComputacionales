@@ -137,7 +137,7 @@ Todo el material que necesitarás estará en este sitio web.
   * `The Elements of Computing Systems: Building a Modern
     Computer from First Principles <https://mitpress.mit.edu/books/elements-computing-systems-second-edition>`__. 
     Este libro es un recorrido por el funcionamiento de un sistema de cómputo desde las compuertas que componen 
-    el computador hasta un videojuegos conocido como tetris. Este texto soporta un curso muy popular llamado 
+    el computador hasta un videojuego conocido como tetris. Este texto soporta un curso muy popular llamado 
     from `nand to tetris <https://www.nand2tetris.org/>`__.
   * `Computer Systems: A Programmer's Perspective <https://www.pearson.com/us/higher-education/program/Bryant-Computer-Systems-A-Programmer-s-Perspective-3rd-Edition/PGM2476825.html>`__. Una 
     verdadera joya que aborda la arquitectura y organización de los sistema de cómputo desde la perspectiva del programador.
