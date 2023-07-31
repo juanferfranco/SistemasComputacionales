@@ -93,6 +93,10 @@ Plazos de entrega de las evaluaciones
   Luego del plazo 1 la nota será cero a menos que se entregue en los plazos siguientes. 
   Luego del plazo 3 la nota quedará en cero.
 
+
+Curso regular
+^^^^^^^^^^^^^^^
+
 =========== ==================  ===================== =====================
 Evaluación  Plazo 1 (sobre 5)   Plazo 2 (sobre 5)     Plazo 3 (sobre 4)
 =========== ==================  ===================== ===================== 
@@ -102,6 +106,20 @@ Unidad 2    semana 9 sep 11     semana 10             semana 11
 Unidad 3    semana 13 oct 9     semana 14             semana 15
 Unidad 4    semanas 16 oct 30   no hay                no hay 
 =========== ==================  ===================== ===================== 
+
+Curso dirigido
+^^^^^^^^^^^^^^^^
+=========== ==================  ===================== =====================
+Evaluación  Plazo 1 (sobre 5)   Plazo 2 (sobre 5)     Plazo 3 (sobre 4)
+=========== ==================  ===================== ===================== 
+Git         agosto 10           agosto 15             agosto 17
+Unidad 1    agosto 22           agosto 29             agosto 31
+Unidad 2    septiembre 5        septiembre 12         septiembre 14
+Unidad 3    septiembre 19       septiembre 21         septiembre 26
+Unidad 4    septiembre 28       no hay                no hay 
+=========== ==================  ===================== ===================== 
+
+`Programación del curso dirigido <https://upbeduco-my.sharepoint.com/:w:/r/personal/juanf_franco_upb_edu_co/Documents/CursosDirigidos/2023-20/CursoDirigidoSistemasComputacionales2023-20-ManuelVelezMejia.doc?d=w348bf097d2254a5d8a22e90eff61bb90&csf=1&web=1&e=NpkqhL>`__.
 
 ¿Cuándo se consideran entregada una evaluación?
 --------------------------------------------------
