@@ -456,9 +456,9 @@ Te voy a dejar dos recursos que pueden ser de mucha utilidad:
 
 * Página oficial de `SDL2 <https://www.libsdl.org/>`__.
 * `Este <https://www.udemy.com/course/game-loop-c-sdl/>`__ curso gratuito en Udemy que te 
-   ayudará a realizar la primera etapa de la evaluación, es decir, aprender a instalar 
-   la biblioteca SDL2 en tu proyecto de Visual Studio y a generar un game loop para 
-   que puedas construir desde ahí la base de tu aplicación.
+  ayudará a realizar la primera etapa de la evaluación, es decir, aprender a instalar 
+  la biblioteca SDL2 en tu proyecto de Visual Studio y a generar un game loop para 
+  que puedas construir desde ahí la base de tu aplicación.
 
 
 
