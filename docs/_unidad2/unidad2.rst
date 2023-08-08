@@ -22,7 +22,7 @@ de los sistemas de cómputo más naturalmente: lenguaje C.
 Evaluación
 -----------------------------------
 
-.. tip:: RESULTADO DE APRENDIZAJE DEL CURSO 
+.. note:: RESULTADO DE APRENDIZAJE DEL CURSO 
 
   ¿Recuerdas el resultado de aprendizaje del curso?
 
@@ -47,7 +47,8 @@ Evaluación
 Enunciado 
 ************
 
-En esta unidad vas a recrear un reto juego llamado Pong. 
+El proyecto de esta unidad se trata de recrear el juego `Pong <https://youtu.be/fiShX2pTz9A>`__. 
+`Aquí <https://en.wikipedia.org/wiki/Pong>`__ puedes leer un poco más acerca de las reglas del juego. 
 
 Los requisitos del proyecto son:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
