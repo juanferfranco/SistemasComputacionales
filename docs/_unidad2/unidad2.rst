@@ -47,46 +47,139 @@ Evaluación
 Enunciado 
 ************
 
-Vas a construir una ``aplicación interactiva de terminal``. La aplicación 
-servirá para extraer información de una base de datos (Pokemon.csv).
-`Aquí <https://github.com/lgreski/pokemonData>`__ está la base de datos. 
-En el archivo Pokemon.csv está la base completa, pero puedes encontrar 
-en archivos separados cada generación de pokémons.
+En esta unidad vas a recrear un reto juego llamado Pong. 
 
-Los requisitos de la aplicación son:
+Los requisitos del proyecto son:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* La aplicación funciona en un loop infinito esperando comandos desde 
-  la terminal.
-* Si escribes el comando ``exit`` la aplicación termina.
-* El comando ``load archivo`` carga la base de datos en memoria. Cada 
-  registro (fila) de la base de datos se debe cargar en el HEAP como una 
-  estructura al igual que la estructura que representa como tal a la 
-  base de datos. 
-* El comando ``size`` reporta la cantidad de registros de la base de datos
-* El comando ``range n`` muestra los ``n`` primeros registros de la base de 
-  datos.
-* El comando ``show n`` muestra el registro con ID ``n``
-* El comando ``search stat value`` busca todos los registros cuyo value 
-  en el stat es el mismo y los va almacenado en una ``LISTA DINÁMICA`` en el HEAP. 
-  Por ejemplo ``search Generation 1`` busca todos los pokémons de generación 1. 
-* El comando ``show search`` muestra la última lista generada con 
-  el comando search.
-* El comando ``save name`` salva en un archivo la última lista generada. El nombre del 
-  archivo será ``name``.
+* Usa el lenguaje de programación C, no C++.
+* Usa la biblioteca SDL2.
+* Usa Visual Studio y el sistema operativo windows.
+* Usa git bash para hacer el control de versión de tu programa.
+* Representación de elementos: el juego debe representar la pelota, las dos paletas de los 
+  jugadores y el tablero en pantalla.
+* Movimiento de las paletas: las paletas de los jugadores deben poder moverse hacia arriba y 
+  hacia abajo para golpear la pelota.
+* Movimiento de la pelota: la pelota debe moverse de manera diagonal y rebotar en las paletas y 
+  los bordes del tablero.
+* Puntuación: debe haber un marcador para mostrar la puntuación de ambos jugadores.
+* Colisiones: el juego debe detectar y manejar las colisiones entre la pelota y las paletas, 
+  actualizando la dirección de la pelota en función de dónde golpea la paleta.
+* Aumento de velocidad: la velocidad de la pelota debe aumentar gradualmente a medida que 
+  el juego avanza.
+* Historial de eventos: se debe implementar una lista enlazada para registrar eventos 
+  importantes, como la posición de la pelota y las paletas, la puntuación y los aumentos 
+  de velocidad.
+* Entrada del jugador: los jugadores deben poder controlar las paletas utilizando el teclado 
+  para golpear la pelota.
+* Reproducción: los jugadores deben poder ver una reproducción de la partida después de que 
+  esta termine, utilizando el historial de eventos registrado.
+* Almacenamiento en archivo: los eventos del historial deben poder almacenarse en un archivo 
+  al finalizar una partida.
+* Carga de partidas: los jugadores deben poder cargar partidas anteriores desde un archivo 
+  para reproducirlas.
+
+Guía de desarrollo gradual
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Te dejo una guía paso a paso para que desarrolles el juego de Pong:
+
+Etapa 1: configuración básica con SDL2
+++++++++++++++++++++++++++++++++++++++++
+
+* Configurar un proyecto de C con SDL2 y cargar una ventana en blanco en pantalla.
+* Mostrar las paletas y la pelota en posiciones iniciales estáticas.
+* Implementar la lógica básica para mover las paletas arriba y abajo utilizando el teclado.
+
+Etapa 2: movimiento de la pelota y rebotes
++++++++++++++++++++++++++++++++++++++++++++
+
+* Implementar el movimiento de la pelota en diagonal.
+* Detectar y manejar las colisiones con los bordes del tablero para que la pelota rebote.
+
+Etapa 3: colisiones con las paletas y puntuación
++++++++++++++++++++++++++++++++++++++++++++++++++
+
+* Detectar y manejar las colisiones entre la pelota y las paletas.
+* Implementar la lógica para actualizar la dirección de la pelota según la posición de impacto 
+  en la paleta.
+* Mostrar la puntuación de ambos jugadores en pantalla.
+
+Etapa 4: aumento de velocidad
+++++++++++++++++++++++++++++++
+
+* Implementar la lógica para aumentar gradualmente la velocidad de la pelota a medida que 
+  avanza el juego.
+
+Etapa 5: historial de eventos
+++++++++++++++++++++++++++++++
+
+* Definir la estructura para los eventos (PongEvent) y la estructura del nodo para la lista enlazada 
+  (Node).
+* Implementar la lista enlazada para registrar eventos importantes, como la posición de la 
+  pelota, las paletas, la puntuación y los aumentos de velocidad.
+
+Etapa 6: registro de eventos
++++++++++++++++++++++++++++++++
+
+* En cada evento importante del juego (movimiento de la pelota, movimiento de las paletas, 
+  cambios en la puntuación, etc.), agregar un nuevo nodo con los datos del evento 
+  a la lista enlazada.
+
+Etapa 7: entrada del jugador
++++++++++++++++++++++++++++++
+
+* Permitir que los jugadores controlen las paletas utilizando el teclado para golpear la pelota.
+
+Etapa 8: almacenamiento en archivo
++++++++++++++++++++++++++++++++++++
+
+* Implementar una función para guardar el historial de eventos en un archivo al finalizar una partida. 
+  Los eventos se escribirán en un formato adecuado para su posterior lectura.
+
+Etapa 9: carga de partidas
+++++++++++++++++++++++++++++
+
+* Implementar una función para cargar el historial de eventos desde un archivo.
+* Permitir a los jugadores seleccionar un archivo para cargar y reproducir partidas anteriores.
+
+Etapa 10: reproducción de partidas
++++++++++++++++++++++++++++++++++++
+
+* Implementar la función de reproducción que recorre la lista enlazada y restaura el estado del 
+  juego en cada evento, ya sea cargado desde un archivo o generado durante la partida actual.
+
+Etapa 11: Pulido y mejoras
+++++++++++++++++++++++++++++
+
+* Optimizar el código y solucionar posibles errores.
+
+A medida que avances en cada etapa, puedes probar y depurar el juego para asegurarte que cada 
+funcionalidad esté correcta antes de pasar a la siguiente etapa.
+
 
 Entrega
 *********
 
-* Entrega la evaluación en `este <https://classroom.github.com/a/MgD98ERn>`__ 
-  repositorio con tu equipo de trabajo.
-* Debes incluir SOLO los archivo .c y .h con tu solución.
+* El repositorio para entregar tu evaluación está `aquí <https://classroom.github.com/a/pVSO5AXZ>`__. 
+* El proyecto lo debes realizar bajo control de versión TODO el tiempo, no solo 
+  cuando lo entregues. La idea es que podamos ver juntos cómo es la evolución 
+  de tu trabajo en el tiempo.
+* Ten presente que bajo control de versión solo debes tener los archivos de código 
+  fuente (archivos .c, .h, assets del juego). No incluyas archivos intermedios, ni ejecutables.
 * Debes incluir un archive README.md con:
 
-  * Nombres y IDs.
-  * ¿Cómo se compila tu aplicación?
-  * ¿Cómo se ejecuta tu aplicación?
-  * Un enlace a un video con tu aplicación funcionando.
-  * Una explicación que diga cómo solucionaste cada problema.
+  * Tu nombre completo y ID.
+  * Un enlace a un video no listado en youtube donde muestres
+    tu aplicación funcionando.
+  * Muestra en qué parte del código implementaste cada requisito y explica brevemente 
+    como solucionaste el problema que plantea el requisito.
+
+.. warning:: NO OLVIDES
+
+    No olvides que SOLO se reciben proyectos completos. El proyecto solo se considera 
+    entregado cuando cumplas todos los requisitos y esté la documentación solicitada 
+    en el archivo README.md
 
 Trayecto de actividades
 ------------------------
@@ -94,101 +187,17 @@ Trayecto de actividades
 Ejercicios
 **********
 
-Para la realización de los ejercicios de la unidad te voy a crear 
-`este <https://classroom.github.com/a/EN6l5Lyr>`__ repositorio donde puedas 
-experimentar tu solo. Recuerda que la evaluación 
-de la unidad tendrá su propio repositorio. USA CODESPACES.
-
-Ejercicio 1: retrieval practice
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-En la unidad anterior programaste en el lenguaje ensamblador de 
-una CPU específica. Viste cómo traducir de lenguaje ensamblador 
-a lenguaje de máquina. También te mostré algunas traducciones de 
-lenguaje C a lenguaje ensamblador. Te voy a pedir que lo recuerdes, 
-mira:
-
-.. code-block:: c
-
-    MEMORY[16] = 16384;
-
-    while (true)
-    {
-        if (MEMORY[KEYBOARD] == 0)
-        {
-            if ((MEMORY[16] - 16384) > 0)
-            {
-                MEMORY[16] = MEMORY[16] - 1;
-                MEMORY[MEMORY[16]] = 0x0000;
-            }
-        }
-        else
-        {
-            if ((MEMORY[16] - 24576) < 0)
-            {
-                MEMORY[MEMORY[16]] = 0xFFFF;
-                MEMORY[16] = MEMORY[16] + 1;
-            }
-        }
-    }
-
-Este programa escrito en C puede tener una traducción a 
-lenguaje ensamblador de la CPU que simulaste en la unidad anterior así:
-
-========= ===================
-Dirección Código ensamblador  
-========= =================== 
-0	        @16384
-1	        D=A
-2	        @16
-3	        M=D
-4	        @24576
-5	        D=M
-6	        @19
-7	        D;JNE
-8	        @16
-9	        D=M
-10	      @16384
-11	      D=D-A
-12	      @4
-13	      D;JLE
-14	      @16
-15	      AM=M-1
-16	      M=0
-17	      @4
-18	      0;JMP
-19	      @16
-20	      D=M
-21	      @24576
-22	      D=D-A
-23	      @4
-24	      D;JGE
-25	      @16
-26	      A=M
-27	      M=-1
-28	      @16
-29	      M=M+1
-30	      @4
-31	      0;JMP
-========= ===================
-
-* Identifica en el código ensamblador la inicialización 
-  de una variable.
-* Identifica en el código ensamblador una estructura IF/ELSE.
-* Identifica en el código ensamblador una while.
-
-
-Ejercicio 2: de lenguaje de alto nivel a código ejecutable
+Ejercicio 1: de lenguaje de alto nivel a código ejecutable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ahora te voy a mostrar cómo puedes hacer la traducción 
-anterior, pero esta vez para la CPU de tu computador y usando 
-herramientas (toolchain) específicas.
+Para probar los comandos que están aquí puedes crear un Codespaces 
+en el repositorio de tu evaluación.
 
 .. warning:: ESTE EJERCICIO ES DIDÁCTICO
 
-  En este ejercicio te muestro los pasos para que observes 
-  cómo funciona el proceso, PERO no es una manera práctica de 
+  En este ejercicio te muestro los pasos que ocurren al transformar 
+  un programa de alto nivel a código de máquina ejecutable. La idea 
+  es que que observes cómo funciona el proceso, PERO no es una manera práctica de 
   trabajar. Al final te muestro cómo puedes hacer el proceso 
   de traducción de forma más práctica.
 
@@ -249,10 +258,17 @@ Ten presente que los archivos ``.h`` se usan para informarle al compilador
 qué tipo de datos recibe la función min y qué tipo de dato devuelve. Los
 archivos .h no se compilan, solo los archivos ``.c``.
 
+Vas a ver que utilizaremos el comando ``gcc```. Este comando sabe 
+que herramienta utilizar dependiendo de las opciones que le pasemos. Ya verás.
+
 Iniciemos entonces el proceso con ``min.c``:
 
-* Preprocesamiento:  ``gcc -E min.c``. Al ejecutar este comando nota como
-  el preprocesador incluye la información de min.h a min.c
+* Preprocesamiento:  ``gcc -E min.c``. Al ejecutar este comando gcc llama 
+  al preprocesador. Nota que al ejecutar este comando el preprocesador 
+  imprime en la terminal una salida que muestra una mezcla del archivo 
+  min.c y min.h. Dicho de otra manera, el procesador INCLUYE (#include) la información 
+  del archivo min.h en min.c. De todas maneras ten presente que tu archivo min.c
+  original no se modificará.
 * Compilación: ejecuta el comando ``gcc -S min.c``. La opción ``-S`` indica 
   que ``gcc`` debe hacer el proceso de preprocesador y con la
   salida de este paso se alimenta al compilador y detenerse en ese punto. El archivo
@@ -310,12 +326,12 @@ Iniciemos entonces el proceso con ``min.c``:
         .align 8
     4:
 
-* Ensamblado: en esta fase se genera el código máquina.
+* Ensamblado: en esta fase se genera el código de máquina.
   ``as min.s -o min.o``. También es posible generar el código de
   máquina con el comando ``gcc -c min.c``
 
 * Debemos repetir este proceso con todos los archivos ``.c`` de nuestro
-  proyecto: ``gcc -c main.c``. Ten presente que el comando anterior
+  proyecto: ``gcc -c main.c``. El comando anterior
   ejecutará automáticamente todos los pasos previos, es decir, el preprocesado,
   la compilación y el proceso de ensamblado.
 
@@ -375,11 +391,11 @@ generar nuestro ejecutable: ``gcc min.o main.o -o main``.
   con el nombre ``ejecutable`` ¿Hay alguna diferencia? ¿Tendrías que cambiar algo 
   cuando llames a gcc?
 
-Ejercicio 3: retrieval practice (evaluación formativa)
+Ejercicio 2: retrieval practice (evaluación formativa)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Realiza un diagrama mostrando los pasos necesarios para traducir 
-  un programa escritor en lenguaje C compuesto por 3 archivos .c, dos 
+  un programa escrito en lenguaje C compuesto por 3 archivos .c, dos 
   de los cuales tienen su archivo .h correspondiente. Muestra en tu 
   diagrama que información entra y sale de cada paso.
 
@@ -389,14 +405,14 @@ Ejercicio 3: retrieval practice (evaluación formativa)
 * ¿Cuál es la diferencia entre un error reportado en compilación 
   y otro reportado en enlazado?
 
-Ejercicio 4: retrieval practice (evaluación formativa)
+Ejercicio 3: retrieval practice (evaluación formativa)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * En una sola línea de comando ¿Cómo puedes generar el ejecutable?
 * ¿Qué debes hacer para compilar SOLO un archivo .c?
 * ¿Por qué crees que puede ser útil compilar solo un archivo .c?
 
-Ejercicio 5: para pensar
+Ejercicio 4: para pensar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Inventa un programa que genere un error de compilación, es decir 
@@ -410,8 +426,15 @@ Ejercicio 5: para pensar
   ¿Cómo haces para diferenciar, observando la salida en terminal, 
   un error de compilación vs un error en enlazado?
 
-Ejercicio 6: lenguaje de programación C
+Ejercicio 5: lenguaje de programación C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning:: ESTE EJERCICIO ES OPCIONAL 
+
+  Mira, es posible que esta sea tu primera exposición al lenguaje de programación 
+  ``C``. En este ejercicio te voy a dar un material, pero no tienes que usarlo 
+  si no te gusta. Lo bueno es que tienes Internet, YouTube, ChatGPT, etc. El material 
+  que te mostraré busca entrenar tu cerebro para que pienses al estilo de C.
 
 Este será uno de los ejercicios más largos de la unidad porque te voy a mostrar 
 el lenguaje de programación con el cual estudiarás los conceptos que quedan 
