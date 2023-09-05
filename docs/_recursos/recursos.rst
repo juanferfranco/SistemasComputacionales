@@ -10,6 +10,10 @@ Hardware
 Cursos
 --------
 
+* `An Experimental Course on Operating Systems <https://cs140e.sergio.bz/>`__.
+* `Stanford University: Compilers <https://www.edx.org/learn/computer-science/stanford-university-compilers>`__.
+* `nand2tetris_HUJI <https://github.com/AvivYaish/nand2tetris_HUJI/tree/main>`__.
+
 Sitios
 -------
 
@@ -19,6 +23,8 @@ Sitios
 * `BSNES - Snes Emulator <https://bsnes.org/>`__.
 * `super-mario-bros <https://github.com/feresr/super-mario-bros>`__.
 * Fernando Raviola `Writing Super Mario Bros in C++ <https://feresr.medium.com/writing-super-mario-bros-in-c-e59dfc5743af>`__.
+* Writing an OS in Rust. `This <https://os.phil-opp.com/>`__ blog series creates a small operating system in the 
+  Rust programming language.
 
 Videos
 --------
@@ -40,3 +46,9 @@ Libros
   sistemas operativos hace un recorrido por las abstracciones más importantes que este software ofrece.
 * `Dive into Systems <https://diveintosystems.org/>`__. Este texto gratuito captura la esencia de nuestro curso. El 
   material que está allí te permitirá complementar y profundizar todo lo que vas a estudiar.
+* `Web Browser Engineering <https://browser.engineering/>`__.
+
+Tools
+-------
+
+* `Nand2Tetris IDE <https://marketplace.visualstudio.com/items?itemName=AvivYaish.nand-ide>`__.
