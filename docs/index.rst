@@ -17,7 +17,8 @@ Créditos y horas totales del curso: 2 créditos - 96 horas totales
    Introducción al control de versión <_intro/introGit>
    Unidad 1: Arquitectura del computador <_unidad1/unidad1>
    Unidad 2: De lenguaje de alto nivel a código ejecutable <_unidad2/unidad2>
-   Recursos: Recursos Interesantes <_recursos/recursos>   
-..
    Unidad 3: Programación orientada a objetos <_unidad3/unidad3>
+   Recursos: Recursos Interesantes <_recursos/recursos>   
+
+..
    Unidad 4: Sistema operativo <_unidad4/unidad4>

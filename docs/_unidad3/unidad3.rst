@@ -23,89 +23,105 @@ usando el lenguaje de programación C.
 Evaluación
 -----------------------------------
 
-.. note:: RESULTADO DE APRENDIZAJE DEL CURSO 
-
-  ¿Recuerdas el resultado de aprendizaje del curso?
-
-  Aplico los conceptos necesarios para el correcto diseño, implementación, 
-  funcionamiento y diagnóstico del software en la producción de sistemas de 
-  entretenimiento digital utilizando los procedimientos y herramientas 
-  adecuadas según el contexto. ``NIVEL RESOLUTIVO``.
-
-  La idea de esta evaluación es que evidencies que eres capaz de aplicar 
-  los conceptos fundamentales de la programación orientada a objetos para la 
-  solución de los problemas que encontrarás en la construcción de la 
-  aplicación interactiva que te propondré.
-  
-  Se espera que puedas evidenciar:
-
-  * Un entendimiento profundo de los conceptos de encapsulamiento, herencia y polimorfismo.
-  * Aplicar un patrón de diseño donde verás los conceptos anteriores relacionados.
-  * Diagnosticar y solucionar problemas en el proceso de implementación de la aplicación.
-
-  No solo se espera que apliques los conceptos para construir la aplicación, sino 
-  también para resolver los problemas (errores) que se presenten al construirla.
-
 Enunciado 
 ************
 
 Tu misión para esta evaluación es aplicar los conceptos de encapsulamiento, herencia y polimorfismo, 
-mediante:
+mediante un refactoring al proyecto de la unidad anterior siguiendo estas consideraciones:
 
-* La implementación de un patrón de diseño.
-* La ampliación de las funcionalidades del proyecto de la unidad anterior.
-* Un refactoring a la aplicación aplicando los conceptos adecuados.
+1. Encapsulamiento. En el juego de Pong, puedes aplicar encapsulamiento al dividir el código en clases o 
+   estructuras (structs) que representen diferentes componentes del juego. Por ejemplo:
 
-Los requisitos de la aplicación son:
+* Clase Bola: esta clase encapsularía la lógica y los atributos relacionados con la bola en 
+  el juego, como su posición, velocidad y métodos para moverla y detectar colisiones.
+* Clase Paleta: puedes crear una clase para las paletas de los jugadores, que encapsule su 
+  posición, velocidad y métodos para moverlas.
 
-* Vas a realizar un refactoring a la solución del proyecto anterior aplicando los conceptos 
-  de encapsulamiento, herencia y polimorfismo. Ten presente que deberás corregir los comandos 
-  que implementaste con otro nombre o empleando una estrategia diferente a la solicitada.
-* Adicionarás la posibilidad de crear filas nuevas en tiempo de ejecución a la base de datos.
-  Lo harás de dos maneras. Cargando los pokémon de un archivo o con el comando: 
-  
-  ``mkpok ID,Name,Form,Type1,Type2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation``
+2. Herencia. Puedes usar herencia para manejar diferentes tipos de paletas y power-ups en el juego:
 
-* Adicionarás la posibilidad de editar un pokémon con el comando:
+* Clase PaletaJugador: esta podría ser una clase base para las paletas de los jugadores. 
+  Luego, puedes derivar clases como PaletaRápida y PaletaLenta que hereden de PaletaJugador, 
+  pero ajusten sus atributos y comportamientos.
+* Clase PowerUp: implementa una clase base PowerUp y crea clases derivadas como 
+  PowerUpAgrandar y PowerUpReducir que hereden de ella.
 
-    ``edit stat_name stat_value``
+3. Polimorfismo. El polimorfismo se puede aplicar para manejar eventos y comportamientos 
+   generales en diferentes objetos:
 
-* Adicionarás un comando para configurar la cantidad máxima de comandos que se podrán deshacer así:
+* Define una interfaz o clase base llamada ElementoJuego, que podría tener métodos como 
+  Actualizar() y Dibujar(). Tanto Bola como Paletas pueden implementar esta interfaz, 
+  permitiendo que el código principal trate a estos objetos de manera genérica.
+* Puedes crear una lista de ElementoJuego para almacenar tanto la bola como las paletas, 
+  y luego recorrerla para actualizar y dibujar cada elemento sin preocuparse por su tipo específico.
 
-  ``undomax value``
+.. nota:: Esto no te recuerda a Unity?
 
-* Aplicarás el patrón de diseño Command para agregarle a la aplicación la posibilidad de deshacer 
-  los últimos n comandos:
+    Lo que te pido con el polimorfismo no te recuerda un poquito a Unity? No te parece 
+    que ElementoJuego se parece un poco a Monobehaviour.
 
-  ``undo n``
+Estructuras de Datos:
+
+* Lista de Elementos: utiliza una lista para representar los elementos en el juego. 
+* Lista de Power-Ups: utiliza una lista enlazada o un array dinámico para almacenar los 
+  power-ups presentes en el juego. Esto permitirá agregar, eliminar y gestionar los power-ups 
+  de manera eficiente.
+
+Para los Power-Ups ten presente:
+
+* Puedes crear una clase base PowerUp que encapsulará los atributos y comportamientos 
+  básicos de todos los power-ups. Esta clase podría tener métodos como 
+  AplicarEfecto() y Desactivar().
+* Define Power-Ups específicos. Deriva clases específicas de PowerUp para representar diferentes 
+  tipos de power-ups. Cada clase derivada podría tener atributos adicionales y un 
+  comportamiento único cuando se activa.
+
+Generación de Power-Ups:
+
+En tu juego, puedes generar power-ups en momentos específicos (por ejemplo, cuando la bola 
+choca con ciertas áreas de la pantalla) o aleatoriamente durante el juego. Cuando se genere un 
+power-up, crea una instancia de una de las clases derivadas y configura sus atributos según el 
+tipo de efecto que deseas.
+
+Aplicación y Efecto:
+
+Cuando un jugador atrapa un power-up (por ejemplo, al hacer que la paleta colisione 
+con el power-up), puedes activar el efecto correspondiente llamando al método 
+AplicarEfecto() del power-up.
+
+Temporización y Desactivación:
+
+Al aplicar un efecto, el power-up puede tener una duración limitada. Configura un temporizador 
+interno y desactiva el power-up después de cierto tiempo llamando al método Desactivar(). Esto 
+podría revertir el efecto o simplemente hacer que el power-up desaparezca.
+
+Gestión de Power-Ups:
+
+Puedes mantener una lista de power-ups activos en el juego. En cada ciclo de actualización del 
+juego, verifica si algún power-up ha alcanzado su tiempo límite y desactívalo. Si un power-up 
+está activo, actualiza su estado y efecto en cada ciclo.
+
+Al implementar power-ups de esta manera, estarás utilizando herencia para crear diferentes 
+tipos de power-ups y polimorfismo para tratarlos de manera genérica mediante la 
+clase base PowerUp. Esto permitirá que el juego maneje varios power-ups con distintos efectos 
+y duraciones de manera eficiente.
 
 ¿Qué debes entregar?
 **********************
 
-Debes entregar todo lo solicitado en `este <https://classroom.github.com/a/pD6bXkPG>`__ repositorio. 
+Debes entregar todo lo solicitado en `este <https://classroom.github.com/a/oMn7-9QN>`__ repositorio. 
 
 Entrega:
 
 * El código con la solución del problema.
 * En el README.md explicarás por qué y cómo aplicaste los conceptos de encapsulamiento, herencia 
   y polimorfismo a cada aspecto de la solución.
-* Explicarás detalladamente cómo usaste el patrón Command para resolver el problema.
+
 
 Trayecto de actividades
 ------------------------
 
-Para realizar los ejercicios y responder las preguntas del trayecto de actividades 
-te voy a crear un repositorio. Es muy importante que evidencies tu avance por el trayecto 
-dejando toda la evidencia en el repositorio del proceso.
-
 Ejercicios 
 ************
-
-.. warning:: REPOSITORIO PARA EL TRAYECTO DE ACTIVIDADES
-
-    Para la realización de los ejercicios de la unidad te voy a crear 
-    `este <https://classroom.github.com/a/NrcyB4P5>`__ repositorio donde puedas 
-    experimentar tu solo. Recuerda que la evaluación de la unidad tendrá su propio repositorio. USA CODESPACES.
 
 Ejercicio 1: el concepto de encapsulamiento en C
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -414,7 +430,7 @@ del ejemplo en C# que puedes encontrar `aquí <https://refactoring.guru/design-p
 
 Ahora te toca a ti:
 
-* Analiza el código y trata de explicarle a tu compañero de trabajo cómo funciona.
-* Analiza en parte de la memoria están los datos y trata de realizar diagramas que 
+* Analiza el código y trata de explicarle a otra persona cómo funciona.
+* Analiza en que parte de la memoria están los datos y trata de realizar diagramas que 
   relacionen las partes.
 * Trata de decir en una frase CORTA para qué sirve el polimorfismo.
