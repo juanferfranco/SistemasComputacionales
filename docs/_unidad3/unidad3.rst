@@ -108,14 +108,14 @@ y duraciones de manera eficiente.
 ¿Qué debes entregar?
 **********************
 
-Debes entregar todo lo solicitado en `este <https://classroom.github.com/a/oMn7-9QN>`__ repositorio. 
+Debes entregar todo lo solicitado en `este <https://classroom.github.com/a/oMn7-9QN>`__ 
+repositorio. 
 
 Entrega:
 
 * El código con la solución del problema.
-* En el README.md explicarás por qué y cómo aplicaste los conceptos de encapsulamiento, herencia 
-  y polimorfismo a cada aspecto de la solución.
-
+* En el README.md explicarás por qué y cómo aplicaste los conceptos de 
+  encapsulamiento, herencia y polimorfismo a cada aspecto de la solución.
 
 Trayecto de actividades
 ------------------------

@@ -8,105 +8,58 @@ Llegaste a la última estación de este recorrido a través
 de las diferentes capas que componen un sistema de cómputo. Esta unidad 
 corresponde al SISTEMA OPERATIVO.
 
-Propósito de aprendizaje
-**************************
-
-Comprender algunos conceptos básicos de los servicios que ofrece
-el sistema operativo a las aplicaciones de usuario y utilizar
-algunos de esos servicios para la construcción de aplicaciones.
+El propósito de esta unidad es que comprendas 
+algunos conceptos básicos de los servicios que ofrece
+el sistema operativo a las aplicaciones de usuario y apliques
+algunos de esos servicios para en tu versión personalizada 
+de Pong.
 
 Evaluación
 -------------------
 
-.. warning:: ¡¡¡MUY IMPORTANTE!!!
-
-    Llegamos al final del recorrido. Este punto también nos marca 
-    el último plazo para entregar TODAS las evaluaciones pendientes 
-    del curso. ESE PLAZO SERÁ el 12 de mayo de 2023 hasta las 11:40 a.m.
-
-.. warning:: ¡¡¡PLAZO FINAL!!!
-
-    El plazo final para entregar esta y LAS OTRAS evaluaciones 
-    es el 12 de mayo de 2023 a las 11:40 a.m. A esa hora deben quedar 
-    entregadas y sustentadas TODAS LAS EVALUACIONES. Recuerda que una evaluación 
-    está entregada cuando esté TODO lo solicitado en el repositorio y la 
-    presentes al profesor. TODO eso debe ocurrir antes de las 11:40 a.m. del 
-    12 de mayo de 2023. LUEGO DE ESO NO HAY MÁS PLAZOS.
-
-.. note:: RESULTADO DE APRENDIZAJE DEL CURSO
-
-    ¿Recuerdas el resultado de aprendizaje del curso?
-
-    Aplico los conceptos necesarios para el correcto diseño, implementación, funcionamiento 
-    y diagnóstico del software en la producción de sistemas de entretenimiento digital 
-    utilizando los procedimientos y herramientas adecuadas según el contexto. 
-    NIVEL RESOLUTIVO.
-
-    La idea de esta evaluación es que evidencies que eres capaz de aplicar los 
-    conceptos de esta unidad para la solución de los problemas que encontrarás en 
-    la construcción de la aplicación interactiva que te propondré. 
-    Todos estos conceptos están relacionados con servicios que provee el SISTEMA OPERATIVO.
-    
-    
-    Se espera que puedas evidenciar:
-
-    * Entiendes y aplicas los conceptos de proceso, hilo y un mecanismo de 
-      comunicación entre hilos.
-
-    * Eres capaz de diagnosticar y solucionar problemas en el proceso de 
-      implementación de la aplicación. 
-    
 Enunciado 
 ************
 
-Vas a realizar dos programas. El primero, que llamaremos servir, es una modificación del programa 
-de la unidad anterior así:
+* Tu punto de partida será la solución que planteaste en el último 
+  ejercicio del trayecto de actividades.
+* Vas a adicionar EFECTOS sonoros a tu Pong, pero tendrás una restricción, 
+  deberás utilizar la técnica con callback del última ejercicio del trayecto 
+  de actividades y deberás garantizar que no se reproduzca un sonido hasta 
+  que no termine el actual.
+* Utiliza semáforos para sincronizar los hilos de la aplicación, es decir, 
+  un hilo debe estar esperando y otro hilo debe indicarle que puede 
+  continuar mediante un semáforo.
+* Adiciona tantos efectos sonoros como desees, pero incluye al menos estos:
 
-* Este programa se ejecutará en la terminal.
-* Podrá recibir comandos de otros programas, que llamaremos clientes, que se ejecuten en otra 
-  terminal.
-* También podrá recibir solicitudes locales en su propia terminal.
-* Si el programa termina deberá avisarle a los clientes conectados a él y
-  estos deberán terminar.
-
-El segundo programa, el cliente:
-
-* Se conectará al servidor desde otra terminal.
-* Deberá terminar en caso de que el servidor termine.
-* Se pueden ejecutar tantos clientes como se deseen en terminales diferentes.
+    * Golpear la pelota.
+    * Servir la pelota.
+    * Perder un punto.
+    * Terminar el juego.
+    * Iniciar el juego.
 
 ¿Qué debes entregar?
 **********************
 
-.. warning:: MUY IMPORTANTE
+* Entrega la evaluación en `este <https://classroom.github.com/a/ItjGN6K->`__ 
+  repositorio. 
+* En el README.md explicarás:
 
-    Recuerda que no se recibirán entregas parciales. El problema debe estar 100% solucionado.
-
-
-Debes entregar todo lo solicitado en 
-`este <https://classroom.github.com/a/gNTXzkux>`__ repositorio. Entrega:
-
-* Los códigos con la solución al problema tanto para el cliente como el servidor.
-* La documentación en el archivo README.md. Esta documentación debe tener:
-
-    * Un enlace a un video corto en youtube (unlisted) (2 minutos máximo), SIN EXPLICACIONES, que muestre 
-      la compilación y ejecución de los programas.
-    * Explicar (EN TEXTO) cómo se solucionó el problema tanto para el cliente como para el servidor.
-
+    * Qué hilos componen tu aplicación y cómo funcionan en conjunto 
+      para resolver el problema.
+    * Explica cómo estás sincronizando los hilos mediante el uso 
+      de semáforos.
 
 Trayecto de actividades
 ------------------------
 
-Para realizar los ejercicios y responder las preguntas del trayecto de actividades 
-te voy a crear un repositorio. Es muy importante que evidencies tu avance por el trayecto 
-dejando toda la evidencia del proceso en este repositorio. 
+Para abordar el siguiente trayecto de actividades puedes crear un 
+Codespace en el repositorio de la evaluación. 
 
-
-.. warning:: REPOSITORIO PARA EL TRAYECTO DE ACTIVIDADES
-
-    Para la realización de los ejercicios de la unidad te voy a crear 
-    `este <https://classroom.github.com/a/XCkJZAc4>`__ repositorio donde puedas 
-    experimentar tu solo. Recuerda que la evaluación de la unidad tendrá su propio repositorio. USA CODESPACES.
+Ten presente que en el trayecto de actividades te mostraré los conceptos 
+aplicados en Linux, pero en la evaluación debes evidenciar que eres 
+capaz de trasladar lo aprendido a Windows utilizando los servicios 
+adecuados del sistema operativo por medio del API que te ofrece la 
+biblioteca SDL2. 
 
 Ejercicios preparatorios para el problema
 ************************************************
@@ -150,9 +103,14 @@ responder las siguientes preguntas:
 Ejercicio 3: concepto de hilo 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Hasta ahora todos los programas que has realizado tienen ``un SOLO flujo de instrucciones``. ¿Y si 
-quieres tener en el mismo programa ``VARIOS flujos de instrucciones independientes``? Lo puedes hacer 
-con los hilos. Los hilos permitirán que un programa pueda ``HACER VARIAS COSAS AL MISMO TIEMPO``.
+Hasta ahora todos los programas que has realizado tienen 
+``un SOLO flujo de instrucciones``. ¿Y si quieres tener en el 
+mismo programa ``VARIOS flujos de instrucciones independientes``? 
+Lo puedes hacer con los hilos. Los hilos permitirán que un programa 
+pueda ``HACER VARIAS COSAS AL MISMO TIEMPO``, cada cosa con hilo 
+independiente. Ten presente que los hilos compartirán recursos del 
+proceso entre ellos estará el HEAP; sin embargo, cada hilo tendrá 
+su propio STACK.
 
 Ejercicio 4: creación de hilos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -178,7 +136,7 @@ El siguiente programa tiene dos hilos. ¿Qué código ejecuta cada hilos?
         exit(EXIT_SUCCESS);
     }
 
-Compila el código así:
+Compila el código así (recuerda, en el CodeSpace):
 
 .. code-block:: bash
 
@@ -236,7 +194,8 @@ Ahora vas a escribir este código, compilarlo y ejecutarlo:
   
 NO TE PREOCUPES, ya te digo qué pasa en el ejercicio siguiente, PERO te 
 invito a que te animes ha pensar una posible explicación. Te doy una pista, 
-este programa tiene 3 hilos.
+este programa tiene 3 hilos y uno de ellos, el principal, está terminando 
+primero que los otros de ejecutar todas sus instrucciones.
 
 Ejercicio 6: esperar un hilo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -285,7 +244,9 @@ que el mismo pueda terminar.
         exit(EXIT_SUCCESS);
     }
 
-* ¿Qué debes hacer para esperara a que un hilo en particular termine?
+* ¿Qué debes hacer para esperara a que un hilo en particular termine? 
+  (la respuesta está en el código anterior. Solo necesito que seas 
+  consciente de lo que se debe hacer).
 * Considera los siguientes fragmentos de código y piensa cuál puede ser la 
   diferencia entre ambos:
 
@@ -304,176 +265,316 @@ que el mismo pueda terminar.
     pthread_join(threadID1,NULL);
     pthread_join(threadID2,NULL);
 
-Ejercicio 7: comunicación de procesos mediante colas 
+Recuerda que el hilo que ejecute un join, en este caso el principal, 
+será bloqueado, no podrá seguir, hasta que el hilo que está esperando 
+termine. Entonces dicho esto piensa de nuevo ¿Cuál puede ser 
+la diferencia entre los programas anteriores?
+
+Ejercicio 7: para pensar 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vas a buscar en Internet información sobre SDL2 relacionada con:
+
+* ¿Cómo se crea un hilo?
+* Busca e implementa un ejemplo que cree un hilo con SDL2.
+* ¿Cuál es el equivalente de join en el API de SDL2?
+* Busca e implementa un ejemplo.
+* ¿Para qué sirven los semáforos en SDL2?
+* Busca e implementa un ejemplo que use un semáforo 
+  para evitar una condición de carrera. ¿Qué es una 
+  condición de carrera?
+* Busca e implementa un ejemplo que use un semáforo 
+  para sincronizar dos hilos.
+ 
+Ejercicio 8: ejemplo de referencia para la evaluación   
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Existe varios mecanismos de comunicación entre procesos. En este ejercicio
-te voy a proponer un servicio de comunicación entre procesos denominado POSIX 
-queues. Este servicio te permitirá enviar mensajes de un proceso 
-a otro.
+Este ejemplo te voy a mostrar cómo se puede reproducir un 
+sonido usando SDL2.
 
-¿Y si necesitas recibir mensajes en el sentido opuesto? Necesitarás crear 
-una segunda queue. Puedes crear tantas queues como el sistema operativo te lo permita.
+Para poder reproducir este ejemplo necesitarás un archivo de audio. 
+Puedes descargar `este <https://github.com/juanferfranco/SistemasComputacionales/tree/main/docs/_static/tap.wav>`__. 
 
-Ejercicio 8: ejemplo
-^^^^^^^^^^^^^^^^^^^^^^^
-
-En este ejemplo comunicarás dos procesos. Uno de ellos esperará los mensajes 
-que enviará el otro.
-
-Vas a lanzar, en un terminal, primero el proceso que ejecutará la versión 
-ejecutable de este programa:
+Aquí está el código:
 
 .. code-block:: c
 
     #include <stdio.h>
-    #include <stdlib.h>
-    #include <unistd.h>
-    #include <string.h>
-    #include <mqueue.h>
+    #include <stdbool.h>
+    #include <SDL.h>
+    #include "./constants.h"
+    #include <SDL_audio.h>
 
-    int main(int argc, char *argv[])
-    {
-        mqd_t mq;
+    typedef struct {
+        Uint8* audioData; // Pointer to audio data
+        Uint32 audioLength; // Length of audio data in bytes
+        Uint32 audioPosition; // Current position in audio data
+        SDL_bool audioFinished;
+    } AudioContext;
 
-        struct mq_attr attr;
-        attr.mq_flags = 0;
-        attr.mq_maxmsg = 10;
-        attr.mq_msgsize = 32;
-        attr.mq_curmsgs = 0;
 
-        mq = mq_open("/mq0", O_RDONLY | O_CREAT, 0644, &attr);
-        char buff[32];
+    void AudioCallback(void* userdata, Uint8* stream, int len) {
+        AudioContext *audioContext = (AudioContext*)userdata;
 
-        while (1)
-        {
-            mq_receive(mq, buff, 32, NULL);
-            printf("Message received: %s\n", buff);
-            if( strncmp(buff, "exit", strlen("exit")) == 0){
-                break;
-            }
+        if (audioContext->audioPosition >= audioContext->audioLength) {
+            audioContext->audioFinished = SDL_TRUE;
+            return;
         }
 
-        mq_close(mq);
-        mq_unlink("/mq0");
-        exit(EXIT_SUCCESS);
+
+        // Calculate the amount of data to copy to the stream
+        int remainingBytes = audioContext->audioLength - audioContext->audioPosition;
+        int bytesToCopy = (len < remainingBytes) ? len : remainingBytes;
+
+        // Copy audio data to the stream
+        SDL_memcpy(stream, audioContext->audioData + audioContext->audioPosition, bytesToCopy);
+
+        // Update the audio position
+        audioContext->audioPosition += bytesToCopy;
+
     }
 
-Para compilar:
 
-.. code-block:: bash
+    void play_audio(void){
+        static uint8_t isaudioDeviceInit = 0;
+        static SDL_AudioSpec audioSpec;
+        static SDL_AudioDeviceID audioDevice = 0;
+        static AudioContext audioContext;
 
-    gcc -Wall receiver.c -lrt -o receiver
+        if (isaudioDeviceInit == 0) {
+            /*
+            audioSpec.freq = 44100;
+            audioSpec.format = AUDIO_S16SYS;
+            audioSpec.channels = 1;
+            audioSpec.samples = 2048;
+            */
 
-Luego lanza, en una segunda terminal, el proceso que ejecutará la versión 
-ejecutable de este programa:
+            audioSpec.callback = AudioCallback;
+            audioSpec.userdata = &audioContext;
 
-.. code-block:: c
-
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <unistd.h>
-    #include <string.h>
-    #include <mqueue.h>
-
-    int main(int argc, char *argv[])
-    {
-        mqd_t mq = mq_open("/mq0", O_WRONLY);
-        char str[64];
-
-        while (1)
-        {
-            fgets(str, sizeof(str), stdin);
-            if(str[strlen(str) - 1 ] == '\n') str[strlen(str) - 1 ] = 0; 
-            mq_send(mq, str, strlen(str) + 1, 0);
-            if (strncmp(str, "exit", strlen("exit")) == 0)
-            {
-                break;
+            audioDevice = SDL_OpenAudioDevice(NULL, 0, &audioSpec, NULL, 0);
+            if (audioDevice == 0) {
+                printf("Unable to open audio device: %s\n", SDL_GetError());
+                return 1;
             }
+            isaudioDeviceInit = 1;
         }
 
-        mq_close(mq);
-        exit(EXIT_FAILURE);
+        audioContext.audioPosition = 0;
+        audioContext.audioFinished = SDL_FALSE;
+        if (SDL_LoadWAV("tap.wav", &audioSpec, &audioContext.audioData, &audioContext.audioLength) != NULL) {
+            SDL_PauseAudioDevice(audioDevice, 0); // Start audio playback
+        }
+        else {
+            printf("Unable to load WAV file: %s\n", SDL_GetError());
+        }
+
+        while (audioContext.audioFinished != SDL_TRUE) {
+            SDL_Delay(100);
+        }
+
+        printf("Audio finished\n");
+        SDL_CloseAudio(audioDevice);
+        SDL_FreeWAV(audioContext.audioData); // Free the loaded WAV data
     }
 
-Para compilar:
 
-.. code-block:: bash
+    int game_is_running = false;
+    SDL_Window* window = NULL;
+    SDL_Renderer* renderer = NULL;
+    int last_frame_time = 0;
 
-    gcc -Wall sender.c -lrt -o sender
+    struct game_object {
+        float x;
+        float y;
+        float width;
+        float height;
+        float vel_x;
+        float vel_y;
+    } ball, paddle;
 
-Ejercicio 9: analiza el ejemplo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    int initialize_window(void) {
+        if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+            fprintf(stderr, "Error initializing SDL.\n");
+            return false;
+        }
+        window = SDL_CreateWindow(
+            NULL,
+            SDL_WINDOWPOS_CENTERED,
+            SDL_WINDOWPOS_CENTERED,
+            WINDOW_WIDTH,
+            WINDOW_HEIGHT,
+            SDL_WINDOW_BORDERLESS
+        );
+        if (!window) {
+            fprintf(stderr, "Error creating SDL Window.\n");
+            return false;
+        }
+        renderer = SDL_CreateRenderer(window, -1, 0);
+        if (!renderer) {
+            fprintf(stderr, "Error creating SDL Renderer.\n");
+            return false;
+        }
+        return true;
+    }
 
-Te propongo que analices el ejemplo con estas preguntas:
+    void process_input(void) {
+        SDL_Event event;
+        SDL_PollEvent(&event);
+        switch (event.type) {
+            case SDL_QUIT:
+                game_is_running = false;
+                break;
+            case SDL_KEYDOWN:
+                if (event.key.keysym.sym == SDLK_ESCAPE)
+                    game_is_running = false;
+                if (event.key.keysym.sym == SDLK_LEFT)
+                    paddle.vel_x = -400;
+                if (event.key.keysym.sym == SDLK_RIGHT)
+                    paddle.vel_x = +400;
+                break;
+            case SDL_KEYUP:
+                if (event.key.keysym.sym == SDLK_LEFT)
+                    paddle.vel_x = 0;
+                if (event.key.keysym.sym == SDLK_RIGHT)
+                    paddle.vel_x = 0;
+                if (event.key.keysym.sym == SDLK_p) {
+                    play_audio();
+                }
 
-¿Cómo se crea una cola? La cola la está creando el proceso que ejecuta 
-la imagen receiver. Las colas se crean en el sistema operativo y una vez 
-se terminen de usuar debes solicitarle al sistema operativo que la destruya.
+                break;
+        }
+    }
 
-Para crear una cola necesitarás:
+    void setup(void) {
+        // Initialize values for the the ball object
+        ball.width = 15;
+        ball.height = 15;
+        ball.x = 20;
+        ball.y = 20;
+        ball.vel_x = 300;
+        ball.vel_y = 300;
 
-* Guardar en descriptor de la cola en una variable.
-* Definir unos atributos para la cola como son la cantidad máxima 
-  de mensajes y el tamaño máximo que podría tener un mensaje.
+        // Initialize the values for the paddle object
+        paddle.width = 100;
+        paddle.height = 20;
+        paddle.x = (WINDOW_WIDTH / 2) - (paddle.width / 2);
+        paddle.y = WINDOW_HEIGHT - 40;
+        paddle.vel_x = 0;
+        paddle.vel_y = 0;
+    }
 
-.. code-block:: c
+    void update(void) {
+        // Calculate how much we have to wait until we reach the target frame time
+        int time_to_wait = FRAME_TARGET_TIME - (SDL_GetTicks() - last_frame_time);
 
-    mqd_t mq;
+        // Only delay if we are too fast too update this frame
+        if (time_to_wait > 0 && time_to_wait <= FRAME_TARGET_TIME)
+            SDL_Delay(time_to_wait);
 
-    struct mq_attr attr;
-    attr.mq_flags = 0;
-    attr.mq_maxmsg = 10;
-    attr.mq_msgsize = 32;
-    attr.mq_curmsgs = 0;
+        // Get a delta time factor converted to seconds to be used to update my objects
+        float delta_time = (SDL_GetTicks() - last_frame_time) / 1000.0;
 
-    mq = mq_open("/mq0", O_RDONLY | O_CREAT, 0644, &attr);
+        // Store the milliseconds of the current frame
+        last_frame_time = SDL_GetTicks();
 
-¿Cómo acceder a una cola una vez está creada?
+        // update ball and paddle position
+        ball.x += ball.vel_x * delta_time;
+        ball.y += ball.vel_y * delta_time;
+        paddle.x += paddle.vel_x * delta_time;
+        paddle.y += paddle.vel_y * delta_time;
 
-.. code-block:: c
+        // Check for ball collision with the walls
+        if (ball.x <= 0 || ball.x + ball.width >= WINDOW_WIDTH)
+            ball.vel_x = -ball.vel_x;
+        if (ball.y < 0)
+            ball.vel_y = -ball.vel_y;
 
-    mqd_t mq = mq_open("/mq0", O_WRONLY);
+        // Check for ball collision with the paddle
+        if (ball.y + ball.height >= paddle.y && ball.x + ball.width >= paddle.x && ball.x <= paddle.x + paddle.width)
+            ball.vel_y = -ball.vel_y;
 
-¿Cómo recibir mensajes?
+        // Prevent paddle from moving outside the boundaries of the window
+        if (paddle.x <= 0)
+            paddle.x = 0;
+        if (paddle.x >= WINDOW_WIDTH - paddle.width)
+            paddle.x = WINDOW_WIDTH - paddle.width;
 
-.. code-block:: c
+        // Check for game over
+        if (ball.y + ball.height > WINDOW_HEIGHT) {
+            ball.x = WINDOW_WIDTH / 2;
+            ball.y = 0;
+        }
+    }
 
-    mq_receive(mq, buff, 32, NULL);
+    void render(void) {
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
 
-¿Cómo enviar mensajes?
+        // Draw a rectangle for the ball object
+        SDL_Rect ball_rect = {
+            (int)ball.x,
+            (int)ball.y,
+            (int)ball.width,
+            (int)ball.height
+        };
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderFillRect(renderer, &ball_rect);
 
-.. code-block:: c
+        // Draw a rectangle for the paddle object
+        SDL_Rect paddle_rect = {
+            (int)paddle.x,
+            (int)paddle.y,
+            (int)paddle.width,
+            (int)paddle.height
+        };
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderFillRect(renderer, &paddle_rect);
 
-    mq_send(mq, str, strlen(str) + 1, 0);
+        SDL_RenderPresent(renderer);
+    }
 
-Una vez termines de usuar la cola debes cerrarla:
+    void destroy_window(void) {
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+    }
 
-.. code-block:: c
+    int main(int argc, char* args[]) {
 
-    mq_close(mq);
+        game_is_running = initialize_window();
+        setup();
 
-Finalmente uno de los procesos le pedirá al sistema operativo 
-que la destruya:
+        while (game_is_running) {
+            process_input();
+            update();
+            render();
+        }
 
-.. code-block:: c
+        destroy_window();
 
-    mq_unlink("/mq0");
+        return 0;
+    }
 
-Ejercicio 10: mini reto
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La actividad es:
 
-Vas a modificar el ejercicio 9 de tal manera que 
-los dos procesos puedan intercambiar mensajes. 
+* Crea una proyecto donde veas en funcionamiento el programa.
+* ¿Qué necesitas debe hacer el usuario para que el programa 
+  reproduzca el sonido?
+* Analiza con detenimiento el código e identifica las partes 
+  necesarias para reproducir el sonido.
+* Observa qué pasa cuando se reproduce el sonido. ¿Identificas 
+  el problema?
+* Después de realizar el trayecto de actividades de esta unidad 
+  cómo crees que puedas solucionar el problema del programa?
+* Soluciona el problema que tiene el programa, pero sin utilizar 
+  una API diferente de audio de SDL2, es decir, no debes usar 
+  la función SDL_QueueAudio y DEBES garantizar que el programa 
+  reproducirá un sonido a la vez. 
+* Usa un semáforo para sincronizar los hilos de tu programa. 
+  ¿Qué es lo que debes sincronizar? (ten presente que una 
+  parte del programa debe detectar el evento y avisarle a otra 
+  parte del programa que debe reproducir un sonido). Explica 
+  por qué y cómo el semáforo te ayuda a solucionar 
+  el problema de sincronización.
 
-Antes de comenzar, piensa primero en esta pregunta:
-
-¿Cómo hacer para que un proceso pueda hacer dos cosas a la vez? 
-En este caso los procesos tendrán que esperar a que llegue un mensaje 
-a la queue pero también tendrán que esperar a que el usuario ingrese 
-un mensaje para enviarlo al otro proceso.
-
-.. warning:: SI NO PIENSAS ESTE EJERCICIO NO PODRÁS RESOLVER LA EVALUACIÓN
-
-    Este ejercicio es crítico para poder resolver la evaluación de la unidad. 
-    Te recomiendo que lo hagas antes de comenzar dicho RETO.
