@@ -11,7 +11,7 @@ corresponde al SISTEMA OPERATIVO.
 El propósito de esta unidad es que comprendas 
 algunos conceptos básicos de los servicios que ofrece
 el sistema operativo a las aplicaciones de usuario y apliques
-algunos de esos servicios para en tu versión personalizada 
+algunos de esos servicios en tu versión personalizada 
 de Pong.
 
 Evaluación
