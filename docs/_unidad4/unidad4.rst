@@ -33,7 +33,7 @@ Enunciado
 
     * Golpear la pelota.
     * Servir la pelota.
-    * Perder un punto.
+    * Ganar un punto.
     * Terminar el juego.
     * Iniciar el juego.
 
