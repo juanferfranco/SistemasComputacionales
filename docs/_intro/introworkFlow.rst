@@ -1,7 +1,6 @@
 Introducción al al flujo de trabajo del curso
 ================================================
 
-
 Introducción
 --------------
 
