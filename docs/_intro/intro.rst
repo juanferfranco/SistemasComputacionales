@@ -1,59 +1,103 @@
 Introducción al curso
 =======================
 
-¿Para qué sirve este curso?
------------------------------
 
-Este curso sirve para ejercitar esta poderosa idea:
+Carta descriptiva
+--------------------
 
-**You need to understand your code.
-You need to understand your tools.
-You need to understand your platform.
-When we give up on understanding what we are actually doing when you write
-code, it just leads to bad software.**
+Por favor consulta la carta descriptiva en el sistema de la Universidad. Te voy a 
+mostrar aquí los puntos más importantes de ese documento.
 
-Brian Will.
 
 Descripción del curso
 ----------------------
 
-El objeto de este curso es el estudio de los ``fundamentos de los sistemas de cómputo modernos`` desde la 
-perspectiva del programador. Por tanto, se estudiará cómo funciona un computador moderno pasando por el hardware 
-que lo compone, los lenguajes de programación, las herramientas y el sistema operativo. Se busca entonces 
-abordar aquellos conceptos que permitirán sacar provecho al sistemas de cómputo a la hora de construir aplicaciones.
+El objeto de este curso es el estudio de los fundamentos de los sistemas de cómputo 
+modernos desde la perspectiva del programador. Por tanto, se estudiará cómo funciona un 
+computador moderno pasando por el hardware que lo compone, los lenguajes de programación, 
+las herramientas y el sistema operativo. Se busca entonces, abordar aquellos conceptos 
+que permitirán sacar provecho a los sistemas de cómputo a la hora de construir aplicaciones.
 
-Propósito del curso
----------------------
+Propósito de formación del curso
+---------------------------------
 
-El entendimiento de los fundamentos y las abstracciones de los sistemas computacionales 
-desde la perspectiva del programador con el fin de construir aplicaciones que usen 
-apropiadamente y saquen el mayor provecho de la plataforma de cómputo en la cual se 
-ejecutan.
+Se espera que al finalizar el curso sea capaz de:
 
-Competencia
-------------
+#. Construir aplicaciones interactivas entendiendo los conceptos aplicados para satisfacer 
+   los requisitos del problema. Para este fin te propondré problemas donde deberás 
+   aplicar los conceptos estudiados. Se espera que llegues a un nivel resolutivo.
+#. Construir y aplicar pruebas para probar las partes y el funcionamiento completo de 
+   una aplicación interactiva. Para este fin te solicitaré que selecciones y argumentes 
+   los vectores de prueba que permitan verificar el cumplimiento de los requisitos 
+   establecidos. Se espera que llegues a un nivel autónomo.
 
-Construye aplicaciones que posibilitan la interacción entre personas, mediada por tecnologías digitales, 
-utilizando lenguajes y metodologías apropiadas según el contexto.
 
-Resultado de aprendizaje del curso 
+Resultado de aprendizaje general 1
 ------------------------------------
 
-Aplico los conceptos necesarios para el correcto diseño, implementación, funcionamiento y diagnóstico del 
-software en la producción de sistemas de entretenimiento digital utilizando los procedimientos y herramientas 
-adecuadas según el contexto. ``NIVEL RESOLUTIVO``.
+Ejecuto procesos de desarrollo de aplicaciones interactivas utilizando lenguajes y 
+metodologías apropiadas según el contexto para solucionar problemas de interacción. 
 
-Carta Descriptiva
--------------------
 
-En `este <https://drive.google.com/file/d/1PL4qBnIoSF9ouQGUoocduUrqU-KSoOIo/view?usp=sharing>`__ enlace puedes 
-consultar la carta descriptiva del curso.
+Competencia 1
+**************
 
-Proyecto docente
-------------------
+Diseña, implementa y soporta soluciones basadas en software que hacen uso eficiente 
+de los recursos de un sistema de cómputo.
 
-`Aquí <https://github.com/juanferfranco/SistemasComputacionales/blob/main/docs/_static/FormatoPlaneacionComputacionales2023-10.xlsx>`__ 
-encontrarás el proyecto docente con la planeación del curso.
+Resultado de aprendizaje específico 1
+**************************************
+
+Construyo aplicaciones interactivas aplicando patrones y estrategias que permitan alcanzar los 
+requisitos funcionales y no funcionales establecidos.
+
+Se espera que llegues a un nivel resolutivo.
+
+Resultado de aprendizaje general 2
+------------------------------------
+
+Soluciono problemas de interacción mediante la integración de contenidos digitales y software 
+de acuerdo con un diseño previo, para la implementación de sistemas intermediados por el 
+entretenimiento digital. 
+
+Competencia 2
+**************
+
+Aplica adecuadamente conceptos y utiliza las  herramientas e instrumentos TIC  para conceptualizar, 
+diseñar, implementar y gestionar  sistemas informáticos.
+
+Resultado de aprendizaje específico 2
+**************************************
+
+Aplico pruebas de las partes y del todo de un software siguiendo metodologías, técnicas 
+y estándares de la industria para garantizar el correcto funcionamiento de las aplicaciones.
+
+Se espera que llegues a un nivel autónomo.
+
+¿Cómo puedes evidenciar lo aprendido en este curso?
+-----------------------------------------------------
+
+.. warning:: EVIDENCIAS DEL APRENDIZAJE 
+
+  Para evidenciar el nivel esperados de cada uno de los resultados de aprendizaje específicos 
+  (RAE) a los que aporta este curso se espera:
+
+  * RAE1: que construyas aplicaciones interactivas entendiendo las conceptos 
+    que estás aplicando.
+  * RAE2: que definas y apliques pruebas a partes de la aplicación interactiva y 
+    al funcionamiento en conjunto de estas.
+
+Contenidos a revisar
+-----------------------
+
+* Introducción al curso, control de versión.
+* Uso de estrategias de diagnóstico y pruebas.
+* Arquitectura del computador: programación en lenguaje ensamblador.
+* Construcción y aplicación de vectores de prueba para la aplicación en lenguaje ensamblador.
+* Programación en lenguaje C.
+* Construcción y aplicación de vectores de prueba para probar las aplicaciones propuestas.
+* Implementación de los conceptos fundamentales de la programación orientada a objetos en lenguaje C.
+* Introducción a la programación usando servicios básicos del sistema operativo.
 
 Estructura y metodología del curso
 -----------------------------------
@@ -65,130 +109,150 @@ El curso está divido en 4 unidades:
 #. Unidad 3: Programación orientada a objetos.
 #. Unidad 4: Sistema operativo.
 
-La metodología del curso es de aula invertida. En este sitio web está todo el material 
-necesario para que puedas preparar la evaluación de cada unidad. Debes utilizar 
-el tiempo autónomo para preparar el material y resolver los ejercicios y retos en clase 
-con el apoyo de tus compañeros y la asesoría del profesor.
+La metodología del curso es de aula invertida. En este sitio web y en Internet encontrarás el material 
+necesario para que puedas enfrentar los retos evaluativos de cada unidad. Debes utilizar 
+el tiempo de trabajo independiente para preparar el material y resolver los retos. El trabajo 
+en aula lo emplearás para el mismo propósito pero tendrás el acompañamiento del profesor.
+
+.. _cronograma:
 
 Cronograma
-------------
-
-Ver el proyecto docente.
-
-Evaluación
 -----------
 
-* Control de versión: 5%. 
-* unidad 1: 25%. 
-* unidad 2: 25%.
-* unidad 3: 25%.
-* unidad 4: 20%.
+* Introducción al flujo de trabajo en el curso: semana 1
+* Unidad 1: semanas 2 a 5
+* Unidad 2: semanas 6 a 9
+* Unidad 3: semanas 10 a 13
+* Unidad 4: semanas 14 a 16
 
-Plazos de entrega de las evaluaciones
----------------------------------------
+Evaluación formativa
+---------------------
 
-.. warning:: NO TENDREMOS ENTREGAS POR FUERA DE HORARIOS DE clase
+Cada semana te estaré proponiendo actividades con preguntas guía. Te acompañaré en este 
+proceso y estaré soportando tu proceso de evaluación formativa de manera personalizada.
 
-  No tendremos entregas por fuera del horario de clase. 
-  Luego del plazo 1 la nota será cero a menos que se entregue en los plazos siguientes. 
-  Luego del plazo 3 la nota quedará en cero.
+Evaluación sumativa
+---------------------
 
+En la evaluación siempre se tendrá en cuenta el PROCESO. Dicho proceso lo observaremos 
+en tu bitácora de aprendizaje. Allí deberás evidenciar tu proceso de investigación y la 
+solución a las preguntas guía. Para conseguir un 5 en la nota final de cada unidad, deberás 
+acumular 5 puntos hasta el cierre de la unidad. Cada semana hay puntos por  
+ganar así:
 
-Curso regular
-^^^^^^^^^^^^^^^
+#. Introducción al flujo de trabajo en el curso: bitácora (3 puntos) + resultado (2). 5% 
+#. Unidad 1: bitácora (3 puntos) + resultado (2 puntos). 25% 
+#. Unidad 2: bitácora (3 puntos) + resultado (2 puntos). 25%
+#. Unidad 3: bitácora (3 puntos) + resultado (2 puntos). 20%
+#. Unidad 4: bitácora (2 puntos) + resultado (2 puntos). 25%
 
-=========== ==================  ===================== =====================
-Evaluación  Plazo 1 (sobre 5)   Plazo 2 (sobre 5)     Plazo 3 (sobre 4)
-=========== ==================  ===================== ===================== 
-Git         semana 2 jul 24     semana 3              semana 4
-Unidad 1    semana 5 ago 14     semana 6              semana 7
-Unidad 2    semana 9 sep 11     semana 10             semana 11
-Unidad 3    semana 13 oct 9     semana 14             semana 15
-Unidad 4    semanas 16 oct 30   no hay                no hay 
-=========== ==================  ===================== ===================== 
+.. warning:: ¿Qué pasa si no cumplo con los plazos?
 
-Curso dirigido
-^^^^^^^^^^^^^^^^
-=========== ==================  ===================== =====================
-Evaluación  Plazo 1 (sobre 5)   Plazo 2 (sobre 5)     Plazo 3 (sobre 4)
-=========== ==================  ===================== ===================== 
-Git         agosto 10           agosto 15             agosto 17
-Unidad 1    agosto 22           agosto 29             agosto 31
-Unidad 2    septiembre 5        septiembre 12         septiembre 14
-Unidad 3    septiembre 19       septiembre 21         septiembre 26
-Unidad 4    septiembre 28       no hay                no hay 
-=========== ==================  ===================== ===================== 
+   * Nota que siempre hay puntos por la bitácora. Si no trabajas cada semana 
+     ese punto se pierde. No hay puntos retroactivos. Debes recuperar en la 
+     semana las sesiones de trabajo.
+   * Si no entregas el producto de cierre de unidad debes buscar al profesor 
+     a más tardar dos días hábiles, pero deberás ajustarte a la disponibilidad 
+     del profesor. En esa reunión se establecerá la penalidad por el incumplimiento.
+     Dicha penalidad puede ir hasta perder todos los puntos del producto de cierre 
+     de unidad.
 
-`Programación del curso dirigido <https://upbeduco-my.sharepoint.com/:w:/r/personal/juanf_franco_upb_edu_co/Documents/CursosDirigidos/2023-20/CursoDirigidoSistemasComputacionales2023-20-ManuelVelezMejia.doc?d=w348bf097d2254a5d8a22e90eff61bb90&csf=1&web=1&e=NpkqhL>`__.
+Asistencia
+---------------------
 
-¿Cuándo se consideran entregada una evaluación?
---------------------------------------------------
+* La sesión presencial es obligatoria.
+* La sesión de trabajo independiente es obligatoria.
+* Si no asistes debes enviar un correo al profesor a más tardar dos días 
+  hábiles con:
+  
+  * La razón de la falta y los soportes.
+  * En la siguiente sesión debes mostrarle al profesor tu bitácora con 
+    los resultados de la sesión que faltaste. De no hacerlo, perderás los puntos 
+    correspondientes. Si no hay más sesiones presenciales esa semana, deberás 
+    informar por correo electrónico a más tardar el viernes a las 12 del medio día.
+* La sesión de trabajo independiente la programas según tu horario; sin embargo, 
+  el resultado debe aparecer en la bitácora.
 
-Cuando cumplas TODAS las condiciones siguientes:
+.. warning:: importantes
 
-* Incluye toda la documentación solicitada.
-* Tiene el aval de unidad entregada por parte del profesor.
-
-.. warning:: IMPORTANTE
-
-  No hay entregas parciales. Si tu trabajo está 
-  incompleto el docente simplemente no te dará el aval de entregado.
-  Recuerda que una vez tengas el aval la nota en el sistema 
-  será 5 si cumpliste con el plazo. De lo contrario tendrás la penalización 
-  que corresponda.
+   * Siempre que faltes a una sesión se reportará en el sistema de la Universidad.
+   * Faltar no significa no trabajar. Tendrás que compensar.
 
 Dedicación
 -----------
 
-Este curso es de 2 créditos y se desarrolla en 16 semanas. En total debes 
-invertir 6 horas de trabajo semanal.
+Este curso es de 2 créditos distribuidos en dos sesiones semanales con 
+acompañamiento del docente y una sesión de trabajo independiente. La dedicación 
+en horas es de 6 horas.
 
-Bibliografía
--------------
+Rutina de trabajo en aula   
+---------------------------
 
-Todo el material que necesitarás estará en este sitio web.
+Cada sesión tendrá una duración de 1 hora 40 minutos.
 
-.. warning:: SI QUIERES APRENDER MÁS
-  
-  Te recomiendo mucho estos textos, son unas verdaderas joyas:
+* Micro-sesión 1 (20 minutos): apertura. Reflexión inicial.
+   * Hágalo ahora: 15 minutos para planear la sesión y retomar el trabajo previo.
+   * Aclaraciones con el profe: 5 minutos para solicitar aclaraciones de algún 
+     asunto (asuntos rápidos) que puedan impedir el desarrollo de la planeación.
+* Micro-sesión 2 (30 minutos):
+   * 25 minutos de trabajo concentrado.
+   * 5 minutos de pausa activa.
+* Micro-sesión 3 (30 minutos):
+   * 25 minutos de trabajo concentrado.
+   * 5 minutos de pausa activa.
+* Micro-sesión 4 (20 minutos): cierre. Reflexión final.
+   * Boleto de salida (15 minutos): responder ¿Se logró el propósito de la sesión? Si se 
+     logró, reportar las conclusiones de la sesión. Si no se logró reportar qué pasó. 
+   * Aclaraciones con el profe: 5 minutos para solicitar aclaraciones de algún 
+     asunto (asuntos rápidos) y verificar con el profesor el commit en el repositorio.
 
-  * `The Elements of Computing Systems: Building a Modern
-    Computer from First Principles <https://mitpress.mit.edu/books/elements-computing-systems-second-edition>`__. 
-    Este libro es un recorrido por el funcionamiento de un sistema de cómputo desde las compuertas que componen 
-    el computador hasta un videojuego conocido como tetris. Este texto soporta un curso muy popular llamado 
-    from `nand to tetris <https://www.nand2tetris.org/>`__.
-  * `Computer Systems: A Programmer's Perspective <https://www.pearson.com/us/higher-education/program/Bryant-Computer-Systems-A-Programmer-s-Perspective-3rd-Edition/PGM2476825.html>`__. Una 
-    verdadera joya que aborda la arquitectura y organización de los sistema de cómputo desde la perspectiva del programador.
-  * `Operating Systems: Three Easy Pieces <https://pages.cs.wisc.edu/~remzi/OSTEP/>`__. Este excelente libro gratuito de 
-    sistemas operativos hace un recorrido por las abstracciones más importantes que este software ofrece.
-  * `Dive into Systems <https://diveintosystems.org/>`__. Este texto gratuito captura la esencia de nuestro curso. El 
-    material que está allí te permitirá complementar y profundizar todo lo que vas a estudiar.
+Rutina de trabajo independiente 
+---------------------------------
 
-Evidencias de evaluación
--------------------------
+Cada sesión tendrá una duración de 2 horas.
 
-En cada unidad verás el enunciado de un proyecto y las consideraciones para 
-entregarlo solucionado. Ten cuenta SIEMPRE el siguiente código honor:
+* Micro-sesión 1 (15 minutos): apertura. Reflexión inicial.
+   * Hágalo ahora: 15 minutos para planear la sesión y retomar el trabajo previo.
+* Micro-sesión 2 (30 minutos):
+   * 25 minutos de trabajo concentrado.
+   * 5 minutos de pausa activa.
+* Micro-sesión 3 (30 minutos):
+   * 25 minutos de trabajo concentrado.
+   * 5 minutos de pausa activa.
+* Micro-sesión 4 (30 minutos):
+   * 25 minutos de trabajo concentrado.
+   * 5 minutos de pausa activa.
+* Micro-sesión 5 (15 minutos): cierre. Reflexión final.
+   * Boleto de salida (15 minutos): responder ¿Se logró el propósito de la sesión? Si se 
+     logró, reportar las conclusiones de la sesión. Si no se logró reportar qué pasó. 
+
+Manejo de la Bitácora
+------------------------
+
+En la bitácora documentarás tu trayecto de aprendizaje. Te pido que consideres los 
+siguientes aspectos:
+
+* Al planear la sesión de trabajo indica qué pregunta guía o recurso guía 
+  estarás revisando.
+* Incluye en tu bitácora referentes, información, recursos, etc, pero SIEMPRE acompaña esto 
+  con un comentario donde reflexiones acerca de ese recurso, trata de responder la pregunta 
+  ¿Qué puedo concluir acerca de este recurso?
+* CONVERSA con la bitácora, escribe tus pensamientos y si así lo deseas sentimientos.
+* Cierra tu sesión respondiendo la pregunta ¿Qué puedo concluir acerca de la pregunta guía? 
+  Mira, es posible que aún no puedas responder la pregunta y necesites trabajar más, pero 
+  si es importante que escribas y visualices qué vas pensando acerca de la pregunta.
+* No olvides SIEMPRE preguntarte ¿Por qué? ¿Qué pasa si? ¿Cómo sería si?  
+
+Recursos y actividades guía 
+-----------------------------
+
+Material en Internet, material elaborado por el docente e inteligencias 
+artificiales generativas.
+
+Bitácora de trabajo  
+--------------------
+
+`Aquí <https://classroom.github.com/a/Jat29Hb0>`__ podrás encontrar el enlace a tu bitácora 
+personal para el curso.
 
 
-Código de honor
-^^^^^^^^^^^^^^^^
-
-Para realizar el trabajo de cada unidad se espera que hagas lo siguiente:
-
-* Colabora con tus compañeros cuando así se indique.
-* Trabaja de manera individual cuando la actividad así te lo
-  proponga.
-* No busques la solución a los proyectos porque DAÑARÍAS tu
-  proceso de aprendizaje. Recuerda, se trata de seguir un camino
-  y aprender en el recorrido.
-* ¿Entonces qué hacer si no me funciona algo? Te propongo que
-  experimentes, crea hipótesis, experimenta de nuevo, observa y concluye.
-* NO OLVIDES, este curso se trata de PENSAR y experimentar NO de
-  BUSCAR soluciones en Internet.
-
-Tablero de curso
-------------------
-
-`Aquí <https://upbeduco-my.sharepoint.com/:wb:/g/personal/juanf_franco_upb_edu_co/ET-JxKhvIshNlVGiOyWQj-UB8RMO6zwl-OHo4T0cKon5hw?e=ecEFhO>`__
-está el tablero del curso.

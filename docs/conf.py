@@ -20,13 +20,13 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Sistemas Computacionales'
-copyright = '2023-20, Juan Franco'
+copyright = '2024-10, Juan Franco'
 author = 'Juan Franco'
 
 # The short X.Y version
-version = '1.2.0'
+version = '2024.10.0'
 # The full version, including alpha/beta/rc tags
-release = 'rc'
+release = '2024-10'
 
 
 # -- General configuration ---------------------------------------------------
@@ -39,7 +39,9 @@ release = 'rc'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_copybutton'
 ]
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -74,7 +76,13 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_title = "SistemasComputacionales"
+html_favicon = "_static/logoFavicon.png"
+html_theme = 'sphinx_book_theme'
+
+html_context = {
+   "default_mode": "dark"
+}
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -82,10 +90,29 @@ html_theme = 'sphinx_rtd_theme'
 #
 # html_theme_options = {}
 
+html_theme_options = {
+    "navigation_with_keys" : False,
+    "use_source_button": True,
+    "use_edit_page_button": True,
+    "use_sidenotes": True,
+    "toc_title": "Contenido de esta página",
+    "repository_url": "https://github.com/juanferfranco/SistemasComputacionales/",
+    "path_to_docs": "docs",
+    "repository_branch": "main",
+    "repository_provider": "github",
+    "use_download_button": False,
+    "logo": {
+      "image_light": "_static/logo_light.svg",
+      "image_dark": "_static/logo_dark.svg",
+    }
+}
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+html_css_files = ['custom.css']
+html_js_files = ['set_dark_theme.js']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -101,7 +128,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'sistemasComputacionalesDocsdoc'
+htmlhelp_basename = 'sistemasComputacionales'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -128,7 +155,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'sistemasComputacionalesDocs.tex', 'sistemasComputacionalesDocs Documentation',
+    (master_doc, 'sistemasComputacionalesDocs.tex', 'sistemasComputacionales Documentation',
      'Juan Franco', 'manual'),
 ]
 
@@ -150,6 +177,6 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'sistemasComputacionalesDocs', 'sistemasComputacionalesDocs Documentation',
-     author, 'sistemasComputacionalesDocs', 'One line description of project.',
-     'Miscellaneous'),
+     author, 'sistemasComputacionalesDocs', 'Documentación del curso Sistemas Computacionales',
+     'Varios'),
 ]

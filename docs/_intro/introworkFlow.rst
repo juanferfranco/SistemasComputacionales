@@ -1,11 +1,35 @@
-Introducción al control de versión con git y GitHub
-====================================================
+Introducción al al flujo de trabajo del curso
+================================================
+
+
+Introducción
+--------------
+
+
+
+Duración
+-----------------------
+
+Trayecto de actividades
+------------------------
+
+
+
+Actividad 1
+*************
+
+
+
+Evidencias
+-------------
+
+
+
+
 
 Con esta guía aprenderás los herramientas básicas para realizar 
 todos los proyectos y ejercicios del curso bajo control de versión.
 
-Trayecto de actividades
----------------------------------
 
 Antes de comenzar el trayecto de actividades haremos lo siguiente:
 
