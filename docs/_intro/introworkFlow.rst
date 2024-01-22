@@ -44,38 +44,38 @@ que usarás para observar el programa en lenguaje ensamblador. Ahora necesitas e
 
   .. code-block::
 
-  @16384
-  D=A
-  @16
-  M=D
-  @24576
-  D=M
-  @19
-  D;JNE
-  @16
-  D=M
-  @16384
-  D=D-A
-  @4
-  D;JLE
-  @16
-  AM=M-1
-  M=0
-  @4
-  0;JMP
-  @16
-  D=M
-  @24576
-  D=D-A
-  @4
-  D;JGE
-  @16
-  A=M
-  M=-1
-  @16
-  M=M+1
-  @4
-  0;JMP
+      @16384
+      D=A
+      @16
+      M=D
+      @24576
+      D=M
+      @19
+      D;JNE
+      @16
+      D=M
+      @16384
+      D=D-A
+      @4
+      D;JLE
+      @16
+      AM=M-1
+      M=0
+      @4
+      0;JMP
+      @16
+      D=M
+      @24576
+      D=D-A
+      @4
+      D;JGE
+      @16
+      A=M
+      M=-1
+      @16
+      M=M+1
+      @4
+      0;JMP
 
 * Salva el programa. No olvides el nombre, ex15.asm.
 * Carga en la memoria ROM el archivo ex15.asm. Si la sintaxis es correcta puedes comenzar 
@@ -106,41 +106,41 @@ Actividad 4
 
 Ahora modifica el programa así:
 
-.. code-clobk::
+.. code-block::
 
-  @16384
-  D=A
-  @16
-  M=D
-  (LOOP)
-  @24576
-  D=M
-  @19
-  D;JNE
-  @16
-  D=M
-  @16384
-  D=D-A
-  @LOOP
-  D;JLE
-  @16
-  AM=M-1
-  M=0
-  @LOOP
-  0;JMP
-  @16
-  D=M
-  @24576
-  D=D-A
-  @LOOP
-  D;JGE
-  @16
-  A=M
-  M=-1
-  @16
-  M=M+1
-  @LOOP
-  0;JMP
+    @16384
+    D=A
+    @16
+    M=D
+    (LOOP)
+    @24576
+    D=M
+    @19
+    D;JNE
+    @16
+    D=M
+    @16384
+    D=D-A
+    @LOOP
+    D;JLE
+    @16
+    AM=M-1
+    M=0
+    @LOOP
+    0;JMP
+    @16
+    D=M
+    @24576
+    D=D-A
+    @LOOP
+    D;JGE
+    @16
+    A=M
+    M=-1
+    @16
+    M=M+1
+    @LOOP
+    0;JMP
 
 * Realiza un nuevo commit con este cambio.
 
