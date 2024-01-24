@@ -21,3 +21,5 @@ si quieres instalarla en tu computador debes hacer lo siguiente:
 Para las demás unidades del curso necesitarás visual studio (la versión completa no la visual 
 studio code) y el compilador de C++. Busca en Internet tutoriales para que aprendas a 
 instalarlo y probarlo en tu computador.
+
+* Instalar visual studio (además de visual studio code necesitaremos visual studio)
