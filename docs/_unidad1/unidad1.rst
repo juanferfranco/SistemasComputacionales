@@ -31,12 +31,11 @@ en el simulador CPUEmulator. La aplicación debe:
 Investigación
 --------------
 
-.. warngin:: (EN CONSTRUCCIÓN)
-
-    Aún no esta lista esta fase.
-
 Preguntas guía iniciales 
 **************************
+
+Estas preguntas las puedes explorar observando los videos o leyendo el texto guía. Tu decides 
+qué te gusta más. Puedes buscar otros recursos en Internet si estos no te gustan.
 
 #. Los computadores digitales modernos funcionan gracias a la teoría de la lógica booleana.
    observa el video 6, unidad 1.1. de `este <https://youtube.com/playlist?list=PLrDd_kMiAuNmSb-CKWQqq9oBFN_KNMTaI&si=Mgnd99qVJaZKDkyO>`__  
@@ -60,13 +59,23 @@ Preguntas guía iniciales
    y la salida cuando el bit de load es 0 y cuando es 1?
 #. Observa el video 23. ¿Cuál es la función del program counter en un computador?
 #. Observa el video 26, unidad 4.1. ¿Cuál es la diferencia entre el lenguaje ensamblador y el lenguaje de máquina?
-
-(TODO: faltan otras preguntas de la unidad 4)
+#. ¿En qué consiste el concepto de programa almacenado? ¿Cuál es el rol del contador de programa?
+#. Observa los videos 27 y 28. ¿Cuáles son los tipos de instrucción del computador Hack? ¿Cómo funcionan 
+   los mnemónicos de este computador?
+#. Observa los videos 29 a 33. ¿Cómo funciona la entrada salida mapeada a memoria en el computador Hack?
+#. Reproduce los experimentos que viste en los videos anteriores.
 
 Actividad guía
 **************************
 
-(TODO: proponer algunos ejercicios antes de enfrentarse al reto)
+Construye estos programas realizando pruebas intermedias para cada funcionalidad. A medida 
+que integras funcionalidades, realiza pruebas de la integración de estas.
+
+#. Construye un programa en lenguaje ensamblador que multiplique dos números. Ingresa manualmente 
+   los operandos en los registros R0 y R1 y almacena el resultado en el registro R2.
+#. Construye un programa que pinte la pantalla completa si se presiona cualquier tecla y la borre 
+   cuando no se presiona ninguna. El programa debe correr en un ciclo infinito, es decir, debe volver 
+   a comenzar.
 
 Recursos guía iniciales 
 **************************
@@ -87,22 +96,19 @@ resolver el reto.
 Compartir
 -----------
 
-.. warngin:: (EN CONSTRUCCIÓN)
-
-    Aún no esta lista esta fase.
-
-
 Vas a evidenciar tu proceso con las siguientes evidencias que compartirás en 
 el archivo README.md de esta unidad:
 
 #. Bitácoras de las 3 sesiones de trabajo de cada semana.
 #. Archivo program.asm con la solución.
 #. Explica cómo solucionaste los problemas para diseñar, implementar y probar tu aplicación.
+
 .. warning:: NO es explicar línea por línea el código 
 
     La explicación no es explicar línea por línea el código, es explicar 
     cómo está estructurada la solución, pero debes mostrar los bloques de código que  
     resuelven la parte de la solución que estás explicando.
+
 #. Muestra cómo probaste las partes de tu aplicación y luego cómo probaste 
    las partes integradas.
 #. Vas a mostrar la solución a tu problema con un diagrama de flujo. Muestra 
