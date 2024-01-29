@@ -64,9 +64,15 @@ Internet si estos no te gustan estos.
 #. Observa el video 26, unidad 4.1. ¿Cuál es la diferencia entre el lenguaje ensamblador y el lenguaje de máquina?
 #. ¿En qué consiste el concepto de programa almacenado? ¿Cuál es el rol del contador de programa?
 #. Observa los videos 27 y 28. ¿Cuáles son los tipos de instrucción del computador Hack? ¿Cómo funcionan 
-   los mnemónicos de este computador?
+   los ``mnemónicos`` de este computador?
 #. Observa los videos 29 a 33. ¿Cómo funciona la entrada salida mapeada a memoria en el computador Hack?
 #. Reproduce los experimentos que viste en los videos anteriores.
+
+.. warning:: SOLO PARA LAS PERSONAS MÁS CURIOSAS
+
+   En los videos 36 a 39 podrás observar un poco más acerca de la construcción 
+   interna del computador para el cual vas a escribir los programas en lenguaje 
+   ensamblador de esta unidad. A esto se le conoce como ``organización`` del computador.
 
 Actividad guía
 **************************
@@ -74,11 +80,59 @@ Actividad guía
 Construye estos programas realizando pruebas intermedias para cada funcionalidad. A medida 
 que integras funcionalidades, realiza pruebas de la integración de estas.
 
+#. Antes de los programas, un ejercicio de calentamiento. Esta será una actividad de análisis. 
+   Observa el código en comentarios (//) y su traducción respectiva.
+   En la primera parte podrás ver el programa en algo nivel completo y luego su implementación 
+   en lenguaje ensamblador. Simula este programa en el CPUEmulator y analiza cómo está implementado 
+   el ciclo while. 
+
+   .. code-block::
+
+      //int i = 1;
+      //int sum = 0;
+      //While (i <= 100){
+      //  sum += i;
+      //  i++;
+      //}
+
+      //int i = 1;
+      @i     
+      M = 1  // Memory[A] o Memory[16] = 1
+      //int sum = 0;
+      @sum
+      M = 0
+      (LOOP)
+      //While (i <= 100){
+      // i <= 100 --> i - 100 <= 0
+      @i
+      D = M 
+      @100
+      D = D - A
+      @END
+      D;JGT
+      //  sum += i;
+      //  sum = sum + i;
+      @i
+      D = M
+      @sum
+      M = M + D 
+      //  i++;
+      // i = i + 1
+      @i
+      M = M + 1
+      @LOOP
+      0;JMP
+      //}
+      (END)
+      @END
+      0;JMP
+
 #. Construye un programa en lenguaje ensamblador que multiplique dos números. Ingresa manualmente 
    los operandos en los registros R0 y R1 y almacena el resultado en el registro R2.
 #. Construye un programa que pinte la pantalla completa si se presiona cualquier tecla y la borre 
    cuando no se presiona ninguna. El programa debe correr en un ciclo infinito, es decir, debe volver 
    a comenzar.
+
 
 Recursos guía iniciales 
 **************************
