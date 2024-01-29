@@ -27,9 +27,6 @@ en el simulador CPUEmulator. La aplicación debe:
   apellido entonces debes borrar la pantalla. Si la última letra de 
   tu apellido es la misma que la primera letra entonces toma la penúltima y 
   así sucesivamente hasta que encuentres una diferente.
-* Construye una aplicación en tu lenguaje de programación favorito que 
-  convierta una imagen a la representación en pixeles para el computador 
-  que estás simulando.
 
 Investigación
 --------------
@@ -100,19 +97,18 @@ el archivo README.md de esta unidad:
 
 #. Bitácoras de las 3 sesiones de trabajo de cada semana.
 #. Archivo program.asm con la solución.
-#. Archivo con el código fuente de la aplicación que convierte la imagen 
-   a pixeles para el computador estudiado.
-#. Explica cómo solucionaste los problemas de los dos programas anteriores.
-
+#. Explica cómo solucionaste los problemas para diseñar, implementar y probar tu aplicación.
 .. warning:: NO es explicar línea por línea el código 
 
     La explicación no es explicar línea por línea el código, es explicar 
     cómo está estructurada la solución, pero debes mostrar los bloques de código que  
     resuelven la parte de la solución que estás explicando.
+#. Muestra cómo probaste las partes de tu aplicación y luego cómo probaste 
+   las partes integradas.
 #. Vas a mostrar la solución a tu problema con un diagrama de flujo. Muestra 
    que parte de tu código ensamblador implementa las estructuras de control condicionales 
    y los ciclos.
 #. El archivo README.md de la carpeta `Unidad1` del repositorio deberá tener todas las bitácoras 
    y la documentación final.
 #. No olvides responder las preguntas guía.
-#. No olvides mantener bajo control de versión el código de todas las aplicaciones.
+#. No olvides mantener bajo control de versión el código de todas las aplicaciones que hagas.
