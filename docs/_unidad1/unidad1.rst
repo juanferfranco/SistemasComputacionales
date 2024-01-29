@@ -34,8 +34,11 @@ Investigación
 Preguntas guía iniciales 
 **************************
 
-Estas preguntas las puedes explorar observando los videos o leyendo el texto guía. Tu decides 
-qué te gusta más. Puedes buscar otros recursos en Internet si estos no te gustan.
+Estas preguntas las puedes explorar observando los videos o leyendo el 
+`texto guía <https://www.nand2tetris.org/course>`__ (en los icones que representan 
+a una persona leyendo están los capítulos de las diferentes unidades del libro). 
+Tu decides qué te gusta más, el video o el texto. Puedes buscar otros recursos en 
+Internet si estos no te gustan estos.
 
 #. Los computadores digitales modernos funcionan gracias a la teoría de la lógica booleana.
    observa el video 6, unidad 1.1. de `este <https://youtube.com/playlist?list=PLrDd_kMiAuNmSb-CKWQqq9oBFN_KNMTaI&si=Mgnd99qVJaZKDkyO>`__  
