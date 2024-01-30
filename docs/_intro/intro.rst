@@ -256,3 +256,10 @@ Bitácora de trabajo
 personal para el curso.
 
 
+Puntos semanales
+------------------
+
+En `este <https://docs.google.com/spreadsheets/d/1DmdPeX1Spozk7_v78CFI8vlev4bZU3ixReAEj_7v4O0/edit?usp=sharing>`__ 
+enlace puedes consultar la asignación semanal de puntos. Recuerda que tienes plazo hasta el viernes a las 12 
+del medio día todas las semanas para completar tus tres sesiones de trabajo y el resultado o producto de cierre 
+de la unidad. 
