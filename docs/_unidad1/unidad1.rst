@@ -142,6 +142,32 @@ Recursos guía iniciales
 * `Unidad 4 <https://www.nand2tetris.org/_files/ugd/44046b_7ef1c00a714c46768f08c459a6cab45a.pdf>`__, machine language 
   del texto The Elements of Computing Systems.
 * Para dibujar compuertas lógicas puedes usar la herramienta `draw.io <https://app.diagrams.net/>`__.
+* Un ejemplo de clase:
+
+.. code-block::
+
+   // Si hay un tecla presiona pinto los primeros
+   // 16 pixeles, si no los borro.
+   // Recordar: la primera posición de la pantalla
+   // es la 16384. La posición del teclado es la 
+   // 24576.
+
+
+   (START)
+   @24576
+   D = M 
+   @IF
+   D;JEQ
+   // ELSE
+   @16384
+   M = -1
+   @START
+   0;JMP
+   (IF)
+   @16384
+   M = 0
+   @START
+   0;JMP
 
 Aplicación 
 -----------
