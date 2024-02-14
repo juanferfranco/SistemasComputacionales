@@ -146,11 +146,11 @@ Recursos guía iniciales
 
 .. code-block::
 
-   // Si hay un tecla presiona pinto los primeros
+   // Si hay un tecla presionada pinto los primeros
    // 16 pixeles, si no los borro.
    // Recordar: la primera posición de la pantalla
-   // es la 16384. La posición del teclado es la 
-   // 24576.
+   // es la 16384. En esa posición se almacenan los primeros 16 pixeles.
+   // La posición de memoria para el teclado es la 24576.
 
 
    (START)
