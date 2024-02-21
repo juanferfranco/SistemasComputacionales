@@ -24,4 +24,6 @@ Créditos y horas totales del curso: 2 créditos - 96 horas totales
    Unidad 4: Sistema operativo <_unidad4/unidad4>
    Recursos: Recursos Interesantes <_recursos/recursos>   
 
-`Notas sobre el curso <https://github.com/juanferfranco/sistemasComputacionalesNotes>`__
+* `Notas sobre el curso <https://github.com/juanferfranco/sistemasComputacionalesNotes>`__
+* `Bitácoras de los aprendices <https://classroom.github.com/classrooms/19781391-sistemas-computacionales-2024-10/assignments/bitacorassc2024-10>`__.
+
