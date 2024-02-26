@@ -140,11 +140,11 @@ solución a las preguntas guía. Para conseguir un 5 en la nota final de cada un
 acumular 5 puntos hasta el cierre de la unidad. Cada semana hay puntos por  
 ganar así:
 
-#. Introducción al flujo de trabajo en el curso: bitácora (3 puntos) + resultado (2). 5% 
-#. Unidad 1: bitácora (3 puntos) + resultado (2 puntos). 25% 
-#. Unidad 2: bitácora (3 puntos) + resultado (2 puntos). 25%
-#. Unidad 3: bitácora (3 puntos) + resultado (2 puntos). 20%
-#. Unidad 4: bitácora (2 puntos) + resultado (3 puntos). 25%
+#. Introducción al flujo de trabajo en el curso: bitácora (4 puntos) + resultado (1). 5% 
+#. Unidad 1: bitácora (4 puntos) + resultado (1 puntos). 25% 
+#. Unidad 2: bitácora (4 puntos) + resultado (1 puntos). 25%
+#. Unidad 3: bitácora (4 puntos) + resultado (1 puntos). 20%
+#. Unidad 4: bitácora (3 puntos) + resultado (2 puntos). 25%
 
 .. warning:: ¿Qué pasa si no cumplo con los plazos?
 
