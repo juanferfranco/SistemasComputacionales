@@ -19,16 +19,16 @@ probar una aplicación interactiva.
     No podemos perder de vista que tenemos unos compromisos curriculares 
     relacionados con los resultados de aprendizaje.
 
-Resultado de aprendizaje específico 1
-**************************************
+RAE 1
+*******
 
 Construyo aplicaciones interactivas aplicando patrones y estrategias que permitan alcanzar los 
 requisitos funcionales y no funcionales establecidos.
 
 Se espera que llegues a un nivel resolutivo.
 
-Resultado de aprendizaje específico 2
-**************************************
+RAE 2
+*******
 
 Aplico pruebas de las partes y del todo de un software siguiendo metodologías, técnicas 
 y estándares de la industria para garantizar el correcto funcionamiento de las aplicaciones.
