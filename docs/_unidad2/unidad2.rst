@@ -198,6 +198,15 @@ Recursos guía iniciales
     trayecto de actividades te cuento con más detalle cómo se convierte un programa escrito en C a lenguaje 
     de máquina.
 
+Actividades guía iniciales
+****************************
+
+* 
+  .. toctree::
+    :maxdepth: 1
+
+    ./sdlGettingStarted
+
 Aplicación 
 -----------
 
