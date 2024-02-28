@@ -173,6 +173,11 @@ Investigación
 
 Esta fase de investigación será EXPERIMENTACIÓN PURA con los conceptos.
 
+Preguntas guía iniciales 
+**************************
+
+* ¿Por qué utilizaremos en esta parte del curso el lenguaje C?
+
 Recursos guía iniciales 
 **************************
 
@@ -190,7 +195,8 @@ Recursos guía iniciales
       que puedas construir desde ahí la base de tu aplicación.
 * Puedes aprender sobre lenguaje C donde gustes, es decir, ChatGPT, YouTube, etc. De 
   todas maneras te voy a dejar `aquí <https://sistemascomputacionales.readthedocs.io/es/v2023.20/_unidad2/introC.html>`__ 
-  un material que construí que puede ser de mucha utilidad para ti. 
+  un material que construí que puede ser de mucha utilidad para ti.
+* ¿En qué `momento temporal <https://tecky.io/en/blog/evolution-of-programming-languages/>`__ se ubica el lenguaje C?
 
 .. note:: SOLO PARA LAS PERSONAS MÁS CURIOSAS
 

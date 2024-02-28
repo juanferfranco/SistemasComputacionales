@@ -207,3 +207,365 @@ una pregunta para que la pienses bien. ¿Por qué el punto de entrada no es #inc
 esa es la primera línea? Te dejo una pista. La implementación del lenguaje C y C++ es compilada, 
 es decir, un programa lee el código y lo transforma en lenguaje de máquina. Entonces el computador no ejecuta 
 el archivo .c sino el código de máquina que se genera luego del proceso de compilación y enlazado. 
+
+Actividad 5: pintar en la ventana
+-----------------------------------
+
+Para pintar en una ventana es necesario tener un renderizador asociado a esa ventana. El renderizador 
+es un componente de SDL2 que permite DIBUJAR en la ventana. El renderizador necesita un driver de 
+renderizado. El driver de renderizado es un componente de software que media entre la aplicación y el 
+hardware gráfico o capa de emulación gráfica del sistema de cómputo, facilitando la función de DIBUJAR 
+en la pantalla.
+
+Te dejo unos experimentos. Luego de iniciar la biblioteca puedes preguntarle a SDL que te ayude 
+a determinar todos los driver de renderizado que tiene tu sistema:
+
+.. code-block:: C
+
+  	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+		printf("Error SDL_Init\n");
+		return FALSE;
+    }
+    showRenderDriversInfo();
+
+.. code-block:: C
+
+    void showRenderDriversInfo(void) {
+    int numRenderDrivers = SDL_GetNumRenderDrivers();
+    printf("Número de drivers de renderizado disponibles: %d\n", numRenderDrivers);
+
+    for (int i = 0; i < numRenderDrivers; i++) {
+      SDL_RendererInfo info;
+      if (SDL_GetRenderDriverInfo(i, &info) == 0) {
+        printf("Driver %d: %s\n", i, info.name);
+      }
+    }
+  }
+
+Luego de crear la ventana y crear el renderizador puedes preguntarle a SDL cuál seleccionó 
+por ti (se lo pedimos precisamente usando un -1 en el segundo parámetro de SDL_CreateRenderer):
+
+.. code-block:: c
+
+    int init_window(void){
+
+      if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+        printf("Error SDL_Init\n");
+        return FALSE;
+      }
+      showRenderDriversInfo();
+
+      window = SDL_CreateWindow(
+        "My first Window",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        WINDOW_WIDTH,
+        WINDOW_HEIGHT,
+        SDL_WINDOW_SHOWN);
+      if (window == NULL) {
+        printf("Error SDL_CreateWindow\n");
+        return FALSE;
+      }
+
+      renderer = SDL_CreateRenderer(window, -1, 0);
+      if (renderer == NULL) {
+        printf("Error SDL_CreateRenderer\n");
+        return FALSE;
+      }
+
+      showSelectedRederer();
+
+      return TRUE;
+    }
+
+.. code-block:: C
+
+    void showSelectedRederer(void) {
+      // Asumiendo que tienes un SDL_Renderer* llamado renderer que ya fue creado
+
+      SDL_RendererInfo rendererInfo;
+      if (SDL_GetRendererInfo(renderer, &rendererInfo) == 0) {
+        printf("Driver de renderizado seleccionado: %s\n", rendererInfo.name);
+      }
+      else {
+        printf("Error al obtener la información del renderizador: %s\n", SDL_GetError());
+      }
+
+    }
+
+Para que esto te funcione tendrás que crear la variable global renderer:
+
+.. code-block:: C
+
+    SDL_Window* window = NULL;
+    SDL_Renderer *renderer = NULL;
+
+Te pregunto antes de seguir. ¿Por qué se necesita que sea una varibale global? Hay otra 
+manera de preguntarle a showSelectedRederer de cuál redenderer queremos tener información? 
+
+Actividad 6: el concepto de gameloop
+--------------------------------------
+
+Al desarrollar aplicaciones interactivas hay un patrón de diseño arquitectónico muy útil 
+para estructurar el software. Se llama el patrón `gameloop <https://gameprogrammingpatterns.com/game-loop.html>`__. 
+Te voy a compartir una versión más completa de un programa hecho con SDL2 que te permite crear una ventana, 
+asociar a esa ventana un renderer y caputurar algunos eventos de la aplicación:
+
+.. code-block:: C
+
+    #include <stdio.h>
+    #include <SDL.h>
+
+    #define TRUE 1
+    #define FALSE 0
+    #define WINDOW_WIDTH 800
+    #define WINDOW_HEIGHT 600
+
+    SDL_Window* window = NULL;
+    SDL_Renderer *renderer = NULL;
+    int gameRunning = FALSE;
+
+    void showRenderDriversInfo(void) {
+      int numRenderDrivers = SDL_GetNumRenderDrivers();
+      printf("Número de drivers de renderizado disponibles: %d\n", numRenderDrivers);
+
+      for (int i = 0; i < numRenderDrivers; i++) {
+        SDL_RendererInfo info;
+        if (SDL_GetRenderDriverInfo(i, &info) == 0) {
+          printf("Driver %d: %s\n", i, info.name);
+        }
+      }
+    }
+
+    void showSelectedRederer(void) {
+      // Asumiendo que tienes un SDL_Renderer* llamado renderer que ya fue creado
+
+      SDL_RendererInfo rendererInfo;
+      if (SDL_GetRendererInfo(renderer, &rendererInfo) == 0) {
+        printf("Driver de renderizado seleccionado: %s\n", rendererInfo.name);
+      }
+      else {
+        printf("Error al obtener la información del renderizador: %s\n", SDL_GetError());
+      }
+
+    }
+
+
+    int init_window(void){
+
+      if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+        printf("Error SDL_Init\n");
+        return FALSE;
+      }
+      showRenderDriversInfo();
+
+      window = SDL_CreateWindow(
+        "My first Window",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        WINDOW_WIDTH,
+        WINDOW_HEIGHT,
+        SDL_WINDOW_SHOWN);
+      if (window == NULL) {
+        printf("Error SDL_CreateWindow\n");
+        return FALSE;
+      }
+
+      renderer = SDL_CreateRenderer(window, -1, 0);
+      if (renderer == NULL) {
+        printf("Error SDL_CreateRenderer\n");
+        return FALSE;
+      }
+
+      showSelectedRederer();
+
+      return TRUE;
+    }
+
+    void process_input(void) {
+      SDL_Event event;
+      SDL_PollEvent(&event);
+
+      switch (event.type) {
+      case SDL_QUIT:
+        gameRunning = FALSE;
+        break;
+      case SDL_KEYDOWN:
+        if (event.key.keysym.sym == SDLK_ESCAPE) {
+          gameRunning = FALSE;
+        }
+        break;
+      }
+    }
+
+    void update(void) {
+
+
+    }
+
+
+    void render(void) {
+
+    }
+
+    void setup(void) {
+      gameRunning = init_window();
+    }
+
+    void clean() {
+      SDL_DestroyRenderer(render);
+      SDL_DestroyWindow(window);
+      SDL_Quit();
+    }
+
+    int main(int argc, char* argv[]) {
+      setup();
+      while (gameRunning) {
+        // El concepto de gameloop para correr una aplicación
+        // interactiva
+        process_input(); // Leo las entradas
+        update();        // calculo las físicas 
+        render();        // actualizo las salidas
+      }
+      clean();
+      return 0;
+    }
+
+
+Específicamente aquí está el gameloop:
+
+.. code-block:: C
+
+    while (gameRunning) {
+      process_input(); // Leo las entradas
+      update();        // calculo las físicas 
+      render();        // actualizo las salidas
+    }
+
+La idea es muy simple. Como explican en el libro Game programming patterns 
+que te compartí:
+
+.. note::  Game programming patterns 
+    
+    This is the first key part of a real game loop: it processes user input, but doesn’t wait for it. 
+    The loop always keeps spinning:
+
+    .. code-block:: c
+
+        while (true)
+        {
+          processInput();
+          update();
+          render();
+        }
+
+    processInput() handles any user input that has happened since the last call. Then, update() advances 
+    the game simulation one step. It runs AI and physics (usually in that order). Finally, render() 
+    draws the game so the player can see what happened.
+
+Actividad 7: pintar en pantalla
+--------------------------------------
+
+Vas a renderizar un rectángulo en la ventana recién creada. Puedes actualizar el código 
+de render así:
+
+.. code-block:: C
+
+    void render(void) {
+      SDL_Rect rect;
+      rect.x = 250; // Posición x del rectángulo
+      rect.y = 150; // Posición y del rectángulo
+      rect.w = 200; // Ancho del rectángulo
+      rect.h = 100; // Alto del rectángulo
+
+      // Limpia el "lienzo" en este frame (?)
+      SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Color de fondo: negro
+      SDL_RenderClear(renderer);
+
+      // Dibuja el rectángulo, pero aún no lo muestra
+      SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Color del rectángulo: rojo
+      SDL_RenderFillRect(renderer, &rect);
+
+      // Actualiza el lienzo
+      SDL_RenderPresent(renderer);
+    }
+
+Actividad 8: pintar en círculo
+----------------------------------
+
+Para pintar un círuclo necesitarás un algoritmo para decidir en qué parte del lienzo debes 
+ubicar diferentes puntos de tal manera que tenga la forma de un círculo la distribución de esos 
+puntos.
+
+La ecuación de un círculo centrado en ``(cx, cy)`` con radio ``r`` es:
+
+.. math::
+
+   (x - cx)^2 + (y - cy)^2 = r^2
+
+Entonces para pintar un círculo, debes encontrar los puntos ``(x,y)`` que satisfagan 
+esta ecuación. Ten presente que en SDL2 las ``x`` incrementan de izquierda a derecha y 
+las ``y`` de arriba hacia abajo. Por tanto, la coordenada (0,0) estaría en la esquina 
+superior izquierda. Así mismo, la coordenada (WINDOWS_WIDTH - 1, 0) estaría en la 
+esquina superior derecha.
+
+Piensa en lo siguiente. Imagínate un plano cartesiana en el cual la coordenada ``(0,0)`` 
+está en el origen del plano. Supón ahora que en ese punto está el centro del 
+círculo. Por tanto, los puntos del círculo estarán ubicados para valores de ``x`` y ``y`` 
+que cumplan :math:`-r <= x <= r` y :math:`-r <= y <= r`. ¿Aceptamos esto? 
+
+Entonces, podrías seleccionar valores para ``y`` y luego, para cada valor, buscar todas las ``x`` 
+que tengan ese mismo valor de ``y``, pero que cumplan la ecuación del círculo. ¿Te parece rezonable?
+
+El código entonces quedaría así:
+
+.. code-block:: C
+
+    void DrawCircle(SDL_Renderer* renderer, int cx, int cy, int radius) {
+      for (int y = -radius; y <= radius; y++) {
+        for (int x = -radius; x <= radius; x++) {
+          if (x * x + y * y <= radius * radius) {
+            SDL_RenderDrawPoint(renderer, cx + x, cy + y);
+          }
+        }
+      }
+    }
+
+Y tendrías que actualizar el render así:
+
+.. code-block:: C
+
+    void render(void) {
+      SDL_Rect rect;
+      rect.x = 250; // Posición x del rectángulo
+      rect.y = 150; // Posición y del rectángulo
+      rect.w = 200; // Ancho del rectángulo
+      rect.h = 100; // Alto del rectángulo
+
+      // Limpia el "lienzo" en este frame (?)
+      SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Color de fondo: negro
+      SDL_RenderClear(renderer);
+
+      // Dibuja el rectángulo, pero aún no lo muestra
+      SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Color del rectángulo: rojo
+      SDL_RenderFillRect(renderer, &rect);
+
+      // Dibuja el círculo	
+      SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255); // Amarillo
+      DrawCircle(renderer, 400, 360, 100); // Dibuja un círculo en (320, 240) con radio 100.
+
+      // Actualiza el lienzo
+      SDL_RenderPresent(renderer);
+    }
+
+
+Actividad 9: pintar puntos
+--------------------------------
+
+Ya lo hicimos, en la actividad anterior. Pero podrías experimentar un poco más 
+con esto para entender cómo ubicar cosas en el linezo en SDL2.
+
+Un versión actializada del código podría ser:
+
+.. code-block:: c
+
