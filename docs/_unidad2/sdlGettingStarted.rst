@@ -569,3 +569,37 @@ Un versión actializada del código podría ser:
 
 .. code-block:: c
 
+    void render(void) {
+      SDL_Rect rect;
+      rect.x = 250; // Posición x del rectángulo
+      rect.y = 150; // Posición y del rectángulo
+      rect.w = 200; // Ancho del rectángulo
+      rect.h = 100; // Alto del rectángulo
+
+      // Limpia el "lienzo" en este frame (?)
+      SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Color de fondo: negro
+      SDL_RenderClear(renderer);
+
+      // Dibuja el rectángulo, pero aún no lo muestra
+      SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Color del rectángulo: rojo
+      SDL_RenderFillRect(renderer, &rect);
+
+      // Dibuja el círculo	
+      SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255); // Amarillo
+      DrawCircle(renderer, 400, 360, 100); // Dibuja un círculo en (320, 240) con radio 100.
+
+      SDL_RenderDrawPoint(renderer, WINDOW_WIDTH-1, 0);
+      SDL_RenderDrawPoint(renderer, WINDOW_WIDTH - 1, 2);
+
+      // Actualiza el lienzo
+      SDL_RenderPresent(renderer);
+    }
+
+Nota que la parte nueva es esta:
+
+.. code-block:: c
+
+    SDL_RenderDrawPoint(renderer, WINDOW_WIDTH-1, 0);
+    SDL_RenderDrawPoint(renderer, WINDOW_WIDTH - 1, 2);
+
+Para ver los puntos dibujados tendrás que hacer zoom.
