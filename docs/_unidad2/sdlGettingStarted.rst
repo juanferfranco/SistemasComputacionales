@@ -603,3 +603,26 @@ Nota que la parte nueva es esta:
     SDL_RenderDrawPoint(renderer, WINDOW_WIDTH - 1, 2);
 
 Para ver los puntos dibujados tendrás que hacer zoom.
+
+Actividad 10: double buffering
+--------------------------------
+
+SDL2 utiliza un patrón de diseño llamado 
+`double buffering <https://gameprogrammingpatterns.com/double-buffer.html>`__.
+¿En dónde lo usa? Para renderizar. Observa de nuevo esta parte del código:
+
+.. code-block:: c
+
+    SDL_RenderDrawPoint(renderer, WINDOW_WIDTH-1, 0);
+    SDL_RenderDrawPoint(renderer, WINDOW_WIDTH - 1, 2);
+
+    // Actualiza el lienzo
+    SDL_RenderPresent(renderer);
+
+* ¿Qué pasa si quitas la función `SDL_RenderPresent(renderer)`?
+* Mira de nuevo el enlace donde te explican en qué consiste el patrón 
+  double buffering. ¿Puedes explicar cómo se está aplicando en el 
+  código del render?
+
+
+
