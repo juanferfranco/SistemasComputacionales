@@ -463,7 +463,7 @@ que te compartí:
     the game simulation one step. It runs AI and physics (usually in that order). Finally, render() 
     draws the game so the player can see what happened.
 
-Actividad 7: pintar en pantalla
+Actividad 7: pintar un rectángulo
 --------------------------------------
 
 Vas a renderizar un rectángulo en la ventana recién creada. Puedes actualizar el código 
