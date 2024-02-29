@@ -624,5 +624,48 @@ SDL2 utiliza un patrón de diseño llamado
   double buffering. ¿Puedes explicar cómo se está aplicando en el 
   código del render?
 
+Actividad 11: frames per second (fps)
+----------------------------------------
 
+Vuelve a mirar por favor el concepto de `gameloop <https://gameprogrammingpatterns.com/game-loop.html>`__. 
+Hay algo más que tendrá que hacer tu programa y es controlar la cantidad de frames que se ejecutan 
+por segundo (fps). Mira de nuevo la estructura del gameloop:
+
+.. code-block:: c
+
+    while (true)
+    {
+      processInput();
+      update();
+      render();
+    }
+
+En términos muy simplistas, pero útiles para la discución, un frame sería una pasada por el loop. 
+Entonces los frames por segundo serían cuántas veceses tu aplicación interactiva hace un loop 
+completo por segundo. Si una aplicación interactiva se ejecuta a 60 fps ¿Cuánto tiempo transcurre 
+entre frame y frame?
+
+¿De qué depende ese tiempo entre frame y frame?
+
+En principio de dos cosas:
+
+* Que tanto trabajo tiene que hacerse en el loop, es decir, que tan complejos son los algoritmos para 
+  hacer avanzar la aplicación. 
+* Qué tan rápido es el hardware que ejecuta la aplicación.
+
+Entonces la idea al contruir una aplicación interactiva es minimizar al máximo el trabajo que se 
+hace en un loop y además, garantizar que independientemente de la rapidez del hardware en el que 
+corra, siempre se obtenga una cantidad consistente de fps. Es decir, la aplicación debe correr 
+a 60 fps o 16.6 ms sin importartar si el hardware es muy rápido o muy lento. De esta manera, 
+la experiencia del usuario en términos temporales será la misma independientemente de la plataforma 
+de ejecución.
+
+Para lograr esto se usa el patrón gameloop:
+
+.. note:: GAME LOOP 
+
+    El loop o bucle se ejecuta continuamente durante la ejecución del juego o la aplicación interactiva. 
+    En cada turno del bucle, procesa la entrada del usuario sin bloquearse, actualiza el estado del juego y 
+    renderiza el juego. Además, debe tenerse en cuenta el paso del tiempo para controlar la velocidad de 
+    jugabilidad.
 
