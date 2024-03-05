@@ -672,6 +672,9 @@ Para lograr esto se usa el patrón gameloop:
 Actividad 12: pixels per seconds
 ----------------------------------
 
+Este es el código completo hasta el video 18. Observa 
+cómo funciona detenidamente.
+
 .. code-block:: C
 
     #include <stdio.h>
@@ -694,8 +697,6 @@ Actividad 12: pixels per seconds
       float width;
       float height;
     }ball;
-
-
 
     void showRenderDriversInfo(void) {
       int numRenderDrivers = SDL_GetNumRenderDrivers();
@@ -862,7 +863,6 @@ videos:
 
       ball.x += 20* delta_time;
       ball.y += 20* delta_time;
-
     }
 
 ¿Cómo funciona este código?
