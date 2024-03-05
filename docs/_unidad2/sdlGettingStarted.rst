@@ -624,7 +624,7 @@ SDL2 utiliza un patrón de diseño llamado
   double buffering. ¿Puedes explicar cómo se está aplicando en el 
   código del render?
 
-Actividad 11: frames per second (fps)
+Actividad 11: frames por segundos (fps)
 ----------------------------------------
 
 Vuelve a mirar por favor el concepto de `gameloop <https://gameprogrammingpatterns.com/game-loop.html>`__. 
