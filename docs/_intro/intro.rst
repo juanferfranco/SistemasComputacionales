@@ -143,8 +143,8 @@ ganar así:
 #. Introducción al flujo de trabajo en el curso: bitácora (4 puntos) + resultado (1). 5% 
 #. Unidad 1: bitácora (4 puntos) + resultado (1 puntos). 25% 
 #. Unidad 2: bitácora (4 puntos) + resultado (1 puntos). 25%
-#. Unidad 3: bitácora (4 puntos) + resultado (1 puntos). 20%
-#. Unidad 4: bitácora (3 puntos) + resultado (2 puntos). 25%
+#. Unidad 3: bitácora (3 puntos) + resultado (1 punto) + compartir (1 punto). 20%
+#. Unidad 4: bitácora (3 puntos) + resultado (1 punto) + compartir (1 punto). 25%
 
 .. warning:: ¿Qué pasa si no cumplo con los plazos?
 
@@ -185,63 +185,16 @@ Este curso es de 2 créditos distribuidos en dos sesiones semanales con
 acompañamiento del docente y una sesión de trabajo independiente. La dedicación 
 en horas es de 6 horas.
 
-Rutina de trabajo en aula   
----------------------------
+Rutinas de trabajo en aula e independientes   
+---------------------------------------------
 
-Cada sesión tendrá una duración de 1 hora 40 minutos.
-
-* Micro-sesión 1 (20 minutos): apertura. Reflexión inicial.
-   * Hágalo ahora: 15 minutos para planear la sesión y retomar el trabajo previo.
-   * Aclaraciones con el profe: 5 minutos para solicitar aclaraciones de algún 
-     asunto (asuntos rápidos) que puedan impedir el desarrollo de la planeación.
-* Micro-sesión 2 (30 minutos):
-   * 25 minutos de trabajo concentrado.
-   * 5 minutos de pausa activa.
-* Micro-sesión 3 (30 minutos):
-   * 25 minutos de trabajo concentrado.
-   * 5 minutos de pausa activa.
-* Micro-sesión 4 (20 minutos): cierre. Reflexión final.
-   * Boleto de salida (15 minutos): responder ¿Se logró el propósito de la sesión? Si se 
-     logró, reportar las conclusiones de la sesión. Si no se logró reportar qué pasó. 
-   * Aclaraciones con el profe: 5 minutos para solicitar aclaraciones de algún 
-     asunto (asuntos rápidos) y verificar con el profesor el commit en el repositorio.
-
-Rutina de trabajo independiente 
----------------------------------
-
-Cada sesión tendrá una duración de 2 horas.
-
-* Micro-sesión 1 (15 minutos): apertura. Reflexión inicial.
-   * Hágalo ahora: 15 minutos para planear la sesión y retomar el trabajo previo.
-* Micro-sesión 2 (30 minutos):
-   * 25 minutos de trabajo concentrado.
-   * 5 minutos de pausa activa.
-* Micro-sesión 3 (30 minutos):
-   * 25 minutos de trabajo concentrado.
-   * 5 minutos de pausa activa.
-* Micro-sesión 4 (30 minutos):
-   * 25 minutos de trabajo concentrado.
-   * 5 minutos de pausa activa.
-* Micro-sesión 5 (15 minutos): cierre. Reflexión final.
-   * Boleto de salida (15 minutos): responder ¿Se logró el propósito de la sesión? Si se 
-     logró, reportar las conclusiones de la sesión. Si no se logró reportar qué pasó. 
+Cada sesión tendrá una duración de 1 hora 40 minutos y estará dividida 
+en 4 micro-sesiones cada una de 25 minutos.
 
 Manejo de la Bitácora
 ------------------------
 
-En la bitácora documentarás tu trayecto de aprendizaje. Te pido que consideres los 
-siguientes aspectos:
-
-* Al planear la sesión de trabajo indica qué pregunta guía o recurso guía 
-  estarás revisando.
-* Incluye en tu bitácora referentes, información, recursos, etc, pero SIEMPRE acompaña esto 
-  con un comentario donde reflexiones acerca de ese recurso, trata de responder la pregunta 
-  ¿Qué puedo concluir acerca de este recurso?
-* CONVERSA con la bitácora, escribe tus pensamientos y si así lo deseas sentimientos.
-* Cierra tu sesión respondiendo la pregunta ¿Qué puedo concluir acerca de la pregunta guía? 
-  Mira, es posible que aún no puedas responder la pregunta y necesites trabajar más, pero 
-  si es importante que escribas y visualices qué vas pensando acerca de la pregunta.
-* No olvides SIEMPRE preguntarte ¿Por qué? ¿Qué pasa si? ¿Cómo sería si?  
+En la bitácora documentarás tu trayecto de aprendizaje. 
 
 Recursos y actividades guía 
 -----------------------------
