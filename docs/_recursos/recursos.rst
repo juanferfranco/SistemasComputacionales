@@ -52,3 +52,10 @@ Tools
 -------
 
 * `Nand2Tetris IDE <https://marketplace.visualstudio.com/items?itemName=AvivYaish.nand-ide>`__.
+
+Web 
+--------
+
+* Web Browser Engineering. `Web site <https://browser.engineering/>`__.
+* WebAssembly. `Web site <https://webassembly.org/>`__.
+
