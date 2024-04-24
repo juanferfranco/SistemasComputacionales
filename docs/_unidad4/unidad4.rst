@@ -40,7 +40,6 @@ Los requisitos del reto son:
   * Terminar el juego.
   * Iniciar el juego
 
-
 Investigación
 --------------
 
