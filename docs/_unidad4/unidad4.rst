@@ -307,7 +307,7 @@ Vas a buscar en Internet información sobre SDL2 relacionada con:
 * Busca e implementa un ejemplo que use un semáforo 
   para sincronizar dos hilos.
  
-Ejercicio 8: ejemplo de referencia para la evaluación   
+Ejercicio 8: ejemplo de referencia para el reto   
 ********************************************************
 
 .. warning::
