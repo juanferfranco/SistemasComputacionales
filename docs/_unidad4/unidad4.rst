@@ -630,6 +630,12 @@ establecidos.
 
 Se espera que llegues a un nivel resolutivo.
 
+Las evidencias para el RAE1 son:
+
+#. Muestras una aplicación funcional que cumple con todos 
+   los requisitos establecidos.
+#. Explicas cómo solucionaste cada requisito de la aplicación.
+
 RAE 2
 *******
 
@@ -638,12 +644,6 @@ metodologías, técnicas y estándares de la industria para
 garantizar el correcto funcionamiento de las aplicaciones.
 
 Se espera que llegues a un nivel autónomo.
-
-Las evidencias para el RAE1 son:
-
-#. Muestras una aplicación funcional que cumple con todos 
-   los requisitos establecidos.
-#. Explicas cómo solucionaste cada requisito de la aplicación.
 
 Las evidencias para el RAE2 son:
 
