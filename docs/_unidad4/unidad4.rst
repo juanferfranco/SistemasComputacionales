@@ -34,11 +34,14 @@ Los requisitos del reto son:
 * Vas a adicionar EFECTOS sonoros a tu Pong, pero tendrás una 
   restricción. Deberás utilizar la técnica con callback del 
   último ejercicio propuesto en la fase de investigación. 
-* Deberás garantizar que no se reproduzca un sonido hasta que no 
-  termine el actual.
-* Utiliza semáforos para sincronizar los hilos de la aplicación, 
-  es decir, un hilo debe estar esperando y otro hilo debe indicarle 
-  que puede continuar mediante un semáforo.
+* Debes tener dos hilos: el hilo principal y un hilo secundario que se encargará 
+  de configurar y reproducir el audio con ayuda del callback.
+* Debes implementar una cola para comunicar el hilo principal y el hilo secundario 
+  sincronizando el acceso exclusivo con un semáforo (o mutex en este caso) a la cola 
+  para evitar condiciones de carrera. Los mensajes de la cola simplemente servirán 
+  para informar qué audio se debe reproducir.
+* Debes gestionar el ciclo de vida del hilo secundario para evitar que 
+  quede en estado zombie.
 * Adiciona tantos efectos sonoros como desees, pero incluye al menos 
   estos:
 
