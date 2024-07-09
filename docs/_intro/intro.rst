@@ -1,13 +1,11 @@
 Introducción al curso
 =======================
 
-
 Carta descriptiva
 --------------------
 
 Por favor consulta la carta descriptiva en el sistema de la Universidad. Te voy a 
 mostrar aquí los puntos más importantes de ese documento.
-
 
 Descripción del curso
 ----------------------
@@ -21,7 +19,7 @@ que permitirán sacar provecho a los sistemas de cómputo a la hora de construir
 Propósito de formación del curso
 ---------------------------------
 
-Se espera que al finalizar el curso sea capaz de:
+Se espera que al finalizar el curso seas capaz de:
 
 #. Construir aplicaciones interactivas entendiendo los conceptos aplicados para satisfacer 
    los requisitos del problema. Para este fin te propondré problemas donde deberás 
@@ -90,14 +88,19 @@ Se espera que llegues a un nivel autónomo.
 Contenidos a revisar
 -----------------------
 
+El contenido no aparece en orden. Este es solo el listado de los temas 
+que se abordarán en el curso:
+
 * Introducción al curso, control de versión.
 * Uso de estrategias de diagnóstico y pruebas.
 * Arquitectura del computador: programación en lenguaje ensamblador.
-* Construcción y aplicación de vectores de prueba para la aplicación en lenguaje ensamblador.
-* Programación en lenguaje C.
-* Construcción y aplicación de vectores de prueba para probar las aplicaciones propuestas.
-* Implementación de los conceptos fundamentales de la programación orientada a objetos en lenguaje C.
-* Introducción a la programación usando servicios básicos del sistema operativo.
+* Construcción y pruebas para la aplicación en lenguaje ensamblador.
+* Programación de aplicaciones interactivas.
+* Pruebas para probar las aplicaciones propuestas.
+* Revisión de los conceptos fundamentales de la programación orientada a objetos.
+* Introducción a los patrones de diseño para la construcción de aplicaciones 
+  interactivas.
+* Introducción a algunos servicios básicos del sistema operativo.
 
 Estructura y metodología del curso
 -----------------------------------
@@ -105,8 +108,8 @@ Estructura y metodología del curso
 El curso está divido en 4 unidades:
 
 #. Unidad 1: Arquitectura del computador.
-#. Unidad 2: Del código fuente al ejecutable.
-#. Unidad 3: Programación orientada a objetos.
+#. Unidad 2: Programación creativa.
+#. Unidad 3: Patrones en programación creativa.
 #. Unidad 4: Sistema operativo.
 
 La metodología del curso es de aula invertida. En este sitio web y en Internet encontrarás el material 
@@ -125,58 +128,44 @@ Cronograma
 * Unidad 3: semanas 10 a 13
 * Unidad 4: semanas 14 a 16
 
-Evaluación formativa
----------------------
+Evaluación 
+------------
 
-Cada semana te estaré proponiendo actividades con preguntas guía. Te acompañaré en este 
-proceso y estaré soportando tu proceso de evaluación formativa de manera personalizada.
+Cada semana te estaré proponiendo actividades. Te acompañaré en este 
+proceso y lo estaré soportando de manera personalizada.
 
-Evaluación sumativa
----------------------
+Para poder realizar la evaluación, tanto formativa como sumativa, debes 
+realizar las actividades propuestas que servirán como evidencias recopiladas 
+para poder evaluar tu desempeño.
 
-En la evaluación siempre se tendrá en cuenta el PROCESO. Dicho proceso lo observaremos 
-en tu bitácora de aprendizaje. Allí deberás evidenciar tu proceso de investigación y la 
-solución a las preguntas guía. Para conseguir un 5 en la nota final de cada unidad, deberás 
-acumular 5 puntos hasta el cierre de la unidad. Cada semana hay puntos por  
-ganar así:
+La evaluación, sea formativa o sumativa, siempre la realizaremos juntos usando 
+como insumo para la retroalimentación tu bitácora de aprendizaje.
 
-#. Introducción al flujo de trabajo en el curso: bitácora (4 puntos) + resultado (1). 5% 
-#. Unidad 1: bitácora (4 puntos) + resultado (1 puntos). 25% 
-#. Unidad 2: bitácora (4 puntos) + resultado (1 puntos). 25%
-#. Unidad 3: bitácora (3 puntos) + resultado (1 punto) + compartir (1 punto). 20%
-#. Unidad 4: bitácora (3 puntos) + resultado (1 punto) + compartir (1 punto). 25%
+La evaluación formativa se realizará en cada sesión de trabajo. Yo estaré 
+pasando por tu puesto de trabajo para que me muestres tus avances.
 
-.. warning:: ¿Qué pasa si no cumplo con los plazos?
+La evaluación sumativa la realizaremos juntos en sesiones específicas del curso. 
+En dichas sesiones conversaremos sobre tu proceso de aprendizaje y los resultados.
 
-   * Nota que siempre hay puntos por la bitácora. Si no trabajas cada semana 
-     ese punto se pierde. No hay puntos retroactivos. Debes recuperar en la 
-     semana las sesiones de trabajo.
-   * Si no entregas el producto de cierre de unidad debes buscar al profesor 
-     a más tardar dos días hábiles, pero deberás ajustarte a la disponibilidad 
-     del profesor. En esa reunión se establecerá la penalidad por el incumplimiento.
-     Dicha penalidad puede ir hasta perder todos los puntos del producto de cierre 
-     de unidad.
+Tendremos entonces dos momentos de evaluación sumativa para cada unidad:
+
+* Evaluación del proceso de investigación.
+* Evaluación del reto de la unidad.
 
 Asistencia
 ---------------------
 
-* La sesión presencial es obligatoria.
-* La sesión de trabajo independiente es obligatoria.
-* Si no asistes debes enviar un correo al profesor a más tardar dos días 
-  hábiles con:
-  
-  * La razón de la falta y los soportes.
-  * En la siguiente sesión debes mostrarle al profesor tu bitácora con 
-    los resultados de la sesión que faltaste. De no hacerlo, perderás los puntos 
-    correspondientes. Si no hay más sesiones presenciales esa semana, deberás 
-    informar por correo electrónico a más tardar el viernes a las 12 del medio día.
-* La sesión de trabajo independiente la programas según tu horario; sin embargo, 
-  el resultado debe aparecer en la bitácora.
+Según el régimen discente de la Universidad en el capítulo 7, artículo 43:
 
-.. warning:: importantes
+Se entiende por asistencia la participación del estudiante en las 
+actividades académicas programadas en cada curso para cada período académico.
+El estudiante cuyas faltas de asistencia superen el 20% del total de horas y 
+actividades programadas, reprobará el curso correspondiente con una nota 
+definitiva de 0.00.
+
+.. warning:: importante
 
    * Siempre que faltes a una sesión se reportará en el sistema de la Universidad.
-   * Faltar no significa no trabajar. Tendrás que compensar.
 
 Dedicación
 -----------
@@ -188,13 +177,11 @@ en horas es de 6 horas.
 Rutinas de trabajo en aula e independientes   
 ---------------------------------------------
 
-Cada sesión tendrá una duración de 1 hora 40 minutos y estará dividida 
-en 4 micro-sesiones cada una de 25 minutos.
+Cada sesión tendrá una duración de 1 hora 40 minutos. Distribuiremos el tiempo 
+de la siguiente manera:
 
-Manejo de la Bitácora
-------------------------
-
-En la bitácora documentarás tu trayecto de aprendizaje. 
+* 1 hora 30 minutos para el trabajo en las actividades propuestas.
+* 10 minutos para la planificación de la siguiente sesión de trabajo.
 
 Recursos y actividades guía 
 -----------------------------
@@ -205,14 +192,11 @@ artificiales generativas.
 Bitácora de trabajo  
 --------------------
 
-`Aquí <https://classroom.github.com/a/Jat29Hb0>`__ podrás encontrar el enlace a tu bitácora 
+`Aquí <https://classroom.github.com/a/Kw_UhGzX>`__ podrás encontrar el enlace a tu bitácora 
 personal para el curso.
 
+Seguimiento del curso
+-----------------------
 
-Puntos semanales
-------------------
-
-En `este <https://docs.google.com/spreadsheets/d/1DmdPeX1Spozk7_v78CFI8vlev4bZU3ixReAEj_7v4O0/edit?usp=sharing>`__ 
-enlace puedes consultar la asignación semanal de puntos. Recuerda que tienes plazo hasta el viernes a las 12 
-del medio día todas las semanas para completar tus tres sesiones de trabajo y el resultado o producto de cierre 
-de la unidad. 
+`Aquí <https://docs.google.com/spreadsheets/d/1tMnxwNnF59ENP6CSwxcuQfZE_Ueta-BBxOn_OXF6lP4/edit?usp=sharing>`__ 
+encontrarás el seguimiento del curso.

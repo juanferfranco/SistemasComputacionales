@@ -1,5 +1,6 @@
-Unidad 4. Estructuras de datos
-================================
+Unidad 6. Patrones de diseño
+=============================
+
 Introducción
 --------------
 
