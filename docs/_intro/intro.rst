@@ -10,25 +10,30 @@ mostrar aquí los puntos más importantes de ese documento.
 Descripción del curso
 ----------------------
 
-El objeto de este curso es el estudio de los fundamentos de los sistemas de cómputo 
-modernos desde la perspectiva del programador. Por tanto, se estudiará cómo funciona un 
-computador moderno pasando por el hardware que lo compone, los lenguajes de programación, 
-las herramientas y el sistema operativo. Se busca entonces, abordar aquellos conceptos 
-que permitirán sacar provecho a los sistemas de cómputo a la hora de construir aplicaciones.
+El objeto de este curso es que estudies y apliques los fundamentos de los 
+sistemas de cómputo modernos desde la perspectiva del programador. Por tanto, 
+estudiarás cómo funciona un computador moderno pasando por el hardware que 
+lo compone, los lenguajes de programación, las herramientas y el sistema 
+operativo. Se busca entonces, que abordes aquellos conceptos que te permitirán 
+sacar provecho a los sistemas de cómputo a la hora de construir aplicaciones.
 
 Propósito de formación del curso
 ---------------------------------
 
 Se espera que al finalizar el curso seas capaz de:
 
-#. Construir aplicaciones interactivas entendiendo los conceptos aplicados para satisfacer 
-   los requisitos del problema. Para este fin te propondré problemas donde deberás 
-   aplicar los conceptos estudiados. Se espera que llegues a un nivel resolutivo.
-#. Construir y aplicar pruebas para probar las partes y el funcionamiento completo de 
-   una aplicación interactiva. Para este fin te solicitaré que selecciones y argumentes 
-   los vectores de prueba que permitan verificar el cumplimiento de los requisitos 
-   establecidos. Se espera que llegues a un nivel autónomo.
-
+#. Construir aplicaciones interactivas que satisfagan los requisitos de un reto 
+   o problema con un énfasis especial en el análisis de los conceptos. Mira, 
+   no se trata solo de hacer aplicaciones (que tu y yo sabemos que una IA 
+   generativa puede hacer), sino de entender los conceptos (que una IA no puede 
+   hacer por ti) y aplicarlos de manera correcta. Para este fin te propondré 
+   problemas donde deberás aplicar los conceptos estudiados. Se espera que 
+   llegues a un nivel resolutivo.
+#. Construir y aplicar pruebas para probar las partes y el funcionamiento 
+   completo de una aplicación interactiva. Para este fin te solicitaré que 
+   selecciones y argumentes los vectores de prueba que permitan verificar el 
+   cumplimiento de los requisitos establecidos. Se espera que llegues a un 
+   nivel autónomo.
 
 Resultado de aprendizaje general 1
 ------------------------------------
@@ -46,29 +51,30 @@ de los recursos de un sistema de cómputo.
 Resultado de aprendizaje específico 1
 **************************************
 
-Construyo aplicaciones interactivas aplicando patrones y estrategias que permitan alcanzar los 
-requisitos funcionales y no funcionales establecidos.
+Construyo aplicaciones interactivas aplicando patrones y estrategias que 
+permitan alcanzar los requisitos funcionales y no funcionales establecidos.
 
 Se espera que llegues a un nivel resolutivo.
 
 Resultado de aprendizaje general 2
 ------------------------------------
 
-Soluciono problemas de interacción mediante la integración de contenidos digitales y software 
-de acuerdo con un diseño previo, para la implementación de sistemas intermediados por el 
-entretenimiento digital. 
+Soluciono problemas de interacción mediante la integración de contenidos 
+digitales y software de acuerdo con un diseño previo, para la implementación 
+de sistemas intermediados por el entretenimiento digital. 
 
 Competencia 2
 **************
 
-Aplica adecuadamente conceptos y utiliza las  herramientas e instrumentos TIC  para conceptualizar, 
-diseñar, implementar y gestionar  sistemas informáticos.
+Aplica adecuadamente conceptos y utiliza las  herramientas e instrumentos TIC  
+para conceptualizar, diseñar, implementar y gestionar  sistemas informáticos.
 
 Resultado de aprendizaje específico 2
 **************************************
 
-Aplico pruebas de las partes y del todo de un software siguiendo metodologías, técnicas 
-y estándares de la industria para garantizar el correcto funcionamiento de las aplicaciones.
+Aplico pruebas de las partes y del todo de un software siguiendo metodologías, 
+técnicas y estándares de la industria para garantizar el correcto funcionamiento 
+de las aplicaciones.
 
 Se espera que llegues a un nivel autónomo.
 
@@ -77,8 +83,8 @@ Se espera que llegues a un nivel autónomo.
 
 .. warning:: EVIDENCIAS DEL APRENDIZAJE 
 
-  Para evidenciar el nivel esperados de cada uno de los resultados de aprendizaje específicos 
-  (RAE) a los que aporta este curso se espera:
+  Para evidenciar el nivel esperados de cada uno de los resultados de aprendizaje 
+  específicos (RAE) a los que aporta este curso se espera:
 
   * RAE1: que construyas aplicaciones interactivas entendiendo las conceptos 
     que estás aplicando.
@@ -96,37 +102,48 @@ que se abordarán en el curso:
 * Arquitectura del computador: programación en lenguaje ensamblador.
 * Construcción y pruebas para la aplicación en lenguaje ensamblador.
 * Programación de aplicaciones interactivas.
+* Programación creativa.
 * Pruebas para probar las aplicaciones propuestas.
 * Revisión de los conceptos fundamentales de la programación orientada a objetos.
 * Introducción a los patrones de diseño para la construcción de aplicaciones 
   interactivas.
+* Gráficos.
 * Introducción a algunos servicios básicos del sistema operativo.
 
 Estructura y metodología del curso
 -----------------------------------
 
-El curso está divido en 4 unidades:
+El curso está divido en 8 unidades:
 
 #. Unidad 1: Arquitectura del computador.
-#. Unidad 2: Programación creativa.
-#. Unidad 3: Patrones en programación creativa.
-#. Unidad 4: Sistema operativo.
+#. Unidad 2: Lenguaje ensamblador.
+#. Unidad 3: Lenguaje de alto nivel.
+#. Unidad 4: Estructuras de datos.
+#. Unidad 5: Programación orientada a objetos.
+#. Unidad 6: Patrones de diseño.
+#. Unidad 7: Gráficas.
+#. Unidad 8: Sistema operativo.
 
-La metodología del curso es de aula invertida. En este sitio web y en Internet encontrarás el material 
-necesario para que puedas enfrentar los retos evaluativos de cada unidad. Debes utilizar 
-el tiempo de trabajo independiente para preparar el material y resolver los retos. El trabajo 
-en aula lo emplearás para el mismo propósito pero tendrás el acompañamiento del profesor.
+
+La metodología del curso es de aula invertida. En este sitio web y en 
+Internet encontrarás el material necesario para que puedas enfrentar los 
+retos de cada unidad. Utiliza el tiempo de trabajo independiente para 
+preparar el material y resolver los retos. El trabajo en aula lo emplearás 
+para el mismo propósito pero tendrás el acompañamiento del profesor.
 
 .. _cronograma:
 
 Cronograma
 -----------
 
-* Introducción al flujo de trabajo en el curso: semana 1
-* Unidad 1: semanas 2 a 5
-* Unidad 2: semanas 6 a 9
-* Unidad 3: semanas 10 a 13
-* Unidad 4: semanas 14 a 16
+* Unidad 1: semanas 1 y 2
+* Unidad 2: semanas 3 y 4
+* Unidad 3: semanas 5 y 6
+* Unidad 4: semanas 7 y 8
+* Unidad 5: semanas 9 y 10
+* Unidad 6: semanas 11 y 12
+* Unidad 7: semanas 13 y 14
+* Unidad 8: semanas 15 y 16
 
 Evaluación 
 ------------
@@ -192,8 +209,8 @@ artificiales generativas.
 Bitácora de trabajo  
 --------------------
 
-`Aquí <https://classroom.github.com/a/Kw_UhGzX>`__ podrás encontrar el enlace a tu bitácora 
-personal para el curso.
+`Aquí <https://classroom.github.com/a/Kw_UhGzX>`__ podrás encontrar el 
+enlace a tu bitácora personal para el curso.
 
 Seguimiento del curso
 -----------------------
