@@ -1,5 +1,5 @@
-Unidad 7. Gráficas
-============================
+Experiencia de aprendizaje 7. Gráficas
+===========================================
 
 Introducción
 --------------

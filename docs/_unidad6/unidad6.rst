@@ -1,5 +1,5 @@
-Unidad 6. Patrones de diseño
-=============================
+Experiencia de aprendizaje 6. Patrones de diseño
+===================================================
 
 Introducción
 --------------

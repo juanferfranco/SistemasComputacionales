@@ -16,14 +16,14 @@ Secciones del curso
    :maxdepth: 1
 
    ¿De qué se trata este curso? <_intro/intro>
-   Unidad 1: Arquitectura del computador <_unidad1/unidad1>
-   Unidad 2: Lenguaje ensamblador <_unidad2/unidad2>
-   Unidad 3: Lenguaje de alto nivel <_unidad3/unidad3> 
-   Unidad 4: Estructuras de datos <_unidad4/unidad4>
-   Unidad 5: Programación orientada a objetos <_unidad5/unidad5>
-   Unidad 6: Patrones de diseño <_unidad6/unidad6>
-   Unidad 7: Gráficas <_unidad7/unidad7>
-   Unidad 8: Sistema operativo <_unidad8/unidad8>
+   Experiencia de aprendizaje 1: Arquitectura del computador <_unidad1/unidad1>
+   Experiencia de aprendizaje 2: Lenguaje ensamblador <_unidad2/unidad2>
+   Experiencia de aprendizaje 3: Lenguaje de alto nivel <_unidad3/unidad3> 
+   Experiencia de aprendizaje 4: Estructuras de datos <_unidad4/unidad4>
+   Experiencia de aprendizaje 5: Programación orientada a objetos <_unidad5/unidad5>
+   Experiencia de aprendizaje 6: Patrones de diseño <_unidad6/unidad6>
+   Experiencia de aprendizaje 7: Gráficas <_unidad7/unidad7>
+   Experiencia de aprendizaje 8: Sistema operativo <_unidad8/unidad8>
    Recursos: Recursos Interesantes <_recursos/recursos>   
 
 

@@ -1,5 +1,5 @@
-Unidad 8. Sistema operativo
-============================
+Experiencia de aprendizaje 8. Sistema operativo
+==================================================
 
 Introducción
 --------------
