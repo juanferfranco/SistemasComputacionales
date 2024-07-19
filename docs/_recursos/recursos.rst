@@ -30,6 +30,12 @@ Videos
 --------
 
 * `Super Mario - C++ & SDL2 (with Source Code) <https://youtu.be/HkLZ9ESYxCU>`__.
+* El Apolo 11 viajo a la LUNA con una COMPUTADORA menos POTENTE que nuestro CELULAR `Youtube video <https://youtu.be/LONubQKvWpM?si=iINmX91ibJQN97zy
+>`__.
+* `The Apollo Guidance Computer <https://youtu.be/2KSahAoOLdU>`__.
+* How are Microchips Made? 🖥️🛠️ CPU Manufacturing Process Steps. `Youtube video <https://youtu.be/dX9CGRZwD-w?si=keFoftBBlVYVgh2b>`__.
+* How do Video Game Graphics Work? `Youtube video <https://youtu.be/C8YtdC8mxTU?si=c-4pTRSQYfWYovEi>`__.
+* How does Computer Hardware Work? 💻🛠🔬 [3D Animated Teardown]. `Youtube video <https://youtu.be/d86ws7mQYIg?si=ESdFPV__3EejBEJf>`__. 
 
 
 Libros
