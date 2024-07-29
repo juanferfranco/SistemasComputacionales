@@ -79,7 +79,9 @@ dos recursos:
 Reto 
 ------
 
-Este reto consiste en la elaboración de una serie de programas en lenguaje ensamblador.
+Este reto consiste en la elaboración de una serie de programas en lenguaje ensamblador. Para realizar 
+las pruebas puedes utilizar uno de los simuladores que puedes encontrar `aquí <https://www.nand2tetris.org/software>`__. 
+El simulador que hemos venido utilizando es `este <https://nand2tetris.github.io/web-ide/chip/>`__.
 
 1. Carga en D el valor 1978.
 2. Guarda en la posición 100 de la RAM el número 69.
