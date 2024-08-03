@@ -79,13 +79,18 @@ dos recursos:
 Reto 
 ------
 
-Este reto consiste en la elaboración de una serie de programas en lenguaje ensamblador. Para realizar 
-las pruebas puedes utilizar uno de los simuladores que puedes encontrar `aquí <https://www.nand2tetris.org/software>`__. 
-El simulador que hemos venido utilizando es `este <https://nand2tetris.github.io/web-ide/chip/>`__.
+Este reto consiste en la elaboración de una serie de programas en lenguaje ensamblador. 
+
+* Para realizar las pruebas puedes utilizar uno de los simuladores que puedes 
+  encontrar `aquí <https://www.nand2tetris.org/software>`__. 
+* El simulador que hemos venido utilizando es `este <https://nand2tetris.github.io/web-ide/chip/>`__. 
+* Utiliza Google Chrome o Microsoft Edge para abrir el simulador.
+* Cada que modifiques el programa, asegúrate de guardar el archivo, actualizar la página web y cargar 
+  el archivo nuevamente.
 
 1. Carga en D el valor 1978.
 2. Guarda en la posición 100 de la RAM el número 69.
-3. Guarda en la posición 200 de la RAM el contenido de la posición 24 de la RA
+3. Guarda en la posición 200 de la RAM el contenido de la posición 24 de la RAM
 4. Lee lo que hay en la posición 100 de la RAM, resta 15 y guarda el resultado en la posición 100 de la RAM.
 5. Suma el contenido de la posición 0 de la RAM, el contenido de la posición 1 de la RAM y con la
    constante 69. Guarda el resultado en la posición 2 de la RAM.
@@ -111,7 +116,6 @@ El simulador que hemos venido utilizando es `este <https://nand2tetris.github.io
 
         i = 1
         sum = 0
-        ...
         sum = sum + i
         i = i + 1
 
@@ -125,7 +129,6 @@ El simulador que hemos venido utilizando es `este <https://nand2tetris.github.io
       // sum = 0
       @sum
       M=0
-      ...
       // sum = sum + i
       @i
       D=M
@@ -162,7 +165,6 @@ El simulador que hemos venido utilizando es `este <https://nand2tetris.github.io
         i = i - 1
         goto LOOP
         CONT:
-        ...
 
     La traducción a lenguaje ensamblador del programa anterior es:
 
@@ -186,7 +188,6 @@ El simulador que hemos venido utilizando es `este <https://nand2tetris.github.io
         @LOOP
         0;JMP
         (CONT)
-        ...
 
     * ¿Qué hace este programa?
     * En qué memoria está almacenada la variable i? ¿En qué dirección de esa memoria?
