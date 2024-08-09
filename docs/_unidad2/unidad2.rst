@@ -57,11 +57,11 @@ básicos de programación en alto nivel?
 ¿Recuerdas los resultados de aprendizaje específicos (RAE) de este curso?
 
 * RAE1: construyo aplicaciones interactivas aplicando patrones y estrategias que 
-permitan alcanzar los requisitos funcionales y no funcionales establecidos. Se espera que 
-llegues a un nivel resolutivo.
+  permitan alcanzar los requisitos funcionales y no funcionales establecidos. Se espera que 
+  llegues a un nivel resolutivo.
 * RAE2: aplico pruebas de las partes y del todo de un software siguiendo metodologías, 
-técnicas y estándares de la industria para garantizar el correcto funcionamiento de las 
-aplicaciones. Se espera que llegues a un nivel autónomo.
+  técnicas y estándares de la industria para garantizar el correcto funcionamiento de las 
+  aplicaciones. Se espera que llegues a un nivel autónomo.
 
 El RAE1 lo evidenciarás con la construcción de las aplicaciones que proponen los retos, 
 siguiendo los requisitos. El RAE2 lo evidenciarás con la implementación de pruebas utilizando 
