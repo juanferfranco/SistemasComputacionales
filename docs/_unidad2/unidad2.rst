@@ -67,7 +67,7 @@ El RAE1 lo evidenciarás con la construcción de las aplicaciones que proponen l
 siguiendo los requisitos. El RAE2 lo evidenciarás con la implementación de pruebas utilizando 
 el simulador.
 
-.. note:: Para la bitácora BITÁcora
+.. note:: Para la bitácora Bitácora
 
    En la bitácora vas a reportar para cada mini-reto dos cosas:
 
@@ -78,12 +78,12 @@ el simulador.
 
    .. code-block:: c
 
-   int i = 1;
-   int sum = 0;
-   While (i <= 100){
-      sum += i;
-      i++;
-   }
+      int i = 1;
+      int sum = 0;
+      While (i <= 100){
+         sum += i;
+         i++;
+      }
 
    * ¿Cómo están implementadas las variables ``i`` y ``sum``?
    * ¿En qué direcciones de memoria están estas variables?
@@ -104,10 +104,10 @@ el simulador.
 
    .. code-block:: c
 
-   int a = 10;
-   int *p;
-   p = &a;
-   *p = 20;    
+      int a = 10;
+      int *p;
+      p = &a;
+      *p = 20;    
 
    El programa anterior modifica el contenido de la variable ``a`` por medio de la variable 
    ``p``. ``p`` es un puntero porque almacena la dirección de memoria de la variable ``a``. En este 
@@ -127,21 +127,21 @@ el simulador.
 
    .. code-block:: c
 
-   int a = 10;
-   int *p;
-   p = &a;
-   *p = 20;   
+      int a = 10;
+      int *p;
+      p = &a;
+      *p = 20;   
 
 6. Ahora vas a usar un puntero para leer la posición de memoria a la que este apunta, es decir, 
    vas a leer por medio del puntero la variable cuya dirección está almacenada en él.
 
    .. code-block:: c
 
-   int a = 10;
-   int b = 5;
-   int *p;
-   p = &a;
-   b = *p;
+      int a = 10;
+      int b = 5;
+      int *p;
+      p = &a;
+      b = *p;
 
    En este caso ``b = *p;`` hace que el valor de ``b`` cambie de 5 a 10 porque ``p`` apunta a la 
    la variable ``a`` y con ``*p`` a la derecha del igual estás leyendo el contenido de la variable 
@@ -151,17 +151,17 @@ el simulador.
 
    .. code-block:: c
 
-   int a = 10;
-   int b = 5;
-   int *p;
-   p = &a;
-   b = *p;
+      int a = 10;
+      int b = 5;
+      int *p;
+      p = &a;
+      b = *p;
 
 8. Vas a parar un momento y tratarás de recodar de memoria lo siguiente. Luego verifica con un 
    compañero o con el profesor.
 
    * ¿Qué hace esto ``int *pvar;``?
-   * ¿Qué hace esto ``*pvar = var;``
+   * ¿Qué hace esto ``*pvar = var;``?
    * ¿Qué hace esto ``var2 = *pvar``?
    * ¿Qué hace esto ``pvar = &var3``?
 
