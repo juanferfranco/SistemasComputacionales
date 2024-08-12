@@ -165,7 +165,7 @@ el simulador.
    * ¿Qué hace esto ``var2 = *pvar``?
    * ¿Qué hace esto ``pvar = &var3``?
 
-9.  Considera que el punto de entrada del siguiente programa es la función ``main``, es decir, el 
+9. Considera que el punto de entrada del siguiente programa es la función ``main``, es decir, el 
    programa inicia llamando la función ``main``. Vas a proponer una posible traducción a lenguaje 
    ensamblador de la función ``suma``, cómo llamar a suma y cómo regresar a 
    ``std::cout << "El valor de c es: " << c << std::endl;`` una vez suma termine.
