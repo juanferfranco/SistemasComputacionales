@@ -220,6 +220,8 @@ Actividad 2:
 En esta actividad vas a experimentar con pilas y colas en un contexto de arte generativo. El 
 código incluye la gestión de memoria.
 
+El código para la pila es este:
+
 **ofApp.h:**
 
 .. code-block:: cpp
@@ -323,6 +325,9 @@ código incluye la gestión de memoria.
             circleStack.pop();
         }
     }
+
+El código para la cola es este:
+
 
 **ofApp.h:**
 
