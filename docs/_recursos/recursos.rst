@@ -64,3 +64,8 @@ Web
 * Web Browser Engineering. `Web site <https://browser.engineering/>`__.
 * WebAssembly. `Web site <https://webassembly.org/>`__.
 
+Computación gráfica
+---------------------
+
+* Scratchapixel's mission is to make CG programming accessible to as many people as possible. 
+  `Web site <https://www.scratchapixel.com/about-us.html>`__.
