@@ -69,3 +69,5 @@ Computación gráfica
 
 * Scratchapixel's mission is to make CG programming accessible to as many people as possible. 
   `Web site <https://www.scratchapixel.com/about-us.html>`__.
+* Cem Yuksel is a computer graphics researcher and a professor in the School of 
+  Computing at the University of Utah. `Youtube channel <https://www.youtube.com/@cem_yuksel>`__.
