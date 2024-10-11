@@ -4,7 +4,10 @@ void ofApp::setup() {
     ofSetFrameRate(60);
     ofBackground(200);
 
-	//cout << cam.getDistance() << endl;
+	cout << cam.getDistance() << endl;
+	ofNode target = cam.getTarget();
+    cout <<   ofToString(target.getX()) + "," + ofToString(target.getY()) + "," + ofToString(target.getZ()) << endl;
+
 
 	generateSpheres();
 }
