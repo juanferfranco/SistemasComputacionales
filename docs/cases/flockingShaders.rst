@@ -37,7 +37,17 @@ Para el cálculo de las reglas de flocking, vamos a utilizar un compute shader q
 calcular la posición y velocidad de cada boid en función de las reglas de cohesión, separación y alineación.
 El compute shader se ejecutará en paralelo para cada boid, lo que nos permitirá acelerar el cálculo.
 
-Para la renderización de los boids, vamos a utilizar GPU instancing.
+Para la renderización de los boids, vamos a utilizar GPU instancing. El GPU instancing permite renderizar 
+muchas copias de un mismo objeto (en este caso, los boids) de forma muy eficiente, aprovechando la 
+potencia de la GPU. En lugar de enviar una llamada de renderizado separada para cada boid, que sería 
+muy costoso en términos de rendimiento, la técnica de instancing permite dibujar múltiples 
+instancias del mismo objeto (un boid) con diferentes posiciones y otras propiedades 
+(como velocidad, rotación) en una sola llamada a la GPU.
+
+El GPU instancing es crucial para lograr un buen rendimiento cuando tenemos que renderizar muchos 
+objetos que son geométricamente iguales pero tienen diferentes transformaciones (posición, 
+rotación, escala, etc.). En este caso, todos los boids son triángulos iguales, pero se dibujan en 
+distintas posiciones y con diferentes rotaciones.
 
 Te voy a mostrar todos los códigos necesarios para implementar flocking con shaders en openFrameworks. 
 Y luego los analizaremos juntos. Ten presente que para reproducir el código necesitas tener el addon 
