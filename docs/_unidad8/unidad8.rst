@@ -751,6 +751,15 @@ ofApp.cpp:
 * El uso de lock y unlock en la versión con hilos, ¿Cómo afecta 
   la eficiencia del programa?
 
+.. warning:: ACTIVIDAD OPCIONAL
+    Esta actividad es opcional. Te voy a mostrar cómo puedes implementar 
+    el flocking utilizando la GPU y shaders.
+
+  .. toctree::
+    :maxdepth: 1
+
+    ../cases/flockingShaders
+
 Reto 
 ------
 En este reto, implementarás una simulación de partículas que se muevan 
