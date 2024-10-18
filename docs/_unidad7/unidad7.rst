@@ -126,8 +126,8 @@ Vas a leer con detenimiento el tutorial Adding Uniforms.
 * ¿Qué es un uniform?
 * ¿Cómo funciona el código de aplicación, los shaders y cómo se comunican estos?
 
-Modifica el código de la actividad para modificar el color de cada uno 
-de los pixeles de la pantalla modificando el fragment shader.
+Modifica el código de la actividad para cambiar el color de cada uno 
+de los pixeles de la pantalla personalizando el fragment shader.
 
 Actividad 4
 **************
