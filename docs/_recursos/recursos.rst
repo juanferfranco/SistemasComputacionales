@@ -57,6 +57,7 @@ Tools
 -------
 
 * `Nand2Tetris IDE <https://marketplace.visualstudio.com/items?itemName=AvivYaish.nand-ide>`__.
+* `Digital <https://github.com/hneemann/Digital>`__.
 
 Web 
 --------
